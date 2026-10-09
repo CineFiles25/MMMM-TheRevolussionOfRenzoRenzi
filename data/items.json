@@ -5,6 +5,7 @@
     "every other cataloguing field from the CSV is preserved verbatim under 'metadata' so nothing from Claudia's research is lost.",
     "Each item's first text was seeded from the CSV 'description' field (real content, not a placeholder) -- Claudia still needs to add the shorter/simpler variants for the length/competence/tone grid.",
     "mapPosition is still empty: assets/img/museum/planimetry_cinema_modernissimo.jpg exists now, but positions on it are not assigned yet.",
+    "mapPosition.x / mapPosition.y, once filled in, are PERCENTAGES (0-100) of the floor plan image's width/height -- not pixels -- so markers stay correctly placed at any display size. mapPosition.area is an optional human-readable label (e.g. a corridor nook name), not used for placement math. See map.html.",
     "See ARCHITECTURE-NOTES.md for open questions."
   ],
   "items": [
