@@ -1,0 +1,70 @@
+{
+  "_readme": [
+    "A narrative = an itinerary through the items. Each narrative has an 'order' array of ids (from items.json) that defines prev/next.",
+    "The same item can appear in more than one narrative, even in a different order.",
+    "'timeline' is the required historical narrative. Unlike the first draft of this file, this order is now built from the real",
+    "dates in data/items.csv (Claudia's research), not an arbitrary placeholder -- but several dates are approximate ('ca.') and",
+    "five items share the same year (1954), so the order within that cluster is a reasonable guess, not confirmed fact.",
+    "The second narrative is now named: a thematic one, 'Renzi: Many Lives', split into three parallel threads",
+    "(critic / curator / soldier-partisan) sharing the narrativeGroup tag below. Claudia is assigning which items",
+    "go in which thread when the team meets (Wednesday) -- the three entries exist so the site can already offer",
+    "the choice in a narrative selector, but 'order' stays empty until she fills it in."
+  ],
+  "narratives": [
+    {
+      "id": "timeline",
+      "title": "Historical timeline",
+      "description": null,
+      "required": true,
+      "order": [
+        "renzi_letter_1942",
+        "po_screenplay",
+        "l_armata_s_agapo",
+        "guida_documentary",
+        "la_strada_film",
+        "drawing_gelsomina_lastrada",
+        "photo_la_strada_fighter",
+        "photo_la_strada_woman",
+        "photo_lastrada_premiere",
+        "la_strada_soundtrack_original",
+        "ferrari_set_photo",
+        "caricature_fellini_renzi",
+        "book_il_primo_fellini",
+        "renzi_interview_2000",
+        "renzi_portrait"
+      ],
+      "_todo": [
+        "Based on real dates in items.csv: 1942-07-24 (letter) -> ca. 1952 (Po screenplay) -> 1953-02-01 (L'armata s'agapò) -> 1954 (six items: guida_documentary, la_strada_film, drawing_gelsomina_lastrada, photo_la_strada_fighter, photo_la_strada_woman, photo_lastrada_premiere, la_strada_soundtrack_original) -> 1959 (ferrari_set_photo) -> ca. 1960s (caricature) -> 1969 (book) -> 2000 (interview).",
+        "renzi_portrait has no date in items.csv -- placed last as unplaced, needs a real date or at least an approximate period from Claudia/Anna Fiaccarini.",
+        "The order within the 1954 cluster (6 items) is a best guess (documentary -> film -> character drawing -> production stills -> premiere -> soundtrack), not verified against real event dates within that year."
+      ]
+    },
+    {
+      "id": "renzi-critic",
+      "title": "Renzi the critic",
+      "description": null,
+      "required": true,
+      "narrativeGroup": "renzi-many-lives",
+      "order": [],
+      "_todo": "Claudia is assigning which items belong to this thread (meeting Wednesday)."
+    },
+    {
+      "id": "renzi-curator",
+      "title": "Renzi the curator",
+      "description": null,
+      "required": true,
+      "narrativeGroup": "renzi-many-lives",
+      "order": [],
+      "_todo": "Claudia is assigning which items belong to this thread (meeting Wednesday)."
+    },
+    {
+      "id": "renzi-soldier-partisan",
+      "title": "Renzi the soldier / partisan",
+      "description": null,
+      "required": true,
+      "narrativeGroup": "renzi-many-lives",
+      "order": [],
+      "_todo": "Claudia is assigning which items belong to this thread (meeting Wednesday). Likely candidates based on the CSV: renzi_letter_1942 (written from the front in WWII) and l_armata_s_agapo (the article that led to his military trial) -- but this is a guess, not Claudia's actual call."
+    }
+  ]
+}
