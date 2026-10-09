@@ -40,7 +40,11 @@
     (async function initItemPage() {
       await Exhibition.load();
       Exhibition.applyStoredTheme();
-      populateThemeSelect();
+      // Populates the <select>, keeps it in sync with the current theme and
+      // swaps the stylesheet on change — shared with every other page via
+      // Exhibition.wireThemeSelect() (js/main.js), instead of duplicating
+      // this logic here.
+      Exhibition.wireThemeSelect(document.getElementById("theme-select"));
 
       // Current state read from the query string: item.html?narrative=timeline&item=renzi_letter_1942
       let narrativeId = Exhibition.getQueryParam("narrative") || "timeline";
@@ -54,25 +58,6 @@
 
       renderItem(narrativeId, itemId);
       wireNavButtons(narrativeId, itemId);
-
-      // swap the theme <link> whenever the user changes it
-      document.getElementById("theme-select").addEventListener("change", (e) => {
-        const theme = Exhibition.getThemes().find(t => t.id === e.target.value);
-        Exhibition.setTheme(theme.id);
-        document.getElementById("theme-stylesheet").href = theme.cssFile;
-      });
-
-      function populateThemeSelect() {
-        const select = document.getElementById("theme-select");
-        const current = Exhibition.getCurrentTheme();
-        Exhibition.getThemes().forEach((theme) => {
-          const opt = document.createElement("option");
-          opt.value = theme.id;
-          opt.textContent = `${theme.period} — ${theme.label}`;
-          opt.selected = theme.id === current.id;
-          select.appendChild(opt);
-        });
-      }
 
       // Renders a basic preview for the item's first asset: an <img> for
       // image files, a plain link for anything else (PDF, etc.). Items
