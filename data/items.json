@@ -1,0 +1,954 @@
+{
+  "_readme": [
+    "Converted from data/items.csv (CineFiles25/MMMM-TheRevolussionOfRenzoRenzi).",
+    "Core navigation fields are at the top level (id, title, creator, images, texts, mapPosition);",
+    "every other cataloguing field from the CSV is preserved verbatim under 'metadata' so nothing from Claudia's research is lost.",
+    "Each item's first text was seeded from the CSV 'description' field (real content, not a placeholder) -- Claudia still needs to add the shorter/simpler variants for the length/competence/tone grid.",
+    "mapPosition is still empty: assets/img/museum/planimetry_cinema_modernissimo.jpg exists now, but positions on it are not assigned yet.",
+    "See ARCHITECTURE-NOTES.md for open questions."
+  ],
+  "items": [
+    {
+      "id": "book_il_primo_fellini",
+      "order": 1,
+      "title": "Il primo Fellini",
+      "creator": "Federico Fellini",
+      "metadata": {
+        "subject": "Screenplays; Italian cinema; Neorealism; Federico Fellini; Lo sceicco bianco; I vitelloni; La strada; Il bidone",
+        "publisher": "Cappelli Editore",
+        "contributor": "Renzo Renzi; Liliana Betti; Eschilo Tarquini | Introduction by Renzo Renzi; edited by Liliana Betti and Eschilo Tarquini; screenplays by Federico Fellini",
+        "date": "1969",
+        "type": "Book",
+        "format": "326 p. : ill. ; 25 cm",
+        "source": null,
+        "language": "it",
+        "relation": "lo_sceicco_bianco_film; i_vitelloni_film; la_strada_film; il_bidone_film",
+        "coverage": "Bologna",
+        "rights": "Copyright © Cappelli Editore",
+        "standard": "ISBD(G)",
+        "other_title_information": "Lo sceicco bianco; I vitelloni; La strada; Il bidone. From Subject to Film",
+        "series": "From Subject to Film. Retrospective series, 1",
+        "extent": "326 p. : ill. ; 25 cm",
+        "dimensions": null,
+        "physical_description": null,
+        "colour": null,
+        "sound": null,
+        "duration": null,
+        "length": null,
+        "inscription": null,
+        "institution": null,
+        "collection": null,
+        "current_location": null,
+        "depicted_event": null,
+        "depicted_place": null,
+        "inventory_number": null,
+        "catalogue_number": null,
+        "identifiers": null,
+        "archival_description": null,
+        "edition": null,
+        "pages": null,
+        "conditions_governing_access": null,
+        "conditions_governing_reproduction": null
+      },
+      "images": [
+        "assets/items/La strada pagg. 209_244.pdf"
+      ],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "The volume contains the screenplays of four Fellini films: 'Lo sceicco bianco', 'I vitelloni', 'La strada', and 'Il bidone'. Only a selected sequence of 'La strada' is used for the TEI encoding in this project.",
+          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+        }
+      ],
+      "mapPosition": {
+        "area": null,
+        "x": null,
+        "y": null
+      },
+      "_todo": [
+        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+      ]
+    },
+    {
+      "id": "caricature_fellini_renzi",
+      "order": 2,
+      "title": "Fellini caricature",
+      "creator": "Renzo Renzi",
+      "metadata": {
+        "subject": "Federico Fellini",
+        "publisher": "Cineteca di Bologna",
+        "contributor": null,
+        "date": "ca. 1960s",
+        "type": "Drawing",
+        "format": "Black ink and coloured markers | Cut paper",
+        "source": null,
+        "language": "it",
+        "relation": "Renzo Renzi Collection",
+        "coverage": "Biblioteca Renzo Renzi. Cinema e Fotografia",
+        "rights": "© Cineteca di Bologna",
+        "standard": "OA",
+        "other_title_information": "Caricature with handwritten caption",
+        "series": null,
+        "extent": null,
+        "dimensions": "13 × 8.6 cm",
+        "physical_description": null,
+        "colour": null,
+        "sound": null,
+        "duration": null,
+        "length": null,
+        "inscription": "Why doesn't Federico make the revolution?",
+        "institution": "Cineteca di Bologna",
+        "collection": "Renzo Renzi Collection",
+        "current_location": "Biblioteca Renzo Renzi. Cinema e Fotografia",
+        "depicted_event": null,
+        "depicted_place": null,
+        "inventory_number": null,
+        "catalogue_number": null,
+        "identifiers": null,
+        "archival_description": null,
+        "edition": null,
+        "pages": null,
+        "conditions_governing_access": null,
+        "conditions_governing_reproduction": null
+      },
+      "images": [
+        "assets/items/renzi_caricature.jpg"
+      ],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "Hand-drawn caricature by Renzo Renzi depicting Federico Fellini with a humorous handwritten caption. Created in the 1960s, the drawing became an emblematic image associated with the Renzo Renzi Collection of the Cineteca di Bologna.",
+          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+        }
+      ],
+      "mapPosition": {
+        "area": null,
+        "x": null,
+        "y": null
+      },
+      "_todo": [
+        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+      ]
+    },
+    {
+      "id": "drawing_gelsomina_lastrada",
+      "order": 3,
+      "title": "La Strada: Gelsomina col tamburo",
+      "creator": "Renzo Renzi",
+      "metadata": {
+        "subject": "Giulietta Masina",
+        "publisher": "Cineteca di Bologna",
+        "contributor": null,
+        "date": "ca. 1950s",
+        "type": "Drawing",
+        "format": "Pencil and coloured markers | Cardboard",
+        "source": null,
+        "language": null,
+        "relation": "Renzo Renzi Collection",
+        "coverage": "Biblioteca Renzo Renzi. Cinema e Fotografia",
+        "rights": "© Renzi Estate",
+        "standard": "OA",
+        "other_title_information": null,
+        "series": null,
+        "extent": null,
+        "dimensions": "25.2 × 17.2 cm",
+        "physical_description": null,
+        "colour": null,
+        "sound": null,
+        "duration": null,
+        "length": null,
+        "inscription": null,
+        "institution": "Cineteca di Bologna",
+        "collection": "Renzo Renzi Collection",
+        "current_location": "Biblioteca Renzo Renzi. Cinema e Fotografia",
+        "depicted_event": null,
+        "depicted_place": null,
+        "inventory_number": null,
+        "catalogue_number": null,
+        "identifiers": null,
+        "archival_description": null,
+        "edition": null,
+        "pages": null,
+        "conditions_governing_access": null,
+        "conditions_governing_reproduction": null
+      },
+      "images": [
+        "assets/items/gelsomina_drawing.png"
+      ],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "Portrait drawing by Renzo Renzi depicting Giulietta Masina as Gelsomina from Federico Fellini’s film *La Strada*, shown playing a small drum.",
+          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+        }
+      ],
+      "mapPosition": {
+        "area": null,
+        "x": null,
+        "y": null
+      },
+      "_todo": [
+        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+      ]
+    },
+    {
+      "id": "ferrari_set_photo",
+      "order": 4,
+      "title": "Ferrari on set during the documentary 'Le Notti del Melodramma'",
+      "creator": "Aldo Ferrari",
+      "metadata": {
+        "subject": "Renzo Renzi",
+        "publisher": "Cineteca di Bologna",
+        "contributor": null,
+        "date": "1959",
+        "type": "Photograph",
+        "format": "Vintage gelatin silver print. Original analog photograph. | Analog photographic print | Gelatin silver print | Digital JPEG surrogate | black and white",
+        "source": null,
+        "language": null,
+        "relation": "le_notti_del_melodramma",
+        "coverage": "Bologna",
+        "rights": "© Cineteca di Bologna",
+        "standard": "ICCD F",
+        "other_title_information": null,
+        "series": null,
+        "extent": null,
+        "dimensions": null,
+        "physical_description": "Vintage gelatin silver print. Original analog photograph.",
+        "colour": "black and white",
+        "sound": null,
+        "duration": null,
+        "length": null,
+        "inscription": null,
+        "institution": "Cineteca di Bologna",
+        "collection": "Fondo Aldo Ferrari – Donazione Costantino e Lucia Della Casa",
+        "current_location": "Cineteca di Bologna — Fototeca",
+        "depicted_event": "Set of the documentary 'Le Notti del Melodramma'",
+        "depicted_place": "Bologna",
+        "inventory_number": "FAF01878.001",
+        "catalogue_number": null,
+        "identifiers": "FAF01878.001",
+        "archival_description": null,
+        "edition": null,
+        "pages": null,
+        "conditions_governing_access": null,
+        "conditions_governing_reproduction": null
+      },
+      "images": [
+        "assets/items/ferrari_set_photo.jpg"
+      ],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "Digital surrogate available on the Cineteca di Bologna website.",
+          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+        }
+      ],
+      "mapPosition": {
+        "area": null,
+        "x": null,
+        "y": null
+      },
+      "_todo": [
+        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+      ]
+    },
+    {
+      "id": "guida_documentary",
+      "order": 5,
+      "title": "Guida per camminare all'ombra",
+      "creator": "Renzo Renzi",
+      "metadata": {
+        "subject": "Portici of Bologna; Urban documentary",
+        "publisher": "Columbus Film",
+        "contributor": null,
+        "date": "1954",
+        "type": "Short documentary",
+        "format": "35 mm",
+        "source": "https://www.wikidata.org/wiki/Q88880456",
+        "language": "it",
+        "relation": null,
+        "coverage": "Bologna",
+        "rights": "© Cineteca di Bologna — All rights reserved",
+        "standard": "ISBD(NBM)",
+        "other_title_information": null,
+        "series": null,
+        "extent": null,
+        "dimensions": null,
+        "physical_description": "normal ratio",
+        "colour": "col",
+        "sound": "sound",
+        "duration": "10m",
+        "length": null,
+        "inscription": null,
+        "institution": "Cineteca di Bologna",
+        "collection": "Renzo Renzi Fund",
+        "current_location": "Biblioteca Renzo Renzi. Cinema e Fotografia",
+        "depicted_event": null,
+        "depicted_place": null,
+        "inventory_number": null,
+        "catalogue_number": null,
+        "identifiers": null,
+        "archival_description": null,
+        "edition": null,
+        "pages": null,
+        "conditions_governing_access": null,
+        "conditions_governing_reproduction": null
+      },
+      "images": [],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "Short documentary film directed by Renzo Renzi and presented at the Venice Film Festival.",
+          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+        }
+      ],
+      "mapPosition": {
+        "area": null,
+        "x": null,
+        "y": null
+      },
+      "_todo": [
+        "no local asset yet (video to add / external link / missing photo -- check with Claudia)",
+        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+      ]
+    },
+    {
+      "id": "la_strada_film",
+      "order": 6,
+      "title": "La strada",
+      "creator": "Federico Fellini",
+      "metadata": {
+        "subject": null,
+        "publisher": "Ponti–De Laurentiis Cinematografica",
+        "contributor": null,
+        "date": "1954",
+        "type": "Film",
+        "format": "35 mm | 3220 m | 108 min | black and white | sound",
+        "source": "https://www.wikidata.org/wiki/Q184843",
+        "language": "it",
+        "relation": null,
+        "coverage": "Italy",
+        "rights": "© Ponti–De Laurentiis Cinematografica",
+        "standard": "FIAF",
+        "other_title_information": "International title: 'The Road'",
+        "series": null,
+        "extent": null,
+        "dimensions": null,
+        "physical_description": null,
+        "colour": "black and white",
+        "sound": "sound",
+        "duration": "108 min",
+        "length": "3220 m",
+        "inscription": null,
+        "institution": null,
+        "collection": null,
+        "current_location": null,
+        "depicted_event": null,
+        "depicted_place": null,
+        "inventory_number": null,
+        "catalogue_number": null,
+        "identifiers": null,
+        "archival_description": null,
+        "edition": null,
+        "pages": null,
+        "conditions_governing_access": null,
+        "conditions_governing_reproduction": null
+      },
+      "images": [],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "Feature fiction film directed by Federico Fellini.",
+          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+        }
+      ],
+      "mapPosition": {
+        "area": null,
+        "x": null,
+        "y": null
+      },
+      "_todo": [
+        "no local asset yet (video to add / external link / missing photo -- check with Claudia)",
+        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+      ]
+    },
+    {
+      "id": "la_strada_soundtrack_original",
+      "order": 7,
+      "title": "La strada : [musique du film]",
+      "creator": "Nino Rota",
+      "metadata": {
+        "subject": "Film music; Italian cinema",
+        "publisher": "Ducretet Thomson",
+        "contributor": "Grand Orchestre Jo Moutet | Music by Nino Rota; performed by Grand Orchestre Jo Moutet",
+        "date": "1954",
+        "type": "SoundRecording",
+        "format": "1 sound disc : 45 rpm ; 17.5 cm | 1 sound disc",
+        "source": null,
+        "language": "fr",
+        "relation": "la_strada_film",
+        "coverage": "[France]",
+        "rights": "© Ducretet Thomson; © Nino Rota Estate",
+        "standard": "ISBD(NBM)",
+        "other_title_information": null,
+        "series": null,
+        "extent": null,
+        "dimensions": null,
+        "physical_description": "1 sound disc : 45 rpm ; 17.5 cm",
+        "colour": null,
+        "sound": null,
+        "duration": null,
+        "length": null,
+        "inscription": null,
+        "institution": null,
+        "collection": null,
+        "current_location": null,
+        "depicted_event": null,
+        "depicted_place": null,
+        "inventory_number": null,
+        "catalogue_number": "460V084",
+        "identifiers": "UBO02159840",
+        "archival_description": null,
+        "edition": null,
+        "pages": null,
+        "conditions_governing_access": null,
+        "conditions_governing_reproduction": null
+      },
+      "images": [],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "From the original soundtrack of the 1954 film. Contains: Side A — 'Gelsomina', 'Dona-Manolita'. Side B — 'La strada', 'Comprate i miei fiori'.",
+          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+        }
+      ],
+      "mapPosition": {
+        "area": null,
+        "x": null,
+        "y": null
+      },
+      "_todo": [
+        "no local asset yet (video to add / external link / missing photo -- check with Claudia)",
+        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+      ]
+    },
+    {
+      "id": "photo_lastrada_premiere",
+      "order": 8,
+      "title": "Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina",
+      "creator": "Libero Grandi",
+      "metadata": {
+        "subject": "Federico Fellini; Giulietta Masina",
+        "publisher": "Cineteca di Bologna",
+        "contributor": null,
+        "date": "1954",
+        "type": "Photograph",
+        "format": "Vintage press photograph. | Photographic print | Gelatin silver print | black and white",
+        "source": null,
+        "language": "und",
+        "relation": "la_strada_film",
+        "coverage": "Bologna, Cinema Fulgor (Via Montegrappa)",
+        "rights": "© Cineteca di Bologna — All rights reserved",
+        "standard": "ICCD Scheda F",
+        "other_title_information": "Premiere of 'La Strada' at Cinema Fulgor",
+        "series": null,
+        "extent": null,
+        "dimensions": null,
+        "physical_description": "Vintage press photograph.",
+        "colour": "black and white",
+        "sound": null,
+        "duration": null,
+        "length": null,
+        "inscription": null,
+        "institution": "Cineteca di Bologna",
+        "collection": "Fondo Iniziative Cineteca",
+        "current_location": null,
+        "depicted_event": "Film premiere of 'La Strada' (1954)",
+        "depicted_place": "Bologna, Cinema Fulgor (Via Montegrappa)",
+        "inventory_number": "FIC0414",
+        "catalogue_number": null,
+        "identifiers": "IT-CINETECABOLOGNA-FT0001-050499|FIC0414",
+        "archival_description": null,
+        "edition": null,
+        "pages": null,
+        "conditions_governing_access": null,
+        "conditions_governing_reproduction": null
+      },
+      "images": [],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "Indexed in 'Bologna Fotografata' under: Film actors and directors; Cultural events; Personalities.",
+          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+        }
+      ],
+      "mapPosition": {
+        "area": null,
+        "x": null,
+        "y": null
+      },
+      "_todo": [
+        "no local asset yet (video to add / external link / missing photo -- check with Claudia)",
+        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+      ]
+    },
+    {
+      "id": "photo_la_strada_fighter",
+      "order": 9,
+      "title": "Circus performance scene from 'La Strada'",
+      "creator": "Unknown photographer",
+      "metadata": {
+        "subject": "Giulietta Masina; Anthony Quinn",
+        "publisher": "Cineteca di Bologna",
+        "contributor": null,
+        "date": "1954",
+        "type": "Photograph",
+        "format": "Vintage gelatin silver print; physical description not fully provided. | Photographic print | Gelatin silver print | black and white",
+        "source": null,
+        "language": "und",
+        "relation": "la_strada_film",
+        "coverage": "Film set",
+        "rights": "© Reporters Associati & Archivi — All rights reserved",
+        "standard": "ICCD Scheda F",
+        "other_title_information": "Gelsomina and Zampanò during a circus act",
+        "series": null,
+        "extent": null,
+        "dimensions": null,
+        "physical_description": "Vintage gelatin silver print; physical description not fully provided.",
+        "colour": "black and white",
+        "sound": null,
+        "duration": null,
+        "length": null,
+        "inscription": null,
+        "institution": "Cineteca di Bologna",
+        "collection": "Fondo Fotografie Cineteca",
+        "current_location": null,
+        "depicted_event": "Circus performance scene",
+        "depicted_place": "Film set",
+        "inventory_number": "26004-11",
+        "catalogue_number": null,
+        "identifiers": "26004-11",
+        "archival_description": null,
+        "edition": null,
+        "pages": null,
+        "conditions_governing_access": null,
+        "conditions_governing_reproduction": null
+      },
+      "images": [
+        "assets/items/photo_la_strada_fighter.jpg"
+      ],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "Set photograph from Federico Fellini’s film 'La Strada', showing a circus performance scene.",
+          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+        }
+      ],
+      "mapPosition": {
+        "area": null,
+        "x": null,
+        "y": null
+      },
+      "_todo": [
+        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+      ]
+    },
+    {
+      "id": "photo_la_strada_woman",
+      "order": 10,
+      "title": "Gelsomina eating bread in rural landscape",
+      "creator": "Unknown photographer",
+      "metadata": {
+        "subject": "Giulietta Masina",
+        "publisher": "Cineteca di Bologna",
+        "contributor": null,
+        "date": "1954",
+        "type": "Photograph",
+        "format": "Gelatin silver print; original physical description not provided. | Photographic print | Gelatin silver print | black and white",
+        "source": null,
+        "language": "und",
+        "relation": "la_strada_film",
+        "coverage": "Rural landscape (unknown location)",
+        "rights": "© Farabola / Bridgeman Images",
+        "standard": "ICCD Scheda F",
+        "other_title_information": "Set photograph featuring Giulietta Masina as Gelsomina",
+        "series": null,
+        "extent": null,
+        "dimensions": null,
+        "physical_description": "Gelatin silver print; original physical description not provided.",
+        "colour": "black and white",
+        "sound": null,
+        "duration": null,
+        "length": null,
+        "inscription": null,
+        "institution": "Cineteca di Bologna",
+        "collection": "Fondo Fotografie Cineteca",
+        "current_location": null,
+        "depicted_event": "Gelsomina eating bread (scene)",
+        "depicted_place": "Rural landscape (unknown location)",
+        "inventory_number": "OLA309977",
+        "catalogue_number": null,
+        "identifiers": "OLA309977",
+        "archival_description": null,
+        "edition": null,
+        "pages": null,
+        "conditions_governing_access": null,
+        "conditions_governing_reproduction": null
+      },
+      "images": [
+        "assets/items/photo_la_strada_woman.jpg"
+      ],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "Set photograph from Federico Fellini’s film 'La Strada', showing Gelsomina in a rural environment; exact location unknown. Creation year circa 1954.",
+          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+        }
+      ],
+      "mapPosition": {
+        "area": null,
+        "x": null,
+        "y": null
+      },
+      "_todo": [
+        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+      ]
+    },
+    {
+      "id": "po_screenplay",
+      "order": 11,
+      "title": "Quando il Po è dolce (manuscript screenplay)",
+      "creator": "Renzo Renzi",
+      "metadata": {
+        "subject": "Po Delta; Documentary screenplay",
+        "publisher": "Cineteca di Bologna",
+        "contributor": null,
+        "date": "ca. 1952",
+        "type": "Manuscript",
+        "format": "Ink on paper | 1 manuscript page | Digital JPEG surrogate",
+        "source": "https://cinetecadibologna.it/biblioteca/storia-di-renzo-renzi/#media-slider-4e70004f-9cee-4199-be2c-ca4ccb62ffe4-5",
+        "language": "it",
+        "relation": null,
+        "coverage": "Renzo Renzi Library",
+        "rights": "© Renzi Estate | Access permitted for study and research. | Reproduction only with permission of the Renzi Estate.",
+        "standard": "ISAD(G)",
+        "other_title_information": "English title: When the Po River is Fresh",
+        "series": null,
+        "extent": "1 manuscript page",
+        "dimensions": null,
+        "physical_description": "Single manuscript leaf with autograph notes.",
+        "colour": null,
+        "sound": null,
+        "duration": null,
+        "length": null,
+        "inscription": null,
+        "institution": "Cineteca di Bologna",
+        "collection": "Renzo Renzi Fund",
+        "current_location": "Renzo Renzi Library. Cinema and Photography",
+        "depicted_event": null,
+        "depicted_place": null,
+        "inventory_number": "IT-CB-0016-4-3_0021",
+        "catalogue_number": null,
+        "identifiers": "IT-CB-0016-4-3_0021",
+        "archival_description": null,
+        "edition": null,
+        "pages": null,
+        "conditions_governing_access": "Access permitted for study and research.",
+        "conditions_governing_reproduction": "Reproduction only with permission of the Renzi Estate."
+      },
+      "images": [
+        "assets/items/po_screenplay.jpg"
+      ],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "Handwritten manuscript page for the documentary project 'Quando il Po è dolce'. The item is part of the Renzo Renzi archival documentation shown in the 'Short films produced' gallery.",
+          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+        }
+      ],
+      "mapPosition": {
+        "area": null,
+        "x": null,
+        "y": null
+      },
+      "_todo": [
+        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+      ]
+    },
+    {
+      "id": "renzi_interview_2000",
+      "order": 12,
+      "title": "Il cinema a Bologna: Renzo Renzi e la Columbus film",
+      "creator": "[uncredited]",
+      "metadata": {
+        "subject": "Renzo Renzi",
+        "publisher": "Cineteca di Bologna",
+        "contributor": "Renzo Renzi | [uncredited]",
+        "date": "2000",
+        "type": "Video Interview",
+        "format": "VHS | 56 min | colour | sound",
+        "source": null,
+        "language": "it",
+        "relation": "Renzo Renzi Collection",
+        "coverage": "Bologna, Italy",
+        "rights": "© Cineteca di Bologna",
+        "standard": "FIAF",
+        "other_title_information": "Official title screen: 'Il cinema a Bologna – Renzo Renzi e la Columbus film'",
+        "series": null,
+        "extent": null,
+        "dimensions": null,
+        "physical_description": null,
+        "colour": "colour",
+        "sound": "sound",
+        "duration": "56 min",
+        "length": null,
+        "inscription": null,
+        "institution": "Cineteca di Bologna",
+        "collection": "Renzo Renzi Collection",
+        "current_location": "Renzo Renzi Library, Cineteca di Bologna",
+        "depicted_event": null,
+        "depicted_place": null,
+        "inventory_number": null,
+        "catalogue_number": null,
+        "identifiers": null,
+        "archival_description": null,
+        "edition": null,
+        "pages": null,
+        "conditions_governing_access": null,
+        "conditions_governing_reproduction": null
+      },
+      "images": [],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "Video interview with Renzo Renzi discussing his work and the history of Columbus Film, produced by the Cineteca di Bologna. | Interview recorded in VHS format; director and interviewer are not credited.",
+          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+        }
+      ],
+      "mapPosition": {
+        "area": null,
+        "x": null,
+        "y": null
+      },
+      "_todo": [
+        "no local asset yet (video to add / external link / missing photo -- check with Claudia)",
+        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+      ]
+    },
+    {
+      "id": "renzi_letter_1942",
+      "order": 13,
+      "title": "Letter to his father",
+      "creator": "Renzo Renzi",
+      "metadata": {
+        "subject": null,
+        "publisher": "Cineteca di Bologna",
+        "contributor": null,
+        "date": "1942-07-24",
+        "type": "Letter",
+        "format": "Three manuscript pages. | 3 manuscript pages",
+        "source": "https://cinetecadibologna.it/biblioteca/storia-di-renzo-renzi/#media-slider-13f604c5-01aa-44ab-9b19-0af9195cb28e-3|https://cinetecadibologna.it/biblioteca/storia-di-renzo-renzi/#media-slider-13f604c5-01aa-44ab-9b19-0af9195cb28e-4|https://cinetecadibologna.it/biblioteca/storia-di-renzo-renzi/#media-slider-13f604c5-01aa-44ab-9b19-0af9195cb28e-5",
+        "language": "it",
+        "relation": "Renzo Renzi Collection",
+        "coverage": "Renzo Renzi Library, Cineteca di Bologna",
+        "rights": "© Renzi Estate | Access permitted for study and research. | Reproduction only with permission of the Renzi Estate.",
+        "standard": "ISAD(G)",
+        "other_title_information": "Original title: 'Lettera al padre'",
+        "series": null,
+        "extent": "3 manuscript pages",
+        "dimensions": null,
+        "physical_description": "Three manuscript pages.",
+        "colour": null,
+        "sound": null,
+        "duration": null,
+        "length": null,
+        "inscription": null,
+        "institution": "Cineteca di Bologna",
+        "collection": "Renzo Renzi Collection",
+        "current_location": "Renzo Renzi Library, Cineteca di Bologna",
+        "depicted_event": null,
+        "depicted_place": null,
+        "inventory_number": null,
+        "catalogue_number": null,
+        "identifiers": "IT-CB-0016-2-9_0001",
+        "archival_description": null,
+        "edition": null,
+        "pages": "3",
+        "conditions_governing_access": "Access permitted for study and research.",
+        "conditions_governing_reproduction": "Reproduction only with permission of the Renzi Estate."
+      },
+      "images": [
+        "assets/items/letter_p1.jpg",
+        "assets/items/letter_p2.jpg",
+        "assets/items/letter_p3.jpg"
+      ],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "Personal letter written by Renzo Renzi to his father during World War II, describing his intellectual life at the front.",
+          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+        }
+      ],
+      "mapPosition": {
+        "area": null,
+        "x": null,
+        "y": null
+      },
+      "_todo": [
+        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+      ]
+    },
+    {
+      "id": "renzi_portrait",
+      "order": 14,
+      "title": "Renzo Renzi taking a photograph (informal portrait)",
+      "creator": "Unknown photographer",
+      "metadata": {
+        "subject": "Renzo Renzi",
+        "publisher": "Cineteca di Bologna",
+        "contributor": null,
+        "date": null,
+        "type": "Photograph",
+        "format": "Vintage gelatin silver print. Original analog photograph. | Analog photographic print | Gelatin silver print | Digital JPEG surrogate | black and white",
+        "source": null,
+        "language": null,
+        "relation": "Renzo Renzi Fund",
+        "coverage": "Unknown location",
+        "rights": "© Renzi Estate",
+        "standard": null,
+        "other_title_information": null,
+        "series": null,
+        "extent": null,
+        "dimensions": null,
+        "physical_description": "Vintage gelatin silver print. Original analog photograph.",
+        "colour": "black and white",
+        "sound": null,
+        "duration": null,
+        "length": null,
+        "inscription": null,
+        "institution": "Cineteca di Bologna",
+        "collection": "Renzo Renzi Fund",
+        "current_location": null,
+        "depicted_event": "Renzo Renzi taking a photograph (informal portrait)",
+        "depicted_place": "Unknown location",
+        "inventory_number": null,
+        "catalogue_number": null,
+        "identifiers": "Famiglia-Renzi_002",
+        "archival_description": null,
+        "edition": null,
+        "pages": null,
+        "conditions_governing_access": null,
+        "conditions_governing_reproduction": null
+      },
+      "images": [
+        "assets/items/renzi_portrait.jpg"
+      ],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "Digital surrogate available on the Cineteca di Bologna website.",
+          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+        }
+      ],
+      "mapPosition": {
+        "area": null,
+        "x": null,
+        "y": null
+      },
+      "_todo": [
+        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+      ]
+    },
+    {
+      "id": "l_armata_s_agapo",
+      "order": 15,
+      "title": "L'armata s'agapò",
+      "creator": "Renzo Renzi",
+      "metadata": {
+        "subject": "Italian occupation of Greece; antimilitarism; military justice; Cinema Nuovo; Renzo Renzi; Guido Aristarco",
+        "publisher": "Cinema Nuovo",
+        "contributor": "Guido Aristarco",
+        "date": "1953-02-01",
+        "type": "Article",
+        "format": "Manuscript draft and printed periodical article; digital surrogate available through the Cineteca di Bologna Renzo Renzi page",
+        "source": "https://cinetecadibologna.it/biblioteca/storia-di-renzo-renzi/",
+        "language": "it",
+        "relation": "Renzo Renzi Fund; Cinema Nuovo; From Arcadia to Peschiera. The s'agapò trial",
+        "coverage": "Greece; Peschiera del Garda; Italy",
+        "rights": "© Renzi Estate",
+        "standard": "ISAD(G)",
+        "other_title_information": null,
+        "series": null,
+        "extent": "dossier",
+        "dimensions": null,
+        "physical_description": "First manuscript version with corrections and cuts; printed article in Cinema Nuovo",
+        "colour": null,
+        "sound": null,
+        "duration": null,
+        "length": null,
+        "inscription": null,
+        "institution": "Cineteca di Bologna",
+        "collection": "Renzo Renzi Fund",
+        "current_location": "Biblioteca Renzo Renzi. Cinema e Fotografia",
+        "depicted_event": null,
+        "depicted_place": "Italian-occupied Greece; Peschiera del Garda prison; Italy",
+        "inventory_number": null,
+        "catalogue_number": null,
+        "identifiers": "IT-CB-0016-5-8-001",
+        "archival_description": "Unit 3.2.1, Articles and letters for L'armata s'agapò, in the Renzo Renzi Fund inventory.",
+        "edition": null,
+        "pages": null,
+        "conditions_governing_access": "Digital images are presented on the Cineteca di Bologna Renzo Renzi page; wider digitized materials are accessible from a dedicated library workstation.",
+        "conditions_governing_reproduction": null
+      },
+      "images": [
+        "assets/items/l_armata_s_agapo.jpg"
+      ],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "Article published in Cinema Nuovo no. 4 in February 1953. The text dealt with the Italian occupation of Greece and had a strong antimilitarist tone. Its publication led to charges of insulting the armed forces against Renzi and Guido Aristarco, their imprisonment in the military prison of Peschiera del Garda, and a public legal and cultural debate.",
+          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+        }
+      ],
+      "mapPosition": {
+        "area": null,
+        "x": null,
+        "y": null
+      },
+      "_todo": [
+        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+      ]
+    }
+  ]
+}
