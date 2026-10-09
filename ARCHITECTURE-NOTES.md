@@ -22,12 +22,33 @@ real `data/items.csv` instead of placeholders.
   "Renzi: Many Lives" -- and modelled as three parallel threads
   (`renzi-critic`, `renzi-curator`, `renzi-soldier-partisan`), each with an
   empty `order` waiting for Claudia to assign items.
-- `js/main.js` — unchanged from the first draft: it only needs `id`/`texts`/
-  `order`, so it didn't need any rewiring to work with the real data.
+- `js/main.js` — two additions on top of the first draft: `getAllItems()`
+  (returns every item regardless of narrative — needed by `map.html`,
+  which shows the whole collection at once) and `wireThemeSelect(selectEl,
+  onChange)` (the theme-`<select>` population/wiring logic that used to be
+  duplicated inline in `item.html`, now shared so `map.html` and future
+  pages don't repeat it). Everything else is unchanged from the first
+  draft: it only needs `id`/`texts`/`order`, so it didn't need any
+  rewiring to work with the real data.
 - `item.html` — updated to actually render the real assets: an `<img>` for
   photos/drawings, a plain link for the PDF, and a placeholder note for the
   5 items that don't have a local asset yet (see list below). Still a
-  skeleton, not the final design — that's River's job.
+  skeleton, not the final design — that's River's job. Now uses the shared
+  `Exhibition.wireThemeSelect()` helper instead of its own duplicated theme
+  code.
+- `map.html` — new. Shows the floor plan image (`assets/img/museum/
+  planimetry_cinema_modernissimo.jpg`) with a clickable marker per item,
+  positioned from `item.mapPosition.x`/`y` (percentages of the image's
+  width/height — see `items.json`'s `_readme`). Since no item has a real
+  position yet, the page falls back to a small `TEST_POSITIONS` table
+  hard-coded in the page's own script, for 3 items already confirmed
+  working in `item.html` (`renzi_letter_1942`, `po_screenplay`,
+  `l_armata_s_agapo`) — clearly commented as demo-only, **to delete once
+  Claudia's real positions are in `items.json`**. Because accessibility is
+  the team's stated #1 priority, the map is never the only way to reach an
+  item: below it, a full `<ul>` lists every item as a plain link (keyboard-
+  and screen-reader-reachable), flagging the ones not yet placed on the
+  map with "(not yet placed on the map)".
 
 ## What's genuinely new since the last version
 
@@ -66,11 +87,13 @@ real `data/items.csv` instead of placeholders.
    written from the WWII front, and `l_armata_s_agapo`, the article that
    got him court-martialled) — but that's a guess from the data, not
    Claudia's actual call, so don't treat it as settled.
-4. **Map positions.** Claudia is also bringing the map on Wednesday — the
-   floor plan image exists (`assets/img/museum/
-   planimetry_cinema_modernissimo.jpg`), but no item has a position on it
-   yet. Once she has the room/area layout, `mapPosition` gets filled in and
-   `map.html` can be built the same way `item.html` was.
+4. **Map positions.** `map.html` is now built and working (with test/demo
+   positions for 3 items — see "Files in this drop"), but no item has a
+   *real* position yet. Claudia is bringing the room/area layout on
+   Wednesday. Once she has it: fill in `mapPosition.x`/`y` (percentages,
+   not pixels — see `items.json`'s `_readme`) for every item, and delete
+   the `TEST_POSITIONS` block in `map.html` — nothing else about the page
+   needs to change.
 5. **Text grid** — exact values for length/competence/tone beyond the one
    seeded text per item, to align with Claudia.
 
