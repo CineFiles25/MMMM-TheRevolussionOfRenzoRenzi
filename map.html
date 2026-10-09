@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map — The Revolussion of Renzo Renzi</title>
+  <!--
+    WORKING SKELETON, not the final design (same disclaimer as item.html).
+
+    This page shows the exhibition floor plan (Cinema Modernissimo,
+    assets/img/museum/planimetry_cinema_modernissimo.jpg) with clickable
+    markers for each item, positioned from item.mapPosition in
+    data/items.json.
+
+    mapPosition.x / mapPosition.y are PERCENTAGES (0-100) of the image's
+    width/height, not pixels -- so the markers stay correctly placed no
+    matter how large the image is rendered on screen (see items.json
+    _readme). mapPosition.area is an optional human-readable label
+    (e.g. "corridor nook 3"), not used for placement math.
+
+    Claudia has not assigned real positions yet (meeting Wednesday), so
+    every item currently has mapPosition = {area: null, x: null, y: null}.
+    To make the mechanism demonstrable in the meantime, this page falls
+    back to a small TEST_POSITIONS table (below, clearly marked) for 3
+    items that Laura already verified work end-to-end in item.html.
+    DELETE the whole TEST_POSITIONS block once real positions are merged
+    into items.json -- at that point every item will carry its own
+    mapPosition and this page needs no local fallback data at all.
+
+    Accessibility (the team's #1 stated priority): the visual map is not
+    the only way to browse. A full, keyboard-reachable list of every item
+    sits below it, so nobody who can't see/use the image markers is stuck.
+  -->
+  <link rel="stylesheet" href="css/theme-3.css" id="theme-stylesheet">
+  <style>
+    /* Minimal layout so the markers are positioned correctly even before
+       River's real CSS exists. Safe to delete/override later. */
+    #map-wrapper {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+    }
+    #map-wrapper img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+    .map-marker {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 1.6em;
+      height: 1.6em;
+      border-radius: 50%;
+      border: 2px solid currentColor;
+      background: rgba(255, 255, 255, 0.85);
+      cursor: pointer;
+      font-size: 0.8rem;
+      line-height: 1;
+      padding: 0;
+    }
+    .map-marker:focus,
+    .map-marker:hover {
+      background: rgba(255, 220, 120, 0.95);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav aria-label="Theme navigation">
+      <label for="theme-select">Theme:</label>
+      <select id="theme-select"></select>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Exhibition map</h1>
+    <p id="map-note"></p>
+
+    <div id="map-wrapper">
+      <img
+        src="assets/img/museum/planimetry_cinema_modernissimo.jpg"
+        alt="Floor plan of the Cinema Modernissimo exhibition space (Sottopasso Via Rizzoli)"
+        id="map-image"
+      >
+      <!-- markers injected here by renderMarkers() -->
+    </div>
+
+    <section aria-labelledby="all-items-heading">
+      <h2 id="all-items-heading">All items</h2>
+      <p>A text alternative to the map above, for keyboard and screen-reader
+        users and for anyone who prefers a list: every item, in the same
+        order as <code>items.json</code>, with a note when it isn't placed
+        on the map yet.</p>
+      <ul id="item-list"></ul>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script>
+    (async function initMapPage() {
+      await Exhibition.load();
+      Exhibition.applyStoredTheme();
+      Exhibition.wireThemeSelect(document.getElementById("theme-select"), () => {
+        // theme can affect marker colour (currentColor) via CSS vars; no
+        // re-render needed since markers just inherit text colour.
+      });
+
+      // ---------------------------------------------------------------
+      // TEST / DEMO DATA -- delete this block once Claudia's real
+      // mapPosition values are in items.json. These 3 ids were chosen
+      // because Laura already confirmed them working in item.html.
+      // Positions are invented percentages, not real locations.
+      // ---------------------------------------------------------------
+      const TEST_POSITIONS = {
+        renzi_letter_1942: { x: 18, y: 32 },
+        po_screenplay: { x: 52, y: 48 },
+        l_armata_s_agapo: { x: 78, y: 65 },
+      };
+      const usingTestData = Object.keys(TEST_POSITIONS).length > 0;
+
+      const allItems = Exhibition.getAllItems();
+      const narrativeId = Exhibition.getQueryParam("narrative") || "timeline";
+
+      document.getElementById("map-note").textContent = usingTestData
+        ? "Note: the markers below use placeholder test positions for 3 items, just to show the mechanism. Real positions are coming from Claudia (meeting Wednesday)."
+        : "";
+
+      renderMarkers(allItems);
+      renderItemList(allItems);
+
+      /** Returns {x, y} in % for an item, from real data if present, else the test fallback, else null. */
+      function resolvePosition(item) {
+        const real = item.mapPosition;
+        if (real && typeof real.x === "number" && typeof real.y === "number") {
+          return { x: real.x, y: real.y };
+        }
+        return TEST_POSITIONS[item.id] || null;
+      }
+
+      function renderMarkers(items) {
+        const wrapper = document.getElementById("map-wrapper");
+        items.forEach((item) => {
+          const pos = resolvePosition(item);
+          if (!pos) return; // not placed yet -- only in the list below
+
+          const marker = document.createElement("button");
+          marker.type = "button";
+          marker.className = "map-marker";
+          marker.style.left = pos.x + "%";
+          marker.style.top = pos.y + "%";
+          marker.title = item.title;
+          marker.setAttribute("aria-label", `Open item: ${item.title}`);
+          marker.addEventListener("click", () => {
+            window.location.href = Exhibition.buildItemUrl(narrativeId, item.id);
+          });
+          wrapper.appendChild(marker);
+        });
+      }
+
+      function renderItemList(items) {
+        const list = document.getElementById("item-list");
+        list.innerHTML = "";
+        items.forEach((item) => {
+          const li = document.createElement("li");
+          const hasPosition = !!resolvePosition(item);
+          const link = document.createElement("a");
+          link.href = Exhibition.buildItemUrl(narrativeId, item.id);
+          link.textContent = item.title;
+          li.appendChild(link);
+          if (!hasPosition) {
+            const note = document.createElement("span");
+            note.textContent = " (not yet placed on the map)";
+            li.appendChild(note);
+          }
+          list.appendChild(li);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
