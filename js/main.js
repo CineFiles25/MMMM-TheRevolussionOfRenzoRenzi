@@ -91,6 +91,16 @@ const Exhibition = (function () {
   }
 
   /**
+   * Returns every item, regardless of narrative — needed by pages like
+   * map.html that show the whole collection at once, not one itinerary.
+   * Order is whatever items.json happened to list (not meaningful on its own).
+   */
+  function getAllItems() {
+    if (!_cache) throw new Error("Exhibition.load() has not completed yet");
+    return Array.from(_cache.itemsById.values());
+  }
+
+  /**
    * Computes the item adjacent to currentItemId within narrativeId.
    * direction: 1 for "next", -1 for "prev".
    * Returns null if we are already at the first/last item (no wraparound,
@@ -119,6 +129,36 @@ const Exhibition = (function () {
 
   function getThemes() {
     return THEMES;
+  }
+
+  /**
+   * Shared helper for any page with a theme <select>: populates its
+   * <option>s, marks the current theme as selected, swaps the
+   * #theme-stylesheet link and persists the choice on change, and calls
+   * back onChange(theme) (optional) so a page can do extra work (e.g.
+   * re-render). Keeping this here avoids re-duplicating the same ~12 lines
+   * on every page (item.html, map.html, index.html, ...).
+   */
+  function wireThemeSelect(selectEl, onChange) {
+    if (!selectEl) return;
+    const current = getCurrentTheme();
+    selectEl.innerHTML = "";
+    THEMES.forEach((theme) => {
+      const opt = document.createElement("option");
+      opt.value = theme.id;
+      opt.textContent = `${theme.period} — ${theme.label}`;
+      opt.selected = theme.id === current.id;
+      selectEl.appendChild(opt);
+    });
+
+    selectEl.addEventListener("change", (e) => {
+      const theme = THEMES.find((t) => t.id === e.target.value);
+      if (!theme) return;
+      setTheme(theme.id);
+      const link = document.getElementById("theme-stylesheet");
+      if (link) link.href = theme.cssFile;
+      if (typeof onChange === "function") onChange(theme);
+    });
   }
 
   function getCurrentTheme() {
@@ -218,11 +258,13 @@ const Exhibition = (function () {
     getItem,
     getNarrative,
     getNarrativeItems,
+    getAllItems,
     getNextItem,
     getPrevItem,
     getThemes,
     getCurrentTheme,
     setTheme,
+    wireThemeSelect,
     applyStoredTheme,
     findText,
     getTextPreference,
