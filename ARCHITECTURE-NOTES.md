@@ -24,7 +24,7 @@ team agreed on the three narratives, the three rooms and the final planimetry.
 
 ## The three narratives (agreed by the team)
 
-1. `timeline` — Historical (required), 16 items in date order.
+1. `timeline` — Historical (required), 15 items in date order.
 2. `from-subject-to-film` — 7 items, from page to screen.
 3. `bologna-walk` — "Guida per camminare a Bologna", 5 items, thematic order.
 
@@ -40,8 +40,21 @@ the three rooms keep a trace of it.
   the image width/height, not pixels.
 - Positions were read from Claudia's annotated sketch, one dot per item.
 - `map.html` draws the image in an inline SVG (it scales to any box, so the page
-  is exactly viewport-sized with no global scroll). Markers are real links; a
-  side panel lists every item grouped by room, as the non-visual alternative.
+  is exactly viewport-sized with no global scroll). Markers are real links.
+- **Itineraries on the map.** The visitor picks a narrative (or "all items");
+  its stops are joined by a numbered route in the order of
+  `narratives.json`, the other items are dimmed, and "Start this itinerary"
+  opens the first item. The choice lives in the URL
+  (`map.html?narrative=bologna-walk`, `=all`). Nothing is hard-coded: route =
+  `narrative.order`, positions = `mapPosition`.
+- Non-visual alternative: the side panel gives the itinerary as an ordered list
+  of links, plus every item grouped by room; the number of stops is announced
+  to screen readers when the itinerary changes.
+- Route/marker colour is the CSS variable `--map-accent`, so a theme can
+  override it.
+- Note: the historical route zigzags between rooms, because rooms are
+  thematic and the timeline is chronological. That is a property of the
+  design, not a bug.
 
 | Room | Items |
 | --- | --- |
@@ -77,6 +90,8 @@ the three rooms keep a trace of it.
 5. **Small data questions for Claudia:**
    - Order inside the Bologna narrative (the Notion table and `text_grid.md`
      differ; `narratives.json` follows `text_grid.md`).
+   - `bologna_book` (1964) is not in the Historical timeline; if it should be,
+     it goes between the caricature and *Il primo Fellini*.
    - Timeline order inside 1954 is a best guess; `renzi_portrait` is undated
      and sits last.
    - On the map, which of the two "foto film" dots is which still is a guess,
