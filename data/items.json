@@ -1,12 +1,13 @@
 {
   "_readme": [
-    "Converted from data/items.csv (CineFiles25/MMMM-TheRevolussionOfRenzoRenzi).",
-    "Core navigation fields are at the top level (id, title, creator, images, texts, mapPosition);",
-    "every other cataloguing field from the CSV is preserved verbatim under 'metadata' so nothing from Claudia's research is lost.",
-    "Each item's first text was seeded from the CSV 'description' field (real content, not a placeholder) -- Claudia still needs to add the shorter/simpler variants for the length/competence/tone grid.",
-    "mapPosition is still empty: assets/img/museum/planimetry_cinema_modernissimo.jpg exists now, but positions on it are not assigned yet.",
-    "mapPosition.x / mapPosition.y, once filled in, are PERCENTAGES (0-100) of the floor plan image's width/height -- not pixels -- so markers stay correctly placed at any display size. mapPosition.area is an optional human-readable label (e.g. a corridor nook name), not used for placement math. See map.html.",
-    "See ARCHITECTURE-NOTES.md for open questions."
+    "Converted from data/items.csv (CineFiles25/MMMM-TheRevolussionOfRenzoRenzi) and kept in sync with it: core navigation fields at the top level",
+    "(id, title, creator, images, externalLinks, texts, mapPosition), every other cataloguing field from the CSV preserved verbatim under 'metadata'.",
+    "16 items. images = local files in assets/items/. externalLinks = things hosted elsewhere (YouTube embeds, Bologna Fotografata, Archivio Luce);",
+    "'embedUrl' is set only where the provider allows embedding in an <iframe>.",
+    "mapPosition.area is a room id from 'rooms' below. mapPosition.x / .y are PERCENTAGES (0-100) of the width/height of",
+    "assets/img/museum/gallery_planimetry_no_punti.png (4032x3024) -- not pixels -- so they survive any display size. See map.html.",
+    "Positions come from Claudia's annotated sketch (final planimetry): one dot per item. Each text still holds only the CSV description;",
+    "the whimsical/academic versions are in data/text_grid.md and not imported yet. See ARCHITECTURE-NOTES.md for open questions."
   ],
   "items": [
     {
@@ -25,7 +26,7 @@
         "language": "it",
         "relation": "lo_sceicco_bianco_film; i_vitelloni_film; la_strada_film; il_bidone_film",
         "coverage": "Bologna",
-        "rights": "Copyright © Cappelli Editore",
+        "rights": "© Cappelli Editore",
         "standard": "ISBD(G)",
         "other_title_information": "Lo sceicco bianco; I vitelloni; La strada; Il bidone. From Subject to Film",
         "series": "From Subject to Film. Retrospective series, 1",
@@ -64,13 +65,15 @@
         }
       ],
       "mapPosition": {
-        "area": null,
-        "x": null,
-        "y": null
+        "area": "room-3",
+        "x": 34.6,
+        "y": 63.4
       },
       "_todo": [
-        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
-      ]
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)",
+        "map: sketch label says 'script La Strada' -- read as this book (it contains the La Strada script); confirm with Claudia"
+      ],
+      "externalLinks": []
     },
     {
       "id": "caricature_fellini_renzi",
@@ -115,7 +118,7 @@
         "conditions_governing_reproduction": null
       },
       "images": [
-        "assets/items/renzi_caricature.jpg"
+        "assets/items/caricature_fellini_renzi.jpg"
       ],
       "texts": [
         {
@@ -127,13 +130,14 @@
         }
       ],
       "mapPosition": {
-        "area": null,
-        "x": null,
-        "y": null
+        "area": "room-2",
+        "x": 48.8,
+        "y": 60.2
       },
       "_todo": [
-        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
-      ]
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+      ],
+      "externalLinks": []
     },
     {
       "id": "drawing_gelsomina_lastrada",
@@ -190,13 +194,14 @@
         }
       ],
       "mapPosition": {
-        "area": null,
-        "x": null,
-        "y": null
+        "area": "room-3",
+        "x": 27.3,
+        "y": 61.0
       },
       "_todo": [
-        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
-      ]
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+      ],
+      "externalLinks": []
     },
     {
       "id": "ferrari_set_photo",
@@ -253,13 +258,14 @@
         }
       ],
       "mapPosition": {
-        "area": null,
-        "x": null,
-        "y": null
+        "area": "room-2",
+        "x": 56.5,
+        "y": 57.6
       },
       "_todo": [
-        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
-      ]
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+      ],
+      "externalLinks": []
     },
     {
       "id": "guida_documentary",
@@ -314,13 +320,21 @@
         }
       ],
       "mapPosition": {
-        "area": null,
-        "x": null,
-        "y": null
+        "area": "room-2",
+        "x": 61.3,
+        "y": 50.8
       },
       "_todo": [
-        "no local asset yet (video to add / external link / missing photo -- check with Claudia)",
-        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+        "video file is too large for the repo: for now only the Archivio Luce record is linked (externalLinks); decide hosting for the video itself",
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+      ],
+      "externalLinks": [
+        {
+          "kind": "page",
+          "provider": "istituto-luce",
+          "label": "Film record on Archivio Luce",
+          "url": "https://patrimonio.archivioluce.com/luce-web/detail/IL3000050484/1/-3011.html?startPage=500"
+        }
       ]
     },
     {
@@ -376,13 +390,21 @@
         }
       ],
       "mapPosition": {
-        "area": null,
-        "x": null,
-        "y": null
+        "area": "room-3",
+        "x": 26.4,
+        "y": 52.9
       },
       "_todo": [
-        "no local asset yet (video to add / external link / missing photo -- check with Claudia)",
-        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+      ],
+      "externalLinks": [
+        {
+          "kind": "video",
+          "provider": "youtube",
+          "label": "Full film on YouTube",
+          "url": "https://youtu.be/noBhISjh3H0?si=959XpE_WoFRfKzZ9",
+          "embedUrl": "https://www.youtube.com/embed/noBhISjh3H0"
+        }
       ]
     },
     {
@@ -438,13 +460,21 @@
         }
       ],
       "mapPosition": {
-        "area": null,
-        "x": null,
-        "y": null
+        "area": "room-3",
+        "x": 21.5,
+        "y": 50.3
       },
       "_todo": [
-        "no local asset yet (video to add / external link / missing photo -- check with Claudia)",
-        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+      ],
+      "externalLinks": [
+        {
+          "kind": "audio",
+          "provider": "youtube",
+          "label": "Soundtrack on YouTube",
+          "url": "https://www.youtube.com/watch?v=B3zzK9ujgOQ",
+          "embedUrl": "https://www.youtube.com/embed/B3zzK9ujgOQ"
+        }
       ]
     },
     {
@@ -489,7 +519,9 @@
         "conditions_governing_access": null,
         "conditions_governing_reproduction": null
       },
-      "images": [],
+      "images": [
+        "assets/items/photo_lastrada_premiere.png"
+      ],
       "texts": [
         {
           "length": "long",
@@ -500,13 +532,20 @@
         }
       ],
       "mapPosition": {
-        "area": null,
-        "x": null,
-        "y": null
+        "area": "room-3",
+        "x": 35.0,
+        "y": 48.6
       },
       "_todo": [
-        "no local asset yet (video to add / external link / missing photo -- check with Claudia)",
-        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+      ],
+      "externalLinks": [
+        {
+          "kind": "page",
+          "provider": "bologna-fotografata",
+          "label": "Photo record on Bologna Fotografata",
+          "url": "https://bolognafotografata.com/scheda/?id=IT-CINETECABOLOGNA-FT0001-054395&title=Bologna.%20Cinema%20Fulgor.%20Prima%20del%20film"
+        }
       ]
     },
     {
@@ -564,13 +603,15 @@
         }
       ],
       "mapPosition": {
-        "area": null,
-        "x": null,
-        "y": null
+        "area": "room-3",
+        "x": 22.6,
+        "y": 43.7
       },
       "_todo": [
-        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
-      ]
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)",
+        "map: the two 'foto film' dots are interchangeable in Claudia's sketch -- which is which is a guess"
+      ],
+      "externalLinks": []
     },
     {
       "id": "photo_la_strada_woman",
@@ -627,13 +668,15 @@
         }
       ],
       "mapPosition": {
-        "area": null,
-        "x": null,
-        "y": null
+        "area": "room-3",
+        "x": 26.6,
+        "y": 43.2
       },
       "_todo": [
-        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
-      ]
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)",
+        "map: the two 'foto film' dots are interchangeable in Claudia's sketch -- which is which is a guess"
+      ],
+      "externalLinks": []
     },
     {
       "id": "po_screenplay",
@@ -653,7 +696,7 @@
         "coverage": "Renzo Renzi Library",
         "rights": "© Renzi Estate | Access permitted for study and research. | Reproduction only with permission of the Renzi Estate.",
         "standard": "ISAD(G)",
-        "other_title_information": "English title: When the Po River is Fresh",
+        "other_title_information": null,
         "series": null,
         "extent": "1 manuscript page",
         "dimensions": null,
@@ -690,13 +733,14 @@
         }
       ],
       "mapPosition": {
-        "area": null,
-        "x": null,
-        "y": null
+        "area": "room-2",
+        "x": 55.9,
+        "y": 50.5
       },
       "_todo": [
-        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
-      ]
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+      ],
+      "externalLinks": []
     },
     {
       "id": "renzi_interview_2000",
@@ -751,14 +795,15 @@
         }
       ],
       "mapPosition": {
-        "area": null,
-        "x": null,
-        "y": null
+        "area": "room-1",
+        "x": 69.4,
+        "y": 51.3
       },
       "_todo": [
-        "no local asset yet (video to add / external link / missing photo -- check with Claudia)",
-        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
-      ]
+        "video file is too large for the repo and lives on Claudia's drive: decide hosting (external link / Git LFS)",
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+      ],
+      "externalLinks": []
     },
     {
       "id": "renzi_letter_1942",
@@ -817,13 +862,14 @@
         }
       ],
       "mapPosition": {
-        "area": null,
-        "x": null,
-        "y": null
+        "area": "room-1",
+        "x": 67.1,
+        "y": 59.1
       },
       "_todo": [
-        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
-      ]
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+      ],
+      "externalLinks": []
     },
     {
       "id": "renzi_portrait",
@@ -880,13 +926,14 @@
         }
       ],
       "mapPosition": {
-        "area": null,
-        "x": null,
-        "y": null
+        "area": "room-1",
+        "x": 69.3,
+        "y": 62.9
       },
       "_todo": [
-        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
-      ]
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+      ],
+      "externalLinks": []
     },
     {
       "id": "l_armata_s_agapo",
@@ -943,13 +990,101 @@
         }
       ],
       "mapPosition": {
-        "area": null,
-        "x": null,
-        "y": null
+        "area": "room-1",
+        "x": 63.8,
+        "y": 62.2
       },
       "_todo": [
-        "needs at least 2 more text variants to satisfy the 3-9 texts/item requirement"
-      ]
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+      ],
+      "externalLinks": []
+    },
+    {
+      "id": "bologna_book",
+      "order": 16,
+      "title": "Bologna, una città",
+      "creator": "Renzo Renzi",
+      "metadata": {
+        "subject": "Bologna",
+        "publisher": "Cappelli Editore",
+        "contributor": "Aldo Ferrari",
+        "date": "1964",
+        "type": "Book",
+        "format": "413 p. : ill. ; 29 cm",
+        "source": "https://sol.unibo.it/SebinaOpac/resource/bologna-una-citta/UBO00842977",
+        "language": "it",
+        "relation": null,
+        "coverage": "Bologna",
+        "rights": "© Cappelli Editore",
+        "standard": "ISBD(G)",
+        "other_title_information": null,
+        "series": null,
+        "extent": "413 p.",
+        "dimensions": "29 cm",
+        "physical_description": null,
+        "colour": null,
+        "sound": null,
+        "duration": null,
+        "length": null,
+        "inscription": null,
+        "institution": null,
+        "collection": null,
+        "current_location": null,
+        "depicted_event": null,
+        "depicted_place": null,
+        "inventory_number": null,
+        "catalogue_number": "UBO1186450",
+        "identifiers": "OCLC 96427634",
+        "archival_description": null,
+        "edition": "2. ed. aumentata",
+        "pages": null,
+        "conditions_governing_access": null,
+        "conditions_governing_reproduction": null
+      },
+      "images": [
+        "assets/items/bologna_book.jpg"
+      ],
+      "texts": [
+        {
+          "length": "long",
+          "competence": "specialist",
+          "tone": "neutral",
+          "content": "Bologna, una città di Renzo Renzi; fotografie di Aldo Ferrari e altri. 2. ed. aumentata. Bologna : Cappelli, stampa 1964. 413 p. : ill. ; 29 cm.",
+          "_source": "Claudia's catalogue description (data/items.csv)"
+        }
+      ],
+      "mapPosition": {
+        "area": "room-2",
+        "x": 50.5,
+        "y": 49.9
+      },
+      "_todo": [
+        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+      ],
+      "externalLinks": []
+    }
+  ],
+  "rooms": [
+    {
+      "id": "room-1",
+      "order": 1,
+      "title": "Renzo Renzi, the man / soldier",
+      "theme": "Who was Renzo Renzi? The volunteer, then the trial",
+      "color": "#cdd4db"
+    },
+    {
+      "id": "room-2",
+      "order": 2,
+      "title": "Renzo Renzi, the filmmaker",
+      "theme": "Pen and camera",
+      "color": "#bbcbc2"
+    },
+    {
+      "id": "room-3",
+      "order": 3,
+      "title": "Renzo Renzi, the friend / Renzi & Fellini",
+      "theme": "La Strada and the friendship",
+      "color": "#f2f2d7"
     }
   ]
 }
