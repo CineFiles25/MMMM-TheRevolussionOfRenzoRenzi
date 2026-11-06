@@ -276,7 +276,7 @@ The photograph marks the film's public presentation in Bologna. At Cinema Fulgor
 
 ### Bologna
 
-**Structure:** *Bologna as a verb*. Each item shows one way of meeting the city: walk it, film it, read it, watch a film in it, remember it. The order is thematic rather than chronological, so it doesn't repeat the historical timeline. Note: `bologna_book` is in data/items.csv but not yet in items.json, and none of the narrative `order` arrays include it.
+**Structure:** *Bologna as a verb*. Each item shows one way of meeting the city: walk it, film it, read it, watch a film in it, remember it. The order is thematic rather than chronological, so it doesn't repeat the historical timeline. `bologna_book` is also included in the historical timeline according to its 1964 catalogue date.
 
 **Intro**
 

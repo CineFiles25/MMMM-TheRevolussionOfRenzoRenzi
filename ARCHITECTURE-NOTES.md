@@ -24,7 +24,7 @@ team agreed on the three narratives, the three rooms and the final planimetry.
 
 ## The three narratives (agreed by the team)
 
-1. `timeline` — Historical (required), 15 items in date order.
+1. `timeline` — Historical (required), 16 items in date order.
 2. `from-subject-to-film` — 7 items, from page to screen.
 3. `bologna-walk` — "Guida per camminare a Bologna", 5 items, thematic order.
 
@@ -77,8 +77,6 @@ the three rooms keep a trace of it.
 5. **Small data questions for Claudia:**
    - Order inside the Bologna narrative (the Notion table and `text_grid.md`
      differ; `narratives.json` follows `text_grid.md`).
-   - `bologna_book` (1964) is not in the Historical timeline; if it should be,
-     it goes between the caricature and *Il primo Fellini*.
    - Timeline order inside 1954 is a best guess; `renzi_portrait` is undated
      and sits last.
    - On the map, which of the two "foto film" dots is which still is a guess,
