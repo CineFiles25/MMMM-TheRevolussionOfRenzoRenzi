@@ -14,9 +14,8 @@
  *  5. Handles selection of the "text type" (length/competence/tone grid)
  *
  * What it does NOT do (on purpose, for now):
- *  - it knows nothing about the map/room placement (depends on the
- *    museum floor plan, not chosen yet)
- *  - it knows nothing about the second narrative (not decided yet)
+ *  - it knows nothing about how the map is drawn (map.html does that, from
+ *    mapPosition and the rooms listed in items.json)
  *  - it does not render HTML: each page stays responsible for its own DOM,
  *    main.js only provides data and helper functions
  */
@@ -65,7 +64,10 @@ const Exhibition = (function () {
     const itemsById = new Map(itemsJson.items.map((it) => [it.id, it]));
     const narrativesById = new Map(narrativesJson.narratives.map((n) => [n.id, n]));
 
-    _cache = { itemsById, narrativesById };
+    // 'rooms' (museum areas) lives in items.json next to the items: see mapPosition.area
+    const rooms = Array.isArray(itemsJson.rooms) ? itemsJson.rooms : [];
+
+    _cache = { itemsById, narrativesById, rooms };
     return _cache;
   }
 
@@ -79,6 +81,18 @@ const Exhibition = (function () {
   function getNarrative(id) {
     if (!_cache) throw new Error("Exhibition.load() has not completed yet");
     return _cache.narrativesById.get(id) || null;
+  }
+
+  /** Returns every narrative (in the order of narratives.json), e.g. to build a narrative selector. */
+  function getNarratives() {
+    if (!_cache) throw new Error("Exhibition.load() has not completed yet");
+    return Array.from(_cache.narrativesById.values());
+  }
+
+  /** Returns the museum rooms (id, title, theme, color), in visiting order. */
+  function getRooms() {
+    if (!_cache) throw new Error("Exhibition.load() has not completed yet");
+    return [..._cache.rooms].sort((x, y) => x.order - y.order);
   }
 
   /** Returns the array of items (full objects, not just ids) of a narrative, in their order. */
@@ -258,6 +272,8 @@ const Exhibition = (function () {
     getItem,
     getNarrative,
     getNarrativeItems,
+    getNarratives,
+    getRooms,
     getAllItems,
     getNextItem,
     getPrevItem,
