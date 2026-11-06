@@ -7,60 +7,49 @@
   <!--
     WORKING SKELETON, not the final design (same disclaimer as item.html).
 
-    This page shows the exhibition floor plan (Cinema Modernissimo,
-    assets/img/museum/planimetry_cinema_modernissimo.jpg) with clickable
-    markers for each item, positioned from item.mapPosition in
-    data/items.json.
+    The museum map: Claudia's final planimetry of the exhibition space
+    (assets/img/museum/gallery_planimetry_no_punti.png, 4032x3024) with one
+    clickable marker per item, placed from item.mapPosition in data/items.json.
 
-    mapPosition.x / mapPosition.y are PERCENTAGES (0-100) of the image's
-    width/height, not pixels -- so the markers stay correctly placed no
-    matter how large the image is rendered on screen (see items.json
-    _readme). mapPosition.area is an optional human-readable label
-    (e.g. "corridor nook 3"), not used for placement math.
+    - mapPosition.x / .y are PERCENTAGES (0-100) of the image width/height,
+      not pixels (see items.json _readme). They come from Claudia's annotated
+      sketch: one dot per item.
+    - mapPosition.area is a room id ("room-1" ... "room-3") listed in
+      items.json -> rooms. The three coloured zones of the image are those rooms.
 
-    Claudia has not assigned real positions yet (meeting Wednesday), so
-    every item currently has mapPosition = {area: null, x: null, y: null}.
-    To make the mechanism demonstrable in the meantime, this page falls
-    back to a small TEST_POSITIONS table (below, clearly marked) for 3
-    items that Laura already verified work end-to-end in item.html.
-    DELETE the whole TEST_POSITIONS block once real positions are merged
-    into items.json -- at that point every item will carry its own
-    mapPosition and this page needs no local fallback data at all.
+    Layout: the page is exactly viewport-sized (project requirement: no global
+    scroll). The map is an inline <svg> with a viewBox, so it scales to fit
+    any box without any JS maths; only the side list scrolls, inside itself.
 
-    Accessibility (the team's #1 stated priority): the visual map is not
-    the only way to browse. A full, keyboard-reachable list of every item
-    sits below it, so nobody who can't see/use the image markers is stuck.
+    Accessibility (the team's #1 priority): the map is never the only way in.
+    The side panel lists every item, grouped by room, as plain links.
+    Markers are real links (keyboard-focusable, with a text label).
   -->
   <link rel="stylesheet" href="css/theme-3.css" id="theme-stylesheet">
   <style>
-    /* Minimal layout so the markers are positioned correctly even before
-       River's real CSS exists. Safe to delete/override later. */
-    #map-wrapper {
-      position: relative;
-      display: inline-block;
-      max-width: 100%;
-    }
-    #map-wrapper img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
-    .map-marker {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      width: 1.6em;
-      height: 1.6em;
-      border-radius: 50%;
-      border: 2px solid currentColor;
-      background: rgba(255, 255, 255, 0.85);
-      cursor: pointer;
-      font-size: 0.8rem;
-      line-height: 1;
-      padding: 0;
-    }
-    .map-marker:focus,
-    .map-marker:hover {
-      background: rgba(255, 220, 120, 0.95);
+    /* Minimal layout so the page works before River's CSS exists.
+       River: safe to override/replace, just keep the ids used by the script. */
+    html, body { height: 100%; margin: 0; }
+    body { display: flex; flex-direction: column; overflow: hidden; }
+    header { flex: 0 0 auto; padding: 0.4rem 0.8rem; }
+    header select { max-width: calc(100vw - 6.5rem); }  /* long theme names must not widen the page on phones */
+    #map-page { flex: 1 1 auto; min-height: 0; display: flex; gap: 0.8rem; padding: 0 0.8rem 0.8rem; }
+    #map-stage { flex: 1 1 auto; min-width: 0; min-height: 0; }
+    #map-svg { display: block; width: 100%; height: 100%; }
+    #map-side { flex: 0 0 22rem; max-width: 40%; overflow-y: auto; }
+    #map-side h1 { font-size: 1.2rem; margin: 0 0 0.3rem; }
+    #map-side h2 { font-size: 1rem; margin: 0.8rem 0 0.2rem; }
+    #map-side ul { margin: 0; padding-left: 1.2rem; }
+    .room-swatch { display: inline-block; width: 0.9em; height: 0.9em; margin-right: 0.4em;
+                   border: 1px solid currentColor; vertical-align: -0.1em; }
+    .marker-dot { fill: #3a3ac8; stroke: #fff; stroke-width: 8; }
+    .marker:hover .marker-dot, .marker:focus .marker-dot { fill: #ffb000; stroke: #000; stroke-width: 10; }
+    .marker:focus { outline: none; }
+    .marker-hit { fill: transparent; }
+    @media (max-width: 700px) {
+      #map-page { flex-direction: column; }
+      #map-stage { flex: 0 0 42%; }
+      #map-side { flex: 1 1 auto; max-width: none; }
     }
   </style>
 </head>
@@ -73,108 +62,116 @@
     </nav>
   </header>
 
-  <main>
-    <h1>Exhibition map</h1>
-    <p id="map-note"></p>
+  <div id="map-page">
+    <main id="map-stage">
+      <svg id="map-svg" role="group" aria-label="Floor plan of the exhibition: one marker per item"
+           viewBox="120 830 3770 1840" preserveAspectRatio="xMidYMid meet">
+        <!-- viewBox = the drawing's bounding box in the 4032x3024 image plus margin;
+             purely presentational: x/y percentages in items.json still refer to the whole image. -->
+        <image href="assets/img/museum/gallery_planimetry_no_punti.png" x="0" y="0" width="4032" height="3024"></image>
+        <g id="markers"></g>
+      </svg>
+    </main>
 
-    <div id="map-wrapper">
-      <img
-        src="assets/img/museum/planimetry_cinema_modernissimo.jpg"
-        alt="Floor plan of the Cinema Modernissimo exhibition space (Sottopasso Via Rizzoli)"
-        id="map-image"
-      >
-      <!-- markers injected here by renderMarkers() -->
-    </div>
-
-    <section aria-labelledby="all-items-heading">
-      <h2 id="all-items-heading">All items</h2>
-      <p>A text alternative to the map above, for keyboard and screen-reader
-        users and for anyone who prefers a list: every item, in the same
-        order as <code>items.json</code>, with a note when it isn't placed
-        on the map yet.</p>
-      <ul id="item-list"></ul>
-    </section>
-  </main>
+    <aside id="map-side" aria-labelledby="side-heading">
+      <h1 id="side-heading">Exhibition map</h1>
+      <p id="side-note">Pick a marker on the plan, or any item in the list: same thing, two ways in.</p>
+      <div id="item-list"></div>
+    </aside>
+  </div>
 
   <script src="js/main.js"></script>
   <script>
     (async function initMapPage() {
       await Exhibition.load();
       Exhibition.applyStoredTheme();
-      Exhibition.wireThemeSelect(document.getElementById("theme-select"), () => {
-        // theme can affect marker colour (currentColor) via CSS vars; no
-        // re-render needed since markers just inherit text colour.
-      });
+      Exhibition.wireThemeSelect(document.getElementById("theme-select"));
 
-      // ---------------------------------------------------------------
-      // TEST / DEMO DATA -- delete this block once Claudia's real
-      // mapPosition values are in items.json. These 3 ids were chosen
-      // because Laura already confirmed them working in item.html.
-      // Positions are invented percentages, not real locations.
-      // ---------------------------------------------------------------
-      const TEST_POSITIONS = {
-        renzi_letter_1942: { x: 18, y: 32 },
-        po_screenplay: { x: 52, y: 48 },
-        l_armata_s_agapo: { x: 78, y: 65 },
-      };
-      const usingTestData = Object.keys(TEST_POSITIONS).length > 0;
+      // Size of the image the percentages refer to (assets/img/museum/gallery_planimetry_no_punti.png)
+      const IMG_W = 4032, IMG_H = 3024;
+      const SVG_NS = "http://www.w3.org/2000/svg";
 
-      const allItems = Exhibition.getAllItems();
-      const narrativeId = Exhibition.getQueryParam("narrative") || "timeline";
+      const rooms = Exhibition.getRooms();
+      const items = Exhibition.getAllItems();
+      const requestedNarrative = Exhibition.getQueryParam("narrative") || "timeline";
 
-      document.getElementById("map-note").textContent = usingTestData
-        ? "Note: the markers below use placeholder test positions for 3 items, just to show the mechanism. Real positions are coming from Claudia (meeting Wednesday)."
-        : "";
-
-      renderMarkers(allItems);
-      renderItemList(allItems);
-
-      /** Returns {x, y} in % for an item, from real data if present, else the test fallback, else null. */
-      function resolvePosition(item) {
-        const real = item.mapPosition;
-        if (real && typeof real.x === "number" && typeof real.y === "number") {
-          return { x: real.x, y: real.y };
-        }
-        return TEST_POSITIONS[item.id] || null;
+      /** The narrative to open an item in: the requested one if it contains the item, otherwise the first one that does. */
+      function narrativeFor(item) {
+        const has = (n) => n && n.order.includes(item.id);
+        if (has(Exhibition.getNarrative(requestedNarrative))) return requestedNarrative;
+        const other = Exhibition.getNarratives().find(has);
+        return other ? other.id : requestedNarrative;
       }
+      const roomTitle = (id) => (rooms.find((r) => r.id === id) || {}).title || "";
 
-      function renderMarkers(items) {
-        const wrapper = document.getElementById("map-wrapper");
+      renderMarkers();
+      renderList();
+
+      function renderMarkers() {
+        const layer = document.getElementById("markers");
         items.forEach((item) => {
-          const pos = resolvePosition(item);
-          if (!pos) return; // not placed yet -- only in the list below
+          const p = item.mapPosition;
+          if (!p || typeof p.x !== "number" || typeof p.y !== "number") return; // listed below, not on the plan
 
-          const marker = document.createElement("button");
-          marker.type = "button";
-          marker.className = "map-marker";
-          marker.style.left = pos.x + "%";
-          marker.style.top = pos.y + "%";
-          marker.title = item.title;
-          marker.setAttribute("aria-label", `Open item: ${item.title}`);
-          marker.addEventListener("click", () => {
-            window.location.href = Exhibition.buildItemUrl(narrativeId, item.id);
-          });
-          wrapper.appendChild(marker);
+          const a = document.createElementNS(SVG_NS, "a");
+          a.setAttribute("class", "marker");
+          a.setAttribute("href", Exhibition.buildItemUrl(narrativeFor(item), item.id));
+          a.setAttribute("aria-label", `${item.title} (${roomTitle(p.area) || "no room"})`);
+
+          const cx = (p.x / 100) * IMG_W, cy = (p.y / 100) * IMG_H;
+          const hit = document.createElementNS(SVG_NS, "circle");   // bigger invisible target, easier to click/tap
+          hit.setAttribute("class", "marker-hit");
+          hit.setAttribute("cx", cx); hit.setAttribute("cy", cy); hit.setAttribute("r", 85);
+          const dot = document.createElementNS(SVG_NS, "circle");
+          dot.setAttribute("class", "marker-dot");
+          dot.setAttribute("cx", cx); dot.setAttribute("cy", cy); dot.setAttribute("r", 42);
+          const title = document.createElementNS(SVG_NS, "title"); // native tooltip
+          title.textContent = item.title;
+
+          a.append(hit, dot, title);
+          layer.appendChild(a);
         });
       }
 
-      function renderItemList(items) {
-        const list = document.getElementById("item-list");
-        list.innerHTML = "";
-        items.forEach((item) => {
+      /** Side list: every item, grouped by room (items without a room/position go last, flagged). */
+      function renderList() {
+        const host = document.getElementById("item-list");
+        const groups = rooms.map((r) => ({ room: r, items: items.filter((i) => i.mapPosition && i.mapPosition.area === r.id) }));
+        const unplaced = items.filter((i) => !i.mapPosition || typeof i.mapPosition.x !== "number");
+
+        groups.forEach(({ room, items: list }) => {
+          if (list.length === 0) return;
+          host.appendChild(buildSection(room.title, list, room.color, room.theme));
+        });
+        if (unplaced.length) host.appendChild(buildSection("Not yet placed on the map", unplaced));
+      }
+
+      function buildSection(title, list, color, subtitle) {
+        const section = document.createElement("section");
+        const h2 = document.createElement("h2");
+        if (color) {
+          const sw = document.createElement("span");
+          sw.className = "room-swatch"; sw.style.background = color; sw.setAttribute("aria-hidden", "true");
+          h2.appendChild(sw);
+        }
+        h2.appendChild(document.createTextNode(title));
+        section.appendChild(h2);
+        if (subtitle) {
+          const p = document.createElement("p");
+          p.style.margin = "0 0 0.2rem"; p.textContent = subtitle;
+          section.appendChild(p);
+        }
+        const ul = document.createElement("ul");
+        list.forEach((item) => {
           const li = document.createElement("li");
-          const hasPosition = !!resolvePosition(item);
           const link = document.createElement("a");
-          link.href = Exhibition.buildItemUrl(narrativeId, item.id);
+          link.href = Exhibition.buildItemUrl(narrativeFor(item), item.id);
           link.textContent = item.title;
           li.appendChild(link);
-          if (!hasPosition) {
-            const note = document.createElement("span");
-            note.textContent = " (not yet placed on the map)";
-            li.appendChild(note);
-          }
-          list.appendChild(li);
+          ul.appendChild(li);
         });
+        section.appendChild(ul);
+        return section;
       }
     })();
   </script>
