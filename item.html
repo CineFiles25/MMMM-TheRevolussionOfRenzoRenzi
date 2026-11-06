@@ -59,21 +59,32 @@
       renderItem(narrativeId, itemId);
       wireNavButtons(narrativeId, itemId);
 
-      // Renders a basic preview for the item's first asset: an <img> for
-      // image files, a plain link for anything else (PDF, etc.). Items
-      // with no local asset yet (videos still "_toadd", missing photo)
-      // show a placeholder note instead.
+      // Renders the item's media: the first local asset (<img> for image
+      // files, a plain link for anything else such as the PDF) plus every
+      // entry of item.externalLinks (an <iframe> embed when the link has an
+      // embedUrl, e.g. YouTube; a plain link otherwise). Items with neither
+      // show a placeholder note.
       function renderAsset(item) {
-        if (!item.images || item.images.length === 0) {
+        const parts = [];
+        if (item.images && item.images.length > 0) {
+          const path = item.images[0];
+          const encodedPath = encodeURI(path);
+          const isImage = /\.(jpe?g|png|gif|webp)$/i.test(path);
+          parts.push(isImage
+            ? `<img src="${encodedPath}" alt="${item.title}" class="item-asset">`
+            : `<p><a href="${encodedPath}" target="_blank" rel="noopener">Open ${path.split("/").pop()}</a></p>`);
+        }
+        (item.externalLinks || []).forEach((link) => {
+          if (link.embedUrl) {
+            parts.push(`<iframe class="item-embed" src="${link.embedUrl}" title="${link.label}" width="560" height="315" loading="lazy" allowfullscreen></iframe>`);
+          } else {
+            parts.push(`<p><a href="${link.url}" target="_blank" rel="noopener">${link.label}</a></p>`);
+          }
+        });
+        if (parts.length === 0) {
           return `<p class="asset-missing"><em>[asset not uploaded yet — see item._todo in items.json]</em></p>`;
         }
-        const path = item.images[0];
-        const encodedPath = encodeURI(path);
-        const isImage = /\.(jpe?g|png|gif|webp)$/i.test(path);
-        if (isImage) {
-          return `<img src="${encodedPath}" alt="${item.title}" class="item-asset">`;
-        }
-        return `<p><a href="${encodedPath}" target="_blank" rel="noopener">Open ${path.split("/").pop()}</a></p>`;
+        return parts.join("\n");
       }
 
       function renderItem(narrativeId, itemId) {
