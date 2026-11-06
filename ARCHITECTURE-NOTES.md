@@ -26,7 +26,11 @@ team agreed on the three narratives, the three rooms and the final planimetry.
 
 1. `timeline` — Historical (required), 15 items in date order.
 2. `from-subject-to-film` — 7 items, from page to screen.
-3. `bologna-walk` — "Guida per camminare a Bologna", 5 items, thematic order.
+3. `bologna-walk` — "Guida per camminare a Bologna", 5 items, thematic order;
+   each stop has a verb (walk it, film it, read it, watch a film in it,
+   remember it) stored as `stopLabels`.
+
+Orders and descriptions follow the Notion table "Narratives".
 
 The earlier "Renzi: Many Lives" idea (critic / curator / soldier) was dropped;
 the three rooms keep a trace of it.
@@ -88,8 +92,6 @@ the three rooms keep a trace of it.
    playable file: the videos are too large for the repo (only an Archivio Luce
    record is linked for *Guida*). Decide: external hosting or Git LFS.
 5. **Small data questions for Claudia:**
-   - Order inside the Bologna narrative (the Notion table and `text_grid.md`
-     differ; `narratives.json` follows `text_grid.md`).
    - `bologna_book` (1964) is not in the Historical timeline; if it should be,
      it goes between the caricature and *Il primo Fellini*.
    - Timeline order inside 1954 is a best guess; `renzi_portrait` is undated
