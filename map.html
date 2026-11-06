@@ -253,6 +253,8 @@
             link.href = Exhibition.buildItemUrl(narrative.id, it.id);
             link.textContent = it.title;
             li.appendChild(link);
+            const label = narrative.stopLabels && narrative.stopLabels[it.id];   // e.g. "walk it"
+            if (label) li.appendChild(document.createTextNode(" — " + label));
             ol.appendChild(li);
           });
           host.appendChild(ol);
