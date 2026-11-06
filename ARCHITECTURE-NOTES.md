@@ -1,105 +1,92 @@
 # Architecture notes — The Revolussion of Renzo Renzi
 
-Starting point for the "Architecture & Data" part (Laura), migrated into the
-team's actual repo (`CineFiles25/MMMM-TheRevolussionOfRenzoRenzi`) after
-discovering Claudia had already been populating it with real research and
-assets. Nothing from the earlier draft (in `lauraaa13/Information-Modelling`)
-is lost — the data model and JS logic are the same, just rebuilt from the
-real `data/items.csv` instead of placeholders.
+Notes for the "Architecture & Data" part (Laura): how the data, the JS and the
+pages fit together, what changed, and what is still open. Updated after the
+team agreed on the three narratives, the three rooms and the final planimetry.
 
-## Files in this drop
+## How it fits together
 
-- `data/items.json` — generated from `data/items.csv`. Every item keeps its
-  CSV `identifier` as `id` (so it lines up with the filenames already in
-  `assets/items/`). Core navigation fields (`id`, `title`, `creator`,
-  `images`, `texts`, `mapPosition`) are at the top level; every other
-  cataloguing field from the CSV (rights, dimensions, inventory numbers,
-  archival description, etc.) is preserved verbatim under `metadata` —
-  nothing Claudia researched is dropped.
-- `data/narratives.json` — the "timeline" narrative, now ordered from the
-  **real dates in items.csv** instead of a blind guess (see "What's still
-  open" below for the caveats). The second narrative is now named --
-  "Renzi: Many Lives" -- and modelled as three parallel threads
-  (`renzi-critic`, `renzi-curator`, `renzi-soldier-partisan`), each with an
-  empty `order` waiting for Claudia to assign items.
-- `js/main.js` — two additions on top of the first draft: `getAllItems()`
-  (returns every item regardless of narrative — needed by `map.html`,
-  which shows the whole collection at once) and `wireThemeSelect(selectEl,
-  onChange)` (the theme-`<select>` population/wiring logic that used to be
-  duplicated inline in `item.html`, now shared so `map.html` and future
-  pages don't repeat it). Everything else is unchanged from the first
-  draft: it only needs `id`/`texts`/`order`, so it didn't need any
-  rewiring to work with the real data.
-- `item.html` — updated to actually render the real assets: an `<img>` for
-  photos/drawings, a plain link for the PDF, and a placeholder note for the
-  5 items that don't have a local asset yet (see list below). Still a
-  skeleton, not the final design — that's River's job. Now uses the shared
-  `Exhibition.wireThemeSelect()` helper instead of its own duplicated theme
-  code.
-- `map.html` — new. Shows the floor plan image (`assets/img/museum/
-  planimetry_cinema_modernissimo.jpg`) with a clickable marker per item,
-  positioned from `item.mapPosition.x`/`y` (percentages of the image's
-  width/height — see `items.json`'s `_readme`). Since no item has a real
-  position yet, the page falls back to a small `TEST_POSITIONS` table
-  hard-coded in the page's own script, for 3 items already confirmed
-  working in `item.html` (`renzi_letter_1942`, `po_screenplay`,
-  `l_armata_s_agapo`) — clearly commented as demo-only, **to delete once
-  Claudia's real positions are in `items.json`**. Because accessibility is
-  the team's stated #1 priority, the map is never the only way to reach an
-  item: below it, a full `<ul>` lists every item as a plain link (keyboard-
-  and screen-reader-reachable), flagging the ones not yet placed on the
-  map with "(not yet placed on the map)".
+- `data/items.csv` (Claudia's research) is the source of truth for the
+  cataloguing metadata. `data/items.json` is generated from it and keeps every
+  CSV field under `metadata`, so nothing is lost.
+- `data/items.json` — 16 items plus the three museum `rooms`. Per item:
+  `id` (= CSV identifier = asset file naming), `title`, `creator`, `images`
+  (local files in `assets/items/`), `externalLinks` (things hosted elsewhere:
+  YouTube embeds, Bologna Fotografata, Archivio Luce), `texts`, `mapPosition`
+  and a `metadata` object.
+- `data/narratives.json` — each narrative is just an ordered list of item ids.
+  An item can be in several narratives, so nothing is duplicated.
+- `js/main.js` — one global `Exhibition` object shared by every page: data
+  loading, narratives/rooms/items lookup, prev/next, theme switching, text
+  selection, URL helpers.
+- Navigation state travels in the URL (`item.html?narrative=…&item=…`), so
+  every state is a plain link (good for accessibility and for the back button).
 
-## What's genuinely new since the last version
+## The three narratives (agreed by the team)
 
-- The museum is no longer an open question: `assets/img/museum/
-  planimetry_cinema_modernissimo.jpg` is already in the repo, so Cinema
-  Modernissimo (Sottopasso Via Rizzoli) is de facto decided.
-- Each item's first text is no longer a placeholder: it's seeded from
-  Claudia's `description` field in the CSV (real, accurate content), tagged
-  `{length: "long", competence: "specialist", tone: "neutral"}`. Claudia
-  still needs to write the shorter/more casual variants for the full
-  length/competence/tone grid, but the site no longer shows "[text to be
-  written]" for every item.
-- The timeline order is now evidence-based (sorted from the CSV's `date`
-  field), not arbitrary.
+1. `timeline` — Historical (required), 15 items in date order.
+2. `from-subject-to-film` — 7 items, from page to screen.
+3. `bologna-walk` — "Guida per camminare a Bologna", 5 items, thematic order.
 
-## What's still open (bring to the team)
+The earlier "Renzi: Many Lives" idea (critic / curator / soldier) was dropped;
+the three rooms keep a trace of it.
 
-1. **Missing assets** — these 5 items have no local file in `assets/items/`
-   yet: `guida_documentary` and `renzi_interview_2000` (the two `_toadd`
-   placeholder files — videos still to be added, probably as external
-   links given the file size), `la_strada_film` and
-   `la_strada_soundtrack_original` (per the original project doc, meant to
-   be external links — full film / YouTube), and `photo_lastrada_premiere`
-   (the Cinema Fulgor premiere photo — this one looks like it's simply
-   missing, worth checking with Claudia).
-2. **Timeline order within 1954** — six items share that year (the
-   documentary, the film, the Gelsomina drawing, two production stills, the
-   premiere photo, the soundtrack). The order I used is a reasonable guess,
-   not verified. `renzi_portrait` has no date at all in the CSV and is
-   placed last as unplaced.
-3. **Second narrative — item assignment.** The three threads (critic /
-   curator / soldier-partisan) exist in `narratives.json` with empty
-   `order` arrays. Claudia is assigning items to each thread when the team
-   meets Wednesday. Two items look like obvious candidates for
-   `renzi-soldier-partisan` just from the CSV content (`renzi_letter_1942`,
-   written from the WWII front, and `l_armata_s_agapo`, the article that
-   got him court-martialled) — but that's a guess from the data, not
-   Claudia's actual call, so don't treat it as settled.
-4. **Map positions.** `map.html` is now built and working (with test/demo
-   positions for 3 items — see "Files in this drop"), but no item has a
-   *real* position yet. Claudia is bringing the room/area layout on
-   Wednesday. Once she has it: fill in `mapPosition.x`/`y` (percentages,
-   not pixels — see `items.json`'s `_readme`) for every item, and delete
-   the `TEST_POSITIONS` block in `map.html` — nothing else about the page
-   needs to change.
-5. **Text grid** — exact values for length/competence/tone beyond the one
-   seeded text per item, to align with Claudia.
+## The map
 
-## One thing worth deciding now that two repos existed
+- Image: `assets/img/museum/gallery_planimetry_no_punti.png` (4032×3024,
+  Claudia's final planimetry; the coloured zones are the three rooms).
+- `mapPosition.area` = room id (`room-1`, `room-2`, `room-3`, defined in
+  `items.json` → `rooms`); `mapPosition.x` / `.y` = **percentages** (0–100) of
+  the image width/height, not pixels.
+- Positions were read from Claudia's annotated sketch, one dot per item.
+- `map.html` draws the image in an inline SVG (it scales to any box, so the page
+  is exactly viewport-sized with no global scroll). Markers are real links; a
+  side panel lists every item grouped by room, as the non-visual alternative.
 
-`lauraaa13/Information-Modelling` (Laura's personal repo) has the same
-early version of this architecture but with placeholder data — it's now
-superseded by this repo. Worth a one-line note in its README pointing here,
-so nobody on the team accidentally works from the old one.
+| Room | Items |
+| --- | --- |
+| 1 — the man / soldier | letter, *L'armata s'agapò*, portrait, interview |
+| 2 — the filmmaker | Po screenplay, *Guida*, Ferrari photo, *Bologna, una città*, caricature |
+| 3 — Renzi & Fellini | film, soundtrack, two stills, premiere photo, Gelsomina drawing, *Il primo Fellini* |
+
+## What the pages do today
+
+- `item.html` — working skeleton: item view, prev/next inside the chosen
+  narrative, theme selector. It shows the local image, the PDF as a link, and
+  every `externalLinks` entry (YouTube as an embed, other links as links).
+- `map.html` — see above.
+- Markup and classes in both pages are placeholders for River's design; the ids
+  used by the scripts must stay.
+
+## Still open
+
+1. **Texts.** `items.json` still holds only the catalogue description for each
+   item. Claudia's two versions per item (whimsical / academic) and the
+   per-narrative descriptions are in `data/text_grid.md` and are not imported
+   yet. This needs a small schema decision: the grid axes are now mainly
+   *whimsical vs academic* (short vs long), and per-narrative texts need their
+   own tag. The item page also needs the text-type selectors (`#text-selectors`
+   is still an empty placeholder).
+2. **No global scroll.** `map.html` already fits the viewport; `item.html`
+   does not yet (long text and images need to scroll inside their own box).
+3. **Pages nobody owns yet:** `index`, `about`, `docs`, `disclaimer`. Every page
+   also needs prev/next, the theme selector and the text-type selectors.
+4. **Video items.** `guida_documentary` and `renzi_interview_2000` have no
+   playable file: the videos are too large for the repo (only an Archivio Luce
+   record is linked for *Guida*). Decide: external hosting or Git LFS.
+5. **Small data questions for Claudia:**
+   - Order inside the Bologna narrative (the Notion table and `text_grid.md`
+     differ; `narratives.json` follows `text_grid.md`).
+   - `bologna_book` (1964) is not in the Historical timeline; if it should be,
+     it goes between the caricature and *Il primo Fellini*.
+   - Timeline order inside 1954 is a best guess; `renzi_portrait` is undated
+     and sits last.
+   - On the map, which of the two "foto film" dots is which still is a guess,
+     and the "script La Strada" label was read as *Il primo Fellini*.
+6. **Notion vs data.** In the Notion, §3 (items list) says *Guida* is the
+   documentary and *Po* the screenplay (as in the CSV and JSON), while §4
+   (metadata table) says the opposite. The Cineteca holds both a film and a
+   manuscript for each title, so either choice is valid, but the project should
+   pick one and align the table.
+7. The old personal repo (`lauraaa13/Information-Modelling`) is superseded by
+   this one; a one-line pointer in its README avoids confusion.
