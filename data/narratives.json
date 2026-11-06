@@ -2,19 +2,15 @@
   "_readme": [
     "A narrative = an itinerary through the items. Each narrative has an 'order' array of ids (from items.json) that defines prev/next.",
     "The same item can appear in more than one narrative, even in a different order.",
-    "'timeline' is the required historical narrative. Unlike the first draft of this file, this order is now built from the real",
-    "dates in data/items.csv (Claudia's research), not an arbitrary placeholder -- but several dates are approximate ('ca.') and",
-    "five items share the same year (1954), so the order within that cluster is a reasonable guess, not confirmed fact.",
-    "The second narrative is now named: a thematic one, 'Renzi: Many Lives', split into three parallel threads",
-    "(critic / curator / soldier-partisan) sharing the narrativeGroup tag below. Claudia is assigning which items",
-    "go in which thread when the team meets (Wednesday) -- the three entries exist so the site can already offer",
-    "the choice in a narrative selector, but 'order' stays empty until she fills it in."
+    "Three narratives, as agreed by the team: 'timeline' (Historical, required), 'from-subject-to-film' and 'bologna-walk'.",
+    "The earlier 'Renzi: Many Lives' idea (critic / curator / soldier-partisan) was dropped; its spirit survives in the three rooms of the museum (see rooms in items.json).",
+    "Orders for the last two follow data/text_grid.md (Claudia's draft); the Notion table lists the Bologna narrative in a different order -- to confirm."
   ],
   "narratives": [
     {
       "id": "timeline",
       "title": "Historical timeline",
-      "description": null,
+      "description": "The life in date order.",
       "required": true,
       "order": [
         "renzi_letter_1942",
@@ -36,35 +32,39 @@
       "_todo": [
         "Based on real dates in items.csv: 1942-07-24 (letter) -> ca. 1952 (Po screenplay) -> 1953-02-01 (L'armata s'agapò) -> 1954 (six items: guida_documentary, la_strada_film, drawing_gelsomina_lastrada, photo_la_strada_fighter, photo_la_strada_woman, photo_lastrada_premiere, la_strada_soundtrack_original) -> 1959 (ferrari_set_photo) -> ca. 1960s (caricature) -> 1969 (book) -> 2000 (interview).",
         "renzi_portrait has no date in items.csv -- placed last as unplaced, needs a real date or at least an approximate period from Claudia/Anna Fiaccarini.",
-        "The order within the 1954 cluster (6 items) is a best guess (documentary -> film -> character drawing -> production stills -> premiere -> soundtrack), not verified against real event dates within that year."
+        "The order within the 1954 cluster (6 items) is a best guess (documentary -> film -> character drawing -> production stills -> premiere -> soundtrack), not verified against real event dates within that year.",
+        "bologna_book (1964) is not in this narrative: Claudia's Historical list has 15 items. If it should be, it goes between caricature_fellini_renzi and book_il_primo_fellini."
       ]
     },
     {
-      "id": "renzi-critic",
-      "title": "Renzi the critic",
-      "description": null,
-      "required": true,
-      "narrativeGroup": "renzi-many-lives",
-      "order": [],
-      "_todo": "Claudia is assigning which items belong to this thread (meeting Wednesday)."
+      "id": "from-subject-to-film",
+      "title": "From subject to film",
+      "description": "Renzi's own book-series idea, from page to screen.",
+      "required": false,
+      "order": [
+        "book_il_primo_fellini",
+        "drawing_gelsomina_lastrada",
+        "photo_la_strada_fighter",
+        "photo_la_strada_woman",
+        "la_strada_film",
+        "la_strada_soundtrack_original",
+        "photo_lastrada_premiere"
+      ]
     },
     {
-      "id": "renzi-curator",
-      "title": "Renzi the curator",
-      "description": null,
-      "required": true,
-      "narrativeGroup": "renzi-many-lives",
-      "order": [],
-      "_todo": "Claudia is assigning which items belong to this thread (meeting Wednesday)."
-    },
-    {
-      "id": "renzi-soldier-partisan",
-      "title": "Renzi the soldier / partisan",
-      "description": null,
-      "required": true,
-      "narrativeGroup": "renzi-many-lives",
-      "order": [],
-      "_todo": "Claudia is assigning which items belong to this thread (meeting Wednesday). Likely candidates based on the CSV: renzi_letter_1942 (written from the front in WWII) and l_armata_s_agapo (the article that led to his military trial) -- but this is a guess, not Claudia's actual call."
+      "id": "bologna-walk",
+      "title": "Guida per camminare a Bologna",
+      "titleEn": "A guide to walk around Bologna",
+      "description": "Renzi's city: its porticoes, cinemas, publisher and film library. Bologna as a verb: walk it, film it, read it, watch a film in it, remember it.",
+      "required": false,
+      "order": [
+        "guida_documentary",
+        "ferrari_set_photo",
+        "bologna_book",
+        "photo_lastrada_premiere",
+        "renzi_interview_2000"
+      ],
+      "_todo": "Order taken from data/text_grid.md; the Notion table lists premiere before the interview and the book last -- confirm with Claudia."
     }
   ]
 }
