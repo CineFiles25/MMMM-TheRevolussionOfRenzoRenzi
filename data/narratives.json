@@ -2,9 +2,9 @@
   "_readme": [
     "A narrative = an itinerary through the items. Each narrative has an 'order' array of ids (from items.json) that defines prev/next.",
     "The same item can appear in more than one narrative, even in a different order.",
-    "Three narratives, as agreed by the team: 'timeline' (Historical, required), 'from-subject-to-film' and 'bologna-walk'.",
+    "Three narratives, as agreed by the team and written in the Notion table 'Narratives': 'timeline' (Historical, required), 'from-subject-to-film' and 'bologna-walk'.",
     "The earlier 'Renzi: Many Lives' idea (critic / curator / soldier-partisan) was dropped; its spirit survives in the three rooms of the museum (see rooms in items.json).",
-    "Orders for the last two follow data/text_grid.md (Claudia's draft); the Notion table lists the Bologna narrative in a different order -- to confirm."
+    "Optional 'stopLabels' (item id -> short phrase) name what each stop is for in that narrative; used in the itinerary list on the map."
   ],
   "narratives": [
     {
@@ -25,7 +25,6 @@
         "la_strada_soundtrack_original",
         "ferrari_set_photo",
         "caricature_fellini_renzi",
-        "bologna_book",
         "book_il_primo_fellini",
         "renzi_interview_2000",
         "renzi_portrait"
@@ -34,21 +33,21 @@
         "Based on real dates in items.csv: 1942-07-24 (letter) -> ca. 1952 (Po screenplay) -> 1953-02-01 (L'armata s'agapò) -> 1954 (six items: guida_documentary, la_strada_film, drawing_gelsomina_lastrada, photo_la_strada_fighter, photo_la_strada_woman, photo_lastrada_premiere, la_strada_soundtrack_original) -> 1959 (ferrari_set_photo) -> ca. 1960s (caricature) -> 1969 (book) -> 2000 (interview).",
         "renzi_portrait has no date in items.csv -- placed last as unplaced, needs a real date or at least an approximate period from Claudia/Anna Fiaccarini.",
         "The order within the 1954 cluster (6 items) is a best guess (documentary -> film -> character drawing -> production stills -> premiere -> soundtrack), not verified against real event dates within that year.",
-        "bologna_book (1964) is placed between the ca. 1960s caricature and book_il_primo_fellini (1969)."
+        "bologna_book (1964) is not in this narrative: Claudia's Historical list has 15 items. If it should be, it goes between caricature_fellini_renzi and book_il_primo_fellini."
       ]
     },
     {
       "id": "from-subject-to-film",
       "title": "From subject to film",
-      "description": "Renzi's own book-series idea, from page to screen.",
+      "description": "La Strada, from script to screen to distribution.",
       "required": false,
       "order": [
         "book_il_primo_fellini",
         "drawing_gelsomina_lastrada",
         "photo_la_strada_fighter",
         "photo_la_strada_woman",
-        "la_strada_film",
         "la_strada_soundtrack_original",
+        "la_strada_film",
         "photo_lastrada_premiere"
       ]
     },
@@ -56,7 +55,7 @@
       "id": "bologna-walk",
       "title": "Guida per camminare a Bologna",
       "titleEn": "A guide to walk around Bologna",
-      "description": "Renzi's city: its porticoes, cinemas, publisher and film library. Bologna as a verb: walk it, film it, read it, watch a film in it, remember it.",
+      "description": "A walk around Renzi's city, Bologna, through Renzi's eyes, words and film camera.",
       "required": false,
       "order": [
         "guida_documentary",
@@ -65,7 +64,13 @@
         "photo_lastrada_premiere",
         "renzi_interview_2000"
       ],
-      "_todo": "Order taken from data/text_grid.md; the Notion table lists premiere before the interview and the book last -- confirm with Claudia."
+      "stopLabels": {
+        "guida_documentary": "walk it",
+        "ferrari_set_photo": "film it",
+        "bologna_book": "read it",
+        "photo_lastrada_premiere": "watch a film in it",
+        "renzi_interview_2000": "remember it"
+      }
     }
   ]
 }
