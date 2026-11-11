@@ -875,7 +875,7 @@
         "language": "it",
         "relation": null,
         "coverage": "Renzo Renzi Library",
-        "rights": "© Renzi Estate | Reproduction only with permission of the Renzi Estate.",
+        "rights": "© Renzi Estate",
         "standard": "ISAD(G)",
         "other_title_information": null,
         "series": null,
@@ -899,7 +899,7 @@
         "edition": null,
         "pages": null,
         "conditions_governing_access": null,
-        "conditions_governing_reproduction": "Reproduction only with permission of the Renzi Estate."
+        "conditions_governing_reproduction": null
       },
       "images": [
         "assets/items/po_screenplay.jpg"
@@ -1038,7 +1038,7 @@
         "language": "it",
         "relation": "Renzo Renzi Collection",
         "coverage": "Renzo Renzi Library, Cineteca di Bologna",
-        "rights": "© Renzi Estate | Reproduction only with permission of the Renzi Estate.",
+        "rights": "© Renzi Estate",
         "standard": "ISAD(G)",
         "other_title_information": "Original title: 'Lettera al padre'",
         "series": null,
@@ -1062,7 +1062,7 @@
         "edition": null,
         "pages": "3",
         "conditions_governing_access": null,
-        "conditions_governing_reproduction": "Reproduction only with permission of the Renzi Estate."
+        "conditions_governing_reproduction": null
       },
       "images": [
         "assets/items/letter_p1.jpg",
