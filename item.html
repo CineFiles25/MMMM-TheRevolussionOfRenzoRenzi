@@ -7,12 +7,18 @@
   <!--
     This file is a WORKING SKELETON, not the final design.
     It shows how data/items.json, data/narratives.json and js/main.js
-    connect: data loading, prev/next, theme switching, text selector,
-    and now a real asset preview (image/PDF) from assets/items/.
+    connect: data loading, prev/next, theme switching, the three text
+    versions (museum / read more / told by Renzo) with their selector,
+    and a real asset preview (image/PDF) from assets/items/.
     River will replace the markup/classes with the real layout and the
     6 CSS themes; the data/id structure underneath can stay.
   -->
   <link rel="stylesheet" href="css/theme-3.css" id="theme-stylesheet">
+  <style>
+    /* Text for screen readers only (announces the chosen text version). */
+    .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+               overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  </style>
 </head>
 <body>
 
@@ -26,6 +32,7 @@
   <main id="item-view">
     <p id="loading-message">Loading…</p>
   </main>
+  <p id="text-status" class="sr-only" role="status" aria-live="polite"></p>
 
   <footer>
     <nav aria-label="Navigation between items">
@@ -58,6 +65,18 @@
 
       renderItem(narrativeId, itemId);
       wireNavButtons(narrativeId, itemId);
+
+      // Text-version selector (museum / read more / told by Renzo): only the
+      // text box is redrawn, the rest of the page stays as it is.
+      Exhibition.wireTextSelector(document.getElementById("text-selectors"), (voiceId) => {
+        const item = Exhibition.getItem(itemId);
+        const box = document.getElementById("item-text");
+        if (!item || !box) return;
+        const text = Exhibition.findText(item, { voice: voiceId });
+        box.innerHTML = text ? Exhibition.formatText(text.content) : "<p>[text to be written]</p>";
+        const voice = Exhibition.getVoices().find((v) => v.id === voiceId);
+        document.getElementById("text-status").textContent = `Showing the text version: ${voice ? voice.label : voiceId}.`;
+      });
 
       // Renders the item's media: the first local asset (<img> for image
       // files, a plain link for anything else such as the PDF) plus every
@@ -96,8 +115,7 @@
           return;
         }
 
-        const prefs = Exhibition.getTextPreference();
-        const text = Exhibition.findText(item, prefs);
+        const text = Exhibition.findText(item); // the visitor's current voice
         const meta = item.metadata || {};
 
         container.innerHTML = `
@@ -105,7 +123,7 @@
             <h1>${item.title}</h1>
             <p><strong>${item.creator || "Unknown creator"}</strong> — ${meta.type || "unknown type"} ${meta.date ? `(${meta.date})` : ""}</p>
             ${renderAsset(item)}
-            <div class="item-text">${text ? text.content : "[text to be written — see item.texts in items.json]"}</div>
+            <div class="item-text" id="item-text" lang="en">${text ? Exhibition.formatText(text.content) : "<p>[text to be written — see item.texts in items.json]</p>"}</div>
             ${meta.rights ? `<p class="item-rights"><small>${meta.rights}</small></p>` : ""}
           </article>
         `;
