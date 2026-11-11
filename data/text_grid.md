@@ -8,9 +8,9 @@ The versions appear in this order:
 
 1. **Museum / Standard:** an introduction to the item and its significance for a general adult audience.
 2. **Archival / Read more:** a standalone account focusing on the item, its historical context and catalogue information, for readers seeking more detail.
-3. **Whimsical / Told by Renzo:** a brief, accessible invitation to notice or question a detail, intended for younger visitors. An imagined Renzi guides the visitor in the first person; these are not his words or quotations from the 2000 interview.
+3. **Told by Renzo:** a brief, accessible invitation to notice or question a detail, intended for younger visitors. An imagined Renzi guides the visitor in the first person; these are not his words or quotations from the 2000 interview.
 
-Proposed grid cells: museum / standard = mid-size / average / general adult; archival / read more = long / advanced / scholar; whimsical / told by Renzo = very brief / introductory / young audience. Agree on the exact values and selector behaviour with the team. The PDF suggests 10–15 lines for a mid-size text and several minutes of reading for a long text; line wrapping depends on the design, and the archival drafts still need research and expansion if used as long texts. The narrative-focused drafts at the end are separate and do not automatically count towards the three grid texts.
+Proposed grid cells: museum / standard = mid-size / average / general adult; archival / read more = long / advanced / scholar; told by renzo = very brief / introductory / young audience. Agree on the exact values and selector behaviour with the team. The PDF suggests 10–15 lines for a mid-size text and several minutes of reading for a long text; line wrapping depends on the design, and the archival drafts still need research and expansion if used as long texts. The narrative-focused drafts at the end are separate and do not automatically count towards the three grid texts.
 
 The occasional Bolognese terms are translated in context. *Bulåggna* means Bologna ([Wiktionary](https://en.wiktionary.org/wiki/Bul%C3%A5ggna)); *umarell* is a modern Bolognese-derived term for someone who observes construction work ([Treccani](https://www.treccani.it/vocabolario/umarell_%28Neologismi%29/)). Their spelling and use should be reviewed with a Bolognese speaker. Neither term is presented as something Renzi said.
 
@@ -28,7 +28,7 @@ Published by Cappelli in Bologna in 1969, *Il primo Fellini* gathers the screenp
 
 It is the first volume of a retrospective series, *From Subject to Film*. Its focus on scripts relates to Renzi's interest in the documents behind filmmaking. Readers can compare the published writing with the films while keeping the book's 1969 publication date distinct from their production dates.
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 What does a film look like before we watch it? Let me show you.\
 This book brings four Fellini screenplays onto the page.\
@@ -50,7 +50,7 @@ This caricature of Federico Fellini is attributed to Renzo Renzi and dated appro
 
 The drawing belongs to the Renzo Renzi Collection at the Cineteca di Bologna. Its small format and handwritten caption place words and image together on the same piece of paper. The approximate date leaves the exact circumstances of its creation open; the caption invites interpretation, but it does not by itself establish Fellini's response or Renzi's precise intention.
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 Here, I drew Fellini and asked a mischievous question: *Federico, when are you doing your revolution* (or better, *"revolussion"*?).\
 Is it a joke, a challenge, a bit of both?\
@@ -71,7 +71,7 @@ Renzo Renzi's portrait shows Giulietta Masina as Gelsomina, the character she pl
 
 The work is dated to around the 1950s; a more precise date is unknown. The drawing belongs to the Renzo Renzi Collection at the Cineteca di Bologna. Exactly when or why Renzi made it remains uncertain.
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 Who is Gelsomina? A gentle young woman travelling with a strongman.\
 Played by Giulietta Masina in *La strada*, she carries a little drum.\
@@ -91,7 +91,7 @@ This 1959 photograph by Aldo Ferrari shows Renzo Renzi on the set of *Le Notti d
 
 The available digital image provides access to a photographic record of filmmaking. Ferrari is also credited among the photographers in Renzi's *Bologna, una città*. 
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 Who is looking at whom?\
 Aldo Ferrari's camera finds me behind the scenes of *Le Notti del Melodramma* in 1959.\
@@ -111,7 +111,7 @@ Directed by Renzi and produced by Columbus Film in 1954, this short documentary 
 
 The film connects Renzi's filmmaking to Bologna's built environment. It is associated with the Renzo Renzi Fund at the Cineteca di Bologna; Archivio Luce also has a record for the film. Columbus Film, founded by Renzi and collaborators in 1950, produced short documentaries, including this one.
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 Take a walk with me through the porticoes of *Bulåggna* (Bologna) and look up.\
 In my documentary, I turn the camera towards these covered walkways and tell you their story and why they exist. Are you a student? Then you're one of the reasons.\
@@ -133,7 +133,7 @@ International title: *The Road*.
 
 The film is black and white, with sound, on 35 mm, and has a running time of 108 minutes. At the 1957 Academy Awards it received the Foreign Language Film award. The film's screenplay, photographs and music also circulated in forms separate from the moving image. A particular surviving print has not been identified for this entry.
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 What kind of journey takes Gelsomina onto the road with a strongman?\
 In Fellini's *La strada*, Giulietta Masina plays Gelsomina, travelling with Zampanò, played by Anthony Quinn. Their road takes them from one performance to another, through moments of hardship and kindness.\
@@ -153,7 +153,7 @@ Released in 1954, the disc has two sides: one includes “Gelsomina”, named af
 
 The recording is linked to Fellini's film. As a physical recording, the disc offers evidence of film music circulating separately from the film itself. Its format and track list identify this particular release; a different online recording would not necessarily represent the same performance or pressing.
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 Let me ask you: can a film tell a story when the screen is silent?\
 This little record carries four pieces of music from *La strada*.\
@@ -174,7 +174,7 @@ This photograph by Libero Grandi records the 1954 premiere of *La strada* at Cin
 
 The photograph records the film's public presentation in Bologna. Its identifier is IT-CINETECABOLOGNA-FT0001-050499.
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 It's 1954, and *La strada* has come to Bologna's Cinema Fulgor for its premiere.\
 Libero Grandi photographs me, Federico and Giulietta, celebrating my dear friend's great achievement.
@@ -195,7 +195,7 @@ The photographer is not credited.
 
 The image belongs to the Fondo Fotografie Cineteca and carries inventory number 26004-11. It documents a scene created for a fiction film, rather than an independently recorded circus event. As a still image, it isolates an instant from the moving work and allows viewers to compare its representation of performance with the film and Renzi's drawing of Gelsomina.
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 Let's take a peak at *La strada*: a circus scene with Zampanò.\
 Giulietta Masina and Anthony Quinn appear in a moment made for the film.\
@@ -215,7 +215,7 @@ This photograph from Federico Fellini's *La strada* depicts Giulietta Masina as 
 
 Held in the Fondo Fotografie Cineteca, the image preserves a scene associated with a fictional work. Its stillness invites attention to an everyday gesture within Gelsomina's journey. The precise location and the circumstances of the photograph remain unidentified.
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 Come with me: what can a quiet moment tell us about a journey?\
 Gelsomina pauses to eat bread in this still from *La strada*.
@@ -234,7 +234,7 @@ This manuscript leaf, dated approximately to 1952, belongs to Renzo Renzi's docu
 
 The documentary is one of the short films produced by Columbus Film, the company Renzi founded with Enzo Biagi, Luigi Pizzi and Renato Zambonelli in 1950. This single leaf offers evidence of the film's written preparation; it should not be treated as the complete screenplay.
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 These handwritten notes are mine, for *Quando il Po è dolce*, the documentary I wrote, directed and produced through Columbus Film, the production company I founded with other friends.\
 Through my camera, I show you the lives of the honest people that live on the Po's delta. 
@@ -252,7 +252,7 @@ The Cineteca di Bologna produced this video interview, titled *Il cinema a Bolog
 
 Columbus Film was founded in 1950 by Renzi, Enzo Biagi, Luigi Pizzi and Renato Zambonelli. The interview offers a later account of that work from one of its participants. The recording belongs to the Renzo Renzi Collection.
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 Let's talk about films: my short films.\
 In this 2000 interview, I talk about my life, work and Columbus Film, my production company.\
@@ -272,7 +272,7 @@ This personal document introduces a younger Renzi than the critic and filmmaker 
 
 The letter provides a personal point of entry into Renzi's wartime experience. Its date precedes the 1953 publication of his film idea *L'armata s'agapò*, though the two documents should not be assumed to express an unchanged position. A close reading and transcription would be needed to make more specific claims about the letter's contents.
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 In 1942, I wrote to my father about books, my studies and the life I was living: sometimes monotonous, sometimes eventful (*“un po' monotona, un po' movimentata”*). I wondered where he was, and thought of the distance between us.\
 Even in wartime, a letter could showcase ordinary concerns and affection. I ended mine with a simple *“Baci”*: kisses, Renzo.
@@ -291,7 +291,7 @@ This undated black-and-white photograph depicts Renzo Renzi taking a photograph.
 
 The composition places Renzi on both sides of the photographic encounter: he is shown using a camera while being photographed by someone else. The undetermined date prevents the image from being placed securely in a chronology of his life and work.
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 Who's behind the camera, who's in front of it?\
 Here I take a photograph while someone else photographs me.\
@@ -311,7 +311,7 @@ This is the first page of Renzo Renzi's manuscript for *L'armata s'agapò*, an a
 
 The two men were held in the fortress of Peschiera for forty days. This manuscript page has the archival identifier IT-CB-0016-5-8-001. The length of detention should not be confused with the sentence. 
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 This is the first page of my manuscript for *L'armata s'agapò*, a film idea about the Italian occupation of Greece.\
 When it appeared in *Cinema Nuovo* in 1953, its criticism of war led to charges against me and the magazine's editor, Guido Aristarco.\
@@ -331,7 +331,7 @@ This expanded edition was printed in 1964. It gives the Bologna stroll another k
 
 The volume offers a way to study Renzi's relationship with Bologna through both text and photography. Ferrari also photographed Renzi on a documentary set, although it is not established that the set photograph appeared in this book.
 
-**Whimsical / Told by Renzo**
+**Told by Renzo**
 
 Come for a walk with me through Bologna: beneath its porticoes, along its streets and into its squares.\
 My city has many names: *la dotta, la grassa, la rossa*—the learned, the well-fed and the red.\
