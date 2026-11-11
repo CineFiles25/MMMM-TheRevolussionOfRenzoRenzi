@@ -359,3 +359,9 @@ Here the pen gives way to the camera. Renzi writes screenplays, directs short do
 
 The last room follows a friendship. Renzi and Federico Fellini share the story of *La strada*, and Renzi can even tease his friend: his caricature of Fellini asks what he is waiting for to make the revolution.
 
+**Transitions between rooms** (shown on the map page under each room)
+
+Room 1 → 2: Leaving the soldier behind, Renzi turns to the camera. Walk on, and the filmmaker takes the stage.
+
+Room 2 → 3: Scripts, sets and photographs lead to the last room. Walk on, and the story turns to Fellini and *La strada*.
+

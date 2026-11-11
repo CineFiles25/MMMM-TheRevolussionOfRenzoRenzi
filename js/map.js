@@ -183,6 +183,12 @@
       const list = items.filter((i) => i.mapPosition && i.mapPosition.area === room.id);
       if (!list.length) return;
       host.appendChild(buildSection(room.title, list, room.color, room.theme, room.intro));
+      if (room.transition) {
+        const p = document.createElement("p");
+        p.className = "room-transition";
+        p.textContent = room.transition;
+        host.appendChild(p);
+      }
     });
     const unplaced = items.filter((i) => !isPlaced(i));
     if (unplaced.length) host.appendChild(buildSection("Not yet placed on the map", unplaced));

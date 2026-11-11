@@ -95,6 +95,7 @@ Style these in the CSS (all already styled in `css/skeleton.css`):
 | `marker-hit`, `marker-dot`, `marker-num` | invisible click area, coloured dot, stop number |
 | `room-section`, `room-swatch` | a room block in `room-list`; its colour square |
 | `room-intro` | the short intro paragraph under a room heading (from `intro` in `items.json`) |
+| `room-transition` | a paragraph after a room block, from `transition` in `items.json` (rooms 1 and 2 only) |
 
 The route/marker colour is the CSS variable `--map-accent`: a theme can set it.
 

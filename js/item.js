@@ -33,13 +33,8 @@
     return;
   }
 
-  const rooms = Exhibition.getRooms();
-  const room = item.mapPosition ? rooms.find((r) => r.id === item.mapPosition.area) : null;
-
   fillItem();
   fillMedia();
-  fillRoomIntro();
-  fillNextRoom();
   wireNavButtons();
   Exhibition.wireTextSelector($("text-selector"), (voiceId) => {
     showText(voiceId);
@@ -67,6 +62,7 @@
     const order = narrative ? narrative.order : [];
     const stopNo = order.indexOf(item.id) + 1;                       // 0 = not in this narrative
     const stopLabel = narrative && narrative.stopLabels ? narrative.stopLabels[item.id] : null;
+    const room = item.mapPosition ? Exhibition.getRooms().find((r) => r.id === item.mapPosition.area) : null;
     const bits = [];
     if (narrative && stopNo > 0) bits.push(`${narrative.title} — stop ${stopNo} of ${order.length}${stopLabel ? ` (${stopLabel})` : ""}`);
     if (room) bits.push(room.title);
@@ -74,28 +70,6 @@
     $("item-map-link").href = `map.html?narrative=${encodeURIComponent(narrativeId)}`;
 
     showText(Exhibition.getVoice());
-  }
-
-  /** The intro of the room this item is in, in #item-room-intro (hidden when there is no room). */
-  function fillRoomIntro() {
-    if (!room || !room.intro) return;
-    const box = $("item-room-intro");
-    box.textContent = room.intro;
-    box.hidden = false;
-  }
-
-  /** A link to the first item of the next room, in #item-next-room (hidden at the last room). */
-  function fillNextRoom() {
-    const nextRoom = room ? rooms.find((r) => r.order === room.order + 1) : null;
-    if (!nextRoom) return;
-    const target = Exhibition.getAllItems().find((i) => i.mapPosition && i.mapPosition.area === nextRoom.id);
-    if (!target) return;
-    const box = $("item-next-room");
-    const link = document.createElement("a");
-    link.href = Exhibition.buildItemUrl(narrativeId, target.id);
-    link.textContent = nextRoom.title;
-    box.replaceChildren("Next room: ", link);
-    box.hidden = false;
   }
 
   /** Puts the text of the chosen version (museum / archival / renzo) in #item-text. */
