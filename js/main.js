@@ -303,42 +303,49 @@ const Exhibition = (function () {
   }
 
   /**
-   * Builds the text-version selector (a radio group, so it works with the
-   * keyboard and screen readers) inside `container` and calls
-   * onChange(voiceId) when the visitor picks another one. Shared by every
-   * page that shows texts; markup/classes are placeholders for River's design.
+   * Wires the text-version selector inside `container` (e.g. <fieldset id="text-selector">).
+   * The radio buttons are written in the page's HTML — one
+   * <input type="radio" name="text-voice" value="museum|archival|renzo"> per voice —
+   * and this function only ticks the current one and listens for changes:
+   * onChange(voiceId) is called when the visitor picks another version.
+   * If the container has no radios, they are built here from VOICES (fallback).
    */
   function wireTextSelector(container, onChange) {
     if (!container) return;
     const current = getVoice();
-    container.innerHTML = "";
 
-    const fieldset = document.createElement("fieldset");
-    fieldset.className = "text-selector";
-    const legend = document.createElement("legend");
-    legend.textContent = "Text version";
-    fieldset.appendChild(legend);
+    if (!container.querySelector('input[type="radio"][name="text-voice"]')) {
+      VOICES.forEach((voice) => {
+        const label = document.createElement("label");
+        label.title = voice.description;
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "text-voice";
+        input.value = voice.id;
+        label.append(input, document.createTextNode(" " + voice.label));
+        container.appendChild(label);
+      });
+    }
 
-    VOICES.forEach((voice) => {
-      const label = document.createElement("label");
-      label.className = "text-selector-option";
-      label.title = voice.description;
-      const input = document.createElement("input");
-      input.type = "radio";
-      input.name = "text-voice";
-      input.value = voice.id;
-      input.checked = voice.id === current;
+    container.querySelectorAll('input[type="radio"][name="text-voice"]').forEach((input) => {
+      input.checked = input.value === current;
       input.addEventListener("change", () => {
         if (!input.checked) return;
-        setVoice(voice.id);
-        if (typeof onChange === "function") onChange(voice.id);
+        setVoice(input.value);
+        if (typeof onChange === "function") onChange(input.value);
       });
-      label.appendChild(input);
-      label.appendChild(document.createTextNode(" " + voice.label));
-      fieldset.appendChild(label);
     });
+  }
 
-    container.appendChild(fieldset);
+  /**
+   * Common start of every page: loads the data, applies the stored theme and
+   * fills <select id="theme-select"> (if the page has one). Returns the cache.
+   */
+  async function initPage() {
+    const data = await load();
+    applyStoredTheme();
+    wireThemeSelect(document.getElementById("theme-select"));
+    return data;
   }
 
   // ---------------------------------------------------------------------
@@ -377,6 +384,7 @@ const Exhibition = (function () {
     findText,
     formatText,
     wireTextSelector,
+    initPage,
     getTextPreference,
     setTextPreference,
     getQueryParam,
