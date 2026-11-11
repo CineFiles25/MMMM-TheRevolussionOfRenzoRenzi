@@ -353,7 +353,7 @@ Before the critic and the filmmaker, there is a young man in uniform. Here Renzi
 
 **Room 2 — Renzo Renzi, the filmmaker**
 
-Here the pen gives way to the camera. Renzi writes screenplays, directs short documentaries and photographs the city he loves, and Bologna's porticoes become his set.
+The pen gives way to the camera. Renzi writes screenplays, directs short documentaries and photographs the city he loves, where its porticoes become his set.
 
 **Room 3 — Renzo Renzi, the friend / Renzi & Fellini**
 
