@@ -47,6 +47,9 @@ URL: `exhibition.html?narrative=<narrative id>&item=<item id>`
 | `item-type` | `<span>` | type (Photograph, Letter…) |
 | `item-date` | `<span>` | date in brackets, e.g. `(1954)` |
 | `item-context` | `<p>` | "Renzo Renzi: a Life — stop 8 of 15 · Renzo Renzi, the friend / Renzi & Fellini" |
+| `item-context` | `<p>` | "Renzo Renzi: a Life — stop 8 of 15 · Renzo Renzi, the friend / Renzi & Fellini" |
+| `item-room-intro` | `<div>` | empty and `hidden` in the HTML; the script should fill it with the room intro and unhide it |
+| `item-next-room` | `<p>` | empty and `hidden`; the script should fill it with a link to the next room, on the last item of a room, and unhide it |
 | `item-map-link` | `<a>` | only its `href` is set: back to the map on the same narrative |
 | `item-text` | `<div lang="en">` | the text of the chosen version, as paragraphs with `<em>` for italics |
 | `item-rights` | `<p>` | rights statement (hidden when empty) |
@@ -92,7 +95,6 @@ Style these in the CSS (all already styled in `css/skeleton.css`):
 | `marker-hit`, `marker-dot`, `marker-num` | invisible click area, coloured dot, stop number |
 | `room-section`, `room-swatch` | a room block in `room-list`; its colour square |
 | `room-intro` | the short intro paragraph under a room heading (from `intro` in `items.json`) |
-| `room-transition` | the transition text shown after a room (from `transition` in `items.json`) |
 
 The route/marker colour is the CSS variable `--map-accent`: a theme can set it.
 
