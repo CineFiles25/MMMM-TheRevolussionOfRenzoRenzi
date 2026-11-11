@@ -20,7 +20,7 @@
     return;
   }
 
-  const narrativeId = Exhibition.getQueryParam("narrative") || "timeline";
+  const narrativeId = Exhibition.getQueryParam("narrative") || "renzo-renzi-a-life";
   let itemId = Exhibition.getQueryParam("item");
   if (!itemId) {                              // no item in the URL: start from the first one of the narrative
     const first = Exhibition.getNarrativeItems(narrativeId);
@@ -57,7 +57,7 @@
     $("item-rights").textContent = meta.rights || "";
     $("item-rights").hidden = !meta.rights;
 
-    // "Historical timeline — stop 8 of 15 · Renzo Renzi, the friend / Renzi & Fellini"
+    // "Renzo Renzi: a Life — stop 8 of 15 · Renzo Renzi, the friend / Renzi & Fellini"
     const narrative = Exhibition.getNarrative(narrativeId);
     const order = narrative ? narrative.order : [];
     const stopNo = order.indexOf(item.id) + 1;                       // 0 = not in this narrative

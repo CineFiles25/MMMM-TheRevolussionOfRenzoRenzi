@@ -337,16 +337,10 @@ Come for a walk with me through Bologna: beneath its porticoes, along its street
 My city has many names: *la dotta, la grassa, la rossa*—the learned, the well-fed and the red.\
 In *Bologna, una città*, my words meet photographs, inviting you to wander through its pages.
 
-## Narrative captions
+## Narrative card captions
 
-### Historical
+A short introduction for each narrative card on the item and map pages: a few sentences, shown under the card title.
 
-Guide to Renzo Renzi's life and work, told in date order: from his life as a son and soldier to that as a filmmaker and writer.
-
-### From subject to film
-
-Follow *La strada* from the page to the screen and beyond. Renzi's 1969 book of Fellini screenplays shows how a film story can also be read. A drawing and two production stills then take Gelsomina out of the film frame, to the soundtrack, the finished film and its premiere at Cinema Fulgor in Bologna. Each stop moves the story further from the script and closer to an audience.
-
-### Bologna
-
-A walk around Renzi's city, Bologna, through Renzi's eyes, words and film camera. Five stops offer five ways of meeting the city: walk it, film it, read it, watch a film in it, and remember it. Follow them in order to move from a street of porticoes to a film set, a book, a cinema on premiere night and, finally, Renzi's own memories of the city in his 2000 interview.
+- **Renzo Renzi: a Life:** Follow Renzo Renzi from his first letters to his last interview, one date at a time. Every page he wrote was a step towards the cinema he loved, and you will feel his restless energy in each one.
+- **From subject to film:** Watch a single idea travel from the printed page to the big screen. Renzi never simply wrote a film; he argued, drew and dreamed it into being, and this route shows how.
+- **Guide to walking in Bologna:** Walk, watch, read and remember the city that shaped Renzi. Bologna was his stage and his muse, and every stop here brings his enthusiasm for it back to life.

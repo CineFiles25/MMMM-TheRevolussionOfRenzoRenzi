@@ -30,9 +30,9 @@
   const narratives = Exhibition.getNarratives();
   const items = Exhibition.getAllItems();
 
-  // Which itinerary is shown: ?narrative=<id> | all ; default = the historical timeline
+  // Which itinerary is shown: ?narrative=<id> | all ; default = Renzo Renzi: a Life
   let selected = Exhibition.getQueryParam("narrative");
-  if (selected !== "all" && !Exhibition.getNarrative(selected)) selected = "timeline";
+  if (selected !== "all" && !Exhibition.getNarrative(selected)) selected = "renzo-renzi-a-life";
 
   const isPlaced = (it) => it.mapPosition && typeof it.mapPosition.x === "number" && typeof it.mapPosition.y === "number";
   const roomTitle = (id) => (rooms.find((r) => r.id === id) || {}).title || "";
@@ -48,7 +48,7 @@
     const chosen = Exhibition.getNarrative(selected);
     if (chosen && chosen.order.includes(item.id)) return chosen.id;
     const other = narratives.find((n) => n.order.includes(item.id));
-    return other ? other.id : "timeline";
+    return other ? other.id : "renzo-renzi-a-life";
   }
   function itemUrl(item) {
     return Exhibition.buildItemUrl(linkNarrative(item), item.id);

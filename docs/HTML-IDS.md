@@ -46,7 +46,7 @@ URL: `item.html?narrative=<narrative id>&item=<item id>`
 | `item-creator` | `<strong>` / `<span>` | creator (or "Unknown creator") |
 | `item-type` | `<span>` | type (Photograph, Letter…) |
 | `item-date` | `<span>` | date in brackets, e.g. `(1954)` |
-| `item-context` | `<p>` | "Historical timeline — stop 8 of 15 · Renzo Renzi, the friend / Renzi & Fellini" |
+| `item-context` | `<p>` | "Renzo Renzi: a Life — stop 8 of 15 · Renzo Renzi, the friend / Renzi & Fellini" |
 | `item-map-link` | `<a>` | only its `href` is set: back to the map on the same narrative |
 | `item-text` | `<div lang="en">` | the text of the chosen version, as paragraphs with `<em>` for italics |
 | `item-rights` | `<p>` | rights statement (hidden when empty) |

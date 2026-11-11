@@ -34,9 +34,9 @@ team agreed on the three narratives, the three rooms and the final planimetry.
 
 ## The three narratives (agreed by the team)
 
-1. `timeline` — Historical (required), 15 items in date order.
+1. `renzo-renzi-a-life` — Renzo Renzi: a Life (Historical, required), 15 items in date order.
 2. `from-subject-to-film` — 7 items, from page to screen.
-3. `bologna-walk` — "Guida per camminare a Bologna", 5 items, thematic order;
+3. `guide-to-walking-bologna` — "Guide to walking in Bologna", 5 items, thematic order;
    each stop has a verb (walk it, film it, read it, watch a film in it,
    remember it) stored as `stopLabels`.
 
@@ -59,7 +59,7 @@ the three rooms keep a trace of it.
   its stops are joined by a numbered route in the order of
   `narratives.json`, the other items are dimmed, and "Start this itinerary"
   opens the first item. The choice lives in the URL
-  (`map.html?narrative=bologna-walk`, `=all`). Nothing is hard-coded: route =
+  (`map.html?narrative=guide-to-walking-bologna`, `=all`). Nothing is hard-coded: route =
   `narrative.order`, positions = `mapPosition`.
 - Non-visual alternative: the side panel gives the itinerary as an ordered list
   of links, plus every item grouped by room; the number of stops is announced

@@ -350,7 +350,7 @@ const Exhibition = (function () {
 
   // ---------------------------------------------------------------------
   // URL helpers — navigation state passed via query string,
-  // e.g. item.html?narrative=timeline&item=il-primo-fellini
+  // e.g. item.html?narrative=renzo-renzi-a-life&item=il-primo-fellini
   // ---------------------------------------------------------------------
 
   function getQueryParam(name) {

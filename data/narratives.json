@@ -2,14 +2,15 @@
   "_readme": [
     "A narrative = an itinerary through the items. Each narrative has an 'order' array of ids (from items.json) that defines prev/next.",
     "The same item can appear in more than one narrative, even in a different order.",
-    "Three narratives, as agreed by the team and written in the Notion table 'Narratives': 'timeline' (Historical, required), 'from-subject-to-film' and 'bologna-walk'.",
+    "Three narratives, as agreed by the team and written in the Notion table 'Narratives': 'renzo-renzi-a-life' (Historical, required), 'from-subject-to-film' and 'guide-to-walking-bologna'.",
     "The earlier 'Renzi: Many Lives' idea (critic / curator / soldier-partisan) was dropped; its spirit survives in the three rooms of the museum (see rooms in items.json).",
     "Optional 'stopLabels' (item id -> short phrase) name what each stop is for in that narrative; used in the itinerary list on the map."
   ],
   "narratives": [
     {
-      "id": "timeline",
-      "title": "Historical timeline",
+      "id": "renzo-renzi-a-life",
+      "title": "Renzo Renzi: a Life",
+      "caption": "Guide to Renzo Renzi's life and work: from his life as a son and soldier to that as a filmmaker and writer.",
       "description": "Guide to Renzo Renzi's life and work, told in date order: from his life as a son and soldier to that as a filmmaker and writer.",
       "required": true,
       "order": [
@@ -39,6 +40,7 @@
     {
       "id": "from-subject-to-film",
       "title": "From subject to film",
+      "caption": "Walk through the life of a film: *La strada*, from the page to the screen and the red carpet. Start with the drawing and the stills, then hear the soundtrack that gave the film its music. Finish with the premiere, where the story finally met its audience.",
       "description": "Follow *La strada* from the page to the screen and beyond. Renzi's 1969 book of Fellini screenplays shows how a film story can also be read. A drawing and two production stills then take Gelsomina out of the film frame, to the soundtrack, the finished film and its premiere at Cinema Fulgor in Bologna. Each stop moves the story further from the script and closer to an audience.",
       "required": false,
       "order": [
@@ -52,9 +54,10 @@
       ]
     },
     {
-      "id": "bologna-walk",
-      "title": "Guida per camminare a Bologna",
-      "titleEn": "A guide to walk around Bologna",
+      "id": "guide-to-walking-bologna",
+      "title": "Guide to walking in Bologna",
+      "caption": "A walk around Renzi's city, Bologna, through Renzi's eyes, words and film camera. Five stops offer five ways of meeting the city: walk it, film it, read it, watch a film in it, and remember it.",
+      "titleEn": "Guide to walking in Bologna",
       "description": "A walk around Renzi's city, Bologna, through Renzi's eyes, words and film camera. Five stops offer five ways of meeting the city: walk it, film it, read it, watch a film in it, and remember it. Follow them in order to move from a street of porticoes to a film set, a book, a cinema on premiere night and, finally, Renzi's own memories of the city in his 2000 interview.",
       "required": false,
       "order": [
