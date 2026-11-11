@@ -202,6 +202,10 @@ const Exhibition = (function () {
   function applyStoredTheme() {
     const theme = getCurrentTheme();
     document.documentElement.setAttribute("data-theme", theme.id);
+    // The page's <link id="theme-stylesheet"> starts with the default theme's file:
+    // point it at the visitor's stored theme so the right CSS loads on every page.
+    const link = document.getElementById("theme-stylesheet");
+    if (link) link.setAttribute("href", theme.cssFile);
     return theme;
   }
 
