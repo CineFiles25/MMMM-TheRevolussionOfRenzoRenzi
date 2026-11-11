@@ -6,8 +6,8 @@
     "'embedUrl' is set only where the provider allows embedding in an <iframe>.",
     "mapPosition.area is a room id from 'rooms' below. mapPosition.x / .y are PERCENTAGES (0-100) of the width/height of",
     "assets/img/museum/gallery_planimetry_no_punti.png (4032x3024) -- not pixels -- so they survive any display size. See map.html.",
-    "Positions come from Claudia's annotated sketch (final planimetry): one dot per item. Each text still holds only the CSV description;",
-    "the whimsical/academic versions are in data/text_grid.md and not imported yet. See ARCHITECTURE-NOTES.md for open questions."
+    "Positions come from Claudia's annotated sketch (final planimetry): one dot per item.",
+    "Each item has three texts (Claudia's review draft, imported from data/text_grid.md): voice 'museum' (medium / average / general adult), 'archival' (long / advanced / scholar), 'renzo' (very brief / introductory / young, an imagined Renzi speaking in the first person). Text format: plain text, blank line = new paragraph, single line break = <br>, *asterisks* = italics (rendered by Exhibition.formatText in js/main.js)."
   ],
   "items": [
     {
@@ -57,11 +57,31 @@
       ],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "Films begin on a page before going to the screen. Published in 1969, *Il primo Fellini* brings together the screenplays of four films by Federico Fellini, including *La strada*. Renzo Renzi wrote the introduction, while Liliana Betti and Eschilo Tarquini edited the volume.\n\nThe book invites us to explore cinema through writing: a scene can be read, imagined and then compared with the film. In this exhibition, a selected sequence from *La strada* offers one way into that conversation between page and screen.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "The volume contains the screenplays of four Fellini films: 'Lo sceicco bianco', 'I vitelloni', 'La strada', and 'Il bidone'. Only a selected sequence of 'La strada' is used for the TEI encoding in this project.",
-          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "Published by Cappelli in Bologna in 1969, *Il primo Fellini* gathers the screenplays of *Lo sceicco bianco*, *I vitelloni*, *La strada* and *Il bidone*. Federico Fellini is credited with the screenplays, Liliana Betti and Eschilo Tarquini as editors, and Renzo Renzi with the introduction. The illustrated volume runs to 326 pages and measures 25 centimetres.\n\nIt is the first volume of a retrospective series, *From Subject to Film*. Its focus on scripts relates to Renzi's interest in the documents behind filmmaking. Readers can compare the published writing with the films while keeping the book's 1969 publication date distinct from their production dates.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "What does a film look like before we watch it? Let me show you.\nThis book brings four Fellini screenplays onto the page.\nI wrote the introduction. The screen can wait a moment.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -70,7 +90,6 @@
         "y": 63.4
       },
       "_todo": [
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)",
         "map: sketch label says 'script La Strada' -- read as this book (it contains the La Strada script); confirm with Claudia"
       ],
       "externalLinks": []
@@ -122,11 +141,31 @@
       ],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "Renzo Renzi drew this small caricature of Federico Fellini. The handwritten caption asks, in Italian, what Federico is waiting for to make the revolution.\n\nMade with ink and coloured markers on cut paper, the drawing shows another side of Renzi: not just the writer and filmmaker, but the caricaturist. The question can be read as playful, though its precise meaning is open to interpretation. The drawing is dated to around the 1960s.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "Hand-drawn caricature by Renzo Renzi depicting Federico Fellini with a humorous handwritten caption. Created in the 1960s, the drawing became an emblematic image associated with the Renzo Renzi Collection of the Cineteca di Bologna.",
-          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "This caricature of Federico Fellini is attributed to Renzo Renzi and dated approximately to the 1960s. It combines black ink and coloured markers on cut paper and measures 13 by 8.6 centimetres. Its handwritten caption appears to read “Cosa aspetta Federico a fare la rivolussione?”, asking what Federico is waiting for to make the revolution.\n\nThe drawing belongs to the Renzo Renzi Collection at the Cineteca di Bologna. Its small format and handwritten caption place words and image together on the same piece of paper. The approximate date leaves the exact circumstances of its creation open; the caption invites interpretation, but it does not by itself establish Fellini's response or Renzi's precise intention.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "Here, I drew Fellini and asked a mischievous question: *Federico, when are you doing your revolution* (or better, *\"revolussion\"*?).\nIs it a joke, a challenge, a bit of both?\nTake a closer look and decide for yourself.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -135,7 +174,7 @@
         "y": 60.2
       },
       "_todo": [
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+        "copy-editing note from text_grid.md: Italian inscription (tentative transcription): *Cosa aspetta Federico a fare la rivolussione?* — “What is Federico waiting for to make the revolution?” The catalogue gives the English title “Fellini caricature”; the inscription's exact spelling should be checked against the original."
       ],
       "externalLinks": []
     },
@@ -182,15 +221,35 @@
         "conditions_governing_reproduction": null
       },
       "images": [
-        "assets/items/gelsomina_drawing.png"
+        "assets/items/gelsomina_drawing.jpg"
       ],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "Gelsomina, the character played by Giulietta Masina in Fellini's *La strada*, appears here with her small drum. Renzo Renzi drew her in pencil and coloured markers on cardboard.\n\nThe portrait takes a character from a moving film and lets us spend time with her on a still page. The drawing is dated to around the 1950s, but its exact date is unknown.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "Portrait drawing by Renzo Renzi depicting Giulietta Masina as Gelsomina from Federico Fellini’s film *La Strada*, shown playing a small drum.",
-          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "Renzo Renzi's portrait shows Giulietta Masina as Gelsomina, the character she plays in Federico Fellini's *La strada*. Gelsomina appears with a small drum, a detail that connects the drawing to the film's world of itinerant performance. Renzi used pencil and coloured markers on cardboard measuring 25.2 by 17.2 centimetres.\n\nThe work is dated to around the 1950s; a more precise date is unknown. The drawing belongs to the Renzo Renzi Collection at the Cineteca di Bologna. Exactly when or why Renzi made it remains uncertain.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "Who is Gelsomina? A gentle young woman travelling with a strongman.\nPlayed by Giulietta Masina in *La strada*, she carries a little drum.\nI drew her here. Let's meet her.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -198,9 +257,6 @@
         "x": 27.3,
         "y": 61.0
       },
-      "_todo": [
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
-      ],
       "externalLinks": []
     },
     {
@@ -250,11 +306,31 @@
       ],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "This photograph takes us behind the scenes of *Le Notti del Melodramma*, a documentary associated with Renzo Renzi. Taken by Aldo Ferrari in 1959, it depicts Renzi on the film set in Bologna.\n\nThe black-and-white photograph brings together two ways of recording a moment: Ferrari's still image and the moving pictures being made on set. The original print is part of the Cineteca di Bologna's photographic collections.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "Digital surrogate available on the Cineteca di Bologna website.",
-          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "This 1959 photograph by Aldo Ferrari shows Renzo Renzi on the set of *Le Notti del Melodramma* in Bologna. The original is a black-and-white gelatin silver print. It is held in the Cineteca di Bologna's Fototeca, within the Fondo Aldo Ferrari, donated by Costantino and Lucia Della Casa.\n\nThe available digital image provides access to a photographic record of filmmaking. Ferrari is also credited among the photographers in Renzi's *Bologna, una città*.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "Who is looking at whom?\nAldo Ferrari's camera finds me behind the scenes of *Le Notti del Melodramma* in 1959.\nFor once, I'm part of a photograph instead of making a film.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -262,9 +338,6 @@
         "x": 56.5,
         "y": 57.6
       },
-      "_todo": [
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
-      ],
       "externalLinks": []
     },
     {
@@ -312,11 +385,31 @@
       "images": [],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "What would a walk through Bologna look like on film? In *Guida per camminare all'ombra*, Renzo Renzi turns his attention to the city's porticoes: the covered walkways that shape its streets.\n\nDirected by Renzi and produced by Columbus Film in 1954, this short documentary was presented at the Venice Film Festival. It offers an invitation to look more closely at a familiar part of the city.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "Short documentary film directed by Renzo Renzi and presented at the Venice Film Festival.",
-          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "*Guida per camminare all'ombra* is a 1954 short documentary directed by Renzo Renzi and produced by Columbus Film. It explores Bologna's porticoes and runs for approximately ten minutes. It is a colour film with sound on 35 mm and was presented at the Venice Film Festival.\n\nThe film connects Renzi's filmmaking to Bologna's built environment. It is associated with the Renzo Renzi Fund at the Cineteca di Bologna; Archivio Luce also has a record for the film. Columbus Film, founded by Renzi and collaborators in 1950, produced short documentaries, including this one.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "Take a walk with me through the porticoes of *Bulåggna* (Bologna) and look up.\nIn my documentary, I turn the camera towards these covered walkways and tell you their story and why they exist. Are you a student? Then you're one of the reasons.\nFollow the arches and see the city with fresh eyes.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -325,8 +418,7 @@
         "y": 50.8
       },
       "_todo": [
-        "video file is too large for the repo: for now only the Archivio Luce record is linked (externalLinks); decide hosting for the video itself",
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+        "video file is too large for the repo: for now only the Archivio Luce record is linked (externalLinks); decide hosting for the video itself"
       ],
       "externalLinks": [
         {
@@ -382,11 +474,31 @@
       "images": [],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "Federico Fellini's *La strada* follows Gelsomina, played by Giulietta Masina, as she travels with the strongman Zampanò. Its story brings together performance, hardship and moments of kindness.\n\nReleased in 1954, the film is one of the works through which this exhibition explores Renzi's connection with Fellini. Drawings, photographs, a screenplay and a record offer other ways of encountering its characters and world.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "Feature fiction film directed by Federico Fellini.",
-          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "*La strada* (international title: *The Road*) is a 1954 feature film directed by Federico Fellini, with Giulietta Masina as Gelsomina and Anthony Quinn as Zampanò.\nIts story follows the two travelling performers and is accompanied by music by Nino Rota.\nIt is produced by the Ponti–De Laurentiis Cinematografica company.\nInternational title: *The Road*.\n\nThe film is black and white, with sound, on 35 mm, and has a running time of 108 minutes. At the 1957 Academy Awards it received the Foreign Language Film award. The film's screenplay, photographs and music also circulated in forms separate from the moving image. A particular surviving print has not been identified for this entry.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "What kind of journey takes Gelsomina onto the road with a strongman?\nIn Fellini's *La strada*, Giulietta Masina plays Gelsomina, travelling with Zampanò, played by Anthony Quinn. Their road takes them from one performance to another, through moments of hardship and kindness.\nI believed in Federico's talent early on, before Venezia and Hollywood: this is one of the many great films he went on to make.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -394,9 +506,6 @@
         "x": 26.4,
         "y": 52.9
       },
-      "_todo": [
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
-      ],
       "externalLinks": [
         {
           "kind": "video",
@@ -452,11 +561,31 @@
       "images": [],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "You can encounter *La strada* with your ears as well as your eyes. This small record contains four pieces connected to the film, with music by Nino Rota performed by the Grand Orchestre Jo Moutet.\n\nReleased in 1954, the disc has two sides: one includes “Gelsomina”, named after the film's central character. The record lets the music travel beyond the cinema screen and into a listener's home.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "From the original soundtrack of the 1954 film. Contains: Side A — 'Gelsomina', 'Dona-Manolita'. Side B — 'La strada', 'Comprate i miei fiori'.",
-          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "*La strada : [musique du film]* is a 1954 sound disc issued by Ducretet Thomson. It contains music by Nino Rota, performed by the Grand Orchestre Jo Moutet. The 17.5-centimetre record plays at 45 rpm. Side A contains “Gelsomina” and “Dona-Manolita”; side B contains “La strada” and “Comprate i miei fiori”.\n\nThe recording is linked to Fellini's film. As a physical recording, the disc offers evidence of film music circulating separately from the film itself. Its format and track list identify this particular release; a different online recording would not necessarily represent the same performance or pressing.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "Let me ask you: can a film tell a story when the screen is silent?\nThis little record carries four pieces of music from *La strada*.\nTurn it over: Nino Rota's music has another side to share.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -464,9 +593,6 @@
         "x": 21.5,
         "y": 50.3
       },
-      "_todo": [
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
-      ],
       "externalLinks": [
         {
           "kind": "audio",
@@ -524,11 +650,31 @@
       ],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "In 1954, *La strada* came to Bologna's Cinema Fulgor (Pop Up Cinema Medica 4k today).\nLibero Grandi's photograph records the occasion with Federico Fellini and Giulietta Masina, the film's director and leading actress.\n\nThe picture shifts our attention from the story on screen to the people and place around a screening. It is also a glimpse of Bologna's cinema culture: a film becomes an event shared with a local audience.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "Indexed in 'Bologna Fotografata' under: Film actors and directors; Cultural events; Personalities.",
-          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "This photograph by Libero Grandi records the 1954 premiere of *La strada* at Cinema Fulgor with Federico Fellini and Giulietta Masina. It is a black-and-white vintage press photograph and a gelatin silver print, held in the Fondo Iniziative Cineteca. The inventory number is FIC0414.\n\nThe photograph records the film's public presentation in Bologna. Its identifier is IT-CINETECABOLOGNA-FT0001-050499.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "It's 1954, and *La strada* has come to Bologna's Cinema Fulgor for its premiere.\nLibero Grandi photographs me, Federico and Giulietta, celebrating my dear friend's great achievement.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -536,9 +682,6 @@
         "x": 35.0,
         "y": 48.6
       },
-      "_todo": [
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
-      ],
       "externalLinks": [
         {
           "kind": "page",
@@ -595,11 +738,31 @@
       ],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "This photograph takes us into a circus performance in Fellini's *La strada*. Giulietta Masina and Anthony Quinn appear as Gelsomina and Zampanò, two characters who travel and perform together.\n\nThe image remains as a record of the film's visual world. Unlike a moving scene, this still gives us time to look at one moment of the performance.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "Set photograph from Federico Fellini’s film 'La Strada', showing a circus performance scene.",
-          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "Dated 1954, this black-and-white set photograph shows a circus performance scene from Federico Fellini's *La strada*, with Giulietta Masina and Anthony Quinn as the subjects.\nThe image is a gelatin silver print.\nThe photographer is not credited.\n\nThe image belongs to the Fondo Fotografie Cineteca and carries inventory number 26004-11. It documents a scene created for a fiction film, rather than an independently recorded circus event. As a still image, it isolates an instant from the moving work and allows viewers to compare its representation of performance with the film and Renzi's drawing of Gelsomina.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "Let's take a peak at *La strada*: a circus scene with Zampanò.\nGiulietta Masina and Anthony Quinn appear in a moment made for the film.\nThe photographer is unknown, but the picture still has a story to tell.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -608,7 +771,6 @@
         "y": 43.7
       },
       "_todo": [
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)",
         "map: the two 'foto film' dots are interchangeable in Claudia's sketch -- which is which is a guess"
       ],
       "externalLinks": []
@@ -660,11 +822,31 @@
       ],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "Gelsomina pauses to eat bread in this photograph from *La strada*. Played by Giulietta Masina, she appears in a rural landscape, away from the noise of the film's performances.\n\nThe image captures a small, ordinary action within a story of life on the road. Its photographer and exact location are unknown, reminding us that even an evocative image can leave questions unanswered.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "Set photograph from Federico Fellini’s film 'La Strada', showing Gelsomina in a rural environment; exact location unknown. Creation year circa 1954.",
-          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "This photograph from Federico Fellini's *La strada* depicts Giulietta Masina as Gelsomina eating bread in a rural landscape. Dated to around 1954, it is a black-and-white gelatin silver print; neither the photographer nor the exact location is known. The original physical description is incomplete; the listed inventory number is OLA309977.\n\nHeld in the Fondo Fotografie Cineteca, the image preserves a scene associated with a fictional work. Its stillness invites attention to an everyday gesture within Gelsomina's journey. The precise location and the circumstances of the photograph remain unidentified.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "Come with me: what can a quiet moment tell us about a journey?\nGelsomina pauses to eat bread in this still from *La strada*.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -673,7 +855,6 @@
         "y": 43.2
       },
       "_todo": [
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)",
         "map: the two 'foto film' dots are interchangeable in Claudia's sketch -- which is which is a guess"
       ],
       "externalLinks": []
@@ -725,11 +906,31 @@
       ],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "Before a film reaches an audience, it often begins with words on a page. This handwritten manuscript is connected to *Quando il Po è dolce*, a documentary project about the Po Delta.\n\nRenzo Renzi wrote and annotated the page in ink. Kept in his archive, it gives us a glimpse of filmmaking as a process of writing and preparation, not just of working with a camera.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "Handwritten manuscript page for the documentary project 'Quando il Po è dolce'. The item is part of the Renzo Renzi archival documentation shown in the 'Short films produced' gallery.",
-          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "This manuscript leaf, dated approximately to 1952, belongs to Renzo Renzi's documentary project *Quando il Po è dolce*. It is a handwritten page in ink on paper, with autograph notes, about the Po Delta. It is held in the Renzo Renzi Fund at the Cineteca di Bologna under identifier IT-CB-0016-4-3_0021.\n\nThe documentary is one of the short films produced by Columbus Film, the company Renzi founded with Enzo Biagi, Luigi Pizzi and Renato Zambonelli in 1950. This single leaf offers evidence of the film's written preparation; it should not be treated as the complete screenplay.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "These handwritten notes are mine, for *Quando il Po è dolce*, the documentary I wrote, directed and produced through Columbus Film, the production company I founded with other friends.\nThrough my camera, I show you the lives of the honest people that live on the Po's delta.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -737,9 +938,6 @@
         "x": 55.9,
         "y": 50.5
       },
-      "_todo": [
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
-      ],
       "externalLinks": []
     },
     {
@@ -787,11 +985,31 @@
       "images": [],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "What does Renzi remember about making films? In this interview, recorded in 2000, he talks about his work and the history of Columbus Film, the short-film company he helped found.\nThe conversation lets visitors encounter Renzi in his own voice. The original recording runs for 56 minutes.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "Video interview with Renzo Renzi discussing his work and the history of Columbus Film, produced by the Cineteca di Bologna. | Interview recorded in VHS format; director and interviewer are not credited.",
-          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "The Cineteca di Bologna produced this video interview, titled *Il cinema a Bologna: Renzo Renzi e la Columbus film*, in 2000. It records Renzi discussing his work and the history of Columbus Film. The colour VHS recording runs for 56 minutes and has sound; neither a director nor an interviewer is credited.\n\nColumbus Film was founded in 1950 by Renzi, Enzo Biagi, Luigi Pizzi and Renato Zambonelli. The interview offers a later account of that work from one of its participants. The recording belongs to the Renzo Renzi Collection.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "Let's talk about films: my short films.\nIn this 2000 interview, I talk about my life, work and Columbus Film, my production company.\nA chance for this storyteller to become the story.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -800,8 +1018,7 @@
         "y": 51.3
       },
       "_todo": [
-        "video file is too large for the repo and lives on Claudia's drive: decide hosting (external link / Git LFS)",
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
+        "video file is too large for the repo and lives on Claudia's drive: decide hosting (external link / Git LFS)"
       ],
       "externalLinks": []
     },
@@ -854,11 +1071,31 @@
       ],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "During the Second World War, Renzo Renzi wrote this letter to his father from the front. Dated 24 July 1942, its three handwritten pages describe aspects of his intellectual life during wartime.\n\nThis personal document introduces a younger Renzi than the critic and filmmaker we meet elsewhere in the exhibition. It also brings a private voice into a story shaped by a public conflict.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "Personal letter written by Renzo Renzi to his father during World War II, describing his intellectual life at the front.",
-          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "*Lettera al padre* is a three-page handwritten letter dated 24 July 1942. Written by Renzo Renzi to his father during the Second World War, it describes his intellectual life at the front. It belongs to the Renzo Renzi Collection at the Cineteca di Bologna and has the identifier IT-CB-0016-2-9_0001.\n\nThe letter provides a personal point of entry into Renzi's wartime experience. Its date precedes the 1953 publication of his film idea *L'armata s'agapò*, though the two documents should not be assumed to express an unchanged position. A close reading and transcription would be needed to make more specific claims about the letter's contents.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "In 1942, I wrote to my father about books, my studies and the life I was living: sometimes monotonous, sometimes eventful (*“un po' monotona, un po' movimentata”*). I wondered where he was, and thought of the distance between us.\nEven in wartime, a letter could showcase ordinary concerns and affection. I ended mine with a simple *“Baci”*: kisses, Renzo.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -866,9 +1103,6 @@
         "x": 67.1,
         "y": 59.1
       },
-      "_todo": [
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
-      ],
       "externalLinks": []
     },
     {
@@ -918,11 +1152,31 @@
       ],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "Here Renzo Renzi is both the subject of a photograph and a person taking one. Someone else's camera catches him looking through his own.\n\nThe photograph's maker - probably a family member -, date and location are unknown. It offers an informal introduction to a man whose work involved looking at the world through images as well as words.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "Digital surrogate available on the Cineteca di Bologna website.",
-          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "This undated black-and-white photograph depicts Renzo Renzi taking a photograph. Neither the photographer nor the location is known. The original is described as a vintage gelatin silver print; a digital surrogate is available through the Cineteca di Bologna. The image is associated with the Renzo Renzi Fund and the identifier Famiglia-Renzi_002.\n\nThe composition places Renzi on both sides of the photographic encounter: he is shown using a camera while being photographed by someone else. The undetermined date prevents the image from being placed securely in a chronology of his life and work.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "Who's behind the camera, who's in front of it?\nHere I take a photograph while someone else photographs me.\nPlace, date and person behind the other camera? I don't remember.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -930,9 +1184,6 @@
         "x": 69.3,
         "y": 62.9
       },
-      "_todo": [
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
-      ],
       "externalLinks": []
     },
     {
@@ -982,11 +1233,31 @@
       ],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "This handwritten page is the first page of Renzo Renzi's manuscript for *L'armata s'agapò*, an article containing a film outline about the Italian occupation of Greece. It was later published in *Cinema Nuovo* in 1953. Its criticism of the war led to serious consequences: Renzi and the magazine's editor, Guido Aristarco, were charged with insulting the armed forces.\n\nBoth were imprisoned at Peschiera del Garda. The case sparked a wider debate about war, freedom of expression and the role of cinema.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "Article published in Cinema Nuovo no. 4 in February 1953. The text dealt with the Italian occupation of Greece and had a strong antimilitarist tone. Its publication led to charges of insulting the armed forces against Renzi and Guido Aristarco, their imprisonment in the military prison of Peschiera del Garda, and a public legal and cultural debate.",
-          "_source": "Claudia's catalogue description (data/items.csv) -- a good first text, but still needs the shorter/more casual variants for the full grid"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "This is the first page of Renzo Renzi's manuscript for *L'armata s'agapò*, an article containing a film outline that appeared in issue 4 of *Cinema Nuovo* in February 1953. Drawing on the Italian occupation of Greece, its antimilitarist perspective prompted charges of insulting the armed forces against Renzi and the journal's editor, Guido Aristarco. The case became the subject of public legal and cultural debate.\n\nThe two men were held in the fortress of Peschiera for forty days. This manuscript page has the archival identifier IT-CB-0016-5-8-001. The length of detention should not be confused with the sentence.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "This is the first page of my manuscript for *L'armata s'agapò*, a film idea about the Italian occupation of Greece.\nWhen it appeared in *Cinema Nuovo* in 1953, its criticism of war led to charges against me and the magazine's editor, Guido Aristarco.\nWe were both imprisoned in Peschiera del Garda, and our case sparked a public debate about war and freedom of expression.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -994,9 +1265,6 @@
         "x": 63.8,
         "y": 62.2
       },
-      "_todo": [
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
-      ],
       "externalLinks": []
     },
     {
@@ -1046,11 +1314,31 @@
       ],
       "texts": [
         {
+          "voice": "museum",
+          "length": "medium",
+          "competence": "average",
+          "audience": "general adult",
+          "lang": "en",
+          "content": "What makes a city a city? In *Bologna, una città*, Renzo Renzi brings writing and photographs together to present Bologna, his beloved city, on the page. Aldo Ferrari and other photographers contributed the images.\n\nThis expanded edition was printed in 1964. It gives the Bologna stroll another kind of stop: after walking and filming the city, we can sit down and read it.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "archival",
           "length": "long",
-          "competence": "specialist",
-          "tone": "neutral",
-          "content": "Bologna, una città di Renzo Renzi; fotografie di Aldo Ferrari e altri. 2. ed. aumentata. Bologna : Cappelli, stampa 1964. 413 p. : ill. ; 29 cm.",
-          "_source": "Claudia's catalogue description (data/items.csv)"
+          "competence": "advanced",
+          "audience": "scholar",
+          "lang": "en",
+          "content": "*Bologna, una città* is a book by Renzo Renzi, illustrated with photographs by Aldo Ferrari and others. This is the expanded second edition, printed by Cappelli in Bologna in 1964. It contains 413 illustrated pages and measures 29 centimetres. Its shelfmark is Renzi.bi.L 0640 and its OCLC identifier is 964227634.\n\nThe volume offers a way to study Renzi's relationship with Bologna through both text and photography. Ferrari also photographed Renzi on a documentary set, although it is not established that the set photograph appeared in this book.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
+        },
+        {
+          "voice": "renzo",
+          "length": "very brief",
+          "competence": "introductory",
+          "audience": "young",
+          "lang": "en",
+          "content": "Come for a walk with me through Bologna: beneath its porticoes, along its streets and into its squares.\nMy city has many names: *la dotta, la grassa, la rossa*—the learned, the well-fed and the red.\nIn *Bologna, una città*, my words meet photographs, inviting you to wander through its pages.",
+          "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         }
       ],
       "mapPosition": {
@@ -1058,9 +1346,6 @@
         "x": 50.5,
         "y": 49.9
       },
-      "_todo": [
-        "texts: import the whimsical/academic versions and the per-narrative descriptions from data/text_grid.md (not in this file yet)"
-      ],
       "externalLinks": []
     }
   ],
