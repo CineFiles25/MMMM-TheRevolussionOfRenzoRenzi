@@ -11,7 +11,7 @@
  *  2. Resolves an item / a narrative by id
  *  3. Computes the previous/next item within a narrative (prev/next)
  *  4. Handles theme switching (6 typographic themes) with persistence
- *  5. Handles the three text versions of every item (museum / read more /
+ *  5. Handles the three text versions of every item (read less / read more /
  *     told by Renzo): voice list, choice remembered in localStorage,
  *     text lookup, safe text-to-HTML formatting and the selector widget
  *
@@ -153,7 +153,7 @@ const Exhibition = (function () {
    * #theme-stylesheet link and persists the choice on change, and calls
    * back onChange(theme) (optional) so a page can do extra work (e.g.
    * re-render). Keeping this here avoids re-duplicating the same ~12 lines
-   * on every page (item.html, map.html, index.html, ...).
+   * on every page (exhibition.html, map.html, index.html, ...).
    */
   function wireThemeSelect(selectEl, onChange) {
     if (!selectEl) return;
@@ -225,7 +225,7 @@ const Exhibition = (function () {
   // To rename a label or add a voice, change THIS list only.
 
   const VOICES = [
-    { id: "museum",   label: "Museum",        description: "A short introduction for a general audience" },
+    { id: "museum",   label: "Read less",     description: "A short introduction for a general audience" },
     { id: "archival", label: "Read more",     description: "A longer, archival account with catalogue details" },
     { id: "renzo",    label: "Told by Renzo", description: "A brief, playful voice for younger visitors" },
   ];
@@ -350,7 +350,7 @@ const Exhibition = (function () {
 
   // ---------------------------------------------------------------------
   // URL helpers — navigation state passed via query string,
-  // e.g. item.html?narrative=renzo-renzi-a-life&item=il-primo-fellini
+  // e.g. exhibition.html?narrative=renzo-renzi-a-life&item=il-primo-fellini
   // ---------------------------------------------------------------------
 
   function getQueryParam(name) {
@@ -359,7 +359,7 @@ const Exhibition = (function () {
 
   function buildItemUrl(narrativeId, itemId) {
     const params = new URLSearchParams({ narrative: narrativeId, item: itemId });
-    return `item.html?${params.toString()}`;
+    return `exhibition.html?${params.toString()}`;
   }
 
   // Public API

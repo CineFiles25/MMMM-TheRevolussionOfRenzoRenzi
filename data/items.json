@@ -875,7 +875,7 @@
         "language": "it",
         "relation": null,
         "coverage": "Renzo Renzi Library",
-        "rights": "© Renzi Estate | Access permitted for study and research. | Reproduction only with permission of the Renzi Estate.",
+        "rights": "© Renzi Estate | Reproduction only with permission of the Renzi Estate.",
         "standard": "ISAD(G)",
         "other_title_information": null,
         "series": null,
@@ -898,7 +898,7 @@
         "archival_description": null,
         "edition": null,
         "pages": null,
-        "conditions_governing_access": "Access permitted for study and research.",
+        "conditions_governing_access": null,
         "conditions_governing_reproduction": "Reproduction only with permission of the Renzi Estate."
       },
       "images": [
@@ -951,7 +951,7 @@
         "contributor": "Renzo Renzi | [uncredited]",
         "date": "2000",
         "type": "Video Interview",
-        "format": "VHS | 56 min | colour | sound",
+        "format": "VHS | 5 min | colour | sound",
         "source": null,
         "language": "it",
         "relation": "Renzo Renzi Collection",
@@ -965,7 +965,7 @@
         "physical_description": null,
         "colour": "colour",
         "sound": "sound",
-        "duration": "56 min",
+        "duration": "5 min",
         "length": null,
         "inscription": null,
         "institution": "Cineteca di Bologna",
@@ -990,7 +990,7 @@
           "competence": "average",
           "audience": "general adult",
           "lang": "en",
-          "content": "What does Renzi remember about making films? In this interview, recorded in 2000, he talks about his work and the history of Columbus Film, the short-film company he helped found.\nThe conversation lets visitors encounter Renzi in his own voice. The original recording runs for 56 minutes.",
+          "content": "What does Renzi remember about making films? In this interview, recorded in 2000, he talks about his work and the history of Columbus Film, the short-film company he helped found.\nThe conversation lets visitors encounter Renzi in his own voice. The original recording runs for 5 minutes.",
           "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         },
         {
@@ -999,7 +999,7 @@
           "competence": "advanced",
           "audience": "scholar",
           "lang": "en",
-          "content": "The Cineteca di Bologna produced this video interview, titled *Il cinema a Bologna: Renzo Renzi e la Columbus film*, in 2000. It records Renzi discussing his work and the history of Columbus Film. The colour VHS recording runs for 56 minutes and has sound; neither a director nor an interviewer is credited.\n\nColumbus Film was founded in 1950 by Renzi, Enzo Biagi, Luigi Pizzi and Renato Zambonelli. The interview offers a later account of that work from one of its participants. The recording belongs to the Renzo Renzi Collection.",
+          "content": "The Cineteca di Bologna produced this video interview, titled *Il cinema a Bologna: Renzo Renzi e la Columbus film*, in 2000. It records Renzi discussing his work and the history of Columbus Film. The colour VHS recording runs for 5 minutes and has sound; neither a director nor an interviewer is credited.\n\nColumbus Film was founded in 1950 by Renzi, Enzo Biagi, Luigi Pizzi and Renato Zambonelli. The interview offers a later account of that work from one of its participants. The recording belongs to the Renzo Renzi Collection.",
           "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         },
         {
@@ -1038,7 +1038,7 @@
         "language": "it",
         "relation": "Renzo Renzi Collection",
         "coverage": "Renzo Renzi Library, Cineteca di Bologna",
-        "rights": "© Renzi Estate | Access permitted for study and research. | Reproduction only with permission of the Renzi Estate.",
+        "rights": "© Renzi Estate | Reproduction only with permission of the Renzi Estate.",
         "standard": "ISAD(G)",
         "other_title_information": "Original title: 'Lettera al padre'",
         "series": null,
@@ -1061,7 +1061,7 @@
         "archival_description": null,
         "edition": null,
         "pages": "3",
-        "conditions_governing_access": "Access permitted for study and research.",
+        "conditions_governing_access": null,
         "conditions_governing_reproduction": "Reproduction only with permission of the Renzi Estate."
       },
       "images": [

@@ -19,7 +19,7 @@ team agreed on the three narratives, the three rooms and the final planimetry.
 - `js/main.js` — one global `Exhibition` object shared by every page: data
   loading (`initPage`), narratives/rooms/items lookup, prev/next, theme
   switching, text versions, URL helpers. It never writes page layout.
-- Navigation state travels in the URL (`item.html?narrative=…&item=…`), so
+- Navigation state travels in the URL (`exhibition.html?narrative=…&item=…`), so
   every state is a plain link (good for accessibility and for the back button).
 
 ## HTML, JSON and JS stay separate
@@ -29,7 +29,7 @@ team agreed on the three narratives, the three rooms and the final planimetry.
   (`js/item.js`, `js/map.js`) that finds elements **by id** and fills them.
 - The ids are listed page by page in `HTML-IDS.md` (this is the list to give to
   whoever writes the HTML). `css/skeleton.css` is a temporary layout, to replace.
-- Files: `item.html`, `map.html` in the root; `js/main.js`, `js/item.js`,
+- Files: `exhibition.html`, `map.html` in the root; `js/main.js`, `js/item.js`,
   `js/map.js`; `css/skeleton.css`; `data/*.json`.
 
 ## The three narratives (agreed by the team)
@@ -84,7 +84,7 @@ proposed):
 
 | Voice id | Label in the UI | Length / competence / audience |
 | --- | --- | --- |
-| `museum` (default) | Museum | medium / average / general adult |
+| `museum` (default) | Read less | medium / average / general adult |
 | `archival` | Read more | long / advanced / scholar |
 | `renzo` | Told by Renzo | very brief / introductory / young (an imagined Renzi, first person; not his real words) |
 
@@ -104,7 +104,7 @@ proposed):
 
 ## What the pages do today
 
-- `item.html` — working skeleton, window-sized: media on the left (all local
+- `exhibition.html` — working skeleton, window-sized: media on the left (all local
   images, PDF link, video embeds), text on the right, with "stop N of M", the
   room and a link back to the map; prev/next inside the chosen narrative,
   theme selector, text-version selector. On phones media goes above the text. It shows the local image, the PDF as a link, and
@@ -125,8 +125,8 @@ proposed):
      "Told by Renzo" text puts Renzi in the photograph too. Check.
    - `renzi_interview_2000`: the texts speak of hearing Renzi "in his own voice",
      but the video is not playable on the site yet (see 4).
-   - The text selector is on `item.html` only; the other pages still need it.
-2. **No global scroll: done for `map.html` and `item.html`** (the page is
+   - The text selector is on `exhibition.html` only; the other pages still need it.
+2. **No global scroll: done for `map.html` and `exhibition.html`** (the page is
    window-sized; the text box and, for items with several images such as the
    letter, the media box scroll inside themselves). The other pages still have
    to follow the same rule.

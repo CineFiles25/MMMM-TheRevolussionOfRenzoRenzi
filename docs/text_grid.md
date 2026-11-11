@@ -6,7 +6,7 @@ Temporary copy-editing document for reviewing the item descriptions. The catalog
 
 The versions appear in this order:
 
-1. **Museum / Standard:** an introduction to the item and its significance for a general adult audience.
+1. **Read less:** an introduction to the item and its significance for a general adult audience.
 2. **Archival / Read more:** a standalone account focusing on the item, its historical context and catalogue information, for readers seeking more detail.
 3. **Told by Renzo:** a brief, accessible invitation to notice or question a detail, intended for younger visitors. An imagined Renzi guides the visitor in the first person; these are not his words or quotations from the 2000 interview.
 
@@ -16,7 +16,7 @@ The occasional Bolognese terms are translated in context. *Bulåggna* means Bolo
 
 ### 1. `book_il_primo_fellini` — *Il primo Fellini*
 
-**Museum / Standard**
+**Read less**
 
 Films begin on a page before going to the screen. Published in 1969, *Il primo Fellini* brings together the screenplays of four films by Federico Fellini, including *La strada*. Renzo Renzi wrote the introduction, while Liliana Betti and Eschilo Tarquini edited the volume.
 
@@ -38,7 +38,7 @@ I wrote the introduction. The screen can wait a moment.
 
 Italian inscription (tentative transcription): *Cosa aspetta Federico a fare la rivolussione?* — “What is Federico waiting for to make the revolution?” The catalogue gives the English title “Fellini caricature”; the inscription's exact spelling should be checked against the original.
 
-**Museum / Standard**
+**Read less**
 
 Renzo Renzi drew this small caricature of Federico Fellini. The handwritten caption asks, in Italian, what Federico is waiting for to make the revolution.
 
@@ -59,7 +59,7 @@ Take a closer look and decide for yourself.
 
 ### 3. `drawing_gelsomina_lastrada` — Gelsomina col tamburo
 
-**Museum / Standard**
+**Read less**
 
 Gelsomina, the character played by Giulietta Masina in Fellini's *La strada*, appears here with her small drum. Renzo Renzi drew her in pencil and coloured markers on cardboard.
 
@@ -79,7 +79,7 @@ I drew her here. Let's meet her.
 
 ### 4. `ferrari_set_photo` — Ferrari on set during *Le Notti del Melodramma*
 
-**Museum / Standard**
+**Read less**
 
 This photograph takes us behind the scenes of *Le Notti del Melodramma*, a documentary associated with Renzo Renzi. Taken by Aldo Ferrari in 1959, it depicts Renzi on the film set in Bologna.
 
@@ -99,7 +99,7 @@ For once, I'm part of a photograph instead of making a film.
 
 ### 5. `guida_documentary` — *Guida per camminare all'ombra*
 
-**Museum / Standard**
+**Read less**
 
 What would a walk through Bologna look like on film? In *Guida per camminare all'ombra*, Renzo Renzi turns his attention to the city's porticoes: the covered walkways that shape its streets.
 
@@ -119,7 +119,7 @@ Follow the arches and see the city with fresh eyes.
 
 ### 6. `la_strada_film` — *La strada*
 
-**Museum / Standard**
+**Read less**
 
 Federico Fellini's *La strada* follows Gelsomina, played by Giulietta Masina, as she travels with the strongman Zampanò. Its story brings together performance, hardship and moments of kindness.
 
@@ -141,7 +141,7 @@ I believed in Federico's talent early on, before Venezia and Hollywood: this is 
 
 ### 7. `la_strada_soundtrack_original` — *La strada* soundtrack
 
-**Museum / Standard**
+**Read less**
 
 You can encounter *La strada* with your ears as well as your eyes. This small record contains four pieces connected to the film, with music by Nino Rota performed by the Grand Orchestre Jo Moutet.
 
@@ -161,7 +161,7 @@ Turn it over: Nino Rota's music has another side to share.
 
 ### 8. `photo_lastrada_premiere` — *La strada* premiere at Cinema Fulgor
 
-**Museum / Standard**
+**Read less**
 
 In 1954, *La strada* came to Bologna's Cinema Fulgor (Pop Up Cinema Medica 4k today).\
 Libero Grandi's photograph records the occasion with Federico Fellini and Giulietta Masina, the film's director and leading actress.
@@ -181,7 +181,7 @@ Libero Grandi photographs me, Federico and Giulietta, celebrating my dear friend
 
 ### 9. `photo_la_strada_fighter` — circus scene from *La strada*
 
-**Museum / Standard**
+**Read less**
 
 This photograph takes us into a circus performance in Fellini's *La strada*. Giulietta Masina and Anthony Quinn appear as Gelsomina and Zampanò, two characters who travel and perform together.
 
@@ -203,7 +203,7 @@ The photographer is unknown, but the picture still has a story to tell.
 
 ### 10. `photo_la_strada_woman` — Gelsomina eating bread
 
-**Museum / Standard**
+**Read less**
 
 Gelsomina pauses to eat bread in this photograph from *La strada*. Played by Giulietta Masina, she appears in a rural landscape, away from the noise of the film's performances.
 
@@ -222,7 +222,7 @@ Gelsomina pauses to eat bread in this still from *La strada*.
 
 ### 11. `po_screenplay` — *Quando il Po è dolce* manuscript
 
-**Museum / Standard**
+**Read less**
 
 Before a film reaches an audience, it often begins with words on a page. This handwritten manuscript is connected to *Quando il Po è dolce*, a documentary project about the Po Delta.
 
@@ -241,15 +241,13 @@ Through my camera, I show you the lives of the honest people that live on the Po
 
 ### 12. `renzi_interview_2000` — interview about Renzi and Columbus Film
 
-**Museum / Standard**
+**Read less**
 
 What does Renzi remember about making films? In this interview, recorded in 2000, he talks about his work and the history of Columbus Film, the short-film company he helped found.\
-The conversation lets visitors encounter Renzi in his own voice. The original recording runs for 56 minutes.
-
+The conversation lets visitors encounter Renzi in his own voice. The original recording runs for 5 minutes.
 **Archival / Read more**
 
-The Cineteca di Bologna produced this video interview, titled *Il cinema a Bologna: Renzo Renzi e la Columbus film*, in 2000. It records Renzi discussing his work and the history of Columbus Film. The colour VHS recording runs for 56 minutes and has sound; neither a director nor an interviewer is credited.
-
+The Cineteca di Bologna produced this video interview, titled *Il cinema a Bologna: Renzo Renzi e la Columbus film*, in 2000. It records Renzi discussing his work and the history of Columbus Film. The colour VHS recording runs for 5 minutes and has sound; neither a director nor an interviewer is credited.
 Columbus Film was founded in 1950 by Renzi, Enzo Biagi, Luigi Pizzi and Renato Zambonelli. The interview offers a later account of that work from one of its participants. The recording belongs to the Renzo Renzi Collection.
 
 **Told by Renzo**
@@ -260,7 +258,7 @@ A chance for this storyteller to become the story.
 
 ### 13. `renzi_letter_1942` — letter to Renzi's father
 
-**Museum / Standard**
+**Read less**
 
 During the Second World War, Renzo Renzi wrote this letter to his father from the front. Dated 24 July 1942, its three handwritten pages describe aspects of his intellectual life during wartime.
 
@@ -279,7 +277,7 @@ Even in wartime, a letter could showcase ordinary concerns and affection. I ende
 
 ### 14. `renzi_portrait` — Renzi taking a photograph
 
-**Museum / Standard**
+**Read less**
 
 Here Renzo Renzi is both the subject of a photograph and a person taking one. Someone else's camera catches him looking through his own.
 
@@ -299,7 +297,7 @@ Place, date and person behind the other camera? I don't remember.
 
 ### 15. `l_armata_s_agapo` — *L'armata s'agapò*
 
-**Museum / Standard**
+**Read less**
 
 This handwritten page is the first page of Renzo Renzi's manuscript for *L'armata s'agapò*, an article containing a film outline about the Italian occupation of Greece. It was later published in *Cinema Nuovo* in 1953. Its criticism of the war led to serious consequences: Renzi and the magazine's editor, Guido Aristarco, were charged with insulting the armed forces.
 
@@ -319,7 +317,7 @@ We were both imprisoned in Peschiera del Garda, and our case sparked a public de
 
 ### 16. `bologna_book` — *Bologna, una città*
 
-**Museum / Standard**
+**Read less**
 
 What makes a city a city? In *Bologna, una città*, Renzo Renzi brings writing and photographs together to present Bologna, his beloved city, on the page. Aldo Ferrari and other photographers contributed the images.
 

@@ -1,11 +1,11 @@
 /**
- * item.js — script of item.html. Goes in js/item.js, after js/main.js.
+ * item.js — script of exhibition.html. Goes in js/item.js, after js/main.js.
  *
  * It does not write any layout: it finds elements by id (listed in HTML-IDS.md)
  * and fills them with data from data/items.json and data/narratives.json,
  * read through the Exhibition object of main.js.
  *
- * URL: item.html?narrative=<narrative id>&item=<item id>
+ * URL: exhibition.html?narrative=<narrative id>&item=<item id>
  */
 (async function initItemPage() {
   "use strict";

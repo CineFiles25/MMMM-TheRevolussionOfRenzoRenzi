@@ -32,13 +32,13 @@ The three radio buttons inside `text-selector` are written in the HTML, all with
 
 | id | `value` | version shown to the visitor |
 | --- | --- | --- |
-| `voice-museum` | `museum` | Museum (default) |
+| `voice-museum` | `museum` | Read less (default) |
 | `voice-archival` | `archival` | Read more |
 | `voice-renzo` | `renzo` | Told by Renzo |
 
-## `item.html` — one item
+## `exhibition.html` — one item
 
-URL: `item.html?narrative=<narrative id>&item=<item id>`
+URL: `exhibition.html?narrative=<narrative id>&item=<item id>`
 
 | id | tag | content put there |
 | --- | --- | --- |
