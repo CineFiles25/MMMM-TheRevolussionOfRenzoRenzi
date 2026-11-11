@@ -17,10 +17,20 @@ team agreed on the three narratives, the three rooms and the final planimetry.
 - `data/narratives.json` — each narrative is just an ordered list of item ids.
   An item can be in several narratives, so nothing is duplicated.
 - `js/main.js` — one global `Exhibition` object shared by every page: data
-  loading, narratives/rooms/items lookup, prev/next, theme switching, text
-  selection, URL helpers.
+  loading (`initPage`), narratives/rooms/items lookup, prev/next, theme
+  switching, text versions, URL helpers. It never writes page layout.
 - Navigation state travels in the URL (`item.html?narrative=…&item=…`), so
   every state is a plain link (good for accessibility and for the back button).
+
+## HTML, JSON and JS stay separate
+
+- **HTML** = structure and fixed words only, written by hand. **JSON** = all the
+  content. **JS** = `js/main.js` (shared logic) + one script per page
+  (`js/item.js`, `js/map.js`) that finds elements **by id** and fills them.
+- The ids are listed page by page in `HTML-IDS.md` (this is the list to give to
+  whoever writes the HTML). `css/skeleton.css` is a temporary layout, to replace.
+- Files: `item.html`, `map.html` in the root; `js/main.js`, `js/item.js`,
+  `js/map.js`; `css/skeleton.css`; `data/*.json`.
 
 ## The three narratives (agreed by the team)
 
@@ -99,9 +109,9 @@ proposed):
   room and a link back to the map; prev/next inside the chosen narrative,
   theme selector, text-version selector. On phones media goes above the text. It shows the local image, the PDF as a link, and
   every `externalLinks` entry (YouTube as an embed, other links as links).
-- `map.html` — see above.
-- Markup and classes in both pages are placeholders for River's design; the ids
-  used by the scripts must stay.
+- `map.html` — see above. Both pages are structure only; their scripts are `js/item.js` and `js/map.js`.
+- Markup and classes in both pages are placeholders; the ids used by the scripts
+  (`HTML-IDS.md`) must stay.
 
 ## Still open
 
