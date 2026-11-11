@@ -237,7 +237,13 @@
         h2.textContent = narrative.title;
         host.appendChild(h2);
         if (narrative.titleEn) host.appendChild(para(narrative.titleEn, true));
-        if (narrative.description) host.appendChild(para(narrative.description));
+        if (narrative.description) {
+          // Claudia's captions use *italics* for film titles: formatText turns them into <em>.
+          const desc = document.createElement("div");
+          desc.className = "route-description";
+          desc.innerHTML = Exhibition.formatText(narrative.description);
+          host.appendChild(desc);
+        }
 
         if (stops.length) {
           const start = document.createElement("a");
