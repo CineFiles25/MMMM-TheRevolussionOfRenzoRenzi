@@ -10,7 +10,7 @@
     {
       "id": "timeline",
       "title": "Historical timeline",
-      "description": "The life in date order.",
+      "description": "Guide to Renzo Renzi's life and work, told in date order: from his life as a son and soldier to that as a filmmaker and writer.",
       "required": true,
       "order": [
         "renzi_letter_1942",
@@ -39,7 +39,7 @@
     {
       "id": "from-subject-to-film",
       "title": "From subject to film",
-      "description": "La Strada, from script to screen to distribution.",
+      "description": "Follow *La strada* from the page to the screen and beyond. Renzi's 1969 book of Fellini screenplays shows how a film story can also be read. A drawing and two production stills then take Gelsomina out of the film frame, to the soundtrack, the finished film and its premiere at Cinema Fulgor in Bologna. Each stop moves the story further from the script and closer to an audience.",
       "required": false,
       "order": [
         "book_il_primo_fellini",
@@ -55,7 +55,7 @@
       "id": "bologna-walk",
       "title": "Guida per camminare a Bologna",
       "titleEn": "A guide to walk around Bologna",
-      "description": "A walk around Renzi's city, Bologna, through Renzi's eyes, words and film camera.",
+      "description": "A walk around Renzi's city, Bologna, through Renzi's eyes, words and film camera. Five stops offer five ways of meeting the city: walk it, film it, read it, watch a film in it, and remember it. Follow them in order to move from a street of porticoes to a film set, a book, a cinema on premiere night and, finally, Renzi's own memories of the city in his 2000 interview.",
       "required": false,
       "order": [
         "guida_documentary",
