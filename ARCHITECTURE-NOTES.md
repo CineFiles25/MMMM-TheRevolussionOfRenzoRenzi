@@ -94,8 +94,10 @@ proposed):
 
 ## What the pages do today
 
-- `item.html` — working skeleton: item view, prev/next inside the chosen
-  narrative, theme selector, text-version selector. It shows the local image, the PDF as a link, and
+- `item.html` — working skeleton, window-sized: media on the left (all local
+  images, PDF link, video embeds), text on the right, with "stop N of M", the
+  room and a link back to the map; prev/next inside the chosen narrative,
+  theme selector, text-version selector. On phones media goes above the text. It shows the local image, the PDF as a link, and
   every `externalLinks` entry (YouTube as an embed, other links as links).
 - `map.html` — see above.
 - Markup and classes in both pages are placeholders for River's design; the ids
@@ -114,8 +116,10 @@ proposed):
    - `renzi_interview_2000`: the texts speak of hearing Renzi "in his own voice",
      but the video is not playable on the site yet (see 4).
    - The text selector is on `item.html` only; the other pages still need it.
-2. **No global scroll.** `map.html` already fits the viewport; `item.html`
-   does not yet (long text and images need to scroll inside their own box).
+2. **No global scroll: done for `map.html` and `item.html`** (the page is
+   window-sized; the text box and, for items with several images such as the
+   letter, the media box scroll inside themselves). The other pages still have
+   to follow the same rule.
 3. **Pages nobody owns yet:** `index`, `about`, `docs`, `disclaimer`. Every page
    also needs prev/next, the theme selector and the text-type selectors.
 4. **Video items.** `guida_documentary` and `renzi_interview_2000` have no
