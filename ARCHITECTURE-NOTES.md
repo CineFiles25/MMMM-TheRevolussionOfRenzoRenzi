@@ -66,10 +66,36 @@ the three rooms keep a trace of it.
 | 2 — the filmmaker | Po screenplay, *Guida*, Ferrari photo, *Bologna, una città*, caricature |
 | 3 — Renzi & Fellini | film, soundtrack, two stills, premiere photo, Gelsomina drawing, *Il primo Fellini* |
 
+## The texts (three versions per item)
+
+Claudia's `data/text_grid.md` is imported: every item has **three texts**, one
+per "voice" (the minimum of the brief; per-item cells are the grid values she
+proposed):
+
+| Voice id | Label in the UI | Length / competence / audience |
+| --- | --- | --- |
+| `museum` (default) | Museum | medium / average / general adult |
+| `archival` | Read more | long / advanced / scholar |
+| `renzo` | Told by Renzo | very brief / introductory / young (an imagined Renzi, first person; not his real words) |
+
+- `item.texts[]` = `{ voice, length, competence, audience, lang, content, _source }`.
+- `content` is plain text: blank line = new paragraph, line break = `<br>`,
+  `*asterisks*` = italics. `Exhibition.formatText()` escapes it and turns it
+  into HTML, so the same function serves items and narrative captions.
+- The visitor's choice is remembered (`localStorage`, key
+  `exhibition:textVoice`) and shared by all pages. `Exhibition.wireTextSelector(el, onChange)`
+  builds the selector (a radio group, keyboard accessible); every page that
+  shows texts calls it, like `wireThemeSelect`.
+- Labels and the list of voices live in one place: `VOICES` in `js/main.js`.
+- Narrative captions (Historical / From subject to film / Bologna) replaced the
+  short descriptions in `narratives.json` and appear in the map's side panel.
+- Claudia's file is a *review draft*: when she changes it, the import is a
+  re-run of a small script (ask Laura) or a manual paste into `items.json`.
+
 ## What the pages do today
 
 - `item.html` — working skeleton: item view, prev/next inside the chosen
-  narrative, theme selector. It shows the local image, the PDF as a link, and
+  narrative, theme selector, text-version selector. It shows the local image, the PDF as a link, and
   every `externalLinks` entry (YouTube as an embed, other links as links).
 - `map.html` — see above.
 - Markup and classes in both pages are placeholders for River's design; the ids
@@ -77,13 +103,17 @@ the three rooms keep a trace of it.
 
 ## Still open
 
-1. **Texts.** `items.json` still holds only the catalogue description for each
-   item. Claudia's two versions per item (whimsical / academic) and the
-   per-narrative descriptions are in `data/text_grid.md` and are not imported
-   yet. This needs a small schema decision: the grid axes are now mainly
-   *whimsical vs academic* (short vs long), and per-narrative texts need their
-   own tag. The item page also needs the text-type selectors (`#text-selectors`
-   is still an empty placeholder).
+1. **Texts: to review with Claudia.** Imported as a review draft (see above).
+   - Italian/Bolognese words inside English text (titles, *Bulåggna*, the
+     "Baci" quote) have no `lang` marking yet; for accessibility each foreign
+     phrase should get `lang="it"` (or the Bolognese code, to verify).
+   - `la_strada_film` / archival repeats "International title: *The Road*"
+     (already in the first line).
+   - `photo_lastrada_premiere`: the museum text lists Fellini and Masina, the
+     "Told by Renzo" text puts Renzi in the photograph too. Check.
+   - `renzi_interview_2000`: the texts speak of hearing Renzi "in his own voice",
+     but the video is not playable on the site yet (see 4).
+   - The text selector is on `item.html` only; the other pages still need it.
 2. **No global scroll.** `map.html` already fits the viewport; `item.html`
    does not yet (long text and images need to scroll inside their own box).
 3. **Pages nobody owns yet:** `index`, `about`, `docs`, `disclaimer`. Every page
