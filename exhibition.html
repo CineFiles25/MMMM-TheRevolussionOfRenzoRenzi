@@ -14,6 +14,7 @@
     window and never scrolls as a whole (see css/skeleton.css).
   -->
   <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/film-strip.css">
   <link rel="stylesheet" href="css/theme-3.css" id="theme-stylesheet">
 </head>
 <body>
@@ -41,6 +42,8 @@
     </article>
   </main>
 
+  <nav id="narrative-strip" class="film-strip" aria-label="Objects in this narrative" hidden></nav>
+
   <p id="text-status" class="sr-only" role="status" aria-live="polite"></p>
 
   <footer>
@@ -58,5 +61,76 @@
 
   <script src="js/main.js"></script>
   <script src="js/item.js"></script>
+  <script>
+    (async function () {
+      await Exhibition.load();
+      var strip = document.getElementById("narrative-strip");
+      var narrativeId = Exhibition.getQueryParam("narrative");
+      var currentId = Exhibition.getQueryParam("item");
+      if (!Exhibition.getNarrative(narrativeId)) return;
+      var IMAGE_FILE = /\.(jpe?g|png|gif|webp)$/i;
+
+      Exhibition.getNarrativeItems(narrativeId).forEach(function (item) {
+        var video = (item.externalLinks || []).find(function (link) { return link.embedUrl; });
+        var image = (item.images || []).find(function (file) { return IMAGE_FILE.test(file); });
+        var href = Exhibition.buildItemUrl(narrativeId, item.id);
+        var frame;
+
+        if (video) {
+          frame = document.createElement("div");
+          frame.className = "frame video";
+          var iframe = document.createElement("iframe");
+          iframe.src = video.embedUrl;
+          iframe.title = video.label;
+          iframe.loading = "lazy";
+          iframe.allowFullscreen = true;
+          frame.appendChild(iframe);
+          var caption = document.createElement("a");
+          caption.href = href;
+          caption.textContent = item.title;
+          frame.appendChild(caption);
+        } else {
+          frame = document.createElement("a");
+          frame.className = "frame";
+          frame.href = href;
+          if (image) {
+            var img = document.createElement("img");
+            img.src = image;
+            img.alt = item.title;
+            frame.appendChild(img);
+          } else {
+            var empty = document.createElement("span");
+            empty.className = "empty";
+            empty.textContent = "Image coming soon";
+            frame.appendChild(empty);
+          }
+          var label = document.createElement("span");
+          label.textContent = item.title;
+          frame.appendChild(label);
+        }
+
+        if (item.id === currentId) frame.setAttribute("aria-current", "true");
+        strip.appendChild(frame);
+      });
+
+      var narratives = Exhibition.getNarratives();
+      var next = narratives[(narratives.findIndex(function (n) { return n.id === narrativeId; }) + 1) % narratives.length];
+      var end = document.createElement("div");
+      end.className = "frame end";
+      var endText = document.createElement("span");
+      endText.textContent = "End of this narrative";
+      end.appendChild(endText);
+      if (next && next.id !== narrativeId) {
+        var nextLink = document.createElement("a");
+        nextLink.href = Exhibition.buildItemUrl(next.id, next.order[0]);
+        nextLink.textContent = "Next: " + next.title;
+        end.appendChild(nextLink);
+      }
+      strip.appendChild(end);
+
+      strip.hidden = false;
+    })();
+  </script>
+
 </body>
 </html>

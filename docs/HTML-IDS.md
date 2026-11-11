@@ -58,6 +58,19 @@ URL: `exhibition.html?narrative=<narrative id>&item=<item id>`
 
 Not used by the script (free for layout): `item-main`, `item-layout`, `item-info`.
 
+## `index.html` — the opening page
+
+| id | tag | content put there |
+| --- | --- | --- |
+| `preview-map` | `<svg>` | the plan image with a transparent white background (CSS `mix-blend-mode`) |
+| `preview-rooms` | `<g>` inside the svg | one link per room (created by the inline script), with a hit circle and a hover card (title + intro) |
+
+## `exhibition.html` — the film strip
+
+| id | tag | content put there |
+| --- | --- | --- |
+| `narrative-strip` | `<nav>` | one frame per item of the narrative, the current item marked `aria-current`, then an end card linking to the next narrative (created by the inline script; hidden until built) |
+
 ## `map.html` — the museum map
 
 URL: `map.html?narrative=<narrative id>` or `map.html?narrative=all`

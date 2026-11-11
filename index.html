@@ -24,26 +24,38 @@
     <p>Writer, critic and filmmaker, Renzo Renzi worked in Bologna. Sixteen objects, from letters and manuscripts to photographs, a book and a film, tell his story.</p>
 
     <h2>The museum</h2>
-    <p>Three rooms, each with its own colour. The map shows where every object is and introduces each room.</p>
-    <p><a href="map.html"><img src="assets/img/museum/gallery_planimetry_no_punti.png" alt="Plan of the museum with its three rooms" width="640"></a></p>
+    <p>Three rooms, each with its own colour. Open the map to see the objects in each one.</p>
+    <figure>
+      <svg id="preview-map" viewBox="0 0 4032 3024" role="img" aria-label="Museum plan with a preview of each room">
+        <image href="assets/img/museum/gallery_planimetry_no_punti.png" x="0" y="0" width="4032" height="3024"/>
+        <g id="preview-rooms"></g>
+      </svg>
+      <figcaption><a href="map.html">Open the museum map</a></figcaption>
+    </figure>
 
     <h2>Three narratives</h2>
     <p>A narrative is a route through the objects. Choose the one you like best.</p>
 
+    <div class="narratives">
     <article>
+      <img src="assets/items/renzi_portrait.jpg" alt="Renzo Renzi taking a photograph">
       <h3><a href="exhibition.html?narrative=renzo-renzi-a-life">Renzo Renzi: a Life</a></h3>
       <p>Guide to Renzo Renzi's life and work, told in date order: from his life as a son and soldier to that as a filmmaker and writer.</p>
     </article>
 
     <article>
+      <img src="assets/items/gelsomina_drawing.jpg" alt="La Strada: Gelsomina col tamburo">
       <h3><a href="exhibition.html?narrative=from-subject-to-film">From subject to film</a></h3>
       <p>Follow <em>La strada</em> from the page to the screen and beyond. Renzi's 1969 book of Fellini screenplays shows how a film story can also be read. A drawing and two production stills then take Gelsomina out of the film frame, to the soundtrack, the finished film and its premiere at Cinema Fulgor in Bologna. Each stop moves the story further from the script and closer to an audience.</p>
     </article>
 
     <article>
+      <img src="assets/items/bologna_book.jpg" alt="Bologna, una città">
       <h3><a href="exhibition.html?narrative=guide-to-walking-bologna">Guide to walking in Bologna</a></h3>
       <p>A walk around Renzi's city, Bologna, through Renzi's eyes, words and film camera. Five stops offer five ways of meeting the city: walk it, film it, read it, watch a film in it, and remember it. Follow them in order to move from a street of porticoes to a film set, a book, a cinema on premiere night and, finally, Renzi's own memories of the city in his 2000 interview.</p>
     </article>
+
+    </div>
 
     <h2>How to visit</h2>
     <ol>
@@ -54,5 +66,64 @@
   </main>
 
   <script src="js/main.js"></script>
+  <script>
+    Exhibition.initPage().then(function () {
+      var SVG_NS = "http://www.w3.org/2000/svg";
+      var HIT_RADIUS = 600;
+      var CARD_WIDTH = 1800;
+      var CARD_HEIGHT = 1300;
+      var PAD = 80;
+      var group = document.getElementById("preview-rooms");
+      var narratives = Exhibition.getNarratives();
+      var placed = Exhibition.getAllItems().filter(function (item) { return item.mapPosition; });
+
+      function svgEl(name, attrs) {
+        var el = document.createElementNS(SVG_NS, name);
+        Object.keys(attrs).forEach(function (key) { el.setAttribute(key, attrs[key]); });
+        return el;
+      }
+
+      Exhibition.getRooms().forEach(function (room) {
+        var roomItems = placed.filter(function (item) { return item.mapPosition.area === room.id; });
+        if (!roomItems.length) return;
+
+        var sumX = 0, sumY = 0;
+        roomItems.forEach(function (item) { sumX += item.mapPosition.x; sumY += item.mapPosition.y; });
+        var cx = sumX / roomItems.length / 100 * 4032;
+        var cy = sumY / roomItems.length / 100 * 3024;
+        var pick = roomItems[0];
+        var narrative = narratives.find(function (n) { return n.order.indexOf(pick.id) !== -1; });
+        var left = Math.min(Math.max(cx - CARD_WIDTH / 2, 0), 4032 - CARD_WIDTH);
+        var top = Math.min(Math.max(cy - CARD_HEIGHT / 2, 0), 3024 - CARD_HEIGHT);
+
+        var room_el = svgEl("a", { class: "room", href: narrative ? Exhibition.buildItemUrl(narrative.id, pick.id) : "map.html" });
+        room_el.appendChild(svgEl("circle", { class: "room-hit", cx: cx, cy: cy, r: HIT_RADIUS }));
+
+        var card = svgEl("g", { class: "room-card" });
+        card.appendChild(svgEl("rect", {
+          x: left, y: top, width: CARD_WIDTH, height: CARD_HEIGHT,
+          fill: "#fff", stroke: room.color, "stroke-width": 30
+        }));
+        var body = document.createElementNS(SVG_NS, "foreignObject");
+        body.setAttribute("x", left + PAD);
+        body.setAttribute("y", top + PAD);
+        body.setAttribute("width", CARD_WIDTH - 2 * PAD);
+        body.setAttribute("height", CARD_HEIGHT - 2 * PAD);
+        var title = document.createElement("p");
+        title.className = "room-title";
+        title.textContent = room.title;
+        var intro = document.createElement("p");
+        intro.className = "room-intro";
+        intro.textContent = room.intro;
+        body.appendChild(title);
+        body.appendChild(intro);
+        card.appendChild(body);
+        room_el.appendChild(card);
+
+        group.appendChild(room_el);
+      });
+    });
+  </script>
+
 </body>
 </html>
