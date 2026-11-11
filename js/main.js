@@ -11,7 +11,9 @@
  *  2. Resolves an item / a narrative by id
  *  3. Computes the previous/next item within a narrative (prev/next)
  *  4. Handles theme switching (6 typographic themes) with persistence
- *  5. Handles selection of the "text type" (length/competence/tone grid)
+ *  5. Handles the three text versions of every item (museum / read more /
+ *     told by Renzo): voice list, choice remembered in localStorage,
+ *     text lookup, safe text-to-HTML formatting and the selector widget
  *
  * What it does NOT do (on purpose, for now):
  *  - it knows nothing about how the map is drawn (map.html does that, from
@@ -29,7 +31,7 @@ const Exhibition = (function () {
   };
 
   const THEME_STORAGE_KEY = "exhibition:theme";
-  const TEXT_PREF_STORAGE_KEY = "exhibition:textPreference";
+  const TEXT_VOICE_STORAGE_KEY = "exhibition:textVoice";
 
   // The 6 typographic themes, in historical-period order.
   // 'cssFile' must match the file in css/ (to be created by River).
@@ -204,52 +206,135 @@ const Exhibition = (function () {
   }
 
   // ---------------------------------------------------------------------
-  // "Text type" selectors (length / competence / tone grid)
+  // Text versions ("voices")
   // ---------------------------------------------------------------------
-  // Each item.texts is an array of { length, competence, tone, content }.
-  // The exact keys (allowed values for length/competence/tone) are to be
-  // confirmed with Claudia based on the final grid — reasonable defaults
-  // are used below, easy to change in a single place.
+  // Every item has three texts (see item.texts in data/items.json), one per
+  // voice. The grid values below are Claudia's proposal (text_grid.md); each
+  // text also carries them (length / competence / audience), so the grid can
+  // be widened later without touching the data format.
+  //
+  //   museum   — medium / average      / general adult  (default)
+  //   archival — long   / advanced     / scholar
+  //   renzo    — very brief / introductory / young; an imagined Renzi speaking
+  //              in the first person (not his real words)
+  //
+  // To rename a label or add a voice, change THIS list only.
 
-  const TEXT_AXES_DEFAULTS = {
-    length: "medium",
-    competence: "general",
-    tone: "neutral",
-  };
+  const VOICES = [
+    { id: "museum",   label: "Museum",        description: "A short introduction for a general audience" },
+    { id: "archival", label: "Read more",     description: "A longer, archival account with catalogue details" },
+    { id: "renzo",    label: "Told by Renzo", description: "A brief, playful voice for younger visitors" },
+  ];
+  const DEFAULT_VOICE_ID = "museum";
 
-  /**
-   * Finds the best text for an item given partial filters,
-   * e.g. findText(item, { length: "short" }).
-   * If no exact match is found, returns the first available text
-   * (better to show something than nothing).
-   */
-  function findText(item, filters = {}) {
-    if (!item || !Array.isArray(item.texts) || item.texts.length === 0) return null;
-    const wanted = { ...TEXT_AXES_DEFAULTS, ...filters };
-    const exact = item.texts.find(
-      (t) => t.length === wanted.length && t.competence === wanted.competence && t.tone === wanted.tone
-    );
-    return exact || item.texts[0];
+  function getVoices() {
+    return VOICES;
   }
 
-  function getTextPreference() {
+  /** The visitor's chosen voice id (remembered across pages), or the default. */
+  function getVoice() {
     try {
-      const raw = localStorage.getItem(TEXT_PREF_STORAGE_KEY);
-      return raw ? JSON.parse(raw) : { ...TEXT_AXES_DEFAULTS };
+      const stored = localStorage.getItem(TEXT_VOICE_STORAGE_KEY);
+      if (VOICES.some((v) => v.id === stored)) return stored;
     } catch (e) {
-      return { ...TEXT_AXES_DEFAULTS };
+      // localStorage unavailable: fall through to the default
     }
+    return DEFAULT_VOICE_ID;
   }
 
-  function setTextPreference(partialPrefs) {
-    const current = getTextPreference();
-    const updated = { ...current, ...partialPrefs };
+  function setVoice(voiceId) {
+    if (!VOICES.some((v) => v.id === voiceId)) {
+      console.warn(`Unknown text voice: ${voiceId}`);
+      return getVoice();
+    }
     try {
-      localStorage.setItem(TEXT_PREF_STORAGE_KEY, JSON.stringify(updated));
+      localStorage.setItem(TEXT_VOICE_STORAGE_KEY, voiceId);
     } catch (e) {
       console.warn("Could not save the text preference", e);
     }
-    return updated;
+    return voiceId;
+  }
+
+  /**
+   * Finds the text of an item for a voice: findText(item) uses the visitor's
+   * current voice, findText(item, { voice: "renzo" }) forces one.
+   * If the item has no text for that voice, returns its first text (better to
+   * show something than nothing), or null if it has none.
+   */
+  function findText(item, filters = {}) {
+    if (!item || !Array.isArray(item.texts) || item.texts.length === 0) return null;
+    const voiceId = filters.voice || getVoice();
+    return item.texts.find((t) => t.voice === voiceId) || item.texts[0];
+  }
+
+  // Kept for older pages: the preference is now just { voice }.
+  function getTextPreference() {
+    return { voice: getVoice() };
+  }
+
+  function setTextPreference(partialPrefs) {
+    if (partialPrefs && partialPrefs.voice) setVoice(partialPrefs.voice);
+    return getTextPreference();
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  }
+
+  /**
+   * Turns a text from items.json / narratives.json into safe HTML:
+   * blank line = new <p>, single line break = <br>, *word* = <em>.
+   */
+  function formatText(content) {
+    if (!content) return "";
+    return String(content)
+      .split(/\n{2,}/)
+      .map((para) => {
+        const html = escapeHtml(para.trim())
+          .replace(/\*([^*]+)\*/g, "<em>$1</em>")
+          .replace(/\n/g, "<br>");
+        return `<p>${html}</p>`;
+      })
+      .join("\n");
+  }
+
+  /**
+   * Builds the text-version selector (a radio group, so it works with the
+   * keyboard and screen readers) inside `container` and calls
+   * onChange(voiceId) when the visitor picks another one. Shared by every
+   * page that shows texts; markup/classes are placeholders for River's design.
+   */
+  function wireTextSelector(container, onChange) {
+    if (!container) return;
+    const current = getVoice();
+    container.innerHTML = "";
+
+    const fieldset = document.createElement("fieldset");
+    fieldset.className = "text-selector";
+    const legend = document.createElement("legend");
+    legend.textContent = "Text version";
+    fieldset.appendChild(legend);
+
+    VOICES.forEach((voice) => {
+      const label = document.createElement("label");
+      label.className = "text-selector-option";
+      label.title = voice.description;
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = "text-voice";
+      input.value = voice.id;
+      input.checked = voice.id === current;
+      input.addEventListener("change", () => {
+        if (!input.checked) return;
+        setVoice(voice.id);
+        if (typeof onChange === "function") onChange(voice.id);
+      });
+      label.appendChild(input);
+      label.appendChild(document.createTextNode(" " + voice.label));
+      fieldset.appendChild(label);
+    });
+
+    container.appendChild(fieldset);
   }
 
   // ---------------------------------------------------------------------
@@ -282,7 +367,12 @@ const Exhibition = (function () {
     setTheme,
     wireThemeSelect,
     applyStoredTheme,
+    getVoices,
+    getVoice,
+    setVoice,
     findText,
+    formatText,
+    wireTextSelector,
     getTextPreference,
     setTextPreference,
     getQueryParam,
