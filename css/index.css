@@ -1,4 +1,4 @@
-/* Cover page layout: theme selector on the left, page links centred at the top. */
+/* Cover page layout: theme selector on the left, page links on the right at the top. */
 header {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -8,6 +8,7 @@ header {
 }
 
 .site-links {
-  grid-column: 2;
-  text-align: center;
+  grid-column: 3;
+  justify-self: end;
+  text-align: right;
 }

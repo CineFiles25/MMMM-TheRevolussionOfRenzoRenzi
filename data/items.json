@@ -365,7 +365,7 @@
         "physical_description": "normal ratio",
         "colour": "col",
         "sound": "sound",
-        "duration": "10m",
+        "duration": "11.03 min",
         "length": null,
         "inscription": null,
         "institution": "Cineteca di Bologna",
@@ -399,7 +399,7 @@
           "competence": "advanced",
           "audience": "scholar",
           "lang": "en",
-          "content": "*Guida per camminare all'ombra* is a 1954 short documentary directed by Renzo Renzi and produced by Columbus Film. It explores Bologna's porticoes and runs for approximately ten minutes. It is a colour film with sound on 35 mm and was presented at the Venice Film Festival.\n\nThe film connects Renzi's filmmaking to Bologna's built environment. It is associated with the Renzo Renzi Fund at the Cineteca di Bologna; Archivio Luce also has a record for the film. Columbus Film, founded by Renzi and collaborators in 1950, produced short documentaries, including this one.",
+          "content": "*Guida per camminare all'ombra* is a 1954 short documentary directed by Renzo Renzi and produced by Columbus Film. It explores Bologna's porticoes and runs for approximately eleven minutes. It is a colour film with sound on 35 mm and was presented at the Venice Film Festival.\n\nThe film connects Renzi's filmmaking to Bologna's built environment. It is associated with the Renzo Renzi Fund at the Cineteca di Bologna; Archivio Luce also has a record for the film. Columbus Film, founded by Renzi and collaborators in 1950, produced short documentaries, including this one.",
           "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         },
         {
@@ -951,7 +951,7 @@
         "contributor": "Renzo Renzi | [uncredited]",
         "date": "2000",
         "type": "Video Interview",
-        "format": "VHS | 5 min | colour | sound",
+        "format": "VHS | 5.25 min | colour | sound",
         "source": null,
         "language": "it",
         "relation": "Renzo Renzi Collection",
@@ -965,7 +965,7 @@
         "physical_description": null,
         "colour": "colour",
         "sound": "sound",
-        "duration": "5 min",
+        "duration": "5.25 min",
         "length": null,
         "inscription": null,
         "institution": "Cineteca di Bologna",
@@ -990,7 +990,7 @@
           "competence": "average",
           "audience": "general adult",
           "lang": "en",
-          "content": "What does Renzi remember about making films? In this interview, recorded in 2000, he talks about his work and the history of Columbus Film, the short-film company he helped found.\nThe conversation lets visitors encounter Renzi in his own voice. The original recording runs for 5 minutes.",
+          "content": "What does Renzi remember about making films? In this interview, recorded in 2000, he talks about his work and the history of Columbus Film, the short-film company he helped found.\nThe conversation lets visitors encounter Renzi in his own voice. The original recording runs for 5.25 minutes.",
           "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         },
         {
@@ -999,7 +999,7 @@
           "competence": "advanced",
           "audience": "scholar",
           "lang": "en",
-          "content": "The Cineteca di Bologna produced this video interview, titled *Il cinema a Bologna: Renzo Renzi e la Columbus film*, in 2000. It records Renzi discussing his work and the history of Columbus Film. The colour VHS recording runs for 5 minutes and has sound; neither a director nor an interviewer is credited.\n\nColumbus Film was founded in 1950 by Renzi, Enzo Biagi, Luigi Pizzi and Renato Zambonelli. The interview offers a later account of that work from one of its participants. The recording belongs to the Renzo Renzi Collection.",
+          "content": "The Cineteca di Bologna produced this video interview, titled *Il cinema a Bologna: Renzo Renzi e la Columbus film*, in 2000. It records Renzi discussing his work and the history of Columbus Film. The colour VHS recording runs for 5.25 minutes and has sound; neither a director nor an interviewer is credited.\n\nColumbus Film was founded in 1950 by Renzi, Enzo Biagi, Luigi Pizzi and Renato Zambonelli. The interview offers a later account of that work from one of its participants. The recording belongs to the Renzo Renzi Collection.",
           "_source": "data/text_grid.md (Claudia, review draft of 2026-11-11)"
         },
         {
@@ -1355,20 +1355,25 @@
       "order": 1,
       "title": "Renzo Renzi, the man / soldier",
       "theme": "Who was Renzo Renzi? The volunteer, then the trial",
-      "color": "#cdd4db"
+      "intro": "Before the critic and the filmmaker, there is a young man in uniform. Here Renzi is a volunteer, then a man facing a trial, and his letters and portraits show who he was behind the pen.",
+      "color": "#cdd4db",
+      "transition": "Leaving the soldier behind, Renzi turns to the camera. Walk on, and the filmmaker takes the stage."
     },
     {
       "id": "room-2",
       "order": 2,
       "title": "Renzo Renzi, the filmmaker",
       "theme": "Pen and camera",
-      "color": "#bbcbc2"
+      "intro": "Here the pen gives way to the camera. Renzi writes screenplays, directs short documentaries and photographs the city he loves, and Bologna's porticoes become his set.",
+      "color": "#bbcbc2",
+      "transition": "Scripts, sets and photographs lead to the last room. Walk on, and the story turns to Fellini and La strada."
     },
     {
       "id": "room-3",
       "order": 3,
       "title": "Renzo Renzi, the friend / Renzi & Fellini",
       "theme": "La Strada and the friendship",
+      "intro": "The last room follows a friendship. Renzi and Federico Fellini share the story of La strada, and Renzi can even tease his friend: his caricature of Fellini asks what he is waiting for to make the revolution.",
       "color": "#f2f2d7"
     }
   ]

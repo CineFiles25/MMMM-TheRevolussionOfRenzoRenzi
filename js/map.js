@@ -181,13 +181,20 @@
     host.replaceChildren();
     rooms.forEach((room) => {
       const list = items.filter((i) => i.mapPosition && i.mapPosition.area === room.id);
-      if (list.length) host.appendChild(buildSection(room.title, list, room.color, room.theme));
+      if (!list.length) return;
+      host.appendChild(buildSection(room.title, list, room.color, room.theme, room.intro));
+      if (room.transition) {
+        const p = document.createElement("p");
+        p.className = "room-transition";
+        p.textContent = room.transition;
+        host.appendChild(p);
+      }
     });
     const unplaced = items.filter((i) => !isPlaced(i));
     if (unplaced.length) host.appendChild(buildSection("Not yet placed on the map", unplaced));
   }
 
-  function buildSection(title, list, color, subtitle) {
+  function buildSection(title, list, color, subtitle, intro) {
     const section = document.createElement("section");
     section.className = "room-section";
     const h3 = document.createElement("h3");
@@ -203,6 +210,12 @@
     if (subtitle) {
       const p = document.createElement("p");
       p.textContent = subtitle;
+      section.appendChild(p);
+    }
+    if (intro) {
+      const p = document.createElement("p");
+      p.className = "room-intro";
+      p.textContent = intro;
       section.appendChild(p);
     }
     const ul = document.createElement("ul");

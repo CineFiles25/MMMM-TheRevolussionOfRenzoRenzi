@@ -10,7 +10,7 @@ The versions appear in this order:
 2. **Archival / Read more:** a standalone account focusing on the item, its historical context and catalogue information, for readers seeking more detail.
 3. **Told by Renzo:** a brief, accessible invitation to notice or question a detail, intended for younger visitors. An imagined Renzi guides the visitor in the first person; these are not his words or quotations from the 2000 interview.
 
-Proposed grid cells: museum / standard = mid-size / average / general adult; archival / read more = long / advanced / scholar; told by renzo = very brief / introductory / young audience. Agree on the exact values and selector behaviour with the team. The PDF suggests 10–15 lines for a mid-size text and several minutes of reading for a long text; line wrapping depends on the design, and the archival drafts still need research and expansion if used as long texts. The narrative-focused drafts at the end are separate and do not automatically count towards the three grid texts.
+Proposed grid cells: read less = mid-size / average / general adult; archival / read more = long / advanced / scholar; told by renzo = very brief / introductory / young audience. Agree on the exact values and selector behaviour with the team. The PDF suggests 10–15 lines for a mid-size text and several minutes of reading for a long text; line wrapping depends on the design, and the archival drafts still need research and expansion if used as long texts. The narrative-focused drafts at the end are separate and do not automatically count towards the three grid texts.
 
 The occasional Bolognese terms are translated in context. *Bulåggna* means Bologna ([Wiktionary](https://en.wiktionary.org/wiki/Bul%C3%A5ggna)); *umarell* is a modern Bolognese-derived term for someone who observes construction work ([Treccani](https://www.treccani.it/vocabolario/umarell_%28Neologismi%29/)). Their spelling and use should be reviewed with a Bolognese speaker. Neither term is presented as something Renzi said.
 
@@ -107,7 +107,7 @@ Directed by Renzi and produced by Columbus Film in 1954, this short documentary 
 
 **Archival / Read more**
 
-*Guida per camminare all'ombra* is a 1954 short documentary directed by Renzo Renzi and produced by Columbus Film. It explores Bologna's porticoes and runs for approximately ten minutes. It is a colour film with sound on 35 mm and was presented at the Venice Film Festival.
+*Guida per camminare all'ombra* is a 1954 short documentary directed by Renzo Renzi and produced by Columbus Film. It explores Bologna's porticoes and runs for approximately eleven minutes. It is a colour film with sound on 35 mm and was presented at the Venice Film Festival.
 
 The film connects Renzi's filmmaking to Bologna's built environment. It is associated with the Renzo Renzi Fund at the Cineteca di Bologna; Archivio Luce also has a record for the film. Columbus Film, founded by Renzi and collaborators in 1950, produced short documentaries, including this one.
 
@@ -244,10 +244,10 @@ Through my camera, I show you the lives of the honest people that live on the Po
 **Read less**
 
 What does Renzi remember about making films? In this interview, recorded in 2000, he talks about his work and the history of Columbus Film, the short-film company he helped found.\
-The conversation lets visitors encounter Renzi in his own voice. The original recording runs for 5 minutes.
+The conversation lets visitors encounter Renzi in his own voice. The original recording runs for 5.25 minutes.
 **Archival / Read more**
 
-The Cineteca di Bologna produced this video interview, titled *Il cinema a Bologna: Renzo Renzi e la Columbus film*, in 2000. It records Renzi discussing his work and the history of Columbus Film. The colour VHS recording runs for 5 minutes and has sound; neither a director nor an interviewer is credited.
+The Cineteca di Bologna produced this video interview, titled *Il cinema a Bologna: Renzo Renzi e la Columbus film*, in 2000. It records Renzi discussing his work and the history of Columbus Film. The colour VHS recording runs for 5.25 minutes and has sound; neither a director nor an interviewer is credited.
 Columbus Film was founded in 1950 by Renzi, Enzo Biagi, Luigi Pizzi and Renato Zambonelli. The interview offers a later account of that work from one of its participants. The recording belongs to the Renzo Renzi Collection.
 
 **Told by Renzo**
@@ -342,3 +342,28 @@ A short introduction for each narrative card on the item and map pages: a few se
 - **Renzo Renzi: a Life:** Follow Renzo Renzi from his first letters to his last interview, one date at a time. Every page he wrote was a step towards the cinema he loved, and you will feel his restless energy in each one.
 - **From subject to film:** Watch a single idea travel from the printed page to the big screen. Renzi never simply wrote a film; he argued, drew and dreamed it into being, and this route shows how.
 - **Guide to walking in Bologna:** Walk, watch, read and remember the city that shaped Renzi. Bologna was his stage and his muse, and every stop here brings his enthusiasm for it back to life.
+
+## Room and transition texts
+
+Orientation texts for the three museum rooms, shown with each room on the map, and short transitions between rooms.
+
+**Room 1 — Renzo Renzi, the man / soldier**
+
+Before the critic and the filmmaker, there is a young man in uniform. Here Renzi is a volunteer, then a man facing a trial, and his letters and portraits show who he was behind the pen.
+
+**Room 2 — Renzo Renzi, the filmmaker**
+
+Here the pen gives way to the camera. Renzi writes screenplays, directs short documentaries and photographs the city he loves, and Bologna's porticoes become his set.
+
+**Room 3 — Renzo Renzi, the friend / Renzi & Fellini**
+
+The last room follows a friendship. Renzi and Federico Fellini share the story of *La strada*, and Renzi can even tease his friend: his caricature of Fellini asks what he is waiting for to make the revolution.
+
+**Transition, room 1 to room 2**
+
+Leaving the soldier behind, Renzi turns to the camera. Walk on, and the filmmaker takes the stage.
+
+**Transition, room 2 to room 3**
+
+Scripts, sets and photographs lead to the last room. Walk on, and the story turns to Fellini and *La strada*.
+
