@@ -54,7 +54,8 @@ URL: `exhibition.html?narrative=<narrative id>&item=<item id>`
 | `next-narrative-link`, `next-narrative` | `<p>` / `<a>` | link to the next narrative (set by the small inline script in `exhibition.html`, hidden until then) |
 | `item-text` | `<div lang="en">` | the text of the chosen version, as paragraphs with `<em>` for italics |
 | `item-rights` | `<p>` | rights statement (hidden when empty) |
-| `item-media` | `<div>` | the images, local MP4 players, PDF viewer and video embeds of the item (created by the script; gets the class `multi` when there are several) |
+| `item-media` | `<div>` | the images, local MP4 players, PDF viewer and video embeds of the item (filled by the script; gets the class `multi` when there are several) |
+| `pdf-viewer-template` | `<template>` | HTML for each PDF viewer and its page and zoom buttons; the script copies it into `item-media` and loads PDF.js from cdnjs. If the viewer cannot load, it links to the PDF. |
 | `prev-button`, `next-button`, `text-selector`, `text-status`, `theme-select` | | shared, see above |
 
 Not used by the script (free for layout): `item-main`, `item-layout`, `item-info`.

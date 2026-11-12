@@ -80,7 +80,7 @@
 
   /**
    * Media of the item, inside #item-media: every local file (an <img> for image
-   * files, a video player for MP4s, the PDF viewer for a PDF, a link for anything else), then every entry of
+   * files, a video player for MP4s, a PDF viewer for a PDF, a link for anything else), then every entry of
    * item.externalLinks (an <iframe> when it has an embedUrl, e.g. YouTube; otherwise a link).
    */
   function fillMedia() {
@@ -103,14 +103,7 @@
         video.appendChild(makeLink(encodeURI(path), `Open ${path.split("/").pop()}`));
         box.appendChild(video);
       } else if (/\.pdf$/i.test(path)) {
-        // The whole PDF in the page; browsers that cannot show it inline get the link inside the <object>.
-        const pdf = document.createElement("object");
-        pdf.className = "item-pdf";
-        pdf.data = encodeURI(path);
-        pdf.type = "application/pdf";
-        pdf.setAttribute("aria-label", item.title);
-        pdf.appendChild(makeLink(encodeURI(path), `Open ${path.split("/").pop()}`));
-        box.appendChild(pdf);
+        box.appendChild(makePdfViewer(path));
       } else {
         box.appendChild(makeLink(encodeURI(path), `Open ${path.split("/").pop()}`));
       }
@@ -137,6 +130,101 @@
       box.appendChild(note);
     }
     box.classList.toggle("multi", box.children.length > 1);   // several media: the box scrolls
+  }
+
+  function makePdfViewer(path) {
+    const viewer = $("pdf-viewer-template").content.firstElementChild.cloneNode(true);
+    viewer.setAttribute("aria-label", item.title);
+    const previous = viewer.querySelector(".pdf-previous");
+    const next = viewer.querySelector(".pdf-next");
+    const pageStatus = viewer.querySelector(".pdf-page-status");
+    const zoomOut = viewer.querySelector(".pdf-zoom-out");
+    const zoomIn = viewer.querySelector(".pdf-zoom-in");
+    const zoomStatus = viewer.querySelector(".pdf-zoom-status");
+    const viewport = viewer.querySelector(".item-pdf-viewport");
+    const canvas = viewport.querySelector("canvas");
+    const error = viewer.querySelector(".pdf-error");
+    viewer.querySelector(".pdf-link").href = encodeURI(path);
+
+    let pdf;
+    let pageNumber = 1;
+    let zoom = 1;
+    let rendering = false;
+    let renderAgain = false;
+    let failed = false;
+
+    function updateControls() {
+      previous.disabled = !pdf || rendering || pageNumber <= 1;
+      next.disabled = !pdf || rendering || pageNumber >= pdf.numPages;
+      zoomOut.disabled = !pdf || rendering || zoom <= 0.5;
+      zoomIn.disabled = !pdf || rendering || zoom >= 3;
+      pageStatus.textContent = failed ? "PDF unavailable" : pdf ? `Page ${pageNumber} of ${pdf.numPages}` : "Loading PDF...";
+      zoomStatus.textContent = `${Math.round(zoom * 100)}%`;
+    }
+
+    function showError(err) {
+      console.error("Could not display PDF:", err);
+      pdf = null;
+      failed = true;
+      error.hidden = false;
+      viewport.hidden = true;
+      updateControls();
+    }
+
+    async function renderPage() {
+      if (!pdf) return;
+      if (rendering) {
+        renderAgain = true;
+        return;
+      }
+      rendering = true;
+      updateControls();
+      try {
+        const page = await pdf.getPage(pageNumber);
+        const natural = page.getViewport({ scale: 1 });
+        const fit = Math.min(viewport.clientWidth / natural.width, viewport.clientHeight / natural.height);
+        const size = page.getViewport({ scale: fit * zoom });
+        const pixelRatio = window.devicePixelRatio || 1;
+        canvas.width = Math.floor(size.width * pixelRatio);
+        canvas.height = Math.floor(size.height * pixelRatio);
+        canvas.style.width = `${size.width}px`;
+        canvas.style.height = `${size.height}px`;
+        await page.render({
+          canvasContext: canvas.getContext("2d"),
+          viewport: size,
+          transform: [pixelRatio, 0, 0, pixelRatio, 0, 0]
+        }).promise;
+      } catch (err) {
+        showError(err);
+      } finally {
+        rendering = false;
+        updateControls();
+        if (renderAgain) {
+          renderAgain = false;
+          renderPage();
+        }
+      }
+    }
+
+    previous.addEventListener("click", () => { pageNumber--; renderPage(); });
+    next.addEventListener("click", () => { pageNumber++; renderPage(); });
+    zoomOut.addEventListener("click", () => { zoom -= 0.25; renderPage(); });
+    zoomIn.addEventListener("click", () => { zoom += 0.25; renderPage(); });
+    window.addEventListener("resize", renderPage);
+    updateControls();
+
+    import("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs")
+      .then((pdfjs) => {
+        pdfjs.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs";
+        return pdfjs.getDocument(encodeURI(path)).promise;
+      })
+      .then((document) => {
+        pdf = document;
+        renderPage();
+      })
+      .catch(showError);
+
+    return viewer;
   }
 
   function makeLink(href, label) {

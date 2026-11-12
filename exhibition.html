@@ -15,7 +15,7 @@
   -->
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/film-strip.css">
-  <link rel="stylesheet" href="css/theme-3.css" id="theme-stylesheet">
+  <!-- <link rel="stylesheet" href="css/theme-3.css" id="theme-stylesheet"> -->
 </head>
 <body>
 
@@ -32,7 +32,7 @@
       <div id="item-info" tabindex="0" role="region" aria-label="Text">
         <p id="item-context"></p>
         <div id="item-room-intro" hidden></div>
-        <p><a id="item-map-link" href="map.html">See the map</a></p>
+        <p><a id="item-map-link" href="map.html">Go to the map</a></p>
         <nav aria-label="Choose a narrative">
           <div id="narrative-picker">
             <label for="narrative-select">Narrative:</label>
@@ -57,6 +57,26 @@
       </div>
     </article>
   </main>
+
+  <template id="pdf-viewer-template">
+    <section class="item-pdf-viewer">
+      <div class="item-pdf-controls">
+        <button type="button" class="pdf-previous" disabled>Previous page</button>
+        <span class="pdf-page-status" aria-live="polite">Loading PDF...</span>
+        <button type="button" class="pdf-next" disabled>Next page</button>
+        <button type="button" class="pdf-zoom-out" disabled>Zoom out</button>
+        <span class="pdf-zoom-status">100%</span>
+        <button type="button" class="pdf-zoom-in" disabled>Zoom in</button>
+      </div>
+      <div class="item-pdf-viewport" tabindex="0" role="region" aria-label="PDF page">
+        <canvas></canvas>
+      </div>
+      <div class="pdf-error" hidden>
+        <p>The PDF viewer could not load. Open the PDF instead:</p>
+        <p><a class="pdf-link" target="_blank" rel="noopener">Open PDF</a></p>
+      </div>
+    </section>
+  </template>
 
   <!--
     One sliding strip per narrative, only its own items, in the order of the narrative.

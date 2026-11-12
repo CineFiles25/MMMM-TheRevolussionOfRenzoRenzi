@@ -1,12 +1,4 @@
-/* Sliding strip of images at the bottom of exhibition.html and map.html.
-   CSS-only slider, same technique as the Infami Monumenti home page (assets/main.css):
-   a track of slides moved by @keyframes, paused on hover. Smaller than theirs so that
-   the pages still fit in the window without scrolling.
-   The slides are written in the HTML. The track moves by exactly one set of slides and
-   restarts, so the loop has no jump: each strip sets, in its style attribute,
-   --shift = -(number of images in one set x 220px) and --duration = (that distance / 60px per second).
-   The set is repeated enough times to fill the widest screens.
-   Each slide is a link to the item. Without --shift and --duration the defaults below are used. */
+/* Claudia */
 .indexslider {
   flex: none;
   position: relative;
