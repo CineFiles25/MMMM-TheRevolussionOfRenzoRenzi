@@ -1,0 +1,187 @@
+# Theme 3: visual reference assets
+
+These downloaded images are used as historical visual references in map-preview.html, not as additions to the exhibition catalogue. Filenames are local so the preview does not rely on external image requests.
+
+## Il signor Max (1937)
+- Source: https://commons.wikimedia.org/wiki/File:Il_Signor_Max_-_poster.jpg
+- Download: https://commons.wikimedia.org/wiki/Special:FilePath/Il_Signor_Max_-_poster.jpg
+- Local file: il-signor-max-poster.jpg
+- Wikimedia's indexed file description labels the image public domain. The source page should be consulted for its full jurisdiction-specific terms.
+
+## Roma citta aperta (1945)
+- Source: https://peoplesgdarchive.org/item/9640/roma-citta-aperta-posters
+- The archive credits Anselmo Ballester and lists cineclubroma.it as the image source.
+- Download: https://thumbs.peoplesgdarchive.org/static/media-items/image/24943/upto-1440x1642/64a34b81/1/01.png
+- Local file: roma-citta-aperta-poster.png
+- The archive page does not establish an open reuse licence. This prototype does not claim the image is public domain or freely licensed.
+## Grandi magazzini (1939): Assia Noris and Vittorio De Sica
+- Source: https://commons.wikimedia.org/wiki/File:Grandimagazzini-1939-Noris-DeSica.png
+- Category: https://commons.wikimedia.org/wiki/Category:I_grandi_magazzini
+- Local file: grandi-magazzini-still.png
+- Used as the decorative white-telephone-cinema image. Consult the source for image-specific reuse terms.
+
+## Roma citta aperta: street frame
+- Source: https://commons.wikimedia.org/wiki/File:Screenshot,_di_Roma_citt%C3%A0_aperta.jpg
+- Local file: roma-street-still.jpg
+- Used as the decorative street background. Wikimedia's description applies PD-Italia-film; consult the source for its jurisdiction-specific terms.
+## Local typography and original decoration
+- Barlow Condensed SemiBold: https://github.com/google/fonts/tree/main/ofl/barlowcondensed
+- Bodoni Moda: https://github.com/google/fonts/tree/main/ofl/bodonimoda
+- Both fonts are distributed under the SIL Open Font License. Their licence files are stored beside the font files in assets/fonts.
+- film-frame.svg: original geometric decoration made for this project; not a historical image. Used by CSS border-image.
+# Theme 1 / Baroque theatre
+- baroque-auditorium.jpg: Palickap, Bayreuth, Markgrafliches Opernhaus (02).jpg. CC BY 4.0, https://creativecommons.org/licenses/by/4.0/ . Source: https://commons.wikimedia.org/wiki/File:Bayreuth,_Markgr%C3%A4fliches_Opernhaus_(02).jpg . Unedited local copy; the CSS crops and darkens its display.
+- baroque-opera-house.jpg: JensKunstfreund, Innenaufnahmen aus den Markgraflichen Opernhaus 06.jpg. CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/ . Source: https://commons.wikimedia.org/wiki/File:Innenaufnahmen_aus_den_Markgr%C3%A4flichen_Opernhaus_06.jpg . Reference image, not currently displayed.
+- bibiena-stage-design.jpg: Francesco Galli Bibiena, Drawing, Stage Design: Palace Interior, 1700-1750. Cooper Hewitt, Smithsonian Design Museum, accession 1938-88-49. Public Domain Mark. Source: https://commons.wikimedia.org/wiki/File:Drawing,_Stage_Design-_Palace_Interior,_1700%E2%80%931750_(CH_18544617).jpg . CSS crops and fades the decorative background.
+- Cinzel Decorative: Google Fonts / SIL Open Font License. https://github.com/google/fonts/tree/main/ofl/cinzeldecorative . Licence is stored beside the local font in assets/fonts.
+- baroque-gold-frame.svg: original geometric scrollwork made for this project, inspired by gilded theatre frames; not a historic scan.
+# Theme 2 / Nineteenth-century printed performance culture
+These images are decorative period references, not additions to Renzo Renzi's catalogue. Costume and stage sheets are preserved as artistic material rather than theatre architecture.
+- melodrama-boheme-poster.png: Adolfo Hohenstein, poster for La boheme, 1896. Public domain per Commons. https://commons.wikimedia.org/wiki/File:La_Boheme_poster_by_Hohenstein.PNG
+- melodrama-mimi-costume.jpg: Adolfo Hohenstein, Mimi costume design for La boheme, Archivio Ricordi Milano. The source dates the sheet 1893 and relates it to the 1896 premiere. Public domain per Commons. https://commons.wikimedia.org/wiki/File:La_Boheme_Costume_Mimi.jpg
+- melodrama-stage-sketch.jpg: Adolfo Hohenstein, La boheme Act II set design. The source sheet is dated 1893 and associated with the 1896 production. Public domain per Commons. https://commons.wikimedia.org/wiki/File:La_Boheme_Act_II_set.jpg
+- melodrama-playbill.jpg: Theatre Royal Manchester, Italian opera playbill, 30 August 1862, featuring Adelina Patti. Reproduced in Louis M. Hayes, Reminiscences of Manchester (1905), p.274. Public domain per Commons. https://commons.wikimedia.org/wiki/File:Theatre_Royal_playbill,_August_1862.jpg
+- Rye Regular: Nicole Fally / Google Fonts. A modern typeface used to evoke nineteenth-century display printing, not claimed as an original nineteenth-century font. SIL Open Font License is saved in assets/fonts/Rye-OFL.txt. https://github.com/google/fonts/tree/main/ofl/rye
+- melodrama-paper.svg: original transparent fleck texture drawn for this project, not a historical paper scan.
+## Theme 2: character and romantic-drama revision
+- melodrama-romeo-juliette.png: Prudent Louis Leray, Romeo et Juliette de Charles Gounod, 1867. Public domain per Commons. https://commons.wikimedia.org/wiki/File:Rom%C3%A9o_et_Juliette_de_Charles_Gounod.png
+- melodrama-camelias.jpg: Alphonse Mucha, Sarah Bernhardt in La Dame aux Camelias, 1896. Public domain per Commons. https://commons.wikimedia.org/wiki/File:Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg
+- melodrama-boheme-lovers.jpg: Dante Paolocci, La boheme, opera del maestro Puccini, L'illustrazione popolare, Treves, Milan, 1897. Scene depicts Musetta and Marcello, Rodolfo and Mimi. Public domain per Commons. https://commons.wikimedia.org/wiki/File:La_boh%C3%A8me,_opera_del_maestro_Puccini.jpg
+- melodrama-print-frame.svg: original two-colour printer's ornament made for this project, not a scan of a historical programme. The programme wording describes the actual exhibition routes, not an invented historical performance.
+# Theme 4 / Fellini and Renzi: a cinema memory album
+Historical context images are separate from the exhibition catalogue. References to La dolce vita and 8 1/2 do not assert that Renzo Renzi was credited on their production teams. The collaboration thread uses the repository's Renzi/Fellini drawing, catalogue records and La strada premiere photograph.
+- fellini-dolce-vita-trevi.jpg: La dolce vita (1960), Marcello Mastroianni and Anita Ekberg. Photographer unknown, public-domain tags PD-Italy and PD-1996 on Commons. https://commons.wikimedia.org/wiki/File:La_dolce_vita_Trevi.jpg
+- fellini-eight-half.jpg: Marcello Mastroianni in 8 1/2 (1963), directed by Federico Fellini. Public domain per Commons; consult file page for jurisdiction-specific terms. https://commons.wikimedia.org/wiki/File:Marcello_Mastroianni_in_8%C2%BD.jpg
+- fellini-director-1965.jpg: Federico Fellini, 1965, Walter Albertin / New York World-Telegram & Sun, Library of Congress. No known copyright restrictions, public domain per Commons. https://commons.wikimedia.org/wiki/File:Federico_Fellini_NYWTS.jpg ; https://hdl.loc.gov/loc.pnp/cph.3c22919
+- Existing assets/items/photo_la_strada_woman.jpg, photo_lastrada_premiere.png and caricature_fellini_renzi.jpg retain their existing catalogue provenance and rights. They are reused locally; no watermarks have been removed.
+- Space Mono: Colophon / Google Fonts. SIL Open Font License saved as assets/fonts/SpaceMono-OFL.txt. https://github.com/google/fonts/tree/main/ofl/spacemono
+- fellini-contact-labels.svg and fellini-negative-frame.svg: original contact-sheet-inspired graphics made for this theme. Not historical scans or festival logos.
+
+## Award annotations: ceremony years, not premiere years
+- La strada: Foreign Language Film winner at the 1957 Academy Awards. https://www.oscars.org/oscars/ceremonies/1957
+- La dolce vita: Palme d'or at Cannes 1960. https://www.festival-cannes.com/f/la-dolce-vita/
+- 8 1/2: Foreign Language Film winner at the 1964 Academy Awards. https://www.oscars.org/oscars/ceremonies/1964
+# Theme 5 / Italian comedy, television and pop print
+The late-twentieth/early-twenty-first-century styling is an interpretive blend of entertainment print, plastic consumer objects and Italian comedy memory. It is not a claim that all commedia all'italiana belongs to that date range. Context images are not catalogue additions or evidence of Renzo Renzi's involvement in Fantozzi.
+- commedia-fantozzi-face.png: Paolo Villaggio as Fantozzi (1975); Luciano Salce / Erico Menczer. Public domain per Commons, PD-Italy / PD-1996; consult source for jurisdiction-specific terms. https://commons.wikimedia.org/wiki/File:P_Villaggio_Fantozzi.png
+- commedia-fantozzi-scene.png: Fantozzi driving scene (1975); Luciano Salce / Erico Menczer. Public domain per Commons, PD-Italy / PD-1996. https://commons.wikimedia.org/wiki/File:Paolo_Villaggio_Fantozzi_1.png
+- Pacifico and Lilita One: modern display typefaces chosen to evoke playful entertainment graphics. Google Fonts / SIL Open Font License, local licence files in assets/fonts. https://github.com/google/fonts/tree/main/ofl/pacifico ; https://github.com/google/fonts/tree/main/ofl/lilitaone
+- commedia-pop-pattern.svg, commedia-laugh.svg and commedia-city-car.svg: original vector graphics drawn for this project. The car is a generic illustration, not a branded model or historical photograph. The laugh sticker is not a portrait or a film character.
+- Requests for additional TV photographs and a car photograph were unavailable; those undownloaded files are not referenced by the stylesheet.
+## Theme 5: recognisable comedy-memory collage revision
+- commedia-pozzetto-1988.jpg: Renato Pozzetto, 1988, photographed by Rei Momo, dedicated to the public domain worldwide by its author. https://commons.wikimedia.org/wiki/File:Renato-pozzetto-1988.jpg
+- commedia-sordi-1974.png: Alberto Sordi in Finche c'e guerra c'e speranza (1974), a satirical comedy-drama. Public domain per Commons. File metadata lists original uploader Betti Sorbelli Francesco; upload date is not the film date. https://commons.wikimedia.org/wiki/File:Finch%C3%A9_c%27%C3%A8_guerra_c%27%C3%A8_speranza.png
+- commedia-sandra-goggi-1972.png: Loretta Goggi and Sandra Mondaini in Canzonissima, 11 November 1972, Romolo Siena / television frame. Public domain per Commons, PD-Italy / PD-1996; consult source for jurisdiction-specific terms. https://commons.wikimedia.org/wiki/File:Canzonissima_1972_-_Loretta_Goggi_Sandra_Mondaini.png
+- These are historical/pop-cultural references, not additional exhibition items and not claims of Renzo Renzi's involvement. The TV frame is kept black and white; it has not been artificially colourised. Portraits are cropped only by CSS background positioning.
+## Theme 5: small everyday-life ephemera
+- commedia-era-collage.svg: original vector collage of a VHS cassette, a fictional TV weekly clipping, an espresso cup and a landline telephone. These are illustrative late-twentieth-century material-culture references, not historical scans, real programme listings, product advertisements or brand logos. The telephone, cassette and TV clipping are deliberately generic. No actual prices, broadcast dates or programmes are invented.
+
+## Theme 6 — speculative spatial cinema (2035)
+- future-spatial-grid.svg: original vector coordinate grid and orbital decoration, created for this project.
+- Reuses bibiena-stage-design.jpg, melodrama-camelias.jpg, baroque-auditorium.jpg and fellini-eight-half.jpg; see their source and rights entries above.
+- Reuses assets/items/photo_la_strada_woman.jpg as decorative cinematic memory; original catalogue image and its rights remain unchanged.
+- Historical material is a visual interpretation of reconstructed virtual memories, not a claim that these works depict 2035 or that the page offers working VR.
+- Uses existing Space Mono and Barlow Condensed fonts with their accompanying OFL licenses.
+
+## Replacement images for the theme 1 and 3 map strips
+- Theme 1 now displays baroque-opera-house.jpg (JensKunstfreund, CC BY-SA 4.0; source and license above), an unused decorative sculpture detail, instead of repeating the auditorium header. CSS crops and darkens the image; original file unchanged.
+- cinema-white-telephone.jpg: Tangerineduel, 400 Series Telephone in ivory Bakelite, photographed 26 May 2016. CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/ . Source: https://commons.wikimedia.org/wiki/File:400_Series_Telephone_in_ivory_Bakelite.jpg . Downloaded 960px preview. CSS scales and shades it. This is a real ivory telephone used as a thematic object reference, not an authenticated Italian 1930s film prop or movie still. Image and adapted presentation remain CC BY-SA 4.0.
+- cinema-bicycle-thieves.png: frame from Vittorio De Sica's Ladri di biciclette (1948), father and son sitting. Source: https://commons.wikimedia.org/wiki/File:Bicycle-thieves-sitting.png . Commons credits Vittorio De Sica / DVD and marks PD-Italy and PD-1996. Downloaded 500px preview; CSS crop and shading, original download unchanged.
+## Theme 6 — continuous virtual environment revision
+- future-memory-world.png: original AI-generated concept artwork made with the built-in imagegen tool. Fictional opera-era and mid-century-inspired characters inhabit one shared holographic environment. Not a historical document, a real actor portrait, or a real VR capture. Original output copied into project unchanged; CSS crops, shades, and slowly pans it.
+- Replaces separate historical portrait cards in the header. Theme 6 header no longer uses melodrama-camelias.jpg or photo_la_strada_woman.jpg. Their original files remain unchanged.
+- Generation prompt: see future-memory-world-prompt.txt in this directory. Interface animation is CSS only; no 360-degree viewer or working VR functionality is claimed.
+- future-memory-portal.svg: original vector decoration for the theme 6 sidebar footer. A luminous spatial portal, perspective grid and fictional cross-era human silhouettes; not a historical image or a functional VR control.
+
+## Theme 3 — unified black-and-white film album revision
+Uses three distinct existing film stills: grandi-magazzini-still.png (header), cinema-bicycle-thieves.png (map strip), roma-street-still.jpg (sidebar footer). See individual source entries above. CSS crop and dark overlay only; original assets remain unchanged. Colour posters and telephone object reference are no longer used by theme 3. Catalogue item images retain their original colours.
+
+## Theme 3 — interior scene and full neorealist contact strip
+- cinema-max-salon.jpg: Il signor Max (1937), Rubi Dalma and Vittorio De Sica seated in a furnished interior, formal dress. Film directed by Mario Camerini, produced by Astra Film. Commons marks Public domain. https://commons.wikimedia.org/wiki/File:Il_signor_Max_(film_1937)_Dalma_e_De_Sica.jpg . Downloaded Commons 960px preview. CSS preserves the full scene height with space for the theme selector.
+- cinema-sciuscia-boys.png: Sciuscià (1946), Rinaldo Smordoni and Franco Interlenghi; frame captured by Spinoziano. Commons marks Public domain. https://commons.wikimedia.org/wiki/File:Sciuscià_(1946)_Smordoni_e_Interlenghi.png . CSS crops and shades the lower edge.
+- cinema-umberto-d.png: Umberto D. hospital scene. Commons uploader/credit Marco Ciaramella; Commons image metadata specifies CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/ . https://commons.wikimedia.org/wiki/File:Umberto_D_Ospedale1.png . Downloaded 500px preview, CSS crop and dark caption gradient. Adapted image presentation under CC BY-SA 4.0. No image license is implied for the underlying film as a whole.
+- The map footer now uses three tiled stills across its entire width (Ladri di biciclette, Sciuscià, Umberto D.); the former intentionally empty dark area is removed.
+- Barlow Condensed is a modern font used to evoke condensed cinema poster lettering, not represented as an original 1930s typeface.
+## Theme 3 — white-telephone scene and poster hierarchy
+- cinema-alida-white-phone.jpg: Alida Valli holding a white telephone receiver in L'amante segreta (1941). Mario Bonnard (director), Giuseppe La Torre (cinematographer), Pro Film (production). Commons marks Public domain. Source: https://commons.wikimedia.org/wiki/File:L%27amante_segreta_(1941)_Alida_Valli_-_telefono_bianco.jpg . Downloaded 960px preview. CSS crop only, original image unchanged.
+- Header uses three real stills: L'amante segreta, Grandi magazzini and Il signor Max. Mobile presents them as a row below the title.
+- Existing modern Barlow Condensed and Bodoni Moda fonts evoke period publicity through condensed capitals, italic display lettering, brick-red offset shadows and double rules; they are not claimed to be exact historical fonts.
+## Theme 2 — from writing desk to performance documents
+- melodrama-writing-desk.png: original concept reconstruction generated with the built-in imagegen tool. One fictional nineteenth-century romantic stage narrative connects the lovers' costume studies, scene sketch, handwritten libretto and music sheets on a shared desk. Not a historical photograph, manuscript or scan. Decorative writing is generated, not archival text. Source prompt: melodrama-writing-desk-prompt.txt. Original output copied unchanged; CSS crops for layout.
+- Header replaces the separate Romeo & Juliet / Sarah Bernhardt / Mimi / Boheme image cards with this unified workspace scene.
+- Map footer displays the existing real historical images melodrama-playbill.jpg, melodrama-romeo-juliette.png, melodrama-stage-sketch.jpg, melodrama-mimi-costume.jpg and melodrama-boheme-poster.png, at full image height with preserved aspect ratios. See source entries above. Original source images unchanged; CSS presents them on a common paper background.
+## Theme 2 — fused theatrical paper narrative strip
+- melodrama-paper-narrative.png: AI-assisted interpretive collage made with the built-in imagegen tool, using the existing Romeo & Juliet engraving, Theatre Royal playbill, Mimi costume watercolor and La Boheme poster as source references. See individual source credits and rights above. Figures, typography, paper and drawing lines are recomposed; this is not an authentic historical document. Original source assets remain unchanged. The header writing-desk scene and sidebar are unchanged.
+- Full generation prompt: melodrama-paper-narrative-prompt.txt. Display uses CSS only, aligns the artwork at its top to prioritize faces, and crops the lower architecture on wide viewports.
+- Theme 2 hierarchy update: melodrama-paper-narrative.png is now the header main image; melodrama-writing-desk.png is the narrow map footer (65px desktop, 42px narrow/short screens). Source assets and their generation prompts are unchanged.
+
+## Theme 2 — purpose-composed narrow desk footer
+- melodrama-desk-ribbon-source.png: new imagegen composition based on melodrama-writing-desk.png. All desk objects are in a single horizontal row: ink, pen, fabric, libretto, music, complete costume figures and miniature romantic scene. Original fictional reconstruction, not an authentic historical document. Full prompt: melodrama-desk-ribbon-prompt.txt.
+- melodrama-desk-ribbon.svg: code-native display window onto the generated PNG's content row (viewBox 0 416 1586 180); embedded PNG retained unchanged. Empty wooden padding is excluded. The presentation fills the shallow footer dimensions; proportions adapt to the footer aspect ratio. CSS retains the 65px desktop / 42px narrow layout, and removes the caption/gradient overlay so it cannot cover the figures.
+## Theme 5 — photographic cinema memory revision
+- commedia-cinema-memory-hero.png: imagegen interpretive photographic composite based on existing credited photographs of Sordi, Villaggio and Pozzetto. Faces and era motifs are recomposed on a pink/aqua background. Not an authentic film still or evidence that the actors appeared in one film together. Prompt: commedia-cinema-memory-hero-prompt.txt.
+- commedia-cinema-memory-scenes.png: imagegen interpretive film-memory panorama using the Fantozzi car frame, Sordi helmet frame and Il Bisbetico Domato publicity reference. Creative reconstructed settings/bridges, not an archival still. Prompt: commedia-cinema-memory-scenes-prompt.txt.
+- commedia-bisbetico.jpg: Davide Mauro (Codas), photographed publicity material, Commons image metadata specifies CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/ . https://commons.wikimedia.org/wiki/File:Il_Bisbetico_Domato.jpg . Used as a visual reference for grape-treading pose, not claimed to be a public-domain film frame. Derived scenes composite shared under CC BY-SA 4.0; no assertion of rights over the underlying film as a whole.
+- commedia-ragazzo-campagna.jpg: search result by Max isidori is NOT a film still; downloaded during research but excluded from all CSS and generated imagery. Not used as a cultural/actor reference.
+- Removed cartoon prop stickers, circular actor frames and abstract pop pattern from theme 5; retained pink/cyan/cream colour system and existing playful licensed typography. Sidebar footer now displays the real credited Fantozzi driving frame.
+- commedia-cinema-memory-strip.svg: code-native four-window presentation of the generated scenes panorama, selecting driving, Celentano, Muti and Sordi facial/action details to avoid a single shallow crop cutting off the central character. Embedded generated PNG is unchanged; no new factual film scene is claimed. Same attribution/license terms as the scenes composite above.
+
+- Viewport correction: header artwork now uses an independent CSS pseudo-element with contain and a dedicated navigation reserve, so the full image is visible without navigation covering faces. Wide empty areas remain theme pink. commedia-cinema-memory-strip.png is a browser-rendered raster export of the existing code-native strip.svg, used by CSS to avoid dependence on nested SVG image/use/mask rendering. No new AI scene or identity change introduced; same source credits and derivative license apply.
+
+- commedia-cinema-hero-left.png and commedia-cinema-hero-right.png: browser-rendered viewports of the existing generated hero, preserving full vertical extent and adding theme-pink edge fade. They are independently contained at left/right of the header artwork area. No actors regenerated; existing source credits apply. This replaces whole-image cover cropping and whole-image contain with excessive blank side margins.
+
+## Theme 5 — new viewport-first ensemble proposal
+- commedia-view-hero-v2.png: newly generated photographic interpretation using the credited Sordi/Villaggio/Pozzetto references, now a continuous courtyard/cafe/car/office ensemble with small figures in a central crop-safe band and a modest left title zone. Not a real shared film scene. Prompt: commedia-view-hero-v2-prompt.txt.
+- commedia-view-scenes-v2.png: newly generated comedy-memory panorama inspired by the credited Fantozzi and Il Bisbetico Domato references. Fictional reconstructed connections and family/office details, not documentary stills. Prompt: commedia-view-scenes-v2-prompt.txt. Same reference credits and applicable CC BY-SA derivative terms as previous scene composite.
+- commedia-view-strip-v2.png: browser-rendered four-window framing of the new scene source at 2400x160, designed around the narrow footer's actual ratio. Ordinary PNG is used directly, with no SVG dependency in the page. CSS retains approximately the previous header/footer footprint; map function and HTML are unchanged.
+- commedia-strip-panel-repaired.png: imagegen repair of only the second photographic panel, replacing the top pastel padding with continued stucco and vine background around the figure. Prompt: commedia-strip-panel-repair-prompt.txt. Re-rendered into commedia-view-strip-v2.png; other three panels and CSS layout unchanged. Same interpretive/derivative source credits as the scenes panorama apply.
+
+## Theme 6 — viewport-specific reconstruction
+- future-world-viewport-v2.png: imagegen re-composition of the existing fictional virtual world. Characters are smaller complete performers inside a central panoramic band, with shared floor, stage and street. New camera framing, not a historical photo or functioning VR capture. Prompt: future-world-viewport-v2-prompt.txt.
+- future-stage-viewport-v2.png: newly generated miniature spatial cinema diorama with theatre, sculpture studies, street fragments and light rings in a shallow central band. Replaces the former Baroque/Fellini photograph strip. Prompt: future-stage-viewport-v2-prompt.txt.
+- CSS keeps both raster images at width 100% / height auto (no aspect ratio distortion). Header centers the subject above a reserved 55px navigation area, removes background panning, and adjusts title size. Sidebar portal uses contain to preserve the entire vector illustration. Original files and all catalogue images remain unchanged.
+## Theme 3 / 5 — small decorative accents
+- cinema-deco-frame.svg and cinema-deco-wallpaper.svg: original geometric vector designs with stepped corners, fine symmetric lines and diamonds. Art Deco-inspired styling for theme 3's white-telephone interior atmosphere, not scans or reconstructions of a specific historical interior. Existing photographic materials retained. Theme 4 unchanged.
+- commedia-phone-doodle.svg, commedia-coffee-doodle.svg, commedia-gelato-doodle.svg: original small pastel line drawings of a telephone, espresso cup and ice cream. Decorative accents only, not movie props or clickable controls.
+- commedia-sparse-sparkles.svg: original sparse dots/stars for theme 5 background; small and translucent to preserve the cinematic imagery as the focus.
+## Theme 3 - alternating social worlds in the header
+- cinema-bruno-child.png: Enzo Staiola as Bruno in Ladri di biciclette (1948), directed by Vittorio De Sica, produced by P.D.S. Screenshot uploaded by Spinoziano. Source: https://commons.wikimedia.org/wiki/File:Ladri_di_biciclette_(1948)_Enzo_Staiola.png . Commons marks the screenshot public domain in Italy; consult the source page for territorial conditions.
+- cinema-antonio-worker.png: Lamberto Maggiorani as Antonio in the same film. Screenshot uploaded by Spinoziano. Source: https://commons.wikimedia.org/wiki/File:Ladri_di_biciclette_(1948)_Lamberto_Maggiorani_(3).png . Commons labels PD-Italy and PD-1996.
+- Both downloaded at 500px wide from Wikimedia thumbnails. Authentic film frames, not AI reconstructions. Header alternates the existing Alida Valli white-telephone still, Bruno, the existing Il signor Max salon, and Antonio. Source for father/son poverty and threatened livelihood: https://cinetecadibologna.it/distribuzione/film/ladri-di-biciclette/ .
+## Theme 3 - continuous social-contrast environment (current header)
+- cinema-shoeshine-street.png: newly downloaded 960px still, Franco Interlenghi and Rinaldo Smordoni polishing shoes in Sciuscia (1946), Vittorio De Sica / Alfa Cinematografica; screenshot Spinoziano. Source: https://commons.wikimedia.org/wiki/File:Sciusci%C3%A0_(1946)_lustrascarpe.png . Commons labels PD-Italy and PD-1996.
+- cinema-bicycle-rain.jpg: newly downloaded 960px still from Bicycle Thieves (1948), Vittorio De Sica; source DVD, uploader Word0151. Source: https://commons.wikimedia.org/wiki/File:Bicycle-thieves-rain.jpg . Commons labels PD-Italy and PD-1996.
+- cinema-social-worlds-v2.png: built-in imagegen composite using the two new stills and the previously credited Alida Valli white telephone / Il signor Max salon references. Blended architecture, connected floor, lighting and added transitions are AI interpretations. This is NOT an unaltered film still or a real joint scene. Zoomed-out figures suit the shallow header viewport; key faces, handset and shoe-polishing work are concentrated near its central horizontal band. Prompt and viewport revision saved in cinema-social-worlds-v2-prompt.txt.
+- The previous four separate header photos are replaced with one continuous decorative background. CSS preserves its aspect ratio, reserves space below for navigation, and retains the existing title, map and sidebar styling. Original film references retained unchanged.
+## Theme 3 - original-still photomontage v3 (current header)
+- cinema-original-stills-v3.svg: code-native presentation embedding the four already credited, unaltered source photographs: cinema-alida-white-phone.jpg, cinema-shoeshine-street.png, cinema-max-salon.jpg and cinema-bicycle-rain.jpg. No AI-generated image or invented face/environment is used in this version. The left title backdrop uses only a window/wall detail from the same original salon still.
+- SVG places each complete original photograph with preserveAspectRatio=meet, uses a blurred copy of that same photograph behind it to fill differently shaped viewports, and applies opacity gradient masks along overlapping edges. Full-frame foreground retains source composition and film grain; background blur and edge fades are presentation effects only. All source credits and Commons page links above remain applicable.
+- cinema-social-worlds-v2.png and its prompt remain saved unchanged as the previous AI interpretation. Theme-3.css now displays the original-still SVG instead. Desktop and narrow-screen framing checked. HTML and JS not modified for this revision.
+### Original-still header PNG compatibility fix
+- cinema-original-stills-v3.png (1850x240), cinema-original-stills-v3-medium.png (1440x240), cinema-original-stills-v3-mobile.png (476x105): browser-rendered PNG exports of the existing original-still SVG, at the actual artwork viewports. They contain the same historical photographs, soft edge masks and same-photo blurred backing. No AI generation or new photographic content. Source credits above apply.
+- CSS now consumes ordinary PNG files rather than the nested SVG. This removes SVG image/mask rendering from the page's runtime. SVG retained as editable source; previous AI composite remains saved unchanged.
+## Theme 5 - real-photograph version v3 (current)
+- Header now uses only previously credited real photographs: Alberto Sordi in Finche c'e guerra c'e speranza (1974), Renato Pozzetto's 1988 photograph by Rei Momo, and Paolo Villaggio driving in Fantozzi (1975). The Pozzetto image is a dated actor photograph, not a film still. Original colours and faces preserved; only cropping, edge opacity and same-photo background blur are applied. Pink title space, cyan background, licensed playful fonts and original small doodles retained.
+- commedia-fantozzi-colleagues.png: Giuseppe Anatrelli and Gigi Reder laughing in Fantozzi (1975), Luciano Salce / Erico Menczer, uploaded by Cavarrone. Commons labels PD-Italy / PD-1996. https://commons.wikimedia.org/wiki/File:Anatrelli_Reder_Fantozzi.png . Downloaded 960px preview.
+- commedia-fantozzi-billiards.png: original billiards scene in Fantozzi (1975). Source and file licence: https://commons.wikimedia.org/wiki/File:Fantozzi_biliardo.png . Commons public-domain labels apply as stated on that page. Downloaded 960px preview.
+- commedia-pozzetto-naviglio.png: Renato Pozzetto on a bridge over the Naviglio Grande in Un povero ricco. Source: https://commons.wikimedia.org/wiki/File:Renato_Pozzetto_nel_film_Un_povero_ricco_sul_ponte_di_pietra_sul_Naviglio_Grande_(Milano).png . Commons uploader declares CC0; this records the file-page declaration, not a claim of ownership or a new licence over the underlying film. Downloaded 960px preview.
+- commedia-real-hero-v3.svg and commedia-real-strip-v3.svg: editable code-native photo layouts, embedding the original source pixels. No AI-generated image, invented face or scene reconstruction. SVG masks feather source edges; a blurred copy of the same photograph fills differing viewport proportions. Bottom strip uses laughter / billiards / Milan street atmosphere, separate photographs from the header.
+- commedia-real-hero-v3.png, commedia-real-hero-v3-medium.png, commedia-real-hero-v3-mobile.png; commedia-real-strip-v3.png, commedia-real-strip-v3-mobile.png: browser-rendered raster exports for the actual desktop/narrow artwork regions. CSS references these ordinary PNGs for reliable display. Existing AI composites remain local and unchanged, but theme 5 no longer references them. The historical photographs are visual cultural references, not new exhibition records or claims of Renzo Renzi's participation.
+## Theme 5 - clear original-film version v4 (current)
+- commedia-real-hero-v4.png, commedia-real-hero-v4-medium.png, commedia-real-hero-v4-mobile.png: browser exports of commedia-real-hero-v4.svg. Left 22% is the pink title field; remaining equal-height panels show the original credited Sordi (1974), Anatrelli/Reder laughter in Fantozzi (1975), and Villaggio driving in Fantozzi (1975). No AI image, portrait replacement, tinted mist, opacity mask, blurred filler or generated environment. Aspect-preserving crops are computed in the editable SVG for each viewport, then consumed as ordinary PNG backgrounds.
+- Map footer now uses the original commedia-fantozzi-billiards.png and commedia-pozzetto-naviglio.png directly with CSS position adjustments, preserving photograph proportions. Earlier real-photo v3 and AI proposals remain saved locally, but are no longer referenced by theme 5.
+- The original pale cyan page/map, pink frames, playful fonts and small telephone/coffee/ice-cream decorations remain. Only the header's left field carries pastel graphic treatment; movie panels retain source colours. HTML and JS unchanged in this revision.
+## Theme 5 - playful television composition v5 (current)
+- commedia-tv-hero-v5.svg and commedia-tv-hero-v5-mobile.svg: original code-native irregular television outlines around the same real film photographs credited in v4. Slight rotations, curved asymmetrical corners, thin purple contours, yellow/cyan/pink casing, a cyan title-field swoosh and small line/star accents. Photographs retain their source pixels and colours; no AI generation, replacement face or reconstructed environment.
+- commedia-tv-strip-v5.svg and commedia-tv-strip-v5-mobile.svg: corresponding shallow connected television frames for the original billiards and Milan bridge scenes. Decorations stay at picture edges. Artwork remains decorative and has no fake interactive controls.
+- commedia-tv-hero-v5.png, commedia-tv-hero-v5-medium.png, commedia-tv-hero-v5-mobile.png, commedia-tv-strip-v5.png and commedia-tv-strip-v5-mobile.png: browser-rendered raster exports consumed by CSS, avoiding runtime SVG rendering dependencies. Wide and narrow views inspected. Existing map/header footprint, navigation, fonts and sidebar are retained; HTML and JS unchanged.
+### Theme 5 - unique sidebar photograph
+- commedia-fantozzi-sidebar.png: original Paolo Villaggio close-up from Fantozzi (1975), Luciano Salce / Erico Menczer. Downloaded Commons 960px preview of https://commons.wikimedia.org/wiki/File:Paolo_Villaggio_Fantozzi_2.png . Commons labels PD-Italy and PD-1996. Replaces the sidebar driving frame to avoid repeating the top-right photograph. CSS crop at center 38%; original file unchanged. Header and bottom strip unchanged.
+## Theme 5 - sparse toy-market accents v6 (current)
+- commedia-toy-stickers.svg: six original code-native pastel line drawings: smiling television, spaghetti plate, friendly clown, microphone, smiling flower and a generic Tuscan-style house/cypress landscape. Decorative symbols, not movie stills, actor portraits, specific filming locations or interactive controls. No AI image generation used.
+- commedia-tv-hero-v6.svg / mobile: v5 real-film composition retained; only three small stickers added at frame/title junctions (pasta, television, clown). commedia-tv-strip-v6.svg / mobile: three sparse accents on strip edges (flower, microphone, house/cypress). Mobile placements and scale are adjusted separately. Photographs and existing layout remain unchanged.
+- commedia-tv-hero-v6.png, commedia-tv-hero-v6-medium.png, commedia-tv-hero-v6-mobile.png, commedia-tv-strip-v6.png, commedia-tv-strip-v6-mobile.png: browser-rendered PNG assets currently referenced by CSS. Wide and narrow screenshots inspected. HTML and JS unchanged.
+## Integration with the team's current HTML structure
+- Six theme stylesheets now use the current item-main, item-layout, item-media, item-info and item-text ids from HTML-IDS.md. Existing two-column grid, mobile stacked layout and separate internal scrolling are retained. Only CSS adapted; map.html, item.html, skeleton.css, map.js and item.js are unchanged from the team's latest main.
+- The latest shared main.js already restores the saved stylesheet. River retained that implementation and added English comments explaining why it is needed; no JavaScript behavior was changed in this integration.
+- Verified six theme selections, page-to-page persistence, map markers, item data/images, text voice selection, grid layouts and script syntax: 75 browser checks passed. Desktop and narrow screenshots inspected. Only currently referenced theme assets, required fonts/licences and this attribution record are included in River's upload.

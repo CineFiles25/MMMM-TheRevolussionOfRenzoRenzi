@@ -1,0 +1,523 @@
+/* THEME 03 / TELEFONI BIANCHI + NEOREALISMO
+   设计：统一的黑白电影画册；主剧照、相纸细边、奶油纸色、墨绿与少量砖红。
+   主题只负责视觉，数据、路线、页面 HTML 和 JS 保持原样。
+   学习顺序：字体 → 顶栏 → Grid 地图 → 图片边框 → 票券 → 展品 → 响应式。
+*/
+
+/* 1. 本地字体。字体和许可证都在 assets/fonts，不依赖在线字体服务。
+   Bodoni 用于优雅的大标题；Barlow Condensed 用于电影海报和栏目字。
+*/
+@font-face {
+  font-family: 'Cinema Bodoni';
+  src: url('../assets/fonts/BodoniModa.ttf') format('truetype');
+  font-weight: 400 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cinema Condensed';
+  src: url('../assets/fonts/BarlowCondensed-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+html { height: 100%; }
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #1d3028;
+  background-image: url('../assets/img/themes/cinema-deco-wallpaper.svg');
+  color: #282921;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+a { color: #942f27; text-underline-offset: 4px; }
+a:hover { color: #213a30; }
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 3px solid #942f27;
+  outline-offset: 3px;
+}
+::selection { background-color: #942f27; color: #fff9ec; }
+
+/* 2. 真实黑白剧照：白色电话、擦鞋童、沙龙与雨中父子。原始剧照用渐隐衔接后导出PNG，不生成或重画人物。
+   背景只改变装饰，展品照片不做黑白滤镜。 */
+body > header {
+  position: relative;
+  flex-shrink: 0;
+  height: 295px;
+  margin: 20px 26px 0;
+  padding: 240px 10px 10px;
+  border: 1px solid #b8b3a3;
+  background-color: #14251f;
+  background-image: linear-gradient(90deg, #14251fd9 0%, #14251f99 17%, #14251f00 34%), url('../assets/img/themes/cinema-original-stills-v3.png');
+  background-position: center, center top;
+  background-size: 100% 100%, 100% calc(100% - 55px);
+  background-repeat: no-repeat;
+  box-shadow: 0 5px 18px #0e1c1733;
+}
+body > header::before {
+  content: 'CINEMA\A ITALIANO';
+  white-space: pre-line;
+  position: absolute;
+  top: 26px;
+  left: 28px;
+  color: #f4f0e5;
+  font-family: 'Cinema Condensed', Impact, sans-serif;
+  font-size: 76px;
+  font-weight: 600;
+  line-height: .9;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 0 #14251f, 3px 3px 0 #a44235;
+  pointer-events: none;
+}
+body > header::after {
+  content: 'TELEFONI BIANCHI / NEOREALISMO';
+  position: absolute;
+  top: 191px;
+  left: 30px;
+  color: #e5e0d4;
+  font-family: 'Cinema Condensed', Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  pointer-events: none;
+}
+header nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 6px 12px;
+  border: 1px solid #b8b3a3;
+  background-color: #f1eee3;
+}
+header nav::before {
+  content: 'TELEFONI BIANCHI / SCIUSCIA / IL SIGNOR MAX / LADRI DI BICICLETTE';
+  position: absolute;
+  right: 9px;
+  bottom: 50px;
+  color: #fff;
+  font-family: 'Cinema Condensed', Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  padding: 3px 7px;
+  background-color: #14251fc9;
+  text-shadow: 0 1px 4px #000;
+  pointer-events: none;
+}
+header label { color: #172c24; font-family: 'Cinema Condensed', Arial, sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+#theme-select {
+  flex: 1;
+  min-width: 0;
+  padding: 6px;
+  border: 0;
+  border-bottom: 1px solid #b8b3a3;
+  border-radius: 0;
+  background-color: #f1eee3;
+  color: #282921;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+/* 3. Grid 明确划分两列：地图使用剩余空间，目录宽 330px。
+   minmax(0, 1fr) 允许地图缩小；min-height: 0 允许内部滚动。
+   较具体的选择器用于覆盖 map.html 内现有的基础布局。
+*/
+body #map-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 24px;
+  min-height: 0;
+  padding: 20px 26px 22px;
+}
+
+/* 4. 画册内页：统一的纸色、单线边框和留白。 */
+#map-page #map-stage {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  padding: 15px;
+  border: 1px solid #b8b3a3;
+  background-color: #eeeade;
+  box-shadow: 0 5px 18px #0e1c1722;
+}
+#map-stage::before {
+  content: 'RENZO RENZI / LA MOSTRA / CINEMA ITALIANO';
+  flex-shrink: 0;
+  padding: 5px 0 12px;
+  border-top: 3px double #942f27;
+  border-bottom: 3px double #b8b3a3;
+  color: #213a30;
+  font-family: 'Cinema Condensed', Arial, sans-serif;
+  font-size: 17px;
+  letter-spacing: 2px;
+}
+#map-stage #map-svg {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+/* multiply 把地图白底与纸色融合，不改变展品位置或路线。 */
+/* 同一套黑白剧照语言：父子画面作为封面人物关系的呼应，不重复图片。 */
+/* 三张黑白剧照铺满横条；33.34% 的三层背景分别占左、中、右。
+   深色渐变只在最下面帮助片名阅读，不再留下大块空白。 */
+#map-stage::after {
+  content: 'LADRI DI BICICLETTE · SCIUSCIÀ · UMBERTO D.';
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex: 0 0 110px;
+  margin-top: 10px;
+  padding: 6px 9px;
+  border: 5px solid #faf7ee;
+  outline: 1px solid #b8b3a3;
+  background-color: #343631;
+  background-image: linear-gradient(0deg, #101815d9, transparent 35%), url('../assets/img/themes/cinema-bicycle-thieves.png'), url('../assets/img/themes/cinema-sciuscia-boys.png'), url('../assets/img/themes/cinema-umberto-d.png');
+  background-size: 100% 100%, 33.34% auto, 33.34% auto, 33.34% auto;
+  background-position: center, left 26%, center 35%, right 44%;
+  background-repeat: no-repeat;
+  color: #fff9ec;
+  font-family: 'Cinema Condensed', Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  text-shadow: 0 1px 3px #101815;
+}
+
+/* 5. 右侧像画册目录：细线分隔，砖红只用于路线强调。 */
+#map-page #map-side {
+  max-width: none;
+  min-width: 0;
+  min-height: 0;
+  padding: 18px;
+  border: 1px solid #b8b3a3;
+  border-top: 4px solid #942f27;
+  background-color: #f1eee3;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+}
+#map-page #map-side h1 {
+  margin: 0 0 18px;
+  padding: 15px 0 17px;
+  border-bottom: 1px solid #b8b3a3;
+  color: #213a30;
+  font-family: 'Cinema Condensed', Arial, sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-style: italic;
+  text-shadow: 2px 2px 0 #c6a399;
+}
+#map-page #map-side h2 {
+  margin: 23px 0 12px;
+  color: #942f27;
+  font-family: 'Cinema Condensed', Impact, sans-serif;
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.1;
+}
+#map-page #itinerary-choice { min-width: 0; margin: 0; padding: 0; border: 0; }
+#itinerary-choice legend {
+  margin-bottom: 12px;
+  font-family: 'Cinema Condensed', Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+#map-page #itinerary-choice label {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  margin: 0 0 7px;
+  padding: 10px;
+  border: 1px solid #c6c0af;
+  border-left: 2px solid #213a30;
+  background-color: #f8f5ed;
+  font-size: 14px;
+  line-height: 1.4;
+}
+#map-page #itinerary-choice label:hover { background-color: #e0d2b6; }
+input[type='radio'] { flex-shrink: 0; accent-color: #942f27; }
+#map-side a { color: #282921; text-decoration: none; }
+#map-side a:hover { color: #942f27; text-decoration: underline; }
+#map-page #map-side li {
+  margin: 0;
+  padding: 9px 0 9px 3px;
+  border-bottom: 1px solid #c9b999;
+  font-size: 14px;
+  line-height: 1.45;
+}
+#map-side li::marker { color: #942f27; font-weight: bold; }
+/* 片名式栏目字与衬线正文，模拟电影宣传单的层级。 */
+#map-page #map-side h3 { font-family: 'Cinema Condensed', Arial, sans-serif; text-transform: uppercase; letter-spacing: .6px; }
+#map-page #map-side li a { font-family: 'Cinema Bodoni', Georgia, serif; font-weight: 600; }
+#map-page #start-link {
+  display: block;
+  margin: 18px 0;
+  padding: 11px 14px;
+  border: 3px double #f5eedf;
+  outline: 1px solid #942f27;
+  background-color: #942f27;
+  color: #fff9ec;
+  font-family: 'Cinema Condensed', Arial, sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+#map-page #start-link:hover { background-color: #213a30; }
+#map-svg .marker-dot { fill: #942f27; }
+#map-svg .route-line { stroke: #942f27; stroke-width: 10; }
+#map-svg .marker:hover .marker-dot,
+#map-svg .marker:focus .marker-dot { fill: #213a30; stroke: #fff9ec; }
+#map-svg .marker:hover .marker-num,
+#map-svg .marker:focus .marker-num { fill: #fff9ec; }
+
+/* 6. 展品像一页电影刊物：大标题、元数据分隔线、图文环绕。
+   float 是文字环绕图片；clear: both 让版权回到图片下方。
+   overflow: auto 让 article 容器包住浮动图片，不需要改 HTML。
+*/
+#item-main { flex: 1; min-height: 0; padding: 24px; overflow-y: auto; }
+#item-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px;
+  border: 1px solid #b9a783;
+  border-top: 6px solid #213a30;
+  background-color: #f5eedf;
+  overflow: auto;
+}
+#item-main h1 {
+  margin: 0 0 20px;
+  color: #942f27;
+  font-family: 'Cinema Bodoni', Georgia, serif;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.05;
+  overflow-wrap: break-word;
+}
+#item-context {
+  margin: 0 0 25px;
+  padding-bottom: 18px;
+  border-bottom: 3px double #a58b5e;
+  font-size: 15px;
+}
+#item-media img {
+  float: left;
+  width: 43%;
+  height: auto;
+  margin: 0 30px 22px 0;
+  padding: 7px;
+  border: 1px solid #b5a381;
+  background-color: #e9dfca;
+  box-shadow: 0 3px 8px #28292118;
+}
+#item-text { font-size: 18px; line-height: 1.85; overflow-wrap: break-word; }
+.item-rights {
+  clear: both;
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 1px solid #b9a783;
+  color: #76664a;
+}
+#item-media iframe { display: block; width: 100%; height: 330px; margin: 20px 0; border: 0; }
+body > footer { flex-shrink: 0; padding: 10px 24px; border-top: 3px double #a58b5e; background-color: #f1eee3; }
+footer nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+button {
+  min-height: 44px;
+  padding: 8px 22px;
+  border: 3px double #f5eedf;
+  outline: 1px solid #213a30;
+  background-color: #213a30;
+  color: #fff9ec;
+  font-family: 'Cinema Condensed', Arial, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { background-color: #942f27; }
+button:disabled { opacity: 0.4; cursor: default; }
+
+/* 7. 电影装潢与交互。
+   :has(input:checked) 选中包含已勾选单选框的标签，让路线选择可见。
+   transition 只做状态之间的过渡；悬停动画不改变数据或导航逻辑。
+*/
+#map-page #map-side::before {
+  content: 'RASSEGNA CINEMATOGRAFICA / PROGRAMMA';
+  display: block;
+  padding: 0 0 12px;
+  border-bottom: 3px double #942f27;
+  color: #942f27;
+  font-family: 'Cinema Condensed', Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+/* 目录末尾也是剧照与相纸，不使用彩色海报或倾斜贴纸。 */
+#map-page #map-side::after {
+  content: 'ROMA CITTÀ APERTA / ROBERTO ROSSELLINI / 1945';
+  display: flex;
+  align-items: flex-end;
+  min-height: 205px;
+  margin: 28px 1px 6px;
+  padding: 9px;
+  border: 5px solid #faf7ee;
+  outline: 1px solid #b8b3a3;
+  background-color: #343631;
+  background-image: linear-gradient(0deg, #101815e6, transparent 65%), url('../assets/img/themes/roma-street-still.jpg');
+  background-position: center;
+  background-size: cover;
+  color: #fff9ec;
+  font-family: 'Cinema Condensed', Arial, sans-serif;
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 3px #101815;
+}
+#map-page #itinerary-choice label {
+  transition: background-color 200ms ease, border-color 200ms ease, transform 200ms ease;
+}
+#map-page #itinerary-choice label:has(input:checked) {
+  border-color: #942f27;
+  border-left-color: #942f27;
+  background-color: #e6e1d4;
+  font-weight: bold;
+}
+#map-page #itinerary-choice label:focus-within { outline: 2px solid #942f27; outline-offset: 2px; }
+#map-side li a { display: inline-block; transition: color 200ms ease, transform 200ms ease; }
+#map-page #start-link,
+button { transition: background-color 200ms ease, box-shadow 200ms ease, transform 200ms ease; }
+#item-media img { transition: box-shadow 300ms ease; }
+#map-svg .marker-dot { transition: fill 200ms ease, stroke-width 200ms ease, filter 200ms ease; }
+#map-svg .marker:hover .marker-dot,
+#map-svg .marker:focus .marker-dot { stroke-width: 15; filter: drop-shadow(0 3px 5px #282921); }
+
+/* 只有具有鼠标悬停能力的设备才运行悬停效果，触屏不依赖 hover。 */
+@media (hover: hover) {
+  #map-page #itinerary-choice label:hover { transform: translateX(3px); }
+  #map-side li a:hover { transform: translateX(4px); }
+  #map-page #start-link:hover,
+  button:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 3px 4px 0 #bda77c; }
+  #item-media img:hover { box-shadow: 0 5px 14px #28292130; }
+  #map-svg:hover .route-line { animation: itinerary-flow 4s linear infinite; }
+}
+/* 只在鼠标进入地图时，让原有虚线缓慢前进，不移动标记。 */
+@keyframes itinerary-flow {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -148; }
+}
+
+/* 白色电话片的现代室内装饰：阶梯、对称线与菱形角花。
+   与主题四的胶片边框区分；border-image 只影响外框，不移动地图标记。 */
+#map-page #map-stage,
+#map-page #map-side,
+#item-layout {
+  border: 10px solid #213b32;
+  border-image-source: url('../assets/img/themes/cinema-deco-frame.svg');
+  border-image-slice: 30;
+  border-image-repeat: stretch;
+}
+#map-page #map-stage { padding: 10px; }
+#map-page #map-side { padding: 14px; }
+body > header { outline: 1px solid #a88e5c; outline-offset: -6px; }
+body > header::before {
+  padding-left: 14px;
+  border-left: 3px double #c8b383;
+  letter-spacing: 3px;
+  text-shadow: none;
+}
+#map-stage::before { border-top-color: #b59b66; border-bottom-color: #b59b66; text-align: center; }
+#map-page #map-side h1 { font-style: normal; letter-spacing: 2px; text-shadow: none; font-size: 48px; }
+#map-page #map-side::before { color: #76603b; border-bottom-color: #b59b66; text-align: center; }
+#map-page #map-side h2 { font-style: normal; color: #213b32; }
+
+/* 8. 响应式：缩小海报标题，地图和目录在手机上上下排列。 */
+@media (min-width: 701px) and (max-width: 1600px) {
+  body > header { background-image: linear-gradient(90deg, #14251fd9 0%, #14251f99 17%, #14251f00 34%), url('../assets/img/themes/cinema-original-stills-v3-medium.png'); }
+}
+@media (max-width: 1100px) {
+  body > header::before { top: 35px; font-size: 70px; }
+  body > header::after { top: 190px; font-size: 11px; letter-spacing: 1px; }
+  body #map-page { grid-template-columns: minmax(0, 1fr) 290px; gap: 18px; }
+  #map-page #map-side h1 { font-size: 42px; }
+}
+@media (max-width: 700px) {
+  body > header { height: 221px; margin: 10px 12px 0; padding: 170px 5px 7px; background-image: linear-gradient(180deg, #14251f99, #14251f00 40%), url('../assets/img/themes/cinema-original-stills-v3-mobile.png'); background-size: 100% 100%, 100% 105px; background-position: center, center 73px; }
+  body > header::before { top: 13px; left: 14px; font-size: 39px; letter-spacing: .5px; white-space: normal; }
+  body > header::after { top: 60px; left: 15px; width: 90%; font-size: 9px; letter-spacing: 1px; }
+  header nav { gap: 6px; padding: 5px; }
+  header nav::before { bottom: 44px; right: 4px; font-size: 6px; letter-spacing: .3px; }
+  header label { font-size: 10px; letter-spacing: 0; }
+  #theme-select { width: 0; max-width: none; font-size: 11px; }
+  body #map-page { grid-template-columns: minmax(0, 1fr); grid-template-rows: 42% minmax(0, 1fr); gap: 14px; padding: 12px; }
+  #map-page #map-stage { border-width: 7px; padding: 8px; }
+  #map-stage::before { font-size: 10px; letter-spacing: 1px; padding-bottom: 5px; }
+  #map-stage::after { flex-basis: 65px; margin-top: 4px; padding: 4px; border-width: 3px; font-size: 8px; letter-spacing: 0; }
+  #map-page #map-side { padding: 12px; }
+  #map-page #map-side h1 { padding: 10px 0; font-size: 36px; margin-bottom: 14px; }
+  #item-main { padding: 12px; }
+  #item-layout { padding: 18px; }
+  #item-main h1 { font-size: 34px; }
+  #item-media img { float: none; width: 100%; margin: 0 0 24px; transform: none; }
+  #item-text { font-size: 17px; }
+  #item-media iframe { height: 220px; }
+}
+@media (max-height: 650px) and (min-width: 701px) {
+  body > header { height: 190px; margin-top: 10px; padding-top: 140px; }
+  body > header::before { top: 12px; font-size: 48px; }
+  body > header::after { top: 103px; font-size: 9px; }
+}
+/* 系统开启“减少动态效果”时，保留视觉设计但停止动画和过渡。 */
+@media (prefers-reduced-motion: reduce) {
+  body > header,
+  body > header::before,
+  #map-page #itinerary-choice label,
+  #map-side li a,
+  #map-page #start-link,
+  button,
+  #item-media img,
+  #map-svg .marker-dot { transition: none; }
+  #map-svg:hover .route-line { animation: none; }
+  #map-page #itinerary-choice label:hover,
+  #map-side li a:hover,
+  #map-page #start-link:hover,
+  button:hover:not(:disabled),
+  #item-media img:hover { transform: none; }
+}
+/* 横屏高度较小时，缩小图片带，优先给地图留出空间。 */
+@media (max-height: 650px) and (min-width: 701px) {
+  #map-stage::after { flex-basis: 70px; }
+}
+
+/* River: match the team's current HTML ids (HTML-IDS.md).
+   Keep the existing two-column grid and independently scrolling media/text.
+   仅调整 CSS 选择器和外观，不修改队友的 HTML 或交互代码。 */
+body > header { display: block; }
+header nav { width: 100%; }
+#item-main { overflow: hidden; }
+#item-main #item-layout {
+  width: 100%; max-width: none; height: 100%; min-height: 0;
+  margin: 0; overflow: hidden;
+}
+#item-media, #item-info { min-width: 0; min-height: 0; overflow: auto; }
+#item-info { padding: 0 12px 16px; }
+#item-media img {
+  float: none; width: auto; height: auto; max-width: 100%; max-height: 100%;
+  margin: 0; flex-shrink: 0; transform: none;
+}
+#item-media.multi img { max-height: none; }
+#item-media iframe { height: auto; aspect-ratio: 16 / 9; max-height: 100%; }
+@media (max-width: 700px) {
+  #item-main #item-layout { padding: 12px; gap: 12px; }
+  #item-info { padding: 0 6px 12px; }
+  #item-media img { max-width: 100%; }
+}

@@ -202,8 +202,9 @@ const Exhibition = (function () {
   function applyStoredTheme() {
     const theme = getCurrentTheme();
     document.documentElement.setAttribute("data-theme", theme.id);
-    // The page's <link id="theme-stylesheet"> starts with the default theme's file:
-    // point it at the visitor's stored theme so the right CSS loads on every page.
+    // Modified by River: explain the saved-theme stylesheet restoration below.
+    // Reason: data-theme alone leaves the HTML's default theme-3.css active.
+    // Keep the existing shared implementation; only update a link when present.
     const link = document.getElementById("theme-stylesheet");
     if (link) link.setAttribute("href", theme.cssFile);
     return theme;

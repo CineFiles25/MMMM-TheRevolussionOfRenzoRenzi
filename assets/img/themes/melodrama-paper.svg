@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240">
+  <!-- Original subtle paper texture, not a historical scan. Transparent background. -->
+  <g fill="#6b4c29" opacity=".08">
+    <circle cx="12" cy="23" r=".7"/><circle cx="94" cy="18" r=".6"/><circle cx="167" cy="46" r=".8"/>
+    <circle cx="218" cy="12" r=".5"/><circle cx="49" cy="89" r=".7"/><circle cx="134" cy="103" r=".5"/>
+    <circle cx="226" cy="133" r=".8"/><circle cx="20" cy="177" r=".6"/><circle cx="86" cy="212" r=".9"/>
+    <circle cx="154" cy="185" r=".6"/><circle cx="197" cy="226" r=".7"/><circle cx="58" cy="148" r=".5"/>
+  </g>
+  <g stroke="#6b4c29" stroke-width=".4" opacity=".055">
+    <path d="M16 55l12 1M78 127l8-1M143 71l14 1M189 167l11-1M26 220l9 1M115 238l10-1"/>
+  </g>
+</svg>

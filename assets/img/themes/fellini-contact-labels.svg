@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="200" viewBox="0 0 1000 200" preserveAspectRatio="none">
+  <!-- Original contact-sheet dividers and film labels, not an historical sheet. -->
+  <g stroke="#161b1e" stroke-width="8"><path d="M220 0V200M520 0V200M770 0V200"/></g>
+  <path fill="#161b1e" d="M0 180H1000V200H0Z"/>
+  <g fill="#e3bc70" font-family="monospace" font-size="8">
+    <text x="8" y="193">01 / LA STRADA / 1954</text>
+    <text x="230" y="193">02 / LA DOLCE VITA / 1960</text>
+    <text x="530" y="193">03 / 8 1/2 / 1963</text>
+    <text x="780" y="193">04 / F. FELLINI / 1965</text>
+  </g>
+</svg>

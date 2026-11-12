@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="420" viewBox="0 0 600 420">
+<defs><radialGradient id="space"><stop stop-color="#234968"/><stop offset="1" stop-color="#080f24"/></radialGradient><linearGradient id="light" x2="1" y2="1"><stop stop-color="#95ffee"/><stop offset=".5" stop-color="#83b6ff"/><stop offset="1" stop-color="#eeaaf1"/></linearGradient><linearGradient id="body" x2="0" y2="1"><stop stop-color="#b8ffff" stop-opacity=".9"/><stop offset="1" stop-color="#8eb9ef" stop-opacity=".05"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="5"/></filter></defs>
+<path fill="url(#space)" d="M0 0H600V420H0z"/>
+<g fill="none" stroke="#78cbd5" opacity=".2"><path d="M0 420L300 180L600 420M0 340H600M0 290H600M0 250H600M80 420L300 180L520 420M170 420L300 180L430 420M240 420L300 180L360 420M300 420V180"/><ellipse cx="300" cy="300" rx="245" ry="70"/><ellipse cx="300" cy="300" rx="195" ry="48"/></g>
+<ellipse cx="300" cy="186" rx="137" ry="151" fill="#63b4da" opacity=".07"/>
+<g fill="none" stroke="url(#light)"><ellipse cx="300" cy="186" rx="137" ry="151" stroke-width="10" opacity=".55" filter="url(#glow)"/><ellipse cx="300" cy="186" rx="137" ry="151" stroke-width="2"/><ellipse cx="300" cy="186" rx="151" ry="164" opacity=".6" stroke-dasharray="3 12"/><ellipse cx="300" cy="186" rx="120" ry="135" opacity=".3"/><path d="M137 92H90V165M463 92H510V165M137 288H90V215M463 288H510V215" opacity=".5"/></g>
+<!-- 虚构的空间化人物轮廓：长裙与现代服装在同一光环内。 -->
+<g fill="url(#body)" stroke="#a5f6ef" stroke-width="1.3"><circle cx="262" cy="140" r="15"/><path d="M251 158Q244 176 247 196L220 280Q260 298 292 279L275 196L275 158ZM247 170L229 199L205 207L208 212L236 205L253 182M275 170L289 193L305 196"/><circle cx="337" cy="148" r="14"/><path d="M325 165L320 214L323 277L331 277L338 225L344 277L353 277L352 214L349 165ZM323 175L307 198L288 201M350 176L366 200L384 202"/></g>
+<g stroke="#b2e6ff" opacity=".3"><path d="M230 255H285M237 234H281M242 213H277M247 190H276M320 193H351M321 212H352M323 240H352"/></g>
+<g fill="#c4ffff"><circle cx="173" cy="97" r="2"/><circle cx="408" cy="113" r="2"/><circle cx="204" cy="234" r="2"/><circle cx="385" cy="202" r="2"/><circle cx="439" cy="270" r="2"/></g>
+<path fill="#080f24" opacity=".5" d="M0 365H600V420H0z"/>
+</svg>

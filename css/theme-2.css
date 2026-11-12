@@ -1,0 +1,358 @@
+/* THEME 02 / MELODRAMMA / XIX SECOLO
+   核心是演出艺术与纸上资料：节目单、演员、服装、舞台草图、石版海报。
+   与主题一不同：没有金色雕框、宫殿照片或暗红大厅背景。
+   独立 CSS 切换；HTML、JS、展品数据和其他主题都不修改。
+   技术说明：字体 → 印刷横幅 → Grid 桌面 → 节目单目录 → 展品 → 手机。
+*/
+@font-face {
+  font-family: 'Playbill Rye';
+  src: url('../assets/fonts/Rye-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Libretto Bodoni';
+  src: url('../assets/fonts/BodoniModa.ttf') format('truetype');
+  font-weight: 400 900;
+  font-display: swap;
+}
+* { box-sizing: border-box; }
+html { height: 100%; }
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #302a22;
+  background-color: #cbb6aa;
+  background-image: url('../assets/img/themes/melodrama-paper.svg');
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+a { color: #7c322b; text-underline-offset: 4px; }
+a:hover { color: #2e4b59; }
+::selection { background-color: #7c322b; color: #fff5dc; }
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible { outline: 3px solid #2e4b59; outline-offset: 3px; }
+
+/* 1. 融合叙事图作为顶部主视觉；这是历史素材的装饰性再创作。 */
+body > header {
+  position: relative;
+  flex-shrink: 0;
+  height: 285px;
+  margin: 16px 26px 0;
+  padding: 235px 10px 8px;
+  border: 1px solid #97735e;
+  border-bottom: 4px double #705446;
+  /* 略向上取景，露出更多节目单大字；背景等比例缩放。 */
+  background: #e4c99d url('../assets/img/themes/melodrama-paper-narrative.png') center 15% / cover no-repeat;
+  box-shadow: 0 4px 0 #ad9180;
+}
+body > header::before {
+  content: 'DAL LIBRETTO ALLA SCENA / XIX SECOLO';
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  padding: 5px 10px;
+  border: 1px solid #a38a67;
+  background-color: #f5e9d2e8;
+  color: #6d3930;
+  font-family: 'Libretto Bodoni', Georgia, serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+body > header::after {
+  content: 'PAROLE · MUSICA · PERSONAGGI';
+  position: absolute;
+  right: 14px;
+  bottom: 59px;
+  padding: 3px 8px;
+  background-color: #f5e9d2e8;
+  color: #6d3930;
+  font-size: 10px;
+  font-style: italic;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+header nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 10px;
+  border-top: 1px solid #ab9774;
+  background-color: #f5eacf;
+}
+header label { font-size: 11px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
+#theme-select { flex: 1; min-width: 0; padding: 5px; border: 0; background-color: #f5eacf; color: #302a22; font-family: Georgia, serif; font-size: 12px; }
+/* 2. 地图像夹在资料桌上的导览纸，目录像一张窄节目单。
+   边框仅用印刷细线，不使用主题一的镀金卷草。
+*/
+body #map-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 335px;
+  gap: 25px;
+  min-height: 0;
+  padding: 22px 26px;
+}
+#map-page #map-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid #8e7d60;
+  outline: 1px solid #a18e6b;
+  outline-offset: -7px;
+  background-color: #f4e8ca;
+  background-image: url('../assets/img/themes/melodrama-paper.svg');
+  box-shadow: 5px 6px 0 #b7a485, inset 0 0 24px #d7c6a2;
+}
+#map-stage::before {
+  content: 'RENZO RENZI / ITINERARIO DELLA MOSTRA';
+  flex-shrink: 0;
+  padding: 0 4px 13px;
+  border-bottom: 3px double #7b6748;
+  font-family: 'Playbill Rye', Georgia, serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+#map-stage #map-svg { flex: 1; min-height: 0; width: 100%; height: auto; mix-blend-mode: multiply; }
+/* 地图下方独立的舞台设计图片带，不重复顶部人物与海报。
+   双线印刷边框和纸色垫边，保持节目册气质。 */
+/* 下方写作桌只作窄幅收尾，把空间留给地图。生成笔迹不作为历史原件。 */
+#map-stage::after {
+  content: '';
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex: 0 0 65px;
+  margin-top: 10px;
+  padding: 4px 8px;
+  border: 4px double #9b8260;
+  background-color: #e4c99d;
+  background-image: url('../assets/img/themes/melodrama-desk-ribbon.svg');
+  /* 专为窄条生成的横向桌面；展示窗口保留人物从头到脚，取消文字遮罩。 */
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #593c2c;
+  font-family: 'Libretto Bodoni', Georgia, serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* 3. 整张右栏都是节目单，而非现代卡片菜单。
+   印刷花边 SVG 只是黑褐色线条，不是金属装潢。
+   大小混排、居中名册、点线分隔模拟节目单，但保留原始文案与导航。
+*/
+#map-page #map-side {
+  min-width: 0;
+  min-height: 0;
+  max-width: none;
+  padding: 20px 17px;
+  border: 11px solid #5c4134;
+  border-image-source: url('../assets/img/themes/melodrama-print-frame.svg');
+  border-image-slice: 30;
+  border-image-repeat: stretch;
+  background-color: #f4e7c8;
+  background-image: url('../assets/img/themes/melodrama-paper.svg');
+  box-shadow: 4px 5px 0 #ad9180;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+}
+#map-side::before {
+  content: 'RENZO RENZI\A PROGRAMMA DELLA MOSTRA\A — ITINERARI E OPERE —';
+  white-space: pre-line;
+  display: block;
+  margin-bottom: 13px;
+  padding: 0 0 16px;
+  border-bottom: 4px double #705446;
+  color: #7c322b;
+  font-family: 'Playbill Rye', Georgia, serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.7;
+  text-align: center;
+}
+#map-page #map-side h1 {
+  margin: 0 0 18px;
+  padding: 0;
+  color: #302a22;
+  font-family: 'Libretto Bodoni', Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.2;
+  text-align: center;
+}
+#map-page #map-side h2 {
+  margin: 24px 0 12px;
+  padding-top: 15px;
+  border-top: 3px double #705446;
+  color: #7c322b;
+  font-family: 'Playbill Rye', Georgia, serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.3;
+  text-align: center;
+}
+#map-side h3 { font-family: 'Libretto Bodoni', Georgia, serif; text-align: center; text-transform: uppercase; }
+#map-page #itinerary-choice { min-width: 0; margin: 0; padding: 0; border: 0; }
+#itinerary-choice legend { width: 100%; margin-bottom: 8px; font-size: 10px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; text-align: center; }
+#map-page #itinerary-choice label {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 3px;
+  border-bottom: 1px dotted #ad9772;
+  font-family: 'Libretto Bodoni', Georgia, serif;
+  font-size: 15px;
+  line-height: 1.4;
+  transition: background-color 200ms ease;
+}
+#map-page #itinerary-choice label:hover { background-color: #ebd8bb; }
+#map-page #itinerary-choice label:has(input:checked) { color: #7c322b; background-color: #ead9b9; font-weight: 700; }
+input[type='radio'] { flex-shrink: 0; accent-color: #7c322b; }
+#map-side a { color: #302a22; text-decoration: none; }
+#map-side a:hover { color: #9a3f3a; text-decoration: underline; }
+#map-page #map-side li { margin: 0; padding: 10px 0; border-bottom: 1px dotted #ad9772; font-size: 14px; line-height: 1.5; }
+#map-side li::marker { color: #7c322b; font-weight: bold; }
+#map-side #route-info > p { font-style: italic; text-align: center; }
+#map-side #item-list ul { padding-left: 0; list-style: none; }
+#map-side #item-list li { text-align: center; }
+#map-side #item-list section { margin-top: 22px; padding-top: 12px; border-top: 3px double #705446; }
+#map-side #item-list section > p { font-size: 13px; font-style: italic; text-align: center; }
+#map-page #start-link {
+  display: block;
+  margin: 18px 0;
+  padding: 11px 5px;
+  border-top: 3px double #7c322b;
+  border-bottom: 3px double #7c322b;
+  background-color: transparent;
+  color: #7c322b;
+  font-family: 'Playbill Rye', Georgia, serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+#map-page #start-link:hover { background-color: #7c322b; color: #fff5dc; }
+#map-side::after {
+  content: 'Musetta e Marcello · Rodolfo e Mimì\A La Bohème / illustrazione, 1897';
+  white-space: pre-line;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 235px;
+  margin-top: 25px;
+  padding: 8px;
+  border: 1px solid #9b8969;
+  background: #d9d1b8 url('../assets/img/themes/melodrama-boheme-lovers.jpg') center 61% / cover no-repeat;
+  color: #302a22;
+  font-size: 10px;
+  font-style: italic;
+  line-height: 1.4;
+  text-align: center;
+}#map-svg .marker-dot { fill: #7c322b; stroke: #fff5dc; transition: fill 200ms ease, stroke-width 200ms ease; }
+#map-svg .route-line { stroke: #2e4b59; stroke-width: 11; }
+#map-svg .marker:hover .marker-dot,
+#map-svg .marker:focus .marker-dot { fill: #2e4b59; stroke: #fff5dc; stroke-width: 14; }
+#map-svg .marker:hover .marker-num,
+#map-svg .marker:focus .marker-num { fill: #fff5dc; }
+
+/* 4. 展品页：像翻开的演出资料册。大标题是印刷字，元数据像署名栏。
+   float 让文字环绕图片；版权 clear: both 回到图片下方。
+   不给展品加褐色滤镜，避免改变资料本身的颜色。
+*/
+#item-main { flex: 1; min-height: 0; padding: 24px; overflow-y: auto; }
+#item-layout { max-width: 1080px; margin: 0 auto; padding: 30px; border: 1px solid #9b8969; border-top: 4px double #504334; background: #f5eacf url('../assets/img/themes/melodrama-paper.svg'); box-shadow: 5px 6px 0 #b7a485; overflow: auto; }
+#item-main h1 { margin: 0 0 21px; color: #7c322b; font-family: 'Playbill Rye', Georgia, serif; font-size: 42px; font-weight: 400; line-height: 1.15; text-align: center; overflow-wrap: break-word; }
+#item-context { margin: 0 0 26px; padding-bottom: 20px; border-bottom: 4px double #504334; font-family: 'Libretto Bodoni', Georgia, serif; font-size: 17px; text-align: center; }
+#item-media img { float: left; width: 44%; height: auto; margin: 0 30px 24px 0; padding: 7px; border: 1px solid #ac9671; background-color: #e6d5b3; box-shadow: 3px 4px 0 #d1bd96; transition: box-shadow 250ms ease; }
+#item-media img:hover { box-shadow: 5px 7px 0 #c3aa7d; }
+#item-text { font-size: 18px; line-height: 1.85; overflow-wrap: break-word; }
+.item-rights { clear: both; margin-top: 24px; padding-top: 15px; border-top: 1px dotted #ad9772; color: #716048; }
+#item-media iframe { display: block; width: 100%; height: 330px; margin: 20px 0; border: 1px solid #9b8969; }
+body > footer { flex-shrink: 0; padding: 11px 26px; border-top: 4px double #504334; background-color: #e8d7b7; }
+footer nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+button { min-height: 44px; padding: 8px 20px; border: 3px double #504334; background-color: #f5eacf; color: #302a22; font-family: 'Libretto Bodoni', Georgia, serif; font-size: 17px; font-weight: 700; cursor: pointer; transition: background-color 200ms ease, color 200ms ease; }
+button:hover:not(:disabled) { background-color: #302a22; color: #fff5dc; }
+button:disabled { opacity: 0.4; cursor: default; }
+
+/* 5. 响应式：保留写作桌主视觉，窄屏缩小资料带而非放大裁切。 */
+@media (max-width: 1100px) {
+  body #map-page { grid-template-columns: minmax(0, 1fr) 300px; gap: 18px; }
+  #map-page #map-side { padding: 15px 12px; }
+  #map-side::before { font-size: 15px; }
+}
+@media (max-width: 700px) {
+  body > header { height: 211px; margin: 10px 12px 0; padding: 162px 5px 5px; background-position: center 0; background-size: auto 165px; }
+  body > header::before { top: 6px; left: 6px; padding: 3px 5px; font-size: 7px; letter-spacing: .3px; }
+  body > header::after { right: 7px; bottom: 53px; font-size: 7px; letter-spacing: .3px; }
+  header nav { gap: 6px; padding: 5px; }
+  header label { font-size: 9px; letter-spacing: 0; }
+  #theme-select { width: 0; max-width: none; font-size: 10px; }
+  body #map-page { grid-template-columns: minmax(0, 1fr); grid-template-rows: 43% minmax(0, 1fr); gap: 14px; padding: 12px; }
+  #map-page #map-stage { padding: 12px; }
+  #map-stage::before { font-size: 10px; padding-bottom: 6px; }
+  #map-stage::after { flex-basis: 42px; margin-top: 4px; padding: 4px; border-width: 3px; font-size: 6px; letter-spacing: 0; }
+  #map-page #map-side { padding: 14px; border-width: 9px; }
+  #map-page #map-side h1 { font-size: 18px; margin-bottom: 16px; }
+  #map-side::before { font-size: 17px; }
+  #item-main { padding: 12px; }
+  #item-layout { padding: 18px; }
+  #item-main h1 { font-size: 29px; }
+  #item-media img { float: none; width: 100%; margin: 0 0 24px; }
+  #item-text { font-size: 17px; }
+  #item-media iframe { height: 220px; }
+}
+@media (max-height: 650px) and (min-width: 701px) {
+  body > header { height: 185px; margin-top: 10px; padding-top: 135px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #map-page #itinerary-choice label,
+  #map-page #start-link,
+  #map-svg .marker-dot,
+  #item-media img,
+  button { transition: none; }
+}
+@media (max-height: 650px) and (min-width: 701px) {
+  #map-stage::after { flex-basis: 42px; }
+}
+
+/* River: match the team's current HTML ids (HTML-IDS.md).
+   Keep the existing two-column grid and independently scrolling media/text.
+   仅调整 CSS 选择器和外观，不修改队友的 HTML 或交互代码。 */
+body > header { display: block; }
+header nav { width: 100%; }
+#item-main { overflow: hidden; }
+#item-main #item-layout {
+  width: 100%; max-width: none; height: 100%; min-height: 0;
+  margin: 0; overflow: hidden;
+}
+#item-media, #item-info { min-width: 0; min-height: 0; overflow: auto; }
+#item-info { padding: 0 12px 16px; }
+#item-media img {
+  float: none; width: auto; height: auto; max-width: 100%; max-height: 100%;
+  margin: 0; flex-shrink: 0; transform: none;
+}
+#item-media.multi img { max-height: none; }
+#item-media iframe { height: auto; aspect-ratio: 16 / 9; max-height: 100%; }
+@media (max-width: 700px) {
+  #item-main #item-layout { padding: 12px; gap: 12px; }
+  #item-info { padding: 0 6px 12px; }
+  #item-media img { max-width: 100%; }
+}
