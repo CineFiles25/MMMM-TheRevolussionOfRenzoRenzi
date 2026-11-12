@@ -80,7 +80,7 @@
 
   /**
    * Media of the item, inside #item-media: every local file (an <img> for image
-   * files, the PDF viewer for a PDF, a link for anything else), then every entry of
+   * files, a video player for MP4s, the PDF viewer for a PDF, a link for anything else), then every entry of
    * item.externalLinks (an <iframe> when it has an embedUrl, e.g. YouTube; otherwise a link).
    */
   function fillMedia() {
@@ -94,6 +94,14 @@
         img.src = encodeURI(path);
         img.alt = item.title;
         box.appendChild(img);
+      } else if (/\.mp4$/i.test(path)) {
+        const video = document.createElement("video");
+        video.src = encodeURI(path);
+        video.controls = true;
+        video.preload = "metadata";
+        video.setAttribute("aria-label", item.title);
+        video.appendChild(makeLink(encodeURI(path), `Open ${path.split("/").pop()}`));
+        box.appendChild(video);
       } else if (/\.pdf$/i.test(path)) {
         // The whole PDF in the page; browsers that cannot show it inline get the link inside the <object>.
         const pdf = document.createElement("object");

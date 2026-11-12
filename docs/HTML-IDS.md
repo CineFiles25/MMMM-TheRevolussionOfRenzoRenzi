@@ -54,7 +54,7 @@ URL: `exhibition.html?narrative=<narrative id>&item=<item id>`
 | `next-narrative-link`, `next-narrative` | `<p>` / `<a>` | link to the next narrative (set by the small inline script in `exhibition.html`, hidden until then) |
 | `item-text` | `<div lang="en">` | the text of the chosen version, as paragraphs with `<em>` for italics |
 | `item-rights` | `<p>` | rights statement (hidden when empty) |
-| `item-media` | `<div>` | the images, the PDF (embedded in the page, with a link as fallback) and the video embeds of the item (created by the script; gets the class `multi` when there are several) |
+| `item-media` | `<div>` | the images, local MP4 players, PDF viewer and video embeds of the item (created by the script; gets the class `multi` when there are several) |
 | `prev-button`, `next-button`, `text-selector`, `text-status`, `theme-select` | | shared, see above |
 
 Not used by the script (free for layout): `item-main`, `item-layout`, `item-info`.

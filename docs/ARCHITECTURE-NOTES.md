@@ -104,10 +104,10 @@ proposed):
 
 ## What the pages do today
 
-- `exhibition.html` — working skeleton, window-sized: media on the left (all local
-  images, PDF link, video embeds), text on the right, with "stop N of M", the
+- `exhibition.html` — working skeleton, window-sized: media on the left (local
+  images and MP4 players, PDF viewer, video embeds), text on the right, with "stop N of M", the
   room and a link back to the map; prev/next inside the chosen narrative,
-  theme selector, text-version selector. On phones media goes above the text. It shows the local image, the PDF as a link, and
+  theme selector, text-version selector. On phones media goes above the text. It shows local media and
   every `externalLinks` entry (YouTube as an embed, other links as links).
 - `map.html` — see above. Both pages are structure only; their scripts are `js/item.js` and `js/map.js`.
 - Markup and classes in both pages are placeholders; the ids used by the scripts
@@ -132,9 +132,8 @@ proposed):
    to follow the same rule.
 3. **Pages nobody owns yet:** `index`, `about`, `docs`, `disclaimer`. Every page
    also needs prev/next, the theme selector and the text-type selectors.
-4. **Video items.** `guida_documentary` and `renzi_interview_2000` have no
-   playable file: the videos are too large for the repo (only an Archivio Luce
-   record is linked for *Guida*). Decide: external hosting or Git LFS.
+4. **Video items.** `guida_documentary` has a local MP4 and an Archivio Luce
+   record link. `renzi_interview_2000` has no playable file yet; decide on hosting.
 5. **Small data questions for Claudia:**
    - `bologna_book` (1964) is not in the Historical timeline; if it should be,
      it goes between the caricature and *Il primo Fellini*.

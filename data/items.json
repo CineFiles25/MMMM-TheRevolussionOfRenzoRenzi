@@ -2,7 +2,7 @@
   "_readme": [
     "Converted from data/items.csv (CineFiles25/MMMM-TheRevolussionOfRenzoRenzi) and kept in sync with it: core navigation fields at the top level",
     "(id, title, creator, images, externalLinks, texts, mapPosition), every other cataloguing field from the CSV preserved verbatim under 'metadata'.",
-    "16 items. images = local files in assets/items/. externalLinks = things hosted elsewhere (YouTube embeds, Bologna Fotografata, Archivio Luce);",
+    "16 items. images = local media files in assets/items/. externalLinks = things hosted elsewhere (YouTube embeds, Bologna Fotografata, Archivio Luce);",
     "'embedUrl' is set only where the provider allows embedding in an <iframe>.",
     "mapPosition.area is a room id from 'rooms' below. mapPosition.x / .y are PERCENTAGES (0-100) of the width/height of",
     "assets/img/museum/gallery_planimetry_no_punti.png (4032x3024) -- not pixels -- so they survive any display size. See map.html.",
@@ -382,7 +382,9 @@
         "conditions_governing_access": null,
         "conditions_governing_reproduction": null
       },
-      "images": [],
+      "images": [
+        "assets/items/guida_documentary.mp4"
+      ],
       "texts": [
         {
           "voice": "museum",
@@ -417,17 +419,7 @@
         "x": 61.3,
         "y": 50.8
       },
-      "_todo": [
-        "video file is too large for the repo: for now only the Archivio Luce record is linked (externalLinks); decide hosting for the video itself"
-      ],
-      "externalLinks": [
-        {
-          "kind": "page",
-          "provider": "istituto-luce",
-          "label": "Film record on Archivio Luce",
-          "url": "https://patrimonio.archivioluce.com/luce-web/detail/IL3000050484/1/-3011.html?startPage=500"
-        }
-      ]
+      "externalLinks": []
     },
     {
       "id": "la_strada_film",
@@ -982,7 +974,9 @@
         "conditions_governing_access": null,
         "conditions_governing_reproduction": null
       },
-      "images": [],
+      "images": [
+        "assets/items/renzi_interview_2000.mp4"
+      ],
       "texts": [
         {
           "voice": "museum",
@@ -1017,9 +1011,6 @@
         "x": 69.4,
         "y": 51.3
       },
-      "_todo": [
-        "video file is too large for the repo and lives on Claudia's drive: decide hosting (external link / Git LFS)"
-      ],
       "externalLinks": []
     },
     {
