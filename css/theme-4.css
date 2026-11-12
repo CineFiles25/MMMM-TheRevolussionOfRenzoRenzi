@@ -1,0 +1,335 @@
+/* THEME 04 / FELLINI + RENZI / UN ALBUM ITALIANO
+   电影记忆相册：标志性面孔、底片接触印样、首映档案、导演与评论家的对话。
+   与主题三不同：冷白相纸、黑色底片、朱红编辑标记，不采用绿金旧海报装潢。
+   仅 CSS 切换；HTML、JS、路线和展品数据完全保留。
+   学习顺序：本地字体 → 多层照片背景 → 伪元素标签 → Grid → 接触印样 → 响应式。
+*/
+@font-face {
+  font-family: 'Album Mono';
+  src: url('../assets/fonts/SpaceMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Album Condensed';
+  src: url('../assets/fonts/BarlowCondensed-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Album Bodoni';
+  src: url('../assets/fonts/BodoniModa.ttf') format('truetype');
+  font-weight: 400 900;
+  font-display: swap;
+}
+* { box-sizing: border-box; }
+html { height: 100%; }
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #dfe2df;
+  color: #202629;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+a { color: #a83a2c; text-underline-offset: 4px; }
+a:hover { color: #202629; }
+::selection { background-color: #c74c36; color: #fff; }
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible { outline: 3px solid #c74c36; outline-offset: 3px; }
+
+/* 1. 四格底片接触印样。
+   第一层 SVG 只画分隔线与片名，下面四层是独立历史照片。
+   背景图顺序与位置、尺寸一一对应；不会生成新的展品。
+   22%、30%、25%、23% 是四张照片的宽度，合计 100%。
+*/
+body > header {
+  position: relative;
+  flex-shrink: 0;
+  height: 272px;
+  margin: 18px 24px 0;
+  padding: 210px 8px 7px;
+  border: 10px solid #161b1e;
+  border-image-source: url('../assets/img/themes/fellini-negative-frame.svg');
+  border-image-slice: 20;
+  border-image-repeat: round;
+  background-color: #161b1e;
+  background-image: url('../assets/img/themes/fellini-contact-labels.svg'), url('../assets/items/photo_la_strada_woman.jpg'), url('../assets/img/themes/fellini-dolce-vita-trevi.jpg'), url('../assets/img/themes/fellini-eight-half.jpg'), url('../assets/img/themes/fellini-director-1965.jpg');
+  background-size: 100% 200px, 22% auto, 30% auto, 25% auto, 23% auto;
+  background-position: left top, left 35%, 31.43% 48%, 69.33% 35%, right 35%;
+  background-repeat: no-repeat;
+  box-shadow: 4px 5px 0 #aeb4b1;
+}
+/* 像贴在接触印样上的档案纸条，字小于面孔，不占据整个视觉中心。 */
+body > header::before {
+  content: 'FELLINI + RENZI\A UN ALBUM ITALIANO';
+  white-space: pre-line;
+  position: absolute;
+  top: 12px;
+  left: 24%;
+  padding: 7px 11px;
+  background-color: #f5f2e9;
+  color: #202629;
+  font-family: 'Album Condensed', Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  transform: rotate(-2deg);
+  box-shadow: 2px 3px 0 rgba(0,0,0,0.22);
+  pointer-events: none;
+}
+/* 年份为颁奖年份，已查官方档案，不等同于影片首映年份。
+   这些荣誉属于 Fellini 影片，不暗示 Renzi 参与了所有影片制作。
+*/
+body > header::after {
+  content: 'LA STRADA / OSCAR 1957\A LA DOLCE VITA / CANNES 1960\A 8½ / OSCAR 1964';
+  white-space: pre-line;
+  position: absolute;
+  top: 112px;
+  left: 24%;
+  padding: 6px 9px;
+  border-left: 3px solid #d2a45d;
+  background-color: rgba(22,27,30,0.85);
+  color: #ead6ac;
+  font-family: 'Album Mono', monospace;
+  font-size: 9px;
+  line-height: 1.7;
+  pointer-events: none;
+}
+header nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 6px 10px;
+  background-color: #eef0e9;
+}
+header label { color: #a83a2c; font-family: 'Album Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+#theme-select { flex: 1; min-width: 0; padding: 6px; border: 0; background-color: #eef0e9; color: #202629; font-family: 'Album Mono', monospace; font-size: 11px; }
+
+/* 2. 编辑桌的两页：左边定位图，右边相册索引。
+   冷灰底色和不对称朱红标记区分于主题一、二的复古节目纸。
+*/
+body #map-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  gap: 25px;
+  min-height: 0;
+  padding: 22px 24px;
+}
+#map-page #map-stage {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid #9da7a4;
+  border-left: 7px solid #c74c36;
+  background-color: #f2f2ea;
+  box-shadow: 4px 5px 0 #b4bcb8;
+}
+#map-stage::before {
+  content: '04 / LOCATION NOTES — RENZO RENZI';
+  flex-shrink: 0;
+  padding: 0 0 12px;
+  border-bottom: 1px solid #b7bfba;
+  color: #202629;
+  font-family: 'Album Mono', monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 1px;
+}
+#map-stage #map-svg { flex: 1; min-height: 0; width: 100%; height: auto; mix-blend-mode: multiply; }
+/* 档案照片脚注：原仓库的《大路》首映照。
+   文字用遮罩提高对比；图片仍只是装饰，不改变地图本身。
+*/
+#map-stage::after {
+  content: 'LA STRADA / LA PRIMA / ARCHIVIO';
+  display: flex;
+  align-items: flex-end;
+  flex: 0 0 82px;
+  padding: 8px;
+  border-top: 5px solid #161b1e;
+  background-color: #202629;
+  background-image: linear-gradient(transparent 40%, rgba(0,0,0,0.8)), url('../assets/items/photo_lastrada_premiere.png');
+  background-size: cover;
+  background-position: center 32%;
+  color: #f5f2e9;
+  font-family: 'Album Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* 3. 右侧像编辑过的照片索引：相纸、打字机编号、选择标记。
+   :has(input:checked) 把选中的路线变成黑底白字。
+*/
+#map-page #map-side {
+  min-height: 0;
+  min-width: 0;
+  max-width: none;
+  padding: 18px;
+  border: 1px solid #aeb7b2;
+  border-top: 7px solid #202629;
+  background-color: #f5f4ed;
+  box-shadow: 4px 5px 0 #b4bcb8;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+}
+#map-side::before {
+  content: 'REEL 04 / INDICE DELL’ALBUM';
+  display: block;
+  margin-bottom: 15px;
+  color: #a83a2c;
+  font-family: 'Album Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+#map-page #map-side h1 {
+  margin: 0 0 22px;
+  padding: 0 0 18px;
+  border-bottom: 3px solid #c74c36;
+  font-family: 'Album Condensed', Arial, sans-serif;
+  font-size: 43px;
+  font-weight: 600;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+#map-page #map-side h2 { margin: 24px 0 12px; padding-top: 15px; border-top: 1px solid #aeb7b2; font-family: 'Album Bodoni', Georgia, serif; font-size: 25px; line-height: 1.15; }
+#map-side h3 { font-family: 'Album Condensed', Arial, sans-serif; letter-spacing: 1px; text-transform: uppercase; }
+#map-page #itinerary-choice { min-width: 0; margin: 0; padding: 0; border: 0; }
+#itinerary-choice legend { margin-bottom: 10px; color: #5b6965; font-family: 'Album Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; }
+#map-page #itinerary-choice label { display: flex; align-items: baseline; gap: 9px; margin: 0 0 7px; padding: 10px; border: 1px solid #bcc5be; border-left: 3px solid #c74c36; background-color: #e8ece6; font-size: 14px; line-height: 1.4; transition: background-color 200ms ease, color 200ms ease; }
+#map-page #itinerary-choice label:hover { background-color: #d8e0d8; }
+#map-page #itinerary-choice label:has(input:checked) { color: #f5f2e9; background-color: #202629; border-color: #202629; border-left-color: #c74c36; }
+input[type='radio'] { flex-shrink: 0; accent-color: #c74c36; }
+#map-side a { color: #202629; text-decoration: none; }
+#map-side a:hover { color: #a83a2c; text-decoration: underline; }
+#map-page #map-side li { margin: 0; padding: 10px 0; border-bottom: 1px solid #ccd1c9; font-size: 14px; line-height: 1.5; }
+#map-side li::marker { color: #a83a2c; font-family: 'Album Mono', monospace; font-size: 12px; }
+#map-side #route-info > p { color: #5b6965; font-size: 14px; font-style: italic; }
+#map-page #start-link { display: block; margin: 18px 0; padding: 12px; border: 0; background-color: #c74c36; color: #fff; font-family: 'Album Mono', monospace; font-size: 12px; text-align: center; transition: background-color 200ms ease; }
+#map-page #start-link:hover { background-color: #202629; }
+/* Renzi 与 Fellini 的真实漫画资料是这一主题的另一条线索。
+   不是把 Renzi 当成所有影片的编剧，而是呈现评论、策展和交往记忆。
+*/
+#map-side::after {
+  content: 'FELLINI × RENZI / DISEGNI E DIALOGHI';
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 240px;
+  margin: 28px 2px 10px;
+  padding: 8px;
+  border: 8px solid #fff;
+  outline: 1px solid #b5bcb8;
+  background: #f5f2e9 url('../assets/items/caricature_fellini_renzi.jpg') center 35% / cover no-repeat;
+  color: #202629;
+  font-family: 'Album Mono', monospace;
+  font-size: 8px;
+  line-height: 1.4;
+  text-align: center;
+  transform: rotate(-2deg);
+  box-shadow: 3px 4px 0 #c3cac4;
+}
+#map-svg .marker-dot { fill: #bb4837; stroke: #fff; transition: fill 200ms ease, stroke-width 200ms ease; }
+#map-svg .route-line { stroke: #375e6c; stroke-width: 10; }
+#map-svg .marker:hover .marker-dot,
+#map-svg .marker:focus .marker-dot { fill: #202629; stroke: #fff; stroke-width: 15; }
+#map-svg .marker:hover .marker-num,
+#map-svg .marker:focus .marker-num { fill: #fff; }
+
+/* 4. 展品像放大的单张接触印样，标题像资料夹标签。
+   照片本身不做黑白滤镜，保留原始资料颜色。
+*/
+#item-main { flex: 1; min-height: 0; padding: 24px; overflow-y: auto; }
+#item-layout { max-width: 1100px; margin: 0 auto; padding: 28px; border: 1px solid #b5bcb8; border-top: 7px solid #c74c36; background-color: #f5f4ed; box-shadow: 4px 5px 0 #b4bcb8; overflow: auto; }
+#item-main h1 { margin: 0 0 20px; color: #202629; font-family: 'Album Condensed', Arial, sans-serif; font-size: 55px; font-weight: 600; line-height: 1; text-transform: uppercase; overflow-wrap: break-word; }
+#item-context { margin: 0 0 26px; padding-bottom: 17px; border-bottom: 1px solid #b5bcb8; color: #5b6965; font-family: 'Album Mono', monospace; font-size: 12px; }
+#item-media img { float: left; width: 46%; height: auto; margin: 0 28px 24px 0; padding: 10px 10px 28px; border: 1px solid #b5bcb8; background-color: #fff; box-shadow: 3px 5px 0 #c3cac4; transform: rotate(-1deg); transition: transform 350ms ease, box-shadow 350ms ease; }
+#item-text { font-size: 18px; line-height: 1.85; overflow-wrap: break-word; }
+.item-rights { clear: both; margin-top: 24px; padding-top: 15px; border-top: 1px solid #b5bcb8; color: #5b6965; }
+#item-media iframe { display: block; width: 100%; height: 330px; margin: 20px 0; border: 0; }
+body > footer { flex-shrink: 0; padding: 11px 24px; border-top: 1px solid #aeb7b2; background-color: #202629; }
+footer nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+button { min-height: 44px; padding: 9px 20px; border: 1px solid #8c9991; background-color: #202629; color: #f5f2e9; font-family: 'Album Mono', monospace; font-size: 13px; cursor: pointer; transition: background-color 200ms ease; }
+button:hover:not(:disabled) { background-color: #c74c36; }
+button:disabled { opacity: 0.4; cursor: default; }
+
+/* 5. 悬停像翻看照片；不使用假播放按钮，不自动切换或闪烁。 */
+@media (hover: hover) {
+  #item-media img:hover { transform: rotate(0); box-shadow: 6px 8px 0 #c3cac4; }
+  body > header:hover::before { transform: rotate(0); }
+}
+@media (max-width: 1050px) {
+  body #map-page { grid-template-columns: minmax(0, 1fr) 285px; gap: 18px; }
+  body > header::before { font-size: 17px; }
+  body > header::after { font-size: 8px; }
+  #map-page #map-side { padding: 15px; }
+  #map-page #map-side h1 { font-size: 36px; }
+}
+@media (max-width: 700px) {
+  body > header { height: 195px; margin: 10px 12px 0; padding: 144px 5px 6px; border-width: 7px; background-size: 100% 137px, 22% auto, 30% auto, 25% auto, 23% auto; background-position: left top, left 30%, 31.43% 30%, 69.33% 30%, right 30%; }
+  body > header::before { top: 9px; left: 23%; padding: 4px; font-size: 11px; letter-spacing: 0; }
+  /* 手机上保留面孔空间，奖项标签在较宽屏幕显示。 */
+  body > header::after { display: none; }
+  header nav { gap: 6px; padding: 5px; }
+  header label { font-size: 9px; letter-spacing: 0; }
+  #theme-select { width: 0; max-width: none; font-size: 10px; }
+  body #map-page { grid-template-columns: minmax(0, 1fr); grid-template-rows: 46% minmax(0, 1fr); gap: 14px; padding: 12px; }
+  #map-page #map-stage { padding: 9px; }
+  #map-stage::before { font-size: 8px; letter-spacing: 0; padding-bottom: 6px; }
+  #map-stage::after { flex-basis: 46px; font-size: 7px; letter-spacing: 0; padding: 4px; }
+  #map-page #map-side { padding: 14px; }
+  #map-page #map-side h1 { font-size: 32px; margin-bottom: 16px; }
+  #item-main { padding: 12px; }
+  #item-layout { padding: 18px; }
+  #item-main h1 { font-size: 36px; }
+  #item-media img { float: none; width: 100%; margin: 0 0 24px; transform: none; }
+  #item-text { font-size: 17px; }
+  #item-media iframe { height: 220px; }
+}
+@media (max-height: 650px) and (min-width: 701px) {
+  body > header { height: 190px; margin-top: 10px; padding-top: 133px; background-size: 100% 128px, 22% auto, 30% auto, 25% auto, 23% auto; }
+  body > header::before { top: 8px; font-size: 15px; }
+  body > header::after { top: 68px; font-size: 7px; padding: 3px 6px; }
+  #map-stage::after { flex-basis: 50px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #map-page #itinerary-choice label,
+  #map-page #start-link,
+  #map-svg .marker-dot,
+  #item-media img,
+  button { transition: none; }
+  #item-media img:hover { transform: rotate(-1deg); }
+  body > header:hover::before { transform: rotate(-2deg); }
+}
+/* River: match the team's current HTML ids (HTML-IDS.md).
+   Keep the existing two-column grid and independently scrolling media/text.
+   仅调整 CSS 选择器和外观，不修改队友的 HTML 或交互代码。 */
+body > header { display: block; }
+header nav { width: 100%; }
+#item-main { overflow: hidden; }
+#item-main #item-layout {
+  width: 100%; max-width: none; height: 100%; min-height: 0;
+  margin: 0; overflow: hidden;
+}
+#item-media, #item-info { min-width: 0; min-height: 0; overflow: auto; }
+#item-info { padding: 0 12px 16px; }
+#item-media img {
+  float: none; width: auto; height: auto; max-width: 100%; max-height: 100%;
+  margin: 0; flex-shrink: 0; transform: none;
+}
+#item-media.multi img { max-height: none; }
+#item-media iframe { height: auto; aspect-ratio: 16 / 9; max-height: 100%; }
+@media (max-width: 700px) {
+  #item-main #item-layout { padding: 12px; gap: 12px; }
+  #item-info { padding: 0 6px 12px; }
+  #item-media img { max-width: 100%; }
+}

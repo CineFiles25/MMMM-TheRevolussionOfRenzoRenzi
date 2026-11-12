@@ -1,0 +1,378 @@
+/* THEME 01 / IL GRAN TEATRO / 1500–1800
+   巴洛克剧院：对称、镀金卷草、酒红帷幕、宫殿透视与节目册排版。
+   独立主题文件，只改变展示，不修改 HTML、JS、展品数据和地图坐标。
+   重点技术：本地字体、背景遮罩、伪元素、图片边框、Grid、响应式。
+*/
+@font-face {
+  font-family: 'Theatre Cinzel';
+  src: url('../assets/fonts/CinzelDecorative-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Theatre Bodoni';
+  src: url('../assets/fonts/BodoniModa.ttf') format('truetype');
+  font-weight: 400 900;
+  font-display: swap;
+}
+* { box-sizing: border-box; }
+html { height: 100%; }
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #382517;
+  background-color: #270d16;
+  /* 中央暖光对应剧院灯光，外侧保持暗色。 */
+  background-image: radial-gradient(ellipse at top, #72402c, #270d16 75%);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+a { color: #782d35; text-underline-offset: 4px; }
+a:hover { color: #a4712b; }
+::selection { background-color: #782d35; color: #fff1d0; }
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible { outline: 3px solid #c79b48; outline-offset: 3px; }
+
+/* 1. 舞台入口：真实剧院背景 + 中央对称标题。
+   第一层半透明深色遮罩让金色标题更清楚，第二层是照片。
+   背景不是展品，不会改变目录里的内容。
+*/
+body > header {
+  position: relative;
+  flex-shrink: 0;
+  height: 270px;
+  margin: 18px 26px 0;
+  padding: 202px 16px 10px;
+  border: 16px solid #ba9247;
+  border-image-source: url('../assets/img/themes/baroque-gold-frame.svg');
+  border-image-slice: 40;
+  border-image-repeat: stretch;
+  background-color: #422719;
+  background-image: linear-gradient(rgba(35,12,16,0.35), rgba(35,12,16,0.60)), url('../assets/img/themes/baroque-auditorium.jpg');
+  background-size: cover;
+  background-position: center 37%;
+  box-shadow: 0 8px 28px #17060c;
+}
+body > header::before {
+  content: 'Il Gran Teatro';
+  position: absolute;
+  top: 25px;
+  left: 10%;
+  width: 80%;
+  padding: 8px;
+  color: #f5d893;
+  font-family: 'Theatre Cinzel', Georgia, serif;
+  font-size: 57px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  text-shadow: 0 3px 5px #19070c;
+  pointer-events: none;
+}
+body > header::after {
+  content: '1500 — 1800  /  OPERA · SCENA · MERAVIGLIA';
+  position: absolute;
+  top: 121px;
+  left: 15%;
+  width: 70%;
+  padding: 9px;
+  border-top: 1px solid #bfa05d;
+  border-bottom: 1px solid #bfa05d;
+  background-color: rgba(60,14,27,0.80);
+  color: #f4e4bd;
+  font-family: Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-align: center;
+  pointer-events: none;
+}
+header nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 6px 12px;
+  border: 1px solid #bfa05d;
+  background-color: #491729;
+  color: #f4e4bd;
+}
+header label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+#theme-select {
+  flex: 1;
+  min-width: 0;
+  padding: 5px;
+  border: 0;
+  background-color: #491729;
+  color: #f4e4bd;
+  font-family: Georgia, serif;
+  font-size: 12px;
+}
+
+/* 2. 展览舞台与节目册目录：Grid 两列。
+   minmax 允许地图缩小，避免目录把页面撑宽。
+*/
+body #map-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 24px;
+  min-height: 0;
+  padding: 22px 26px;
+}
+/* 3. 金色卷草边框来自原创 SVG。
+   border-image-slice=40 表示把素材从各边向内切 40 个图像单位。
+   中央只淡淡露出 Bibiena 舞台设计，不影响地图辨识。
+*/
+#map-page #map-stage {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  padding: 16px;
+  border: 24px solid #bd984e;
+  border-image-source: url('../assets/img/themes/baroque-gold-frame.svg');
+  border-image-slice: 40;
+  border-image-repeat: stretch;
+  background-color: #f1e3c8;
+  background-image: linear-gradient(rgba(247,235,209,0.93), rgba(237,221,187,0.93)), url('../assets/img/themes/bibiena-stage-design.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 8px 24px #17060c, inset 0 0 30px #cdb788;
+}
+#map-stage::before {
+  content: 'La scena della mostra';
+  flex-shrink: 0;
+  padding: 0 8px 12px;
+  border-bottom: 3px double #b89b61;
+  color: #6b2636;
+  font-family: 'Theatre Cinzel', Georgia, serif;
+  font-size: 20px;
+  text-align: center;
+}
+#map-stage #map-svg { flex: 1; min-height: 0; width: 100%; height: auto; mix-blend-mode: multiply; }
+/* multiply 让地图图片白底与象牙纸色融合，不改变圆点的位置。 */
+/* 地图下方的剧院图片带：与其他主题保持相同层级，使用金色画框。 */
+#map-stage::after {
+  content: 'TEATRO BAROCCO / SCULTURE E ORO';
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex: 0 0 82px;
+  margin-top: 8px;
+  padding: 7px;
+  border: 4px double #bd984e;
+  background-color: #421426;
+  background-image: linear-gradient(transparent 30%, rgba(33,10,18,.85)), url('../assets/img/themes/baroque-opera-house.jpg');
+  background-size: cover;
+  background-position: center 58%;
+  color: #fff1cb;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-align: center;
+  text-shadow: 0 1px 3px #210a12;
+}
+
+/* 4. 右侧节目册：暗红封面感、金色细线、清楚的路线选择。
+   列表仍使用原来的单选框和链接，只改变外观。
+*/
+#map-page #map-side {
+  max-width: none;
+  min-width: 0;
+  min-height: 0;
+  padding: 20px;
+  border: 4px double #b69a5f;
+  background-color: #421426;
+  color: #f4e4bd;
+  box-shadow: inset 0 0 0 5px #421426, inset 0 0 0 6px #82603e;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+}
+#map-side::before {
+  content: '❦  IL PROGRAMMA  ❦';
+  display: block;
+  margin-bottom: 12px;
+  color: #d5b56f;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-align: center;
+}
+#map-page #map-side h1 {
+  margin: 0 0 22px;
+  padding: 0 0 18px;
+  border-bottom: 3px double #ad8950;
+  font-family: 'Theatre Cinzel', Georgia, serif;
+  font-size: 29px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+}
+#map-page #map-side h2 {
+  margin: 25px 0 12px;
+  color: #e4c37f;
+  font-family: 'Theatre Bodoni', Georgia, serif;
+  font-size: 25px;
+  line-height: 1.15;
+}
+#map-side h3 { color: #ead8b5; }
+#map-page #itinerary-choice { min-width: 0; margin: 0; padding: 0; border: 0; }
+#itinerary-choice legend { margin-bottom: 12px; color: #dcc38e; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
+#map-page #itinerary-choice label {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 8px;
+  padding: 11px 9px;
+  border: 1px solid #89623f;
+  background-color: #35101e;
+  font-size: 14px;
+  line-height: 1.4;
+  transition: background-color 200ms ease, border-color 200ms ease;
+}
+#map-page #itinerary-choice label:hover { border-color: #e4c37f; background-color: #5b2133; }
+#map-page #itinerary-choice label:has(input:checked) { border-color: #e4c37f; background-color: #ead9b4; color: #421426; }
+input[type='radio'] { flex-shrink: 0; accent-color: #aa8543; }
+#map-side a { color: #f1dca9; text-decoration: none; }
+#map-side a:hover { color: #fff7e2; text-decoration: underline; }
+#map-page #map-side li { margin: 0; padding: 10px 0; border-bottom: 1px solid #765039; font-size: 14px; line-height: 1.5; }
+#map-side li::marker { color: #c8a462; }
+#map-page #start-link {
+  display: block;
+  margin: 18px 0;
+  padding: 12px;
+  border: 4px double #866337;
+  background-color: #e4ca8e;
+  color: #421426;
+  font-family: 'Theatre Bodoni', Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+  transition: background-color 200ms ease, box-shadow 200ms ease;
+}
+#map-page #start-link:hover { background-color: #f5dfaa; box-shadow: 0 0 16px #ae773a; }
+#map-side::after {
+  content: 'Scenografie · Galli Bibiena';
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 180px;
+  margin-top: 28px;
+  padding: 8px;
+  border: 4px double #c1a065;
+  background: #d9c7a4 url('../assets/img/themes/bibiena-stage-design.jpg') center / cover no-repeat;
+  color: #fff5de;
+  font-size: 13px;
+  font-style: italic;
+  text-shadow: 1px 2px 3px #21100b;
+}
+#map-svg .marker-dot { fill: #76283b; stroke: #fff3d2; transition: fill 200ms ease, stroke-width 200ms ease; }
+#map-svg .route-line { stroke: #9c722d; stroke-width: 12; }
+#map-svg .marker:hover .marker-dot,
+#map-svg .marker:focus .marker-dot { fill: #a97925; stroke: #421426; stroke-width: 13; }
+#map-svg .marker:hover .marker-num,
+#map-svg .marker:focus .marker-num { fill: #fff7e2; }
+
+/* 5. 展品页：象牙纸色的歌剧节目册，居中标题，完整展示展品。
+   不强制改变原始展品的颜色；装饰与展品本身分开。
+*/
+#item-main { flex: 1; min-height: 0; padding: 24px; overflow-y: auto; }
+#item-layout {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px;
+  border: 20px solid #bd984e;
+  border-image-source: url('../assets/img/themes/baroque-gold-frame.svg');
+  border-image-slice: 40;
+  border-image-repeat: stretch;
+  background-color: #f3e8d0;
+  box-shadow: 0 8px 24px #17060c;
+  overflow: auto;
+}
+#item-main h1 { margin: 0 0 22px; color: #6b2636; font-family: 'Theatre Cinzel', Georgia, serif; font-size: 39px; font-weight: 400; line-height: 1.2; text-align: center; overflow-wrap: break-word; }
+#item-context { margin: 0 0 28px; padding-bottom: 20px; border-bottom: 3px double #ad8950; font-size: 14px; text-align: center; }
+#item-media img { float: left; width: 44%; height: auto; margin: 0 28px 22px 0; padding: 8px; border: 5px double #a7874b; background-color: #dfcba3; box-shadow: 3px 4px 0 #c5b18c; transition: box-shadow 300ms ease; }
+#item-media img:hover { box-shadow: 0 0 18px #bc9b5b; }
+#item-text { font-size: 18px; line-height: 1.9; overflow-wrap: break-word; }
+.item-rights { clear: both; margin-top: 24px; padding-top: 15px; border-top: 1px solid #ad8950; color: #7c6749; }
+#item-media iframe { display: block; width: 100%; height: 330px; margin: 20px 0; border: 1px solid #ad8950; }
+body > footer { flex-shrink: 0; padding: 11px 26px; border-top: 3px double #b69a5f; background-color: #35101e; }
+footer nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+button { min-height: 44px; padding: 8px 22px; border: 4px double #b69a5f; background-color: #421426; color: #f1dca9; font-family: Georgia, serif; font-size: 15px; cursor: pointer; transition: background-color 200ms ease, color 200ms ease; }
+button:hover:not(:disabled) { background-color: #e4ca8e; color: #421426; }
+button:disabled { opacity: 0.4; cursor: default; }
+
+/* 6. 悬停时舞台灯光稍亮；不做自动闪烁、自动播放或遮挡地图的开幕动画。 */
+@media (hover: hover) {
+  body > header:hover::before { color: #ffedbb; text-shadow: 0 0 20px #cf9b45, 0 3px 5px #19070c; }
+}
+@media (max-width: 1050px) {
+  body #map-page { grid-template-columns: minmax(0, 1fr) 290px; gap: 18px; }
+  body > header::before { font-size: 46px; }
+  #map-page #map-side { padding: 16px; }
+  #map-page #map-side h1 { font-size: 25px; }
+}
+@media (max-width: 700px) {
+  body > header { height: 190px; margin: 10px 12px 0; padding: 131px 5px 5px; border-width: 10px; }
+  body > header::before { top: 19px; left: 3%; width: 94%; font-size: 30px; }
+  body > header::after { top: 79px; left: 8%; width: 84%; font-size: 8px; letter-spacing: 1px; padding: 6px; }
+  header nav { gap: 6px; padding: 5px; }
+  header label { font-size: 9px; letter-spacing: 0; }
+  #theme-select { width: 0; max-width: none; font-size: 10px; }
+  body #map-page { grid-template-columns: minmax(0, 1fr); grid-template-rows: 43% minmax(0, 1fr); gap: 14px; padding: 12px; }
+  #map-page #map-stage { border-width: 16px; padding: 8px; }
+  #map-stage::before { padding-bottom: 6px; font-size: 13px; }
+  #map-stage::after { flex-basis: 43px; margin-top: 4px; padding: 4px; border-width: 3px; font-size: 8px; letter-spacing: 0; }
+  #map-page #map-side { padding: 12px; }
+  #map-page #map-side h1 { font-size: 24px; margin-bottom: 16px; }
+  #item-main { padding: 12px; }
+  #item-layout { padding: 18px; border-width: 14px; }
+  #item-main h1 { font-size: 27px; }
+  #item-media img { float: none; width: 100%; margin: 0 0 24px; }
+  #item-text { font-size: 17px; }
+  #item-media iframe { height: 220px; }
+}
+@media (max-height: 650px) and (min-width: 701px) {
+  body > header { height: 185px; margin-top: 10px; padding-top: 125px; }
+  body > header::before { top: 5px; font-size: 38px; }
+  body > header::after { top: 72px; font-size: 9px; padding: 5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #map-page #itinerary-choice label,
+  #map-page #start-link,
+  #map-svg .marker-dot,
+  #item-media img,
+  button { transition: none; }
+}
+/* 横屏高度较小时，缩小图片带，优先给地图留出空间。 */
+@media (max-height: 650px) and (min-width: 701px) {
+  #map-stage::after { flex-basis: 46px; }
+}
+
+/* River: match the team's current HTML ids (HTML-IDS.md).
+   Keep the existing two-column grid and independently scrolling media/text.
+   仅调整 CSS 选择器和外观，不修改队友的 HTML 或交互代码。 */
+body > header { display: block; }
+header nav { width: 100%; }
+#item-main { overflow: hidden; }
+#item-main #item-layout {
+  width: 100%; max-width: none; height: 100%; min-height: 0;
+  margin: 0; overflow: hidden;
+}
+#item-media, #item-info { min-width: 0; min-height: 0; overflow: auto; }
+#item-info { padding: 0 12px 16px; }
+#item-media img {
+  float: none; width: auto; height: auto; max-width: 100%; max-height: 100%;
+  margin: 0; flex-shrink: 0; transform: none;
+}
+#item-media.multi img { max-height: none; }
+#item-media iframe { height: auto; aspect-ratio: 16 / 9; max-height: 100%; }
+@media (max-width: 700px) {
+  #item-main #item-layout { padding: 12px; gap: 12px; }
+  #item-info { padding: 0 6px 12px; }
+  #item-media img { max-width: 100%; }
+}

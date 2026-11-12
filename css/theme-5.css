@@ -1,0 +1,345 @@
+/* THEME 05 / COMMEDIA POP / TELEVISIONE E VITA QUOTIDIANA
+   晚20世纪至世纪初电视、娱乐印刷与都市喜剧的混合视觉诠释。
+   粉色手写字、塑料电视、汽水蓝、柠檬黄、汽车与喜剧面孔。
+   Fantozzi 剧照是喜剧文化参考，不表示 Renzi 参与这些作品。
+   纯 CSS 切换；不修改 HTML、JS、其他主题或展品数据。
+   技术：本地字体、伪元素、渐变质感、Grid、圆角、阴影、状态过渡。
+*/
+@font-face {
+  font-family: 'Commedia Pacifico';
+  src: url('../assets/fonts/Pacifico-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Commedia Lilita';
+  src: url('../assets/fonts/LilitaOne-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+* { box-sizing: border-box; }
+html { height: 100%; }
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #c5f1ef;
+  background-image: url('../assets/img/themes/commedia-sparse-sparkles.svg'), linear-gradient(135deg, #d5f3f1, #c5e9ed 62%, #f5dce8);
+  background-size: 480px 360px, cover;
+  background-repeat: repeat, no-repeat;
+  color: #352447;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+a { color: #963465; text-underline-offset: 4px; }
+a:hover { color: #352447; }
+::selection { background-color: #d83885; color: #fff; }
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible { outline: 3px solid #963465; outline-offset: 3px; }
+
+/* 1. 真实电影与演员照片拼贴：粉蓝底色保留，粉蓝标题区与不规则电视轮廓衔接，屏幕内展示清晰的原始电影画面。
+   使用原始电影画面，不使用AI、雾化或重画人物；来源见 SOURCES.md。 */
+body > header {
+  position: relative;
+  flex-shrink: 0;
+  height: calc(clamp(140px, 13vw, 240px) + 55px);
+  margin: 17px 26px 0;
+  padding: clamp(140px, 13vw, 240px) 12px 9px;
+  border: 1px solid #b46b97;
+  border-radius: 20px;
+  background: #f6b6d2;
+  box-shadow: 0 5px 15px #754c681c;
+}
+/* 主视觉按顶栏比例导出，保留真实人物、原片颗粒和摄影细节。
+   此区域与导航分开；宽屏与窄屏使用各自的构图，避免将重要人物裁出视图。 */
+body > header::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 55px;
+  background: url('../assets/img/themes/commedia-tv-hero-v6.png') center / 100% 100% no-repeat;
+  border-radius: 19px 19px 0 0;
+  pointer-events: none;
+}
+body > header::after {
+  content: 'Che vita!\A Che risate!';
+  white-space: pre-line;
+  position: absolute;
+  top: 28px;
+  left: 2%;
+  width: 20%;
+  color: #d52b81;
+  font-family: 'Commedia Pacifico', cursive;
+  font-size: clamp(21px, 2.8vw, 42px);
+  line-height: 1.5;
+  text-align: center;
+  text-shadow: 2px 2px 0 #fff, 3px 4px 0 #93617f;
+  transform: rotate(-3deg);
+  pointer-events: none;
+}
+header nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 12px;
+  border: 1px solid #a57a9b;
+  border-radius: 15px;
+  background-color: #fffced;
+}
+/* 演员名字只作为装饰图片的说明。 */
+header nav::before {
+  content: 'MEMORIE DI COMMEDIA / CINEMA ITALIANO';
+  position: absolute;
+  bottom: 48px;
+  left: 2%;
+  width: 20%;
+  text-align: center;
+  color: #79415f;
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  letter-spacing: .7px;
+  pointer-events: none;
+}
+header label { color: #963465; font-family: 'Commedia Lilita', Arial, sans-serif; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
+#theme-select { flex: 1; min-width: 0; padding: 5px; border: 0; background-color: #fffced; color: #352447; font-family: Arial, sans-serif; font-size: 12px; }
+
+/* 2. 地图变成圆角塑料电视。阴影表现机壳高光，屏幕保持清楚。
+   多层阴影分别表现塑料高光、底部厚度和投影。
+   没有画假的可点击控制按钮，实际交互仍是地图点与路线单选框。
+*/
+body #map-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 25px;
+  min-height: 0;
+  padding: 24px 26px;
+}
+#map-page #map-stage {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  padding: 15px;
+  border: 8px solid #e9a0c4;
+  border-radius: 26px;
+  outline: 1px solid #b46b97;
+  background-color: #f4fffc;
+  /* 小装饰只占标题两侧边角，保留电影和地图为主视觉。 */
+  background-image: url('../assets/img/themes/commedia-phone-doodle.svg'), url('../assets/img/themes/commedia-coffee-doodle.svg');
+  background-size: 33px 28px, 30px 28px;
+  background-position: left 12px top 3px, right 12px top 3px;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 1px #f8dce8, 0 5px 15px #754c681a;
+}
+#map-stage::before {
+  content: 'CH 05 / LA MAPPA DELLA MOSTRA';
+  flex-shrink: 0;
+  padding: 0 5px 10px;
+  color: #963465;
+  font-family: 'Commedia Lilita', Arial, sans-serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+#map-stage #map-svg { flex: 1; min-height: 0; width: 100%; height: auto; border-radius: 19px; mix-blend-mode: multiply; }
+/* 电视综艺表演变成屏幕下沿的一张场景卡。
+   使用正常 flex 布局，不悬浮在地图标记之上。
+*/
+/* 窄幅电影记忆图：保持图片带高度，不挤占地图。 */
+#map-stage::after {
+  content: '';
+  flex: 0 0 clamp(43px, 4.5vw, 85px);
+  margin-top: 8px;
+  border: 2px solid #f4bdd8;
+  border-radius: 9px;
+  background: #b9eeee url('../assets/img/themes/commedia-tv-strip-v6.png') center / 100% 100% no-repeat;
+}
+
+/* 3. 侧栏像塑料遥控器与电视杂志，路线是可按下的实体键。
+   linear-gradient 从顶部浅色到下方蓝色，形成一次简单塑料高光。
+   :has(input:checked) 让真实选中状态清楚可见。
+*/
+#map-page #map-side {
+  min-height: 0;
+  min-width: 0;
+  max-width: none;
+  padding: 19px;
+  border: 1px solid #b18bab;
+  border-radius: 25px;
+  background-color: #fffced;
+  box-shadow: 0 5px 15px #754c681a;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+}
+#map-side::before {
+  content: 'CINEMA · VOLTI · VITA QUOTIDIANA';
+  display: block;
+  margin-bottom: 10px;
+  color: #963465;
+  font-family: 'Commedia Lilita', Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+#map-page #map-side h1 { margin: 0 0 20px; padding-bottom: 15px; border-bottom: 4px solid #fff17c; color: #d52b81; font-family: 'Commedia Lilita', Arial, sans-serif; font-size: 35px; font-weight: 400; line-height: 1.1; text-align: center; }
+#map-page #map-side h2 { margin: 25px 0 12px; color: #963465; font-family: 'Commedia Lilita', Arial, sans-serif; font-size: 24px; font-weight: 400; line-height: 1.15; }
+#map-side h3 { font-family: 'Commedia Lilita', Arial, sans-serif; font-weight: 400; }
+#map-page #itinerary-choice { min-width: 0; margin: 0; padding: 0; border: 0; }
+#itinerary-choice legend { margin-bottom: 10px; color: #573474; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+#map-page #itinerary-choice label {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  margin: 0 0 12px;
+  padding: 12px 10px;
+  border: 1px solid #a57a9b;
+  border-radius: 14px;
+  background-color: #a4e9ed;
+  background-image: linear-gradient(#e9ffff, #a4e9ed);
+  box-shadow: 0 2px 0 #86c5d1;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.4;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+#map-page #itinerary-choice label:hover { background-image: none; background-color: #fff17c; }
+#map-page #itinerary-choice label:has(input:checked) { transform: translateY(3px); box-shadow: 0 1px 0 #963465; background-image: none; background-color: #f8b2d1; color: #573474; }
+input[type='radio'] { flex-shrink: 0; accent-color: #963465; }
+#map-side a { color: #573474; text-decoration: none; }
+#map-side a:hover { color: #963465; text-decoration: underline; }
+#map-page #map-side li { margin: 0; padding: 10px 0; border-bottom: 2px dotted #dbbed4; font-size: 14px; line-height: 1.5; }
+#map-side li::marker { color: #963465; font-weight: bold; }
+#map-page #start-link { display: block; margin: 18px 0; padding: 12px; border: 1px solid #a57a9b; border-radius: 22px; background-color: #fff17c; color: #573474; box-shadow: 0 4px 0 #d6a740; font-family: 'Commedia Lilita', Arial, sans-serif; font-size: 18px; font-weight: 400; text-align: center; transition: transform 180ms ease, box-shadow 180ms ease; }
+#map-page #start-link:hover { transform: translateY(2px); box-shadow: 0 2px 0 #d6a740; }
+/* 侧栏底部使用真实的 Fantozzi 开车剧照。 */
+#map-side::after {
+  content: 'FANTOZZI / MEMORIA DI CINEMA';
+  display: flex; align-items: flex-end; justify-content: center;
+  height: 185px; margin-top: 26px; padding: 8px;
+  border: 5px solid #f8dce8; border-radius: 12px;
+  background: #ddbdcc url('../assets/img/themes/commedia-fantozzi-sidebar.png') center 38% / cover no-repeat;
+  color: #fff; font-family: 'Commedia Lilita', Arial, sans-serif; font-size: 13px;
+  text-shadow: 0 1px 4px #352447;
+}
+#map-svg .marker-dot { fill: #ae347d; stroke: #fff; transition: fill 180ms ease, stroke-width 180ms ease; }
+#map-svg .route-line { stroke: #257a94; stroke-width: 12; }
+#map-svg .marker:hover .marker-dot,
+#map-svg .marker:focus .marker-dot { fill: #573474; stroke: #fff17c; stroke-width: 16; }
+#map-svg .marker:hover .marker-num,
+#map-svg .marker:focus .marker-num { fill: #fff; }
+
+/* 4. 展品像娱乐杂志中的专题页。展品原图保持原色，不加喜剧滤镜。 */
+#item-main { flex: 1; min-height: 0; padding: 24px; overflow-y: auto; }
+#item-layout { max-width: 1100px; margin: 0 auto; padding: 28px; border: 1px solid #b18bab; border-radius: 25px; background-color: #fffced; box-shadow: 6px 7px 0 #ed91bd; overflow: auto; }
+#item-main h1 { margin: 0 0 20px; color: #b52b76; font-family: 'Commedia Lilita', Arial, sans-serif; font-size: 48px; font-weight: 400; line-height: 1.1; overflow-wrap: break-word; }
+#item-context { margin: 0 0 26px; padding-bottom: 16px; border-bottom: 4px solid #fff17c; color: #573474; font-size: 14px; }
+#item-media img { float: left; width: 45%; height: auto; margin: 0 28px 24px 0; padding: 9px; border: 1px solid #a57a9b; border-radius: 13px; background-color: #fff; box-shadow: 5px 6px 0 #f6add0; transform: rotate(-1deg); transition: transform 300ms ease, box-shadow 300ms ease; }
+#item-text { font-size: 17px; line-height: 1.8; overflow-wrap: break-word; }
+.item-rights { clear: both; margin-top: 24px; padding-top: 15px; border-top: 2px dotted #dbbed4; color: #746276; }
+#item-media iframe { display: block; width: 100%; height: 330px; margin: 20px 0; border: 1px solid #a57a9b; border-radius: 13px; }
+body > footer { flex-shrink: 0; padding: 11px 24px; border-top: 3px solid #573474; background-color: #f8b2d1; }
+footer nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+button { min-height: 44px; padding: 8px 22px; border: 1px solid #a57a9b; border-radius: 20px; background-color: #fff17c; color: #573474; box-shadow: 0 3px 0 #c58f38; font-family: 'Commedia Lilita', Arial, sans-serif; font-size: 17px; cursor: pointer; transition: transform 180ms ease, box-shadow 180ms ease; }
+button:hover:not(:disabled) { transform: translateY(2px); box-shadow: 0 1px 0 #c58f38; }
+button:disabled { opacity: 0.4; cursor: default; }
+
+/* 少量生活小物：装饰是背景或伪元素，不拦截导航点击。 */
+header nav::after {
+  content: '';
+  position: absolute;
+  right: 18px;
+  top: -23px;
+  width: 24px;
+  height: 32px;
+  background: url('../assets/img/themes/commedia-gelato-doodle.svg') center / contain no-repeat;
+  transform: rotate(9deg);
+  pointer-events: none;
+}
+#map-side::before {
+  min-height: 30px;
+  padding: 5px 29px;
+  font-size: 9px;
+  background-image: url('../assets/img/themes/commedia-coffee-doodle.svg'), url('../assets/img/themes/commedia-gelato-doodle.svg');
+  background-size: 25px 25px, 22px 28px;
+  background-position: left center, right center;
+  background-repeat: no-repeat;
+}
+@media (max-width: 700px) {
+  header nav::after { right: 10px; top: -17px; width: 18px; height: 24px; }
+  #map-side::before { font-size: 8px; }
+}
+
+/* 5. 轻微悬停互动：贴纸摆正、照片浮起；没有强制闪烁或笑声音频。 */
+@media (hover: hover) {
+  #item-media img:hover { transform: rotate(0); box-shadow: 8px 9px 0 #f6add0; }
+}
+@media (min-width: 701px) and (max-width: 1600px) {
+  body > header::before { background-image: url('../assets/img/themes/commedia-tv-hero-v6-medium.png'); }
+}
+@media (max-width: 1100px) {
+  body #map-page { grid-template-columns: minmax(0, 1fr) 295px; gap: 20px; }
+  body > header::after { top: 26px; left: 2%; width: 20%; font-size: 28px; }
+  #map-page #map-side { padding: 15px; }
+  #map-page #map-side h1 { font-size: 29px; }
+}
+@media (max-width: 700px) {
+  body > header { height: 195px; margin: 10px 12px 0; padding: 140px 6px 6px; border-radius: 14px; }
+  body > header::before { inset: 0 0 55px; border-radius: 13px 13px 0 0; background-image: url('../assets/img/themes/commedia-tv-hero-v6-mobile.png'); }
+  body > header::after { top: 31px; left: 2%; width: 20%; font-size: 17px; line-height: 1.6; text-shadow: 1px 1px 0 #fff; }
+  header nav { gap: 6px; padding: 5px; }
+  header nav::before { bottom: 48px; left: 2%; width: 20%; font-size: 5px; letter-spacing: 0; }
+  header label { font-size: 10px; letter-spacing: 0; }
+  #theme-select { width: 0; max-width: none; font-size: 10px; }
+  body #map-page { grid-template-columns: minmax(0, 1fr); grid-template-rows: 43% minmax(0, 1fr); gap: 19px; padding: 16px; }
+  #map-page #map-stage { border-width: 5px; padding: 10px; border-radius: 20px; background-image: none; }
+  #map-stage::before { font-size: 11px; letter-spacing: 0; padding-bottom: 6px; }
+  #map-stage::after { flex-basis: 43px; margin-top: 4px; padding: 3px; font-size: 7px; border-width: 2px; background-size: 100% 100%; background-image: url('../assets/img/themes/commedia-tv-strip-v6-mobile.png'); }
+  #map-page #map-side { padding: 14px; }
+  #map-page #map-side h1 { font-size: 29px; margin-bottom: 16px; }
+  #item-main { padding: 12px; }
+  #item-layout { padding: 18px; }
+  #item-main h1 { font-size: 34px; }
+  #item-media img { float: none; width: 100%; margin: 0 0 24px; transform: none; }
+  #item-media iframe { height: 220px; }
+}
+@media (max-height: 650px) and (min-width: 701px) {
+  body > header { margin-top: 10px; }
+  body > header::after { top: 25px; font-size: 27px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #map-page #itinerary-choice label,
+  #map-page #start-link,
+  #map-svg .marker-dot,
+  #item-media img,
+  button { transition: none; }
+  #item-media img:hover { transform: rotate(-1deg); }
+}
+/* River: match the team's current HTML ids (HTML-IDS.md).
+   Keep the existing two-column grid and independently scrolling media/text.
+   仅调整 CSS 选择器和外观，不修改队友的 HTML 或交互代码。 */
+body > header { display: block; }
+header nav { width: 100%; }
+#item-main { overflow: hidden; }
+#item-main #item-layout {
+  width: 100%; max-width: none; height: 100%; min-height: 0;
+  margin: 0; overflow: hidden;
+}
+#item-media, #item-info { min-width: 0; min-height: 0; overflow: auto; }
+#item-info { padding: 0 12px 16px; }
+#item-media img {
+  float: none; width: auto; height: auto; max-width: 100%; max-height: 100%;
+  margin: 0; flex-shrink: 0; transform: none;
+}
+#item-media.multi img { max-height: none; }
+#item-media iframe { height: auto; aspect-ratio: 16 / 9; max-height: 100%; }
+@media (max-width: 700px) {
+  #item-main #item-layout { padding: 12px; gap: 12px; }
+  #item-info { padding: 0 6px 12px; }
+  #item-media img { max-width: 100%; }
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <!-- Original baroque-inspired decorative frame; not a historical artefact. -->
+  <defs>
+    <linearGradient id="gold" x2="1" y2="1"><stop stop-color="#5e3c18"/><stop offset=".25" stop-color="#e7c97f"/><stop offset=".5" stop-color="#a57630"/><stop offset=".75" stop-color="#f5dfa0"/><stop offset="1" stop-color="#6e471e"/></linearGradient>
+    <g id="corner" fill="none" stroke-linecap="round">
+      <path d="M7 38V7H38M13 38V13H38" stroke="#efd48b" stroke-width="2"/>
+      <path d="M11 34C32 32 35 21 25 18C16 16 18 29 25 25M34 11C32 32 21 35 18 25" stroke="#62401d" stroke-width="5"/>
+      <path d="M11 33C31 31 34 21 25 19C18 18 19 28 25 25M33 11C31 31 21 34 19 25" stroke="#f2d58c" stroke-width="2"/>
+      <path d="M13 15Q12 5 5 5Q5 12 15 13M26 12Q34 4 39 6Q34 14 26 12M12 26Q4 34 6 39Q14 34 12 26" fill="#c69b4e" stroke="#f0d18a" stroke-width="1"/>
+      <circle cx="12" cy="12" r="3" fill="#f0d18a" stroke="#765020"/>
+    </g>
+  </defs>
+  <path d="M0 0H120V120H0ZM32 32V88H88V32Z" fill="url(#gold)" fill-rule="evenodd"/>
+  <path d="M3 3H117V117H3Z M30 30H90V90H30Z" fill="none" stroke="#69431b" stroke-width="2"/>
+  <path d="M6 6H114V114H6Z M26 26H94V94H26Z" fill="none" stroke="#e8c87d"/>
+  <use href="#corner"/>
+  <use href="#corner" transform="translate(120 0) rotate(90)"/>
+  <use href="#corner" transform="translate(120 120) rotate(180)"/>
+  <use href="#corner" transform="translate(0 120) rotate(270)"/>
+</svg>
