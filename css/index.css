@@ -46,6 +46,10 @@ main article {
   height: auto;
 }
 
+figure {
+  margin: 0;
+}
+
 #preview-map image {
   mix-blend-mode: multiply;
 }

@@ -36,6 +36,7 @@ footer nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: cent
 #item-media img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
 #item-media.multi img { max-height: none; }
 #item-media iframe { width: 100%; height: auto; aspect-ratio: 16 / 9; max-height: 100%; border: 0; }
+#item-media object.item-pdf { flex: 1 1 auto; width: 100%; min-height: 24rem; }
 #item-context { margin: 0 0 0.5rem; }
 #item-title { margin-top: 0; }
 

@@ -57,7 +57,7 @@
     $("item-rights").textContent = meta.rights || "";
     $("item-rights").hidden = !meta.rights;
 
-    // "Renzo Renzi: a Life — stop 8 of 15 · Renzo Renzi, the friend / Renzi & Fellini"
+    // "Renzo Renzi: a life — stop 8 of 15 · Renzo Renzi, the friend: Renzi & Fellini"
     const narrative = Exhibition.getNarrative(narrativeId);
     const order = narrative ? narrative.order : [];
     const stopNo = order.indexOf(item.id) + 1;                       // 0 = not in this narrative
@@ -80,7 +80,7 @@
 
   /**
    * Media of the item, inside #item-media: every local file (an <img> for image
-   * files, a link for anything else such as the PDF), then every entry of
+   * files, the PDF viewer for a PDF, a link for anything else), then every entry of
    * item.externalLinks (an <iframe> when it has an embedUrl, e.g. YouTube; otherwise a link).
    */
   function fillMedia() {
@@ -94,6 +94,15 @@
         img.src = encodeURI(path);
         img.alt = item.title;
         box.appendChild(img);
+      } else if (/\.pdf$/i.test(path)) {
+        // The whole PDF in the page; browsers that cannot show it inline get the link inside the <object>.
+        const pdf = document.createElement("object");
+        pdf.className = "item-pdf";
+        pdf.data = encodeURI(path);
+        pdf.type = "application/pdf";
+        pdf.setAttribute("aria-label", item.title);
+        pdf.appendChild(makeLink(encodeURI(path), `Open ${path.split("/").pop()}`));
+        box.appendChild(pdf);
       } else {
         box.appendChild(makeLink(encodeURI(path), `Open ${path.split("/").pop()}`));
       }

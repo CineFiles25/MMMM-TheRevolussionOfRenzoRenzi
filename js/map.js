@@ -30,7 +30,7 @@
   const narratives = Exhibition.getNarratives();
   const items = Exhibition.getAllItems();
 
-  // Which itinerary is shown: ?narrative=<id> | all ; default = Renzo Renzi: a Life
+  // Which itinerary is shown: ?narrative=<id> | all ; default = Renzo Renzi: a life
   let selected = Exhibition.getQueryParam("narrative");
   if (selected !== "all" && !Exhibition.getNarrative(selected)) selected = "renzo-renzi-a-life";
 

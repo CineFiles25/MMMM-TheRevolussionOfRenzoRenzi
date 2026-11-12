@@ -24,7 +24,7 @@ The file `css/skeleton.css` is a temporary layout; replace it with the real CSS.
 | `theme-select` | `<select>` | fills it with the 6 themes, keeps it on the chosen one, and changes the theme |
 | `theme-stylesheet` | `<link rel="stylesheet">` | its `href` is switched to the chosen theme's CSS file (`css/theme-N.css`) |
 | `text-selector` | `<fieldset>` | the three text versions; contains three radio buttons (see below) |
-| `prev-button`, `next-button` | `<button>` | previous / next item in the chosen narrative (disabled at the ends) |
+| `prev-button`, `next-button` | `<button>` | previous / next item in the chosen narrative, below the text versions (disabled at the ends) |
 | `text-status` | `<p role="status" aria-live="polite">` | announces to screen readers which text version was chosen |
 
 The three radio buttons inside `text-selector` are written in the HTML, all with
@@ -46,14 +46,15 @@ URL: `exhibition.html?narrative=<narrative id>&item=<item id>`
 | `item-creator` | `<strong>` / `<span>` | creator (or "Unknown creator") |
 | `item-type` | `<span>` | type (Photograph, Letter…) |
 | `item-date` | `<span>` | date in brackets, e.g. `(1954)` |
-| `item-context` | `<p>` | "Renzo Renzi: a Life — stop 8 of 15 · Renzo Renzi, the friend / Renzi & Fellini" |
-| `item-context` | `<p>` | "Renzo Renzi: a Life — stop 8 of 15 · Renzo Renzi, the friend / Renzi & Fellini" |
+| `item-context` | `<p>` | "Renzo Renzi: a life — stop 8 of 15 · Renzo Renzi, the friend: Renzi & Fellini" |
 | `item-room-intro` | `<div>` | empty and `hidden` in the HTML; the script should fill it with the room intro and unhide it |
 | `item-next-room` | `<p>` | empty and `hidden`; the script should fill it with a link to the next room, on the last item of a room, and unhide it |
 | `item-map-link` | `<a>` | only its `href` is set: back to the map on the same narrative |
+| `narrative-select` | `<select>` | in the footer: one option per narrative (set by the inline script in `exhibition.html`); choosing one opens it on the same item if it contains it, otherwise on its first item |
+| `next-narrative-link`, `next-narrative` | `<p>` / `<a>` | link to the next narrative (set by the small inline script in `exhibition.html`, hidden until then) |
 | `item-text` | `<div lang="en">` | the text of the chosen version, as paragraphs with `<em>` for italics |
 | `item-rights` | `<p>` | rights statement (hidden when empty) |
-| `item-media` | `<div>` | the images, the PDF link and the video embeds of the item (created by the script; gets the class `multi` when there are several) |
+| `item-media` | `<div>` | the images, the PDF (embedded in the page, with a link as fallback) and the video embeds of the item (created by the script; gets the class `multi` when there are several) |
 | `prev-button`, `next-button`, `text-selector`, `text-status`, `theme-select` | | shared, see above |
 
 Not used by the script (free for layout): `item-main`, `item-layout`, `item-info`.
@@ -65,11 +66,11 @@ Not used by the script (free for layout): `item-main`, `item-layout`, `item-info
 | `preview-map` | `<svg>` | the plan image with a transparent white background (CSS `mix-blend-mode`) |
 | `preview-rooms` | `<g>` inside the svg | one link per room (created by the inline script), with a hit circle and a hover card (title + intro) |
 
-## `exhibition.html` — the film strip
+## `exhibition.html` and `map.html` — the sliding strip
 
-| id | tag | content put there |
-| --- | --- | --- |
-| `narrative-strip` | `<nav>` | one frame per item of the narrative, the current item marked `aria-current`, then an end card linking to the next narrative (created by the inline script; hidden until built) |
+Written in the HTML, no script for the movement: `nav.indexslider` > `div.indexslide-track` > `a.index-slide` > `img` + `span.index-caption`, moved by CSS in `css/film-strip.css` (which explains `--shift` and `--duration`). Every slide is a link to the item; the picture is the image with the same name as the item (`assets/items/<item id>` or its picture file), also for films, soundtrack and interview. The pictures are only for the strip: on the item page the media are the ones listed in `items.json`. The repeated copies of the set are `aria-hidden` with `tabindex="-1"`.
+- `exhibition.html`: one strip per narrative (`strip-<narrative id>`, `hidden`), one slide per item of that narrative, in the order of `narratives.json`, each with its number and title; the inline script unhides the one of the narrative in the URL and marks the current item `aria-current`. If the items of a narrative change, edit its strip by hand.
+- `map.html`: one strip with all 16 items (no numbers), linking into the narrative "Renzo Renzi: a life".
 
 ## `map.html` — the museum map
 

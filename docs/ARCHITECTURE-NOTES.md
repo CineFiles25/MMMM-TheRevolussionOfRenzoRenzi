@@ -34,7 +34,7 @@ team agreed on the three narratives, the three rooms and the final planimetry.
 
 ## The three narratives (agreed by the team)
 
-1. `renzo-renzi-a-life` — Renzo Renzi: a Life (Historical, required), 15 items in date order.
+1. `renzo-renzi-a-life` — Renzo Renzi: a life (Historical, required), 16 items in date order.
 2. `from-subject-to-film` — 7 items, from page to screen.
 3. `guide-to-walking-bologna` — "Guide to walking in Bologna", 5 items, thematic order;
    each stop has a verb (walk it, film it, read it, watch a film in it,
@@ -74,7 +74,7 @@ the three rooms keep a trace of it.
 | --- | --- |
 | 1 — the man / soldier | letter, *L'armata s'agapò*, portrait, interview |
 | 2 — the filmmaker | Po screenplay, *Guida*, Ferrari photo, *Bologna, una città*, caricature |
-| 3 — Renzi & Fellini | film, soundtrack, two stills, premiere photo, Gelsomina drawing, *Il primo Fellini* |
+| 3 — Renzo Renzi, the friend: Renzi & Fellini | film, soundtrack, two stills, premiere photo, Gelsomina drawing, *Il primo Fellini* |
 
 ## The texts (three versions per item)
 

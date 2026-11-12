@@ -33,102 +33,174 @@
         <p id="item-context"></p>
         <div id="item-room-intro" hidden></div>
         <p><a id="item-map-link" href="map.html">See the map</a></p>
+        <p id="next-narrative-link" hidden><a id="next-narrative" href="#"></a></p>
         <h1 id="item-title">Loading…</h1>
         <p><strong id="item-creator"></strong> — <span id="item-type"></span> <span id="item-date"></span></p>
         <div id="item-text" lang="en"></div>
+        <fieldset id="text-selector">
+          <legend class="sr-only">Text version</legend>
+          <label title="A short introduction for a general audience"><input type="radio" name="text-voice" id="voice-museum" value="museum"> Read less</label>
+          <label title="A longer, archival account with catalogue details"><input type="radio" name="text-voice" id="voice-archival" value="archival"> Read more</label>
+          <label title="A brief, playful voice for younger visitors"><input type="radio" name="text-voice" id="voice-renzo" value="renzo"> Told by Renzo</label>
+        </fieldset>
+        <nav aria-label="Navigation between items">
+          <button id="prev-button" disabled>Previous item</button>
+          <button id="next-button" disabled>Next item</button>
+        </nav>
         <p id="item-next-room" hidden></p>
         <p id="item-rights"></p>
       </div>
     </article>
   </main>
 
-  <nav id="narrative-strip" class="film-strip" aria-label="Objects in this narrative" hidden></nav>
+  <!--
+    One sliding strip per narrative, only its own items, in the order of the narrative.
+    Each slide is a link to the item: its number, its picture (the image with the same name as the item,
+    also for films, soundtrack and interview) and its title. On the item page itself the media are the ones
+    of items.json (video embed, PDF...), not these pictures.
+    The set of slides is repeated so the loop never runs empty; the repeated copies are hidden from keyboard
+    and screen readers (aria-hidden, tabindex="-1"). The script at the bottom shows the strip of the narrative in the URL.
+  -->
+  <nav class="indexslider" id="strip-renzo-renzi-a-life" style="--shift: -3520px; --duration: 59s;" aria-label="Items of this narrative" hidden>
+    <div class="indexslide-track">
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_letter_1942" title="Letter to his father"><img src="assets/items/letter_p1.jpg" alt=""><span class="index-caption"><strong>1</strong> Letter to his father</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=po_screenplay" title="Quando il Po è dolce (manuscript screenplay)"><img src="assets/items/po_screenplay.jpg" alt=""><span class="index-caption"><strong>2</strong> Quando il Po è dolce (manuscript screenplay)</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=l_armata_s_agapo" title="L'armata s'agapò"><img src="assets/items/l_armata_s_agapo.jpg" alt=""><span class="index-caption"><strong>3</strong> L'armata s'agapò</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=guida_documentary" title="Guida per camminare all'ombra"><img src="assets/items/guida_documentary.png" alt=""><span class="index-caption"><strong>4</strong> Guida per camminare all'ombra</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=drawing_gelsomina_lastrada" title="La Strada: Gelsomina col tamburo"><img src="assets/items/gelsomina_drawing.jpg" alt=""><span class="index-caption"><strong>5</strong> La Strada: Gelsomina col tamburo</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_la_strada_fighter" title="Circus performance scene from 'La Strada'"><img src="assets/items/photo_la_strada_fighter.jpg" alt=""><span class="index-caption"><strong>6</strong> Circus performance scene from 'La Strada'</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_la_strada_woman" title="Gelsomina eating bread in rural landscape"><img src="assets/items/photo_la_strada_woman.jpg" alt=""><span class="index-caption"><strong>7</strong> Gelsomina eating bread in rural landscape</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=la_strada_soundtrack_original" title="La strada : [musique du film]"><img src="assets/items/la_strada_soundtrack_original.png" alt=""><span class="index-caption"><strong>8</strong> La strada : [musique du film]</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=la_strada_film" title="La strada"><img src="assets/items/la_strada_film.png" alt=""><span class="index-caption"><strong>9</strong> La strada</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_lastrada_premiere" title="Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina"><img src="assets/items/photo_lastrada_premiere.png" alt=""><span class="index-caption"><strong>10</strong> Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=ferrari_set_photo" title="Ferrari on set during the documentary 'Le Notti del Melodramma'"><img src="assets/items/ferrari_set_photo.jpg" alt=""><span class="index-caption"><strong>11</strong> Ferrari on set during the documentary 'Le Notti del Melodramma'</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=caricature_fellini_renzi" title="Fellini caricature"><img src="assets/items/caricature_fellini_renzi.jpg" alt=""><span class="index-caption"><strong>12</strong> Fellini caricature</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=bologna_book" title="Bologna, una città"><img src="assets/items/bologna_book.jpg" alt=""><span class="index-caption"><strong>13</strong> Bologna, una città</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=book_il_primo_fellini" title="Il primo Fellini"><img src="assets/items/la_strada_pag_8.png" alt=""><span class="index-caption"><strong>14</strong> Il primo Fellini</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_interview_2000" title="Il cinema a Bologna: Renzo Renzi e la Columbus film"><img src="assets/items/renzi_interview_2000.png" alt=""><span class="index-caption"><strong>15</strong> Il cinema a Bologna: Renzo Renzi e la Columbus film</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_portrait" title="Renzo Renzi taking a photograph (informal portrait)"><img src="assets/items/renzi_portrait.jpg" alt=""><span class="index-caption"><strong>16</strong> Renzo Renzi taking a photograph (informal portrait)</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_letter_1942" title="Letter to his father"><img src="assets/items/letter_p1.jpg" alt=""><span class="index-caption"><strong>1</strong> Letter to his father</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=po_screenplay" title="Quando il Po è dolce (manuscript screenplay)"><img src="assets/items/po_screenplay.jpg" alt=""><span class="index-caption"><strong>2</strong> Quando il Po è dolce (manuscript screenplay)</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=l_armata_s_agapo" title="L'armata s'agapò"><img src="assets/items/l_armata_s_agapo.jpg" alt=""><span class="index-caption"><strong>3</strong> L'armata s'agapò</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=guida_documentary" title="Guida per camminare all'ombra"><img src="assets/items/guida_documentary.png" alt=""><span class="index-caption"><strong>4</strong> Guida per camminare all'ombra</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=drawing_gelsomina_lastrada" title="La Strada: Gelsomina col tamburo"><img src="assets/items/gelsomina_drawing.jpg" alt=""><span class="index-caption"><strong>5</strong> La Strada: Gelsomina col tamburo</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_la_strada_fighter" title="Circus performance scene from 'La Strada'"><img src="assets/items/photo_la_strada_fighter.jpg" alt=""><span class="index-caption"><strong>6</strong> Circus performance scene from 'La Strada'</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_la_strada_woman" title="Gelsomina eating bread in rural landscape"><img src="assets/items/photo_la_strada_woman.jpg" alt=""><span class="index-caption"><strong>7</strong> Gelsomina eating bread in rural landscape</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=la_strada_soundtrack_original" title="La strada : [musique du film]"><img src="assets/items/la_strada_soundtrack_original.png" alt=""><span class="index-caption"><strong>8</strong> La strada : [musique du film]</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=la_strada_film" title="La strada"><img src="assets/items/la_strada_film.png" alt=""><span class="index-caption"><strong>9</strong> La strada</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_lastrada_premiere" title="Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina"><img src="assets/items/photo_lastrada_premiere.png" alt=""><span class="index-caption"><strong>10</strong> Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=ferrari_set_photo" title="Ferrari on set during the documentary 'Le Notti del Melodramma'"><img src="assets/items/ferrari_set_photo.jpg" alt=""><span class="index-caption"><strong>11</strong> Ferrari on set during the documentary 'Le Notti del Melodramma'</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=caricature_fellini_renzi" title="Fellini caricature"><img src="assets/items/caricature_fellini_renzi.jpg" alt=""><span class="index-caption"><strong>12</strong> Fellini caricature</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=bologna_book" title="Bologna, una città"><img src="assets/items/bologna_book.jpg" alt=""><span class="index-caption"><strong>13</strong> Bologna, una città</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=book_il_primo_fellini" title="Il primo Fellini"><img src="assets/items/la_strada_pag_8.png" alt=""><span class="index-caption"><strong>14</strong> Il primo Fellini</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_interview_2000" title="Il cinema a Bologna: Renzo Renzi e la Columbus film"><img src="assets/items/renzi_interview_2000.png" alt=""><span class="index-caption"><strong>15</strong> Il cinema a Bologna: Renzo Renzi e la Columbus film</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_portrait" title="Renzo Renzi taking a photograph (informal portrait)"><img src="assets/items/renzi_portrait.jpg" alt=""><span class="index-caption"><strong>16</strong> Renzo Renzi taking a photograph (informal portrait)</span></a>
+    </div>
+  </nav>
+
+  <nav class="indexslider" id="strip-from-subject-to-film" style="--shift: -1540px; --duration: 26s;" aria-label="Items of this narrative" hidden>
+    <div class="indexslide-track">
+      <a class="index-slide" href="exhibition.html?narrative=from-subject-to-film&amp;item=book_il_primo_fellini" title="Il primo Fellini"><img src="assets/items/la_strada_pag_8.png" alt=""><span class="index-caption"><strong>1</strong> Il primo Fellini</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=from-subject-to-film&amp;item=drawing_gelsomina_lastrada" title="La Strada: Gelsomina col tamburo"><img src="assets/items/gelsomina_drawing.jpg" alt=""><span class="index-caption"><strong>2</strong> La Strada: Gelsomina col tamburo</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=from-subject-to-film&amp;item=photo_la_strada_fighter" title="Circus performance scene from 'La Strada'"><img src="assets/items/photo_la_strada_fighter.jpg" alt=""><span class="index-caption"><strong>3</strong> Circus performance scene from 'La Strada'</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=from-subject-to-film&amp;item=photo_la_strada_woman" title="Gelsomina eating bread in rural landscape"><img src="assets/items/photo_la_strada_woman.jpg" alt=""><span class="index-caption"><strong>4</strong> Gelsomina eating bread in rural landscape</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=from-subject-to-film&amp;item=la_strada_soundtrack_original" title="La strada : [musique du film]"><img src="assets/items/la_strada_soundtrack_original.png" alt=""><span class="index-caption"><strong>5</strong> La strada : [musique du film]</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=from-subject-to-film&amp;item=la_strada_film" title="La strada"><img src="assets/items/la_strada_film.png" alt=""><span class="index-caption"><strong>6</strong> La strada</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=from-subject-to-film&amp;item=photo_lastrada_premiere" title="Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina"><img src="assets/items/photo_lastrada_premiere.png" alt=""><span class="index-caption"><strong>7</strong> Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=from-subject-to-film&amp;item=book_il_primo_fellini" title="Il primo Fellini"><img src="assets/items/la_strada_pag_8.png" alt=""><span class="index-caption"><strong>1</strong> Il primo Fellini</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=from-subject-to-film&amp;item=drawing_gelsomina_lastrada" title="La Strada: Gelsomina col tamburo"><img src="assets/items/gelsomina_drawing.jpg" alt=""><span class="index-caption"><strong>2</strong> La Strada: Gelsomina col tamburo</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=from-subject-to-film&amp;item=photo_la_strada_fighter" title="Circus performance scene from 'La Strada'"><img src="assets/items/photo_la_strada_fighter.jpg" alt=""><span class="index-caption"><strong>3</strong> Circus performance scene from 'La Strada'</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=from-subject-to-film&amp;item=photo_la_strada_woman" title="Gelsomina eating bread in rural landscape"><img src="assets/items/photo_la_strada_woman.jpg" alt=""><span class="index-caption"><strong>4</strong> Gelsomina eating bread in rural landscape</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=from-subject-to-film&amp;item=la_strada_soundtrack_original" title="La strada : [musique du film]"><img src="assets/items/la_strada_soundtrack_original.png" alt=""><span class="index-caption"><strong>5</strong> La strada : [musique du film]</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=from-subject-to-film&amp;item=la_strada_film" title="La strada"><img src="assets/items/la_strada_film.png" alt=""><span class="index-caption"><strong>6</strong> La strada</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=from-subject-to-film&amp;item=photo_lastrada_premiere" title="Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina"><img src="assets/items/photo_lastrada_premiere.png" alt=""><span class="index-caption"><strong>7</strong> Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=from-subject-to-film&amp;item=book_il_primo_fellini" title="Il primo Fellini"><img src="assets/items/la_strada_pag_8.png" alt=""><span class="index-caption"><strong>1</strong> Il primo Fellini</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=from-subject-to-film&amp;item=drawing_gelsomina_lastrada" title="La Strada: Gelsomina col tamburo"><img src="assets/items/gelsomina_drawing.jpg" alt=""><span class="index-caption"><strong>2</strong> La Strada: Gelsomina col tamburo</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=from-subject-to-film&amp;item=photo_la_strada_fighter" title="Circus performance scene from 'La Strada'"><img src="assets/items/photo_la_strada_fighter.jpg" alt=""><span class="index-caption"><strong>3</strong> Circus performance scene from 'La Strada'</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=from-subject-to-film&amp;item=photo_la_strada_woman" title="Gelsomina eating bread in rural landscape"><img src="assets/items/photo_la_strada_woman.jpg" alt=""><span class="index-caption"><strong>4</strong> Gelsomina eating bread in rural landscape</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=from-subject-to-film&amp;item=la_strada_soundtrack_original" title="La strada : [musique du film]"><img src="assets/items/la_strada_soundtrack_original.png" alt=""><span class="index-caption"><strong>5</strong> La strada : [musique du film]</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=from-subject-to-film&amp;item=la_strada_film" title="La strada"><img src="assets/items/la_strada_film.png" alt=""><span class="index-caption"><strong>6</strong> La strada</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=from-subject-to-film&amp;item=photo_lastrada_premiere" title="Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina"><img src="assets/items/photo_lastrada_premiere.png" alt=""><span class="index-caption"><strong>7</strong> Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina</span></a>
+    </div>
+  </nav>
+
+  <nav class="indexslider" id="strip-guide-to-walking-bologna" style="--shift: -1100px; --duration: 18s;" aria-label="Items of this narrative" hidden>
+    <div class="indexslide-track">
+      <a class="index-slide" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=guida_documentary" title="Guida per camminare all'ombra"><img src="assets/items/guida_documentary.png" alt=""><span class="index-caption"><strong>1</strong> Guida per camminare all'ombra</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=ferrari_set_photo" title="Ferrari on set during the documentary 'Le Notti del Melodramma'"><img src="assets/items/ferrari_set_photo.jpg" alt=""><span class="index-caption"><strong>2</strong> Ferrari on set during the documentary 'Le Notti del Melodramma'</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=bologna_book" title="Bologna, una città"><img src="assets/items/bologna_book.jpg" alt=""><span class="index-caption"><strong>3</strong> Bologna, una città</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=photo_lastrada_premiere" title="Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina"><img src="assets/items/photo_lastrada_premiere.png" alt=""><span class="index-caption"><strong>4</strong> Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=renzi_interview_2000" title="Il cinema a Bologna: Renzo Renzi e la Columbus film"><img src="assets/items/renzi_interview_2000.png" alt=""><span class="index-caption"><strong>5</strong> Il cinema a Bologna: Renzo Renzi e la Columbus film</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=guida_documentary" title="Guida per camminare all'ombra"><img src="assets/items/guida_documentary.png" alt=""><span class="index-caption"><strong>1</strong> Guida per camminare all'ombra</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=ferrari_set_photo" title="Ferrari on set during the documentary 'Le Notti del Melodramma'"><img src="assets/items/ferrari_set_photo.jpg" alt=""><span class="index-caption"><strong>2</strong> Ferrari on set during the documentary 'Le Notti del Melodramma'</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=bologna_book" title="Bologna, una città"><img src="assets/items/bologna_book.jpg" alt=""><span class="index-caption"><strong>3</strong> Bologna, una città</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=photo_lastrada_premiere" title="Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina"><img src="assets/items/photo_lastrada_premiere.png" alt=""><span class="index-caption"><strong>4</strong> Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=renzi_interview_2000" title="Il cinema a Bologna: Renzo Renzi e la Columbus film"><img src="assets/items/renzi_interview_2000.png" alt=""><span class="index-caption"><strong>5</strong> Il cinema a Bologna: Renzo Renzi e la Columbus film</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=guida_documentary" title="Guida per camminare all'ombra"><img src="assets/items/guida_documentary.png" alt=""><span class="index-caption"><strong>1</strong> Guida per camminare all'ombra</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=ferrari_set_photo" title="Ferrari on set during the documentary 'Le Notti del Melodramma'"><img src="assets/items/ferrari_set_photo.jpg" alt=""><span class="index-caption"><strong>2</strong> Ferrari on set during the documentary 'Le Notti del Melodramma'</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=bologna_book" title="Bologna, una città"><img src="assets/items/bologna_book.jpg" alt=""><span class="index-caption"><strong>3</strong> Bologna, una città</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=photo_lastrada_premiere" title="Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina"><img src="assets/items/photo_lastrada_premiere.png" alt=""><span class="index-caption"><strong>4</strong> Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=renzi_interview_2000" title="Il cinema a Bologna: Renzo Renzi e la Columbus film"><img src="assets/items/renzi_interview_2000.png" alt=""><span class="index-caption"><strong>5</strong> Il cinema a Bologna: Renzo Renzi e la Columbus film</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=guida_documentary" title="Guida per camminare all'ombra"><img src="assets/items/guida_documentary.png" alt=""><span class="index-caption"><strong>1</strong> Guida per camminare all'ombra</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=ferrari_set_photo" title="Ferrari on set during the documentary 'Le Notti del Melodramma'"><img src="assets/items/ferrari_set_photo.jpg" alt=""><span class="index-caption"><strong>2</strong> Ferrari on set during the documentary 'Le Notti del Melodramma'</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=bologna_book" title="Bologna, una città"><img src="assets/items/bologna_book.jpg" alt=""><span class="index-caption"><strong>3</strong> Bologna, una città</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=photo_lastrada_premiere" title="Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina"><img src="assets/items/photo_lastrada_premiere.png" alt=""><span class="index-caption"><strong>4</strong> Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=guide-to-walking-bologna&amp;item=renzi_interview_2000" title="Il cinema a Bologna: Renzo Renzi e la Columbus film"><img src="assets/items/renzi_interview_2000.png" alt=""><span class="index-caption"><strong>5</strong> Il cinema a Bologna: Renzo Renzi e la Columbus film</span></a>
+    </div>
+  </nav>
 
   <p id="text-status" class="sr-only" role="status" aria-live="polite"></p>
 
   <footer>
-    <nav aria-label="Navigation between items">
-      <button id="prev-button" disabled>&larr; Previous</button>
-      <fieldset id="text-selector">
-        <legend>Text version</legend>
-        <label title="A short introduction for a general audience"><input type="radio" name="text-voice" id="voice-museum" value="museum"> Read less</label>
-        <label title="A longer, archival account with catalogue details"><input type="radio" name="text-voice" id="voice-archival" value="archival"> Read more</label>
-        <label title="A brief, playful voice for younger visitors"><input type="radio" name="text-voice" id="voice-renzo" value="renzo"> Told by Renzo</label>
-      </fieldset>
-      <button id="next-button" disabled>Next &rarr;</button>
+    <nav aria-label="Choose a narrative">
+      <div id="narrative-picker">
+        <label for="narrative-select">Narrative:</label>
+        <select id="narrative-select"></select>
+      </div>
     </nav>
   </footer>
 
   <script src="js/main.js"></script>
   <script src="js/item.js"></script>
   <script>
+    // Strip of the narrative (the current item outlined), picker in the footer, and the link to the next narrative under "See the map".
+    // Choosing a narrative opens it on the same item if it contains it, otherwise on its first item.
     (async function () {
       await Exhibition.load();
-      var strip = document.getElementById("narrative-strip");
       var narrativeId = Exhibition.getQueryParam("narrative");
-      var currentId = Exhibition.getQueryParam("item");
-      if (!Exhibition.getNarrative(narrativeId)) return;
-      var IMAGE_FILE = /\.(jpe?g|png|gif|webp)$/i;
+      var itemId = Exhibition.getQueryParam("item");
+      var narratives = Exhibition.getNarratives();
 
-      Exhibition.getNarrativeItems(narrativeId).forEach(function (item) {
-        var video = (item.externalLinks || []).find(function (link) { return link.embedUrl; });
-        var image = (item.images || []).find(function (file) { return IMAGE_FILE.test(file); });
-        var href = Exhibition.buildItemUrl(narrativeId, item.id);
-        var frame;
+      var strip = document.getElementById("strip-" + narrativeId);
+      if (strip) {
+        strip.hidden = false;
+        strip.querySelectorAll('a[href$="item=' + itemId + '"]').forEach(function (slide) {
+          slide.setAttribute("aria-current", "true");
+        });
+      }
 
-        if (video) {
-          frame = document.createElement("div");
-          frame.className = "frame video";
-          var iframe = document.createElement("iframe");
-          iframe.src = video.embedUrl;
-          iframe.title = video.label;
-          iframe.loading = "lazy";
-          iframe.allowFullscreen = true;
-          frame.appendChild(iframe);
-          var caption = document.createElement("a");
-          caption.href = href;
-          caption.textContent = item.title;
-          frame.appendChild(caption);
-        } else {
-          frame = document.createElement("a");
-          frame.className = "frame";
-          frame.href = href;
-          if (image) {
-            var img = document.createElement("img");
-            img.src = image;
-            img.alt = item.title;
-            frame.appendChild(img);
-          } else {
-            var empty = document.createElement("span");
-            empty.className = "empty";
-            empty.textContent = "Image coming soon";
-            frame.appendChild(empty);
-          }
-          var label = document.createElement("span");
-          label.textContent = item.title;
-          frame.appendChild(label);
-        }
-
-        if (item.id === currentId) frame.setAttribute("aria-current", "true");
-        strip.appendChild(frame);
+      var select = document.getElementById("narrative-select");
+      narratives.forEach(function (n) {
+        var option = document.createElement("option");
+        option.value = n.id;
+        option.textContent = n.title;
+        option.selected = n.id === narrativeId;
+        select.appendChild(option);
+      });
+      select.addEventListener("change", function () {
+        var chosen = Exhibition.getNarrative(select.value);
+        var target = chosen.order.indexOf(itemId) !== -1 ? itemId : chosen.order[0];
+        window.location.href = Exhibition.buildItemUrl(chosen.id, target);
       });
 
-      var narratives = Exhibition.getNarratives();
-      var next = narratives[(narratives.findIndex(function (n) { return n.id === narrativeId; }) + 1) % narratives.length];
-      var end = document.createElement("div");
-      end.className = "frame end";
-      var endText = document.createElement("span");
-      endText.textContent = "End of this narrative";
-      end.appendChild(endText);
-      if (next && next.id !== narrativeId) {
-        var nextLink = document.createElement("a");
-        nextLink.href = Exhibition.buildItemUrl(next.id, next.order[0]);
-        nextLink.textContent = "Next: " + next.title;
-        end.appendChild(nextLink);
-      }
-      strip.appendChild(end);
-
-      strip.hidden = false;
+      var index = narratives.findIndex(function (n) { return n.id === narrativeId; });
+      if (index === -1) return;
+      var next = narratives[(index + 1) % narratives.length];
+      if (next.id === narrativeId) return;
+      var link = document.getElementById("next-narrative");
+      link.href = Exhibition.buildItemUrl(next.id, next.order[0]);
+      link.textContent = "Next narrative: " + next.title + " →";
+      document.getElementById("next-narrative-link").hidden = false;
     })();
   </script>
 

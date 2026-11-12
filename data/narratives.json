@@ -9,7 +9,7 @@
   "narratives": [
     {
       "id": "renzo-renzi-a-life",
-      "title": "Renzo Renzi: a Life",
+      "title": "Renzo Renzi: a life",
       "description": "Guide to Renzo Renzi's life and work, told in date order: from his life as a son and soldier to that as a filmmaker and writer.",
       "required": true,
       "order": [
@@ -17,23 +17,23 @@
         "po_screenplay",
         "l_armata_s_agapo",
         "guida_documentary",
-        "la_strada_film",
         "drawing_gelsomina_lastrada",
         "photo_la_strada_fighter",
         "photo_la_strada_woman",
-        "photo_lastrada_premiere",
         "la_strada_soundtrack_original",
+        "la_strada_film",
+        "photo_lastrada_premiere",
         "ferrari_set_photo",
         "caricature_fellini_renzi",
+        "bologna_book",
         "book_il_primo_fellini",
         "renzi_interview_2000",
         "renzi_portrait"
       ],
       "_todo": [
-        "Based on real dates in items.csv: 1942-07-24 (letter) -> ca. 1952 (Po screenplay) -> 1953-02-01 (L'armata s'agapò) -> 1954 (six items: guida_documentary, la_strada_film, drawing_gelsomina_lastrada, photo_la_strada_fighter, photo_la_strada_woman, photo_lastrada_premiere, la_strada_soundtrack_original) -> 1959 (ferrari_set_photo) -> ca. 1960s (caricature) -> 1969 (book) -> 2000 (interview).",
+        "Based on real dates in items.csv: 1942-07-24 (letter) -> ca. 1952 (Po screenplay) -> 1953-02-01 (L'armata s'agapò) -> 1954 (guida_documentary, then the La strada cluster) -> 1959 (ferrari_set_photo) -> ca. 1960s (caricature) -> 1964 (bologna_book) -> 1969 (book) -> 2000 (interview).",
         "renzi_portrait has no date in items.csv -- placed last as unplaced, needs a real date or at least an approximate period from Claudia/Anna Fiaccarini.",
-        "The order within the 1954 cluster (6 items) is a best guess (documentary -> film -> character drawing -> production stills -> premiere -> soundtrack), not verified against real event dates within that year.",
-        "bologna_book (1964) is not in this narrative: Claudia's Historical list has 15 items. If it should be, it goes between caricature_fellini_renzi and book_il_primo_fellini."
+        "Order inside the La strada cluster, as decided by Claudia: drawing -> fighter still -> woman still -> soundtrack -> film -> premiere. It is thematic (the same relative order as in 'From subject to film'), not verified against real event dates within that year."
       ]
     },
     {

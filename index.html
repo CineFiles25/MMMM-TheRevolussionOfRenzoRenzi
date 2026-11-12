@@ -39,7 +39,7 @@
     <div class="narratives">
     <article>
       <img src="assets/items/renzi_portrait.jpg" alt="Renzo Renzi taking a photograph">
-      <h3><a href="exhibition.html?narrative=renzo-renzi-a-life">Renzo Renzi: a Life</a></h3>
+      <h3><a href="exhibition.html?narrative=renzo-renzi-a-life">Renzo Renzi: a life</a></h3>
       <p>Guide to Renzo Renzi's life and work, told in date order: from his life as a son and soldier to that as a filmmaker and writer.</p>
     </article>
 
@@ -69,11 +69,13 @@
   <script>
     Exhibition.initPage().then(function () {
       var SVG_NS = "http://www.w3.org/2000/svg";
-      var HIT_RADIUS = 600;
-      var CARD_WIDTH = 1800;
-      var CARD_HEIGHT = 1300;
-      var PAD = 80;
+      var HIT_RADIUS = 260;
+      var CARD_WIDTH = 1300;
+      var CARD_GAP = 150;
+      var PAD = 60;
+      var CARD_BELOW = ["room-2"];
       var group = document.getElementById("preview-rooms");
+      var svg = group.ownerSVGElement;
       var narratives = Exhibition.getNarratives();
       var placed = Exhibition.getAllItems().filter(function (item) { return item.mapPosition; });
 
@@ -81,6 +83,17 @@
         var el = document.createElementNS(SVG_NS, name);
         Object.keys(attrs).forEach(function (key) { el.setAttribute(key, attrs[key]); });
         return el;
+      }
+
+      function fitCard(entry) {
+        var scale = svg.getScreenCTM().a;
+        var height = entry.inner.getBoundingClientRect().height / scale;
+        var top = entry.below ? entry.cy + CARD_GAP : entry.cy - CARD_GAP - height;
+        top = Math.min(Math.max(top, 0), 3024 - height);
+        entry.rect.setAttribute("y", top);
+        entry.rect.setAttribute("height", height);
+        entry.body.setAttribute("y", top);
+        entry.body.setAttribute("height", height);
       }
 
       Exhibition.getRooms().forEach(function (room) {
@@ -94,32 +107,34 @@
         var pick = roomItems[0];
         var narrative = narratives.find(function (n) { return n.order.indexOf(pick.id) !== -1; });
         var left = Math.min(Math.max(cx - CARD_WIDTH / 2, 0), 4032 - CARD_WIDTH);
-        var top = Math.min(Math.max(cy - CARD_HEIGHT / 2, 0), 3024 - CARD_HEIGHT);
 
         var room_el = svgEl("a", { class: "room", href: narrative ? Exhibition.buildItemUrl(narrative.id, pick.id) : "map.html" });
         room_el.appendChild(svgEl("circle", { class: "room-hit", cx: cx, cy: cy, r: HIT_RADIUS }));
 
         var card = svgEl("g", { class: "room-card" });
-        card.appendChild(svgEl("rect", {
-          x: left, y: top, width: CARD_WIDTH, height: CARD_HEIGHT,
+        var rect = svgEl("rect", {
+          x: left, y: 0, width: CARD_WIDTH, height: 0,
           fill: "#fff", stroke: room.color, "stroke-width": 30
-        }));
-        var body = document.createElementNS(SVG_NS, "foreignObject");
-        body.setAttribute("x", left + PAD);
-        body.setAttribute("y", top + PAD);
-        body.setAttribute("width", CARD_WIDTH - 2 * PAD);
-        body.setAttribute("height", CARD_HEIGHT - 2 * PAD);
+        });
+        var body = svgEl("foreignObject", { x: left, y: 0, width: CARD_WIDTH, height: 0 });
+        var inner = document.createElement("div");
+        inner.style.padding = PAD + "px";
         var title = document.createElement("p");
         title.className = "room-title";
         title.textContent = room.title;
         var intro = document.createElement("p");
         intro.className = "room-intro";
         intro.textContent = room.intro;
-        body.appendChild(title);
-        body.appendChild(intro);
+        inner.appendChild(title);
+        inner.appendChild(intro);
+        body.appendChild(inner);
+        card.appendChild(rect);
         card.appendChild(body);
         room_el.appendChild(card);
 
+        var entry = { cy: cy, below: CARD_BELOW.indexOf(room.id) !== -1, rect: rect, body: body, inner: inner };
+        room_el.addEventListener("pointerenter", function () { fitCard(entry); });
+        room_el.addEventListener("focus", function () { fitCard(entry); });
         group.appendChild(room_el);
       });
     });
