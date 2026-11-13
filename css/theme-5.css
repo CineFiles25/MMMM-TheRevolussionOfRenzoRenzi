@@ -5,20 +5,29 @@
    纯 CSS 切换；不修改 HTML、JS、其他主题或展品数据。
    技术：本地字体、伪元素、渐变质感、Grid、圆角、阴影、状态过渡。
 */
+
 @font-face {
-  font-family: 'Commedia Pacifico';
-  src: url('../assets/fonts/Pacifico-Regular.ttf') format('truetype');
+  font-family: "Commedia Pacifico";
+  src: url("../assets/fonts/Pacifico-Regular.ttf") format("truetype");
   font-weight: 400;
   font-display: swap;
 }
+
 @font-face {
-  font-family: 'Commedia Lilita';
-  src: url('../assets/fonts/LilitaOne-Regular.ttf') format('truetype');
+  font-family: "Commedia Lilita";
+  src: url("../assets/fonts/LilitaOne-Regular.ttf") format("truetype");
   font-weight: 400;
   font-display: swap;
 }
-* { box-sizing: border-box; }
-html { height: 100%; }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
 body {
   height: 100%;
   margin: 0;
@@ -26,7 +35,7 @@ body {
   flex-direction: column;
   overflow: hidden;
   background-color: #c5f1ef;
-  background-image: url('../assets/img/themes/commedia-sparse-sparkles.svg'), linear-gradient(135deg, #d5f3f1, #c5e9ed 62%, #f5dce8);
+  background-image: url("../assets/img/themes/commedia-sparse-sparkles.svg"), linear-gradient(135deg, #d5f3f1, #c5e9ed 62%, #f5dce8);
   background-size: 480px 360px, cover;
   background-repeat: repeat, no-repeat;
   color: #352447;
@@ -34,53 +43,61 @@ body {
   font-size: 16px;
   line-height: 1.6;
 }
-a { color: #963465; text-underline-offset: 4px; }
-a:hover { color: #352447; }
-::selection { background-color: #d83885; color: #fff; }
+
+a {
+  color: #963465;
+  text-underline-offset: 4px;
+}
+
+a:hover {
+  color: #352447;
+}
+
+::selection {
+  background-color: #d83885;
+  color: #fff;
+}
+
 a:focus-visible,
 button:focus-visible,
 select:focus-visible,
-input:focus-visible { outline: 3px solid #963465; outline-offset: 3px; }
+input:focus-visible {
+  outline: 3px solid #963465;
+  outline-offset: 3px;
+}
 
 /* 1. 真实电影与演员照片拼贴：粉蓝底色保留，粉蓝标题区与不规则电视轮廓衔接，屏幕内展示清晰的原始电影画面。
    使用原始电影画面，不使用AI、雾化或重画人物；来源见 SOURCES.md。 */
+
 body > header {
   position: relative;
   flex-shrink: 0;
-  height: calc(clamp(140px, 13vw, 240px) + 55px);
-  margin: 17px 26px 0;
-  padding: clamp(140px, 13vw, 240px) 12px 9px;
   border: 1px solid #b46b97;
-  border-radius: 20px;
   background: #f6b6d2;
-  box-shadow: 0 5px 15px #754c681c;
 }
+
 /* 主视觉按顶栏比例导出，保留真实人物、原片颗粒和摄影细节。
    此区域与导航分开；宽屏与窄屏使用各自的构图，避免将重要人物裁出视图。 */
+
 body > header::before {
-  content: '';
+  content: "";
   position: absolute;
-  inset: 0 0 55px;
-  background: url('../assets/img/themes/commedia-tv-hero-v6.png') center / 100% 100% no-repeat;
-  border-radius: 19px 19px 0 0;
+  background: url("../assets/img/themes/commedia-tv-hero-v6.png") center / 100% 100% no-repeat;
   pointer-events: none;
 }
+
 body > header::after {
-  content: 'Che vita!\A Che risate!';
+  content: "Che vita!\A Che risate!";
   white-space: pre-line;
   position: absolute;
-  top: 28px;
-  left: 2%;
-  width: 20%;
   color: #d52b81;
-  font-family: 'Commedia Pacifico', cursive;
-  font-size: clamp(21px, 2.8vw, 42px);
-  line-height: 1.5;
+  font-family: "Commedia Pacifico", cursive;
   text-align: center;
   text-shadow: 2px 2px 0 #fff, 3px 4px 0 #93617f;
   transform: rotate(-3deg);
   pointer-events: none;
 }
+
 header nav {
   position: relative;
   z-index: 1;
@@ -92,254 +109,1236 @@ header nav {
   border-radius: 15px;
   background-color: #fffced;
 }
+
 /* 演员名字只作为装饰图片的说明。 */
+
 header nav::before {
-  content: 'MEMORIE DI COMMEDIA / CINEMA ITALIANO';
+  content: "MEMORIE DI COMMEDIA / CINEMA ITALIANO";
   position: absolute;
-  bottom: 48px;
   left: 2%;
   width: 20%;
   text-align: center;
   color: #79415f;
   font-family: Arial, sans-serif;
-  font-size: 8px;
   letter-spacing: .7px;
   pointer-events: none;
 }
-header label { color: #963465; font-family: 'Commedia Lilita', Arial, sans-serif; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
-#theme-select { flex: 1; min-width: 0; padding: 5px; border: 0; background-color: #fffced; color: #352447; font-family: Arial, sans-serif; font-size: 12px; }
+
+header label {
+  color: #963465;
+  font-family: "Commedia Lilita", Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+#theme-select {
+  flex: 1;
+  min-width: 0;
+  padding: 5px;
+  border: 0;
+  background-color: #fffced;
+  color: #352447;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
 
 /* 2. 地图变成圆角塑料电视。阴影表现机壳高光，屏幕保持清楚。
    多层阴影分别表现塑料高光、底部厚度和投影。
    没有画假的可点击控制按钮，实际交互仍是地图点与路线单选框。
 */
+
 body #map-page {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
-  gap: 25px;
   min-height: 0;
-  padding: 24px 26px;
 }
+
 #map-page #map-stage {
   display: flex;
   flex-direction: column;
   min-height: 0;
   min-width: 0;
-  padding: 15px;
-  border: 8px solid #e9a0c4;
-  border-radius: 26px;
-  outline: 1px solid #b46b97;
-  background-color: #f4fffc;
   /* 小装饰只占标题两侧边角，保留电影和地图为主视觉。 */
-  background-image: url('../assets/img/themes/commedia-phone-doodle.svg'), url('../assets/img/themes/commedia-coffee-doodle.svg');
-  background-size: 33px 28px, 30px 28px;
-  background-position: left 12px top 3px, right 12px top 3px;
-  background-repeat: no-repeat;
-  box-shadow: inset 0 0 0 1px #f8dce8, 0 5px 15px #754c681a;
 }
+
 #map-stage::before {
-  content: 'CH 05 / LA MAPPA DELLA MOSTRA';
+  content: "CH 05 / LA MAPPA DELLA MOSTRA";
   flex-shrink: 0;
   padding: 0 5px 10px;
   color: #963465;
-  font-family: 'Commedia Lilita', Arial, sans-serif;
-  font-size: 15px;
-  letter-spacing: 1px;
+  font-family: "Commedia Lilita", Arial, sans-serif;
   text-align: center;
 }
-#map-stage #map-svg { flex: 1; min-height: 0; width: 100%; height: auto; border-radius: 19px; mix-blend-mode: multiply; }
+
+#map-stage #map-svg {
+  border-radius: 19px;
+  mix-blend-mode: multiply;
+}
+
 /* 电视综艺表演变成屏幕下沿的一张场景卡。
    使用正常 flex 布局，不悬浮在地图标记之上。
 */
+
 /* 窄幅电影记忆图：保持图片带高度，不挤占地图。 */
+
 #map-stage::after {
-  content: '';
   flex: 0 0 clamp(43px, 4.5vw, 85px);
   margin-top: 8px;
   border: 2px solid #f4bdd8;
   border-radius: 9px;
-  background: #b9eeee url('../assets/img/themes/commedia-tv-strip-v6.png') center / 100% 100% no-repeat;
+  background: #b9eeee url("../assets/img/themes/commedia-tv-strip-v6.png") center / 100% 100% no-repeat;
 }
 
 /* 3. 侧栏像塑料遥控器与电视杂志，路线是可按下的实体键。
    linear-gradient 从顶部浅色到下方蓝色，形成一次简单塑料高光。
    :has(input:checked) 让真实选中状态清楚可见。
 */
+
 #map-page #map-side {
   min-height: 0;
   min-width: 0;
   max-width: none;
-  padding: 19px;
-  border: 1px solid #b18bab;
-  border-radius: 25px;
   background-color: #fffced;
-  box-shadow: 0 5px 15px #754c681a;
   overflow-y: auto;
   overflow-wrap: break-word;
 }
+
 #map-side::before {
-  content: 'CINEMA · VOLTI · VITA QUOTIDIANA';
+  content: "CINEMA · VOLTI · VITA QUOTIDIANA";
   display: block;
   margin-bottom: 10px;
   color: #963465;
-  font-family: 'Commedia Lilita', Arial, sans-serif;
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-align: center;
+  font-family: "Commedia Lilita", Arial, sans-serif;
 }
-#map-page #map-side h1 { margin: 0 0 20px; padding-bottom: 15px; border-bottom: 4px solid #fff17c; color: #d52b81; font-family: 'Commedia Lilita', Arial, sans-serif; font-size: 35px; font-weight: 400; line-height: 1.1; text-align: center; }
-#map-page #map-side h2 { margin: 25px 0 12px; color: #963465; font-family: 'Commedia Lilita', Arial, sans-serif; font-size: 24px; font-weight: 400; line-height: 1.15; }
-#map-side h3 { font-family: 'Commedia Lilita', Arial, sans-serif; font-weight: 400; }
-#map-page #itinerary-choice { min-width: 0; margin: 0; padding: 0; border: 0; }
-#itinerary-choice legend { margin-bottom: 10px; color: #573474; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+
+#map-page #map-side h1 {
+  margin: 0 0 20px;
+  color: #d52b81;
+  font-family: "Commedia Lilita", Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+#map-page #map-side h2 {
+  margin: 25px 0 12px;
+  color: #963465;
+  font-family: "Commedia Lilita", Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+#map-side h3 {
+  font-family: "Commedia Lilita", Arial, sans-serif;
+  font-weight: 400;
+}
+
+#map-page #itinerary-choice {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#itinerary-choice legend {
+  margin-bottom: 10px;
+  color: #573474;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 #map-page #itinerary-choice label {
   display: flex;
   align-items: baseline;
   gap: 9px;
-  margin: 0 0 12px;
-  padding: 12px 10px;
   border: 1px solid #a57a9b;
   border-radius: 14px;
   background-color: #a4e9ed;
-  background-image: linear-gradient(#e9ffff, #a4e9ed);
-  box-shadow: 0 2px 0 #86c5d1;
-  font-size: 14px;
   font-weight: bold;
-  line-height: 1.4;
   transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
 }
-#map-page #itinerary-choice label:hover { background-image: none; background-color: #fff17c; }
-#map-page #itinerary-choice label:has(input:checked) { transform: translateY(3px); box-shadow: 0 1px 0 #963465; background-image: none; background-color: #f8b2d1; color: #573474; }
-input[type='radio'] { flex-shrink: 0; accent-color: #963465; }
-#map-side a { color: #573474; text-decoration: none; }
-#map-side a:hover { color: #963465; text-decoration: underline; }
-#map-page #map-side li { margin: 0; padding: 10px 0; border-bottom: 2px dotted #dbbed4; font-size: 14px; line-height: 1.5; }
-#map-side li::marker { color: #963465; font-weight: bold; }
-#map-page #start-link { display: block; margin: 18px 0; padding: 12px; border: 1px solid #a57a9b; border-radius: 22px; background-color: #fff17c; color: #573474; box-shadow: 0 4px 0 #d6a740; font-family: 'Commedia Lilita', Arial, sans-serif; font-size: 18px; font-weight: 400; text-align: center; transition: transform 180ms ease, box-shadow 180ms ease; }
-#map-page #start-link:hover { transform: translateY(2px); box-shadow: 0 2px 0 #d6a740; }
+
+#map-page #itinerary-choice label:hover {
+  background-image: none;
+  background-color: #fff17c;
+}
+
+#map-page #itinerary-choice label:has(input:checked) {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #963465;
+  background-image: none;
+  background-color: #f8b2d1;
+}
+
+input[type="radio"] {
+  flex-shrink: 0;
+  accent-color: #963465;
+}
+
+#map-side a {
+  color: #573474;
+  text-decoration: none;
+}
+
+#map-side a:hover {
+  color: #963465;
+  text-decoration: underline;
+}
+
+#map-page #map-side li {
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 2px dotted #dbbed4;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#map-side li::marker {
+  color: #963465;
+  font-weight: bold;
+}
+
+#map-page #start-link {
+  display: block;
+  border: 1px solid #a57a9b;
+  border-radius: 22px;
+  background-color: #fff17c;
+  color: #573474;
+  box-shadow: 0 4px 0 #d6a740;
+  font-family: "Commedia Lilita", Arial, sans-serif;
+  font-weight: 400;
+  text-align: center;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+#map-page #start-link:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #d6a740;
+}
+
 /* 侧栏底部使用真实的 Fantozzi 开车剧照。 */
+
 #map-side::after {
-  content: 'FANTOZZI / MEMORIA DI CINEMA';
-  display: flex; align-items: flex-end; justify-content: center;
-  height: 185px; margin-top: 26px; padding: 8px;
-  border: 5px solid #f8dce8; border-radius: 12px;
-  background: #ddbdcc url('../assets/img/themes/commedia-fantozzi-sidebar.png') center 38% / cover no-repeat;
-  color: #fff; font-family: 'Commedia Lilita', Arial, sans-serif; font-size: 13px;
+  content: "FANTOZZI / MEMORIA DI CINEMA";
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 26px;
+  padding: 8px;
+  border: 5px solid #f8dce8;
+  border-radius: 12px;
+  background: #ddbdcc url("../assets/img/themes/commedia-fantozzi-sidebar.png") center 38% / cover no-repeat;
+  color: #fff;
+  font-family: "Commedia Lilita", Arial, sans-serif;
+  font-size: 13px;
   text-shadow: 0 1px 4px #352447;
 }
-#map-svg .marker-dot { fill: #ae347d; stroke: #fff; transition: fill 180ms ease, stroke-width 180ms ease; }
-#map-svg .route-line { stroke: #257a94; stroke-width: 12; }
+
+#map-svg .marker-dot {
+  fill: #ae347d;
+  stroke: #fff;
+  transition: fill 180ms ease, stroke-width 180ms ease;
+}
+
+#map-svg .route-line {
+  stroke: #257a94;
+  stroke-width: 12;
+}
+
 #map-svg .marker:hover .marker-dot,
-#map-svg .marker:focus .marker-dot { fill: #573474; stroke: #fff17c; stroke-width: 16; }
+#map-svg .marker:focus .marker-dot {
+  fill: #573474;
+  stroke: #fff17c;
+  stroke-width: 16;
+}
+
 #map-svg .marker:hover .marker-num,
-#map-svg .marker:focus .marker-num { fill: #fff; }
+#map-svg .marker:focus .marker-num {
+  fill: #fff;
+}
 
 /* 4. 展品像娱乐杂志中的专题页。展品原图保持原色，不加喜剧滤镜。 */
-#item-main { flex: 1; min-height: 0; padding: 24px; overflow-y: auto; }
-#item-layout { max-width: 1100px; margin: 0 auto; padding: 28px; border: 1px solid #b18bab; border-radius: 25px; background-color: #fffced; box-shadow: 6px 7px 0 #ed91bd; overflow: auto; }
-#item-main h1 { margin: 0 0 20px; color: #b52b76; font-family: 'Commedia Lilita', Arial, sans-serif; font-size: 48px; font-weight: 400; line-height: 1.1; overflow-wrap: break-word; }
-#item-context { margin: 0 0 26px; padding-bottom: 16px; border-bottom: 4px solid #fff17c; color: #573474; font-size: 14px; }
-#item-media img { float: left; width: 45%; height: auto; margin: 0 28px 24px 0; padding: 9px; border: 1px solid #a57a9b; border-radius: 13px; background-color: #fff; box-shadow: 5px 6px 0 #f6add0; transform: rotate(-1deg); transition: transform 300ms ease, box-shadow 300ms ease; }
-#item-text { font-size: 17px; line-height: 1.8; overflow-wrap: break-word; }
-.item-rights { clear: both; margin-top: 24px; padding-top: 15px; border-top: 2px dotted #dbbed4; color: #746276; }
-#item-media iframe { display: block; width: 100%; height: 330px; margin: 20px 0; border: 1px solid #a57a9b; border-radius: 13px; }
-body > footer { flex-shrink: 0; padding: 11px 24px; border-top: 3px solid #573474; background-color: #f8b2d1; }
-footer nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-button { min-height: 44px; padding: 8px 22px; border: 1px solid #a57a9b; border-radius: 20px; background-color: #fff17c; color: #573474; box-shadow: 0 3px 0 #c58f38; font-family: 'Commedia Lilita', Arial, sans-serif; font-size: 17px; cursor: pointer; transition: transform 180ms ease, box-shadow 180ms ease; }
-button:hover:not(:disabled) { transform: translateY(2px); box-shadow: 0 1px 0 #c58f38; }
-button:disabled { opacity: 0.4; cursor: default; }
+
+#item-main {
+  flex: 1;
+  min-height: 0;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+#item-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px;
+  border: 1px solid #b18bab;
+  border-radius: 25px;
+  background-color: #fffced;
+  box-shadow: 6px 7px 0 #ed91bd;
+  overflow: auto;
+}
+
+#item-main h1 {
+  margin: 0 0 20px;
+  color: #b52b76;
+  font-family: "Commedia Lilita", Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.1;
+  overflow-wrap: break-word;
+}
+
+#item-context {
+  margin: 0 0 26px;
+  padding-bottom: 16px;
+  border-bottom: 4px solid #fff17c;
+  color: #573474;
+  font-size: 14px;
+}
+
+#item-media img {
+  padding: 9px;
+  border: 1px solid #a57a9b;
+  border-radius: 13px;
+  background-color: #fff;
+  box-shadow: 5px 6px 0 #f6add0;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+#item-text {
+  font-size: 17px;
+  line-height: 1.8;
+  overflow-wrap: break-word;
+}
+
+.item-rights {
+  clear: both;
+  margin-top: 24px;
+  padding-top: 15px;
+  border-top: 2px dotted #dbbed4;
+  color: #746276;
+}
+
+#item-media iframe {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+  border: 1px solid #a57a9b;
+  border-radius: 13px;
+}
+
+body > footer {
+  flex-shrink: 0;
+  padding: 11px 24px;
+  border-top: 3px solid #573474;
+  background-color: #f8b2d1;
+}
+
+footer nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+button {
+  min-height: 44px;
+  padding: 8px 22px;
+  border: 1px solid #a57a9b;
+  border-radius: 20px;
+  background-color: #fff17c;
+  color: #573474;
+  box-shadow: 0 3px 0 #c58f38;
+  font-family: "Commedia Lilita", Arial, sans-serif;
+  font-size: 17px;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #c58f38;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
 
 /* 少量生活小物：装饰是背景或伪元素，不拦截导航点击。 */
+
 header nav::after {
-  content: '';
+  content: "";
   position: absolute;
   right: 18px;
   top: -23px;
   width: 24px;
   height: 32px;
-  background: url('../assets/img/themes/commedia-gelato-doodle.svg') center / contain no-repeat;
+  background: url("../assets/img/themes/commedia-gelato-doodle.svg") center / contain no-repeat;
   transform: rotate(9deg);
   pointer-events: none;
 }
+
 #map-side::before {
   min-height: 30px;
   padding: 5px 29px;
-  font-size: 9px;
-  background-image: url('../assets/img/themes/commedia-coffee-doodle.svg'), url('../assets/img/themes/commedia-gelato-doodle.svg');
+  background-image: url("../assets/img/themes/commedia-coffee-doodle.svg"), url("../assets/img/themes/commedia-gelato-doodle.svg");
   background-size: 25px 25px, 22px 28px;
   background-position: left center, right center;
   background-repeat: no-repeat;
 }
+
 @media (max-width: 700px) {
-  header nav::after { right: 10px; top: -17px; width: 18px; height: 24px; }
-  #map-side::before { font-size: 8px; }
+  header nav::after {
+    right: 10px;
+    top: -17px;
+    width: 18px;
+    height: 24px;
+  }
 }
 
 /* 5. 轻微悬停互动：贴纸摆正、照片浮起；没有强制闪烁或笑声音频。 */
+
 @media (hover: hover) {
-  #item-media img:hover { transform: rotate(0); box-shadow: 8px 9px 0 #f6add0; }
+  #item-media img:hover {
+    transform: rotate(0);
+    box-shadow: 8px 9px 0 #f6add0;
+  }
 }
-@media (min-width: 701px) and (max-width: 1600px) {
-  body > header::before { background-image: url('../assets/img/themes/commedia-tv-hero-v6-medium.png'); }
-}
-@media (max-width: 1100px) {
-  body #map-page { grid-template-columns: minmax(0, 1fr) 295px; gap: 20px; }
-  body > header::after { top: 26px; left: 2%; width: 20%; font-size: 28px; }
-  #map-page #map-side { padding: 15px; }
-  #map-page #map-side h1 { font-size: 29px; }
-}
+
 @media (max-width: 700px) {
-  body > header { height: 195px; margin: 10px 12px 0; padding: 140px 6px 6px; border-radius: 14px; }
-  body > header::before { inset: 0 0 55px; border-radius: 13px 13px 0 0; background-image: url('../assets/img/themes/commedia-tv-hero-v6-mobile.png'); }
-  body > header::after { top: 31px; left: 2%; width: 20%; font-size: 17px; line-height: 1.6; text-shadow: 1px 1px 0 #fff; }
-  header nav { gap: 6px; padding: 5px; }
-  header nav::before { bottom: 48px; left: 2%; width: 20%; font-size: 5px; letter-spacing: 0; }
-  header label { font-size: 10px; letter-spacing: 0; }
-  #theme-select { width: 0; max-width: none; font-size: 10px; }
-  body #map-page { grid-template-columns: minmax(0, 1fr); grid-template-rows: 43% minmax(0, 1fr); gap: 19px; padding: 16px; }
-  #map-page #map-stage { border-width: 5px; padding: 10px; border-radius: 20px; background-image: none; }
-  #map-stage::before { font-size: 11px; letter-spacing: 0; padding-bottom: 6px; }
-  #map-stage::after { flex-basis: 43px; margin-top: 4px; padding: 3px; font-size: 7px; border-width: 2px; background-size: 100% 100%; background-image: url('../assets/img/themes/commedia-tv-strip-v6-mobile.png'); }
-  #map-page #map-side { padding: 14px; }
-  #map-page #map-side h1 { font-size: 29px; margin-bottom: 16px; }
-  #item-main { padding: 12px; }
-  #item-layout { padding: 18px; }
-  #item-main h1 { font-size: 34px; }
-  #item-media img { float: none; width: 100%; margin: 0 0 24px; transform: none; }
-  #item-media iframe { height: 220px; }
+  body > header::after {
+    text-shadow: 1px 1px 0 #fff;
+  }
+
+  header nav {
+    gap: 6px;
+    padding: 5px;
+  }
+
+  header nav::before {
+    left: 2%;
+    width: 20%;
+    letter-spacing: 0;
+  }
+
+  header label {
+    font-size: 10px;
+    letter-spacing: 0;
+  }
+
+  #theme-select {
+    width: 0;
+    max-width: none;
+    font-size: 10px;
+  }
+
+  #map-stage::after {
+    flex-basis: 43px;
+    margin-top: 4px;
+    padding: 3px;
+    font-size: 7px;
+    border-width: 2px;
+    background-size: 100% 100%;
+    background-image: url("../assets/img/themes/commedia-tv-strip-v6-mobile.png");
+  }
+
+  #map-page #map-side h1 {
+    margin-bottom: 16px;
+  }
+
+  #item-main {
+    padding: 12px;
+  }
+
+  #item-layout {
+    padding: 18px;
+  }
+
+  #item-main h1 {
+    font-size: 34px;
+  }
 }
-@media (max-height: 650px) and (min-width: 701px) {
-  body > header { margin-top: 10px; }
-  body > header::after { top: 25px; font-size: 27px; }
-}
+
 @media (prefers-reduced-motion: reduce) {
   #map-page #itinerary-choice label,
   #map-page #start-link,
   #map-svg .marker-dot,
   #item-media img,
-  button { transition: none; }
-  #item-media img:hover { transform: rotate(-1deg); }
+  button {
+    transition: none;
+  }
+
+  #item-media img:hover {
+    transform: rotate(-1deg);
+  }
 }
+
 /* River: match the team's current HTML ids (HTML-IDS.md).
    Keep the existing two-column grid and independently scrolling media/text.
    仅调整 CSS 选择器和外观，不修改队友的 HTML 或交互代码。 */
-body > header { display: block; }
-header nav { width: 100%; }
-#item-main { overflow: hidden; }
+
+body > header {
+  display: block;
+}
+
+header nav {
+  width: 100%;
+}
+
+#item-main {
+  overflow: hidden;
+}
+
 #item-main #item-layout {
-  width: 100%; max-width: none; height: 100%; min-height: 0;
-  margin: 0; overflow: hidden;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
 }
-#item-media, #item-info { min-width: 0; min-height: 0; overflow: auto; }
-#item-info { padding: 0 12px 16px; }
+
+#item-media, #item-info {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
+
+#item-info {
+  padding: 0 12px 16px;
+}
+
 #item-media img {
-  float: none; width: auto; height: auto; max-width: 100%; max-height: 100%;
-  margin: 0; flex-shrink: 0; transform: none;
+  float: none;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  flex-shrink: 0;
+  transform: none;
 }
-#item-media.multi img { max-height: none; }
-#item-media iframe { height: auto; aspect-ratio: 16 / 9; max-height: 100%; }
+
+#item-media.multi img {
+  max-height: none;
+}
+
+#item-media iframe {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-height: 100%;
+}
+
 @media (max-width: 700px) {
-  #item-main #item-layout { padding: 12px; gap: 12px; }
-  #item-info { padding: 0 6px 12px; }
-  #item-media img { max-width: 100%; }
+  #item-main #item-layout {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  #item-info {
+    padding: 0 6px 12px;
+  }
+
+  #item-media img {
+    max-width: 100%;
+  }
+}
+
+/* River / compact television magazine layout.
+   Original film stills remain photographic; CSS frames and reading cards
+   share the pink/cyan toy-market identity. No HTML or JS changes. */
+
+body > header {
+  height: 190px;
+  margin: 14px 20px 0;
+  padding: 137px 10px 7px;
+  border-radius: 20px;
+  box-shadow: 0 4px 0 #d9b1ca;
+}
+
+body > header::before {
+  inset: 0 0 45px;
+  border-radius: 19px 19px 0 0;
+  background-image: url("../assets/img/themes/commedia-compact-hero-v7.png");
+  background-size: 100% 100%;
+}
+
+body > header::after {
+  top: 15px;
+  left: 2%;
+  width: 20%;
+  font-size: 30px;
+  line-height: 1.4;
+}
+
+header nav::before {
+  bottom: 47px;
+  font-size: 7px;
+}
+
+body > header nav {
+  background: #fffced9c;
+  border: 1px solid #87597e77;
+  padding: 5px 10px;
+  box-shadow: 0 1px 4px #82577619;
+}
+
+body > header #theme-select {
+  background: transparent;
+  font-size: 11px;
+}
+
+#theme-select option {
+  background: #fffced;
+  color: #352447;
+}
+
+body #map-page {
+  grid-template-columns: minmax(0, 1fr) clamp(370px, 30vw, 530px);
+  gap: 20px;
+  padding: 18px 20px;
+}
+
+#map-page #map-stage {
+  padding: 13px 16px;
+  border: 8px solid #e9a0c4;
+  border-radius: 26px;
+  outline: 1px solid #a5769a;
+  background-color: #f2fffb;
+  background-image: url("../assets/img/themes/commedia-map-cast-live.svg"), url("../assets/img/themes/commedia-phone-live.svg"), url("../assets/img/themes/commedia-coffee-live.svg"), radial-gradient(ellipse at 3% 95%, #fff1b766, transparent 45%), radial-gradient(ellipse at 95% 5%, #edc3df44, transparent 45%);
+  background-size: 100% 100%, 29px 27px, 29px 27px, 100% 100%, 100% 100%;
+  background-position: center, left 10px top 4px, right 10px top 4px, center, center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 2px #fff, 0 4px 0 #cba4c4;
+}
+
+#map-stage::before {
+  padding-bottom: 10px;
+  font-size: 13px;
+  letter-spacing: .7px;
+}
+
+#map-stage::after {
+  content: none;
+  display: none;
+}
+
+#map-stage #map-svg {
+  flex: 1 1 0;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Like a readable television magazine: soft shell, clean paper pages. */
+
+#map-page #map-side {
+  padding: 20px 24px;
+  border: 2px solid #b87aa5;
+  border-radius: 24px 7px 24px 7px;
+  background: linear-gradient(155deg, #f7d5e5, #d4f1ed 70%);
+  box-shadow: 0 4px 0 #bfcfd2;
+  scrollbar-color: #ae6c9c #edf8ef;
+}
+
+#map-page #map-side h1 {
+  font-size: 32px;
+  text-align: left;
+  border-bottom: 3px solid #fff29b;
+  padding-bottom: 14px;
+}
+
+#map-side::before {
+  text-align: left;
+  font-size: 9px;
+  letter-spacing: .8px;
+}
+
+#map-page #itinerary-choice label {
+  padding: 12px;
+  margin: 0 0 10px;
+  font-size: 15px;
+  line-height: 1.5;
+  border-color: #b39bb2;
+  background-image: linear-gradient(#f7ffff, #ceeff0);
+  box-shadow: 0 2px 0 #9ebfc9;
+}
+
+#map-page #itinerary-choice label:has(input:checked) {
+  background: #f5b7d2;
+  color: #573474;
+  border-color: #a56a97;
+}
+
+#map-side #route-info, #map-side .room-section {
+  margin: 23px 0 19px;
+  padding: 18px;
+  border: 1px solid #c4a8bd;
+  border-top: 5px solid #df9ac0;
+  border-radius: 5px 20px 5px 16px;
+  background: #fffdf2;
+  color: #43344e;
+  box-shadow: 3px 4px 0 #c8acc52e;
+}
+
+#map-page #route-info h2 {
+  margin: 0 0 14px;
+  padding-bottom: 13px;
+  border-bottom: 2px solid #f1d2df;
+  font-size: 27px;
+  color: #b22d76;
+}
+
+#map-side #route-description {
+  color: #49424c;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+#map-side #route-info > p {
+  color: #6c576e;
+}
+
+#map-page #start-link {
+  margin: 18px 0;
+  font-size: 16px;
+  padding: 11px;
+}
+
+/* Existing ordered stops become small channel cards; numbering is visual CSS. */
+
+#map-side #route-stops {
+  padding: 0;
+  margin: 22px 0 0;
+  list-style: none;
+  counter-reset: channel;
+}
+
+#map-page #route-stops li {
+  position: relative;
+  counter-increment: channel;
+  margin: 0 0 11px;
+  padding: 13px 10px 13px 46px;
+  border: 1px solid #d5bed0;
+  border-bottom: 3px solid #d5bed0;
+  border-radius: 13px 5px 13px 5px;
+  background: #fffefa;
+  font-size: 16px;
+  line-height: 1.55;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+#route-stops li::before {
+  content: counter(channel, decimal-leading-zero);
+  position: absolute;
+  left: 9px;
+  top: 14px;
+  width: 27px;
+  padding: 3px 0;
+  border: 1px solid #b881a8;
+  border-radius: 8px;
+  background: #f6bdd7;
+  color: #7d356c;
+  font: 13px/1.6 "Commedia Lilita", Arial, sans-serif;
+  text-align: center;
+}
+
+#route-stops li:nth-child(even)::before {
+  background: #b9eeee;
+}
+
+#map-side #route-stops a {
+  display: block;
+  color: #523b59;
+  text-decoration: none;
+}
+
+#map-page #route-stops li:hover, #map-page #route-stops li:focus-within {
+  background: #fff5c7;
+  border-color: #b79365;
+}
+
+#map-side #route-stops a:hover {
+  color: #a52f70;
+  text-decoration: underline;
+}
+
+#map-page #room-list-heading {
+  color: #8f396f;
+  font-size: 26px;
+  padding-top: 8px;
+}
+
+#map-side .room-section h3 {
+  margin: 0 0 14px;
+  padding-bottom: 12px;
+  border-bottom: 2px dotted #dbb6ca;
+  color: #8f396f;
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+#map-side .room-section p {
+  color: #5e5262;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+#map-page #map-side .room-section li {
+  font-size: 16px;
+  line-height: 1.65;
+  border-bottom: 1px solid #e7d6df;
+}
+
+#map-side .room-transition {
+  padding: 0 8px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #73566c;
+  font-style: italic;
+}
+
+#map-side::after {
+  height: 215px;
+  border-color: #fffdf2;
+  outline: 2px solid #b67ea4;
+  box-shadow: 4px 4px 0 #c4e5e4;
+}
+
+/* The former static TV ribbon becomes a backdrop to the real moving objects. */
+
+body > .indexslider {
+  flex: 0 0 132px;
+  height: 132px;
+  min-height: 0;
+  margin: 0 20px 12px;
+  padding: 0;
+  border: 3px solid #b481a4;
+  border-bottom: 5px solid #d58db6;
+  border-radius: 18px 6px 18px 6px;
+  background-color: #d3eeeb;
+  background-image: linear-gradient(90deg, #f6b6d2c9, #b9eeeed4), url("../assets/img/themes/commedia-tv-strip-v6.png");
+  background-size: 100% 100%, cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #573474;
+  box-shadow: 0 3px 0 #bdd8de;
+}
+
+.indexslider .indexslide-track {
+  height: 100%;
+  padding-top: 0;
+  align-items: stretch;
+}
+
+.indexslider .index-slide {
+  width: 220px;
+  height: 100%;
+  padding: 6px 12px;
+  border-right: 1px solid #aa7e9e66;
+  background: #fffdf133;
+}
+
+.indexslider .index-slide img {
+  min-height: 0;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.indexslider .index-caption {
+  padding: 3px 6px;
+  margin-top: 4px;
+  border-radius: 6px;
+  background: #fffcedd9;
+  color: #7d356c;
+  font: 11px/1.3 "Commedia Lilita", Arial, sans-serif;
+}
+
+.indexslider .index-slide:hover, .indexslider .index-slide:focus-visible {
+  background: #fff4a388;
+  color: #8f396f;
+}
+
+@media (min-width: 701px) and (max-width: 1600px) {
+  body > header::before {
+    background-image: url("../assets/img/themes/commedia-compact-hero-v7-medium.png");
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 701px) {
+  body #map-page {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 16px;
+  }
+
+  #map-page #map-side {
+    padding: 16px;
+  }
+
+  body > header::after {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 700px) {
+  body > header {
+    height: 158px;
+    margin: 10px 12px 0;
+    padding: 103px 6px 6px;
+    border-radius: 16px;
+  }
+
+  body > header::before {
+    inset: 0 0 45px;
+    border-radius: 15px 15px 0 0;
+    background-image: url("../assets/img/themes/commedia-tv-hero-v6-mobile.png");
+  }
+
+  body > header::after {
+    top: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  header nav::before {
+    bottom: 43px;
+    font-size: 5px;
+  }
+
+  body > header nav {
+    padding: 4px 6px;
+  }
+
+  body > header #theme-select {
+    font-size: 10px;
+  }
+
+  body #map-page {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(140px, 42%) minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px;
+  }
+
+  #map-page #map-stage {
+    border-width: 5px;
+    padding: 10px;
+    border-radius: 20px;
+    background-size: 100% 100%, 22px 22px, 22px 22px, 100% 100%, 100% 100%;
+  }
+
+  #map-stage::before {
+    font-size: 10px;
+    padding-bottom: 8px;
+  }
+
+  #map-page #map-side {
+    padding: 16px;
+  }
+
+  #map-page #map-side h1 {
+    font-size: 28px;
+  }
+
+  #map-side #route-info, #map-side .room-section {
+    padding: 14px;
+  }
+
+  #map-page #route-info h2 {
+    font-size: 24px;
+  }
+
+  #map-page #route-stops li {
+    font-size: 15px;
+  }
+
+  body > .indexslider {
+    flex-basis: 100px;
+    height: 100px;
+    margin: 0 12px 10px;
+    border-width: 2px;
+  }
+
+  .indexslider .index-slide {
+    padding: 4px 10px;
+  }
+}
+
+@media (max-height: 650px) and (min-width: 701px) {
+  body > header {
+    height: 156px;
+    padding-top: 103px;
+    margin-top: 10px;
+  }
+
+  body > header::after {
+    top: 12px;
+    font-size: 24px;
+  }
+
+  body > .indexslider {
+    flex-basis: 108px;
+    height: 108px;
+  }
+
+  body #map-page {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #map-page #route-stops li {
+    transition: none;
+  }
+}
+
+/* River / alternate map layout: one left visual column and one full-height
+   reading column. The neutral #map-page wrapper uses display:contents so
+   existing elements can share the body grid without changing team HTML. */
+
+@media (min-width: 901px) {
+  body:has(> #map-page) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(360px, 30vw, 530px);
+    grid-template-rows: 190px minmax(0, 1fr) 132px;
+    grid-template-areas: "masthead reading" "plan reading" "collection collection";
+    gap: 18px 20px;
+    padding: 14px 20px 12px;
+  }
+
+  body:has(> #map-page) > header {
+    grid-area: masthead;
+    min-width: 0;
+    width: 100%;
+    height: 190px;
+    margin: 0;
+    padding: 137px 9px 7px;
+  }
+
+  body:has(> #map-page) > header::before {
+    background-image: url("../assets/img/themes/commedia-left-header-v8-wide.png");
+  }
+
+  body:has(> #map-page) > header::after {
+    left: 1.8%;
+    width: 21%;
+    font-size: clamp(22px, 2vw, 30px);
+    top: 19px;
+  }
+
+  body:has(> #map-page) > header nav::before {
+    left: 1%;
+    width: 22%;
+    font-size: 6px;
+  }
+
+  body:has(> #map-page) #theme-select {
+    font-size: 10px;
+  }
+
+  body:has(> #map-page) #map-page {
+    display: contents;
+  }
+
+  body:has(> #map-page) #map-stage {
+    grid-area: plan;
+    min-height: 0;
+    min-width: 0;
+  }
+
+  body:has(> #map-page) #map-side {
+    grid-area: reading;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+    overflow-y: auto;
+  }
+
+  body:has(> #map-page) > .indexslider {
+    grid-area: collection;
+    min-width: 0;
+    height: 132px;
+    margin: 0;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1600px) {
+  body:has(> #map-page) > header::before {
+    background-image: url("../assets/img/themes/commedia-left-header-v8-medium.png");
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  body:has(> #map-page) {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 16px;
+  }
+
+  body:has(> #map-page) > header::before {
+    background-image: url("../assets/img/themes/commedia-left-header-v8-small.png");
+  }
+
+  body:has(> #map-page) > header::after {
+    font-size: 21px;
+  }
+
+  body:has(> #map-page) #map-side {
+    padding: 17px;
+  }
+}
+
+@media (max-height: 650px) and (min-width: 901px) {
+  body:has(> #map-page) {
+    grid-template-rows: 160px minmax(0, 1fr) 108px;
+    gap: 12px 18px;
+    padding-top: 10px;
+  }
+
+  body:has(> #map-page) > header {
+    height: 160px;
+    padding-top: 107px;
+  }
+
+  body:has(> #map-page) > .indexslider {
+    height: 108px;
+  }
+}
+
+/* River / a short laugh on entering theme 5, then a steady reading view.
+   Animate only the first background position: all five original layers remain.
+   Map image, routes and markers move together so their coordinates stay aligned. */
+
+body:has(> #map-page) #map-stage {
+  animation: commedia-character-laugh 1.7s ease-in-out 1;
+}
+
+body:has(> #map-page) #map-svg {
+  transform-origin: 50% 65%;
+  animation: commedia-map-laugh 1.7s ease-in-out 1;
+}
+
+body:has(> #map-page) > header::before {
+  transform-origin: center;
+  animation: commedia-photo-laugh 1.6s ease-in-out 1;
+}
+
+body:has(> #map-page) > .indexslider .index-slide img {
+  transform-origin: 50% 80%;
+  animation: commedia-map-laugh 1.5s ease-in-out 1;
+}
+
+@keyframes commedia-character-laugh {
+  0%, 100% {
+    background-position: center, left 10px top 4px, right 10px top 4px, center, center;
+  }
+
+  12%, 36% {
+    background-position: calc(50% - 6px) center, left 10px top 4px, right 10px top 4px, center, center;
+  }
+
+  24%, 48% {
+    background-position: calc(50% + 6px) center, left 10px top 4px, right 10px top 4px, center, center;
+  }
+
+  62% {
+    background-position: calc(50% - 3px) center, left 10px top 4px, right 10px top 4px, center, center;
+  }
+
+  76% {
+    background-position: calc(50% + 2px) center, left 10px top 4px, right 10px top 4px, center, center;
+  }
+}
+
+@keyframes commedia-map-laugh {
+  0%, 100% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  12%, 36% {
+    transform: translateX(-3px) rotate(-.65deg);
+  }
+
+  24%, 48% {
+    transform: translateX(3px) rotate(.65deg);
+  }
+
+  62% {
+    transform: translateX(-2px) rotate(-.3deg);
+  }
+
+  76% {
+    transform: translateX(1px) rotate(.2deg);
+  }
+}
+
+@keyframes commedia-photo-laugh {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+
+  12%, 36% {
+    transform: rotate(-.35deg);
+  }
+
+  24%, 48% {
+    transform: rotate(.35deg);
+  }
+
+  62% {
+    transform: rotate(-.15deg);
+  }
+
+  76% {
+    transform: rotate(.1deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:has(> #map-page) #map-stage,
+  body:has(> #map-page) #map-svg,
+  body:has(> #map-page) > header::before,
+  body:has(> #map-page) > .indexslider .index-slide img {
+    animation: none;
+  }
+}
+
+/* River / a quiet TV-comedy environment behind the unchanged map.
+   The existing unused ::after carries light and fading historical stills.
+   All five stage-background layers remain, with animated versions of the same art. */
+
+body:has(> #map-page) #map-stage {
+  position: relative;
+  isolation: isolate;
+}
+
+body:has(> #map-page) #map-stage::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: url("../assets/img/themes/commedia-map-atmosphere.svg") center / 100% 100% no-repeat;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Hover feedback has the same keyboard equivalent. The centre stays steady. */
+
+body:has(> #map-page) #map-stage:hover,
+body:has(> #map-page) #map-stage:focus-within {
+  animation: commedia-character-laugh .9s ease-in-out 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:has(> #map-page) #map-stage:hover,
+  body:has(> #map-page) #map-stage:focus-within {
+    animation: none;
+  }
 }

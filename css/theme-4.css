@@ -4,26 +4,36 @@
    仅 CSS 切换；HTML、JS、路线和展品数据完全保留。
    学习顺序：本地字体 → 多层照片背景 → 伪元素标签 → Grid → 接触印样 → 响应式。
 */
+
 @font-face {
-  font-family: 'Album Mono';
-  src: url('../assets/fonts/SpaceMono-Regular.ttf') format('truetype');
+  font-family: "Album Mono";
+  src: url("../assets/fonts/SpaceMono-Regular.ttf") format("truetype");
   font-weight: 400;
   font-display: swap;
 }
+
 @font-face {
-  font-family: 'Album Condensed';
-  src: url('../assets/fonts/BarlowCondensed-SemiBold.ttf') format('truetype');
+  font-family: "Album Condensed";
+  src: url("../assets/fonts/BarlowCondensed-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-display: swap;
 }
+
 @font-face {
-  font-family: 'Album Bodoni';
-  src: url('../assets/fonts/BodoniModa.ttf') format('truetype');
+  font-family: "Album Bodoni";
+  src: url("../assets/fonts/BodoniModa.ttf") format("truetype");
   font-weight: 400 900;
   font-display: swap;
 }
-* { box-sizing: border-box; }
-html { height: 100%; }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
 body {
   height: 100%;
   margin: 0;
@@ -32,63 +42,74 @@ body {
   overflow: hidden;
   background-color: #dfe2df;
   color: #202629;
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 16px;
   line-height: 1.65;
 }
-a { color: #a83a2c; text-underline-offset: 4px; }
-a:hover { color: #202629; }
-::selection { background-color: #c74c36; color: #fff; }
+
+a {
+  color: #a83a2c;
+  text-underline-offset: 4px;
+}
+
+a:hover {
+  color: #202629;
+}
+
+::selection {
+  background-color: #c74c36;
+  color: #fff;
+}
+
 a:focus-visible,
 button:focus-visible,
 select:focus-visible,
-input:focus-visible { outline: 3px solid #c74c36; outline-offset: 3px; }
+input:focus-visible {
+  outline: 3px solid #c74c36;
+  outline-offset: 3px;
+}
 
 /* 1. 四格底片接触印样。
    第一层 SVG 只画分隔线与片名，下面四层是独立历史照片。
    背景图顺序与位置、尺寸一一对应；不会生成新的展品。
    22%、30%、25%、23% 是四张照片的宽度，合计 100%。
 */
+
 body > header {
   position: relative;
   flex-shrink: 0;
-  height: 272px;
-  margin: 18px 24px 0;
-  padding: 210px 8px 7px;
   border: 10px solid #161b1e;
-  border-image-source: url('../assets/img/themes/fellini-negative-frame.svg');
+  border-image-source: url("../assets/img/themes/fellini-negative-frame.svg");
   border-image-slice: 20;
   border-image-repeat: round;
   background-color: #161b1e;
-  background-image: url('../assets/img/themes/fellini-contact-labels.svg'), url('../assets/items/photo_la_strada_woman.jpg'), url('../assets/img/themes/fellini-dolce-vita-trevi.jpg'), url('../assets/img/themes/fellini-eight-half.jpg'), url('../assets/img/themes/fellini-director-1965.jpg');
-  background-size: 100% 200px, 22% auto, 30% auto, 25% auto, 23% auto;
-  background-position: left top, left 35%, 31.43% 48%, 69.33% 35%, right 35%;
+  background-image: url("../assets/img/themes/fellini-contact-labels.svg"), url("../assets/items/photo_la_strada_woman.jpg"), url("../assets/img/themes/fellini-dolce-vita-trevi.jpg"), url("../assets/img/themes/fellini-eight-half.jpg"), url("../assets/img/themes/fellini-director-1965.jpg");
   background-repeat: no-repeat;
   box-shadow: 4px 5px 0 #aeb4b1;
 }
+
 /* 像贴在接触印样上的档案纸条，字小于面孔，不占据整个视觉中心。 */
+
 body > header::before {
-  content: 'FELLINI + RENZI\A UN ALBUM ITALIANO';
+  content: "FELLINI + RENZI\A UN ALBUM ITALIANO";
   white-space: pre-line;
   position: absolute;
-  top: 12px;
-  left: 24%;
-  padding: 7px 11px;
   background-color: #f5f2e9;
   color: #202629;
-  font-family: 'Album Condensed', Arial, sans-serif;
-  font-size: 20px;
+  font-family: "Album Condensed", Arial, sans-serif;
   line-height: 1.1;
   letter-spacing: 1px;
   transform: rotate(-2deg);
   box-shadow: 2px 3px 0 rgba(0,0,0,0.22);
   pointer-events: none;
 }
+
 /* 年份为颁奖年份，已查官方档案，不等同于影片首映年份。
    这些荣誉属于 Fellini 影片，不暗示 Renzi 参与了所有影片制作。
 */
+
 body > header::after {
-  content: 'LA STRADA / OSCAR 1957\A LA DOLCE VITA / CANNES 1960\A 8½ / OSCAR 1964';
+  content: "LA STRADA / OSCAR 1957\A LA DOLCE VITA / CANNES 1960\A 8½ / OSCAR 1964";
   white-space: pre-line;
   position: absolute;
   top: 112px;
@@ -97,11 +118,12 @@ body > header::after {
   border-left: 3px solid #d2a45d;
   background-color: rgba(22,27,30,0.85);
   color: #ead6ac;
-  font-family: 'Album Mono', monospace;
+  font-family: "Album Mono", monospace;
   font-size: 9px;
   line-height: 1.7;
   pointer-events: none;
 }
+
 header nav {
   position: relative;
   z-index: 1;
@@ -111,58 +133,68 @@ header nav {
   padding: 6px 10px;
   background-color: #eef0e9;
 }
-header label { color: #a83a2c; font-family: 'Album Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
-#theme-select { flex: 1; min-width: 0; padding: 6px; border: 0; background-color: #eef0e9; color: #202629; font-family: 'Album Mono', monospace; font-size: 11px; }
+
+header label {
+  color: #a83a2c;
+  font-family: "Album Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+#theme-select {
+  flex: 1;
+  min-width: 0;
+  padding: 6px;
+  border: 0;
+  background-color: #eef0e9;
+  color: #202629;
+  font-family: "Album Mono", monospace;
+  font-size: 11px;
+}
 
 /* 2. 编辑桌的两页：左边定位图，右边相册索引。
    冷灰底色和不对称朱红标记区分于主题一、二的复古节目纸。
 */
+
 body #map-page {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 330px;
-  gap: 25px;
   min-height: 0;
-  padding: 22px 24px;
 }
+
 #map-page #map-stage {
   display: flex;
   flex-direction: column;
   min-height: 0;
   min-width: 0;
-  padding: 14px;
-  border: 1px solid #9da7a4;
   border-left: 7px solid #c74c36;
-  background-color: #f2f2ea;
-  box-shadow: 4px 5px 0 #b4bcb8;
 }
+
 #map-stage::before {
-  content: '04 / LOCATION NOTES — RENZO RENZI';
   flex-shrink: 0;
-  padding: 0 0 12px;
-  border-bottom: 1px solid #b7bfba;
-  color: #202629;
-  font-family: 'Album Mono', monospace;
-  font-size: 11px;
+  font-family: "Album Mono", monospace;
   line-height: 1.4;
-  letter-spacing: 1px;
 }
-#map-stage #map-svg { flex: 1; min-height: 0; width: 100%; height: auto; mix-blend-mode: multiply; }
+
+#map-stage #map-svg {
+  mix-blend-mode: multiply;
+}
+
 /* 档案照片脚注：原仓库的《大路》首映照。
    文字用遮罩提高对比；图片仍只是装饰，不改变地图本身。
 */
+
 #map-stage::after {
-  content: 'LA STRADA / LA PRIMA / ARCHIVIO';
-  display: flex;
   align-items: flex-end;
   flex: 0 0 82px;
   padding: 8px;
   border-top: 5px solid #161b1e;
   background-color: #202629;
-  background-image: linear-gradient(transparent 40%, rgba(0,0,0,0.8)), url('../assets/items/photo_lastrada_premiere.png');
+  background-image: linear-gradient(transparent 40%, rgba(0,0,0,0.8)), url("../assets/items/photo_lastrada_premiere.png");
   background-size: cover;
   background-position: center 32%;
   color: #f5f2e9;
-  font-family: 'Album Mono', monospace;
+  font-family: "Album Mono", monospace;
   font-size: 9px;
   letter-spacing: 2px;
 }
@@ -170,57 +202,124 @@ body #map-page {
 /* 3. 右侧像编辑过的照片索引：相纸、打字机编号、选择标记。
    :has(input:checked) 把选中的路线变成黑底白字。
 */
+
 #map-page #map-side {
   min-height: 0;
   min-width: 0;
   max-width: none;
-  padding: 18px;
-  border: 1px solid #aeb7b2;
   border-top: 7px solid #202629;
-  background-color: #f5f4ed;
-  box-shadow: 4px 5px 0 #b4bcb8;
   overflow-y: auto;
   overflow-wrap: break-word;
 }
+
 #map-side::before {
-  content: 'REEL 04 / INDICE DELL’ALBUM';
+  content: "REEL 04 / INDICE DELL’ALBUM";
   display: block;
   margin-bottom: 15px;
-  color: #a83a2c;
-  font-family: 'Album Mono', monospace;
+  font-family: "Album Mono", monospace;
   font-size: 10px;
-  letter-spacing: 1px;
 }
+
 #map-page #map-side h1 {
   margin: 0 0 22px;
   padding: 0 0 18px;
-  border-bottom: 3px solid #c74c36;
-  font-family: 'Album Condensed', Arial, sans-serif;
-  font-size: 43px;
+  font-family: "Album Condensed", Arial, sans-serif;
   font-weight: 600;
   line-height: 0.95;
   text-transform: uppercase;
 }
-#map-page #map-side h2 { margin: 24px 0 12px; padding-top: 15px; border-top: 1px solid #aeb7b2; font-family: 'Album Bodoni', Georgia, serif; font-size: 25px; line-height: 1.15; }
-#map-side h3 { font-family: 'Album Condensed', Arial, sans-serif; letter-spacing: 1px; text-transform: uppercase; }
-#map-page #itinerary-choice { min-width: 0; margin: 0; padding: 0; border: 0; }
-#itinerary-choice legend { margin-bottom: 10px; color: #5b6965; font-family: 'Album Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; }
-#map-page #itinerary-choice label { display: flex; align-items: baseline; gap: 9px; margin: 0 0 7px; padding: 10px; border: 1px solid #bcc5be; border-left: 3px solid #c74c36; background-color: #e8ece6; font-size: 14px; line-height: 1.4; transition: background-color 200ms ease, color 200ms ease; }
-#map-page #itinerary-choice label:hover { background-color: #d8e0d8; }
-#map-page #itinerary-choice label:has(input:checked) { color: #f5f2e9; background-color: #202629; border-color: #202629; border-left-color: #c74c36; }
-input[type='radio'] { flex-shrink: 0; accent-color: #c74c36; }
-#map-side a { color: #202629; text-decoration: none; }
-#map-side a:hover { color: #a83a2c; text-decoration: underline; }
-#map-page #map-side li { margin: 0; padding: 10px 0; border-bottom: 1px solid #ccd1c9; font-size: 14px; line-height: 1.5; }
-#map-side li::marker { color: #a83a2c; font-family: 'Album Mono', monospace; font-size: 12px; }
-#map-side #route-info > p { color: #5b6965; font-size: 14px; font-style: italic; }
-#map-page #start-link { display: block; margin: 18px 0; padding: 12px; border: 0; background-color: #c74c36; color: #fff; font-family: 'Album Mono', monospace; font-size: 12px; text-align: center; transition: background-color 200ms ease; }
-#map-page #start-link:hover { background-color: #202629; }
+
+#map-page #map-side h2 {
+  margin: 24px 0 12px;
+  padding-top: 15px;
+  border-top: 1px solid #aeb7b2;
+  font-family: "Album Bodoni", Georgia, serif;
+  line-height: 1.15;
+}
+
+#map-side h3 {
+  font-family: "Album Condensed", Arial, sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+#map-page #itinerary-choice {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#itinerary-choice legend {
+  margin-bottom: 10px;
+  font-family: "Album Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+#map-page #itinerary-choice label {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  margin: 0 0 7px;
+  line-height: 1.4;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+input[type="radio"] {
+  flex-shrink: 0;
+  accent-color: #c74c36;
+}
+
+#map-side a {
+  color: #202629;
+  text-decoration: none;
+}
+
+#map-side a:hover {
+  color: #a83a2c;
+  text-decoration: underline;
+}
+
+#map-page #map-side li {
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccd1c9;
+}
+
+#map-side li::marker {
+  color: #a83a2c;
+  font-family: "Album Mono", monospace;
+  font-size: 12px;
+}
+
+#map-side #route-info > p {
+  font-size: 14px;
+  font-style: italic;
+}
+
+#map-page #start-link {
+  display: block;
+  margin: 18px 0;
+  background-color: #c74c36;
+  color: #fff;
+  font-family: "Album Mono", monospace;
+  font-size: 12px;
+  text-align: center;
+  transition: background-color 200ms ease;
+}
+
+#map-page #start-link:hover {
+  background-color: #202629;
+}
+
 /* Renzi 与 Fellini 的真实漫画资料是这一主题的另一条线索。
    不是把 Renzi 当成所有影片的编剧，而是呈现评论、策展和交往记忆。
 */
+
 #map-side::after {
-  content: 'FELLINI × RENZI / DISEGNI E DIALOGHI';
+  content: "FELLINI × RENZI / DISEGNI E DIALOGHI";
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -229,107 +328,961 @@ input[type='radio'] { flex-shrink: 0; accent-color: #c74c36; }
   padding: 8px;
   border: 8px solid #fff;
   outline: 1px solid #b5bcb8;
-  background: #f5f2e9 url('../assets/items/caricature_fellini_renzi.jpg') center 35% / cover no-repeat;
+  background: #f5f2e9 url("../assets/items/caricature_fellini_renzi.jpg") center 35% / cover no-repeat;
   color: #202629;
-  font-family: 'Album Mono', monospace;
+  font-family: "Album Mono", monospace;
   font-size: 8px;
   line-height: 1.4;
   text-align: center;
   transform: rotate(-2deg);
   box-shadow: 3px 4px 0 #c3cac4;
 }
-#map-svg .marker-dot { fill: #bb4837; stroke: #fff; transition: fill 200ms ease, stroke-width 200ms ease; }
-#map-svg .route-line { stroke: #375e6c; stroke-width: 10; }
+
+#map-svg .marker-dot {
+  fill: #bb4837;
+  stroke: #fff;
+  transition: fill 200ms ease, stroke-width 200ms ease;
+}
+
+#map-svg .route-line {
+  stroke: #375e6c;
+  stroke-width: 10;
+}
+
 #map-svg .marker:hover .marker-dot,
-#map-svg .marker:focus .marker-dot { fill: #202629; stroke: #fff; stroke-width: 15; }
+#map-svg .marker:focus .marker-dot {
+  fill: #202629;
+  stroke: #fff;
+  stroke-width: 15;
+}
+
 #map-svg .marker:hover .marker-num,
-#map-svg .marker:focus .marker-num { fill: #fff; }
+#map-svg .marker:focus .marker-num {
+  fill: #fff;
+}
 
 /* 4. 展品像放大的单张接触印样，标题像资料夹标签。
    照片本身不做黑白滤镜，保留原始资料颜色。
 */
-#item-main { flex: 1; min-height: 0; padding: 24px; overflow-y: auto; }
-#item-layout { max-width: 1100px; margin: 0 auto; padding: 28px; border: 1px solid #b5bcb8; border-top: 7px solid #c74c36; background-color: #f5f4ed; box-shadow: 4px 5px 0 #b4bcb8; overflow: auto; }
-#item-main h1 { margin: 0 0 20px; color: #202629; font-family: 'Album Condensed', Arial, sans-serif; font-size: 55px; font-weight: 600; line-height: 1; text-transform: uppercase; overflow-wrap: break-word; }
-#item-context { margin: 0 0 26px; padding-bottom: 17px; border-bottom: 1px solid #b5bcb8; color: #5b6965; font-family: 'Album Mono', monospace; font-size: 12px; }
-#item-media img { float: left; width: 46%; height: auto; margin: 0 28px 24px 0; padding: 10px 10px 28px; border: 1px solid #b5bcb8; background-color: #fff; box-shadow: 3px 5px 0 #c3cac4; transform: rotate(-1deg); transition: transform 350ms ease, box-shadow 350ms ease; }
-#item-text { font-size: 18px; line-height: 1.85; overflow-wrap: break-word; }
-.item-rights { clear: both; margin-top: 24px; padding-top: 15px; border-top: 1px solid #b5bcb8; color: #5b6965; }
-#item-media iframe { display: block; width: 100%; height: 330px; margin: 20px 0; border: 0; }
-body > footer { flex-shrink: 0; padding: 11px 24px; border-top: 1px solid #aeb7b2; background-color: #202629; }
-footer nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-button { min-height: 44px; padding: 9px 20px; border: 1px solid #8c9991; background-color: #202629; color: #f5f2e9; font-family: 'Album Mono', monospace; font-size: 13px; cursor: pointer; transition: background-color 200ms ease; }
-button:hover:not(:disabled) { background-color: #c74c36; }
-button:disabled { opacity: 0.4; cursor: default; }
+
+#item-main {
+  flex: 1;
+  min-height: 0;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+#item-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px;
+  border: 1px solid #b5bcb8;
+  border-top: 7px solid #c74c36;
+  background-color: #f5f4ed;
+  box-shadow: 4px 5px 0 #b4bcb8;
+  overflow: auto;
+}
+
+#item-main h1 {
+  margin: 0 0 20px;
+  color: #202629;
+  font-family: "Album Condensed", Arial, sans-serif;
+  font-size: 55px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+}
+
+#item-context {
+  margin: 0 0 26px;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #b5bcb8;
+  color: #5b6965;
+  font-family: "Album Mono", monospace;
+  font-size: 12px;
+}
+
+#item-media img {
+  padding: 10px 10px 28px;
+  border: 1px solid #b5bcb8;
+  background-color: #fff;
+  box-shadow: 3px 5px 0 #c3cac4;
+  transition: transform 350ms ease, box-shadow 350ms ease;
+}
+
+#item-text {
+  font-size: 18px;
+  line-height: 1.85;
+  overflow-wrap: break-word;
+}
+
+.item-rights {
+  clear: both;
+  margin-top: 24px;
+  padding-top: 15px;
+  border-top: 1px solid #b5bcb8;
+  color: #5b6965;
+}
+
+#item-media iframe {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+  border: 0;
+}
+
+body > footer {
+  flex-shrink: 0;
+  padding: 11px 24px;
+  border-top: 1px solid #aeb7b2;
+  background-color: #202629;
+}
+
+footer nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+button {
+  min-height: 44px;
+  padding: 9px 20px;
+  border: 1px solid #8c9991;
+  background-color: #202629;
+  color: #f5f2e9;
+  font-family: "Album Mono", monospace;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+button:hover:not(:disabled) {
+  background-color: #c74c36;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
 
 /* 5. 悬停像翻看照片；不使用假播放按钮，不自动切换或闪烁。 */
+
 @media (hover: hover) {
-  #item-media img:hover { transform: rotate(0); box-shadow: 6px 8px 0 #c3cac4; }
-  body > header:hover::before { transform: rotate(0); }
+  #item-media img:hover {
+    transform: rotate(0);
+    box-shadow: 6px 8px 0 #c3cac4;
+  }
+
+  body > header:hover::before {
+    transform: rotate(0);
+  }
 }
+
 @media (max-width: 1050px) {
-  body #map-page { grid-template-columns: minmax(0, 1fr) 285px; gap: 18px; }
-  body > header::before { font-size: 17px; }
-  body > header::after { font-size: 8px; }
-  #map-page #map-side { padding: 15px; }
-  #map-page #map-side h1 { font-size: 36px; }
+  body > header::after {
+    font-size: 8px;
+  }
 }
+
 @media (max-width: 700px) {
-  body > header { height: 195px; margin: 10px 12px 0; padding: 144px 5px 6px; border-width: 7px; background-size: 100% 137px, 22% auto, 30% auto, 25% auto, 23% auto; background-position: left top, left 30%, 31.43% 30%, 69.33% 30%, right 30%; }
-  body > header::before { top: 9px; left: 23%; padding: 4px; font-size: 11px; letter-spacing: 0; }
+  body > header::before {
+    letter-spacing: 0;
+  }
+
   /* 手机上保留面孔空间，奖项标签在较宽屏幕显示。 */
-  body > header::after { display: none; }
-  header nav { gap: 6px; padding: 5px; }
-  header label { font-size: 9px; letter-spacing: 0; }
-  #theme-select { width: 0; max-width: none; font-size: 10px; }
-  body #map-page { grid-template-columns: minmax(0, 1fr); grid-template-rows: 46% minmax(0, 1fr); gap: 14px; padding: 12px; }
-  #map-page #map-stage { padding: 9px; }
-  #map-stage::before { font-size: 8px; letter-spacing: 0; padding-bottom: 6px; }
-  #map-stage::after { flex-basis: 46px; font-size: 7px; letter-spacing: 0; padding: 4px; }
-  #map-page #map-side { padding: 14px; }
-  #map-page #map-side h1 { font-size: 32px; margin-bottom: 16px; }
-  #item-main { padding: 12px; }
-  #item-layout { padding: 18px; }
-  #item-main h1 { font-size: 36px; }
-  #item-media img { float: none; width: 100%; margin: 0 0 24px; transform: none; }
-  #item-text { font-size: 17px; }
-  #item-media iframe { height: 220px; }
+
+  header nav {
+    gap: 6px;
+    padding: 5px;
+  }
+
+  header label {
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+
+  #theme-select {
+    width: 0;
+    max-width: none;
+    font-size: 10px;
+  }
+
+  #map-stage::after {
+    flex-basis: 46px;
+    font-size: 7px;
+    letter-spacing: 0;
+    padding: 4px;
+  }
+
+  #map-page #map-side h1 {
+    margin-bottom: 16px;
+  }
+
+  #item-main {
+    padding: 12px;
+  }
+
+  #item-layout {
+    padding: 18px;
+  }
+
+  #item-main h1 {
+    font-size: 36px;
+  }
+
+  #item-text {
+    font-size: 17px;
+  }
 }
+
 @media (max-height: 650px) and (min-width: 701px) {
-  body > header { height: 190px; margin-top: 10px; padding-top: 133px; background-size: 100% 128px, 22% auto, 30% auto, 25% auto, 23% auto; }
-  body > header::before { top: 8px; font-size: 15px; }
-  body > header::after { top: 68px; font-size: 7px; padding: 3px 6px; }
-  #map-stage::after { flex-basis: 50px; }
+  body > header::after {
+    top: 68px;
+    font-size: 7px;
+    padding: 3px 6px;
+  }
+
+  #map-stage::after {
+    flex-basis: 50px;
+  }
 }
+
 @media (prefers-reduced-motion: reduce) {
   #map-page #itinerary-choice label,
   #map-page #start-link,
   #map-svg .marker-dot,
   #item-media img,
-  button { transition: none; }
-  #item-media img:hover { transform: rotate(-1deg); }
-  body > header:hover::before { transform: rotate(-2deg); }
+  button {
+    transition: none;
+  }
+
+  #item-media img:hover {
+    transform: rotate(-1deg);
+  }
+
+  body > header:hover::before {
+    transform: rotate(-2deg);
+  }
 }
+
 /* River: match the team's current HTML ids (HTML-IDS.md).
    Keep the existing two-column grid and independently scrolling media/text.
    仅调整 CSS 选择器和外观，不修改队友的 HTML 或交互代码。 */
-body > header { display: block; }
-header nav { width: 100%; }
-#item-main { overflow: hidden; }
+
+body > header {
+  display: block;
+}
+
+header nav {
+  width: 100%;
+}
+
+#item-main {
+  overflow: hidden;
+}
+
 #item-main #item-layout {
-  width: 100%; max-width: none; height: 100%; min-height: 0;
-  margin: 0; overflow: hidden;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
 }
-#item-media, #item-info { min-width: 0; min-height: 0; overflow: auto; }
-#item-info { padding: 0 12px 16px; }
+
+#item-media, #item-info {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
+
+#item-info {
+  padding: 0 12px 16px;
+}
+
 #item-media img {
-  float: none; width: auto; height: auto; max-width: 100%; max-height: 100%;
-  margin: 0; flex-shrink: 0; transform: none;
+  float: none;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  flex-shrink: 0;
+  transform: none;
 }
-#item-media.multi img { max-height: none; }
-#item-media iframe { height: auto; aspect-ratio: 16 / 9; max-height: 100%; }
+
+#item-media.multi img {
+  max-height: none;
+}
+
+#item-media iframe {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-height: 100%;
+}
+
 @media (max-width: 700px) {
-  #item-main #item-layout { padding: 12px; gap: 12px; }
-  #item-info { padding: 0 6px 12px; }
-  #item-media img { max-width: 100%; }
+  #item-main #item-layout {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  #item-info {
+    padding: 0 6px 12px;
+  }
+
+  #item-media img {
+    max-width: 100%;
+  }
+}
+
+/* River / layout study: compact masthead, readable route column,
+   and the team's real collection links as the only bottom film strip.
+   只调整主题四CSS，不改地图坐标、藏品链接和滚动脚本。 */
+
+body > header {
+  height: 170px;
+  margin: 14px 20px 0;
+  padding: 108px 7px 6px;
+  border-width: 8px;
+  background-size: 0 0, 22% auto, 30% auto, 25% auto, 23% auto;
+  background-position: center, left 30%, 31.43% 45%, 69.33% 25%, right 27%;
+}
+
+body > header::before {
+  top: 9px;
+  left: 24%;
+  padding: 6px 9px;
+  font-size: 17px;
+}
+
+body > header::after {
+  display: none;
+}
+
+body #map-page {
+  grid-template-columns: minmax(0, 1fr) clamp(370px, 30vw, 530px);
+  gap: 20px;
+  padding: 18px 20px;
+}
+
+#map-stage::before {
+  padding-bottom: 8px;
+}
+
+#map-stage::after {
+  content: none;
+  display: none;
+}
+
+#map-stage #map-svg {
+  flex: 1 1 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+#map-page #map-side h1 {
+  font-size: 34px;
+}
+
+#map-page #map-side h2 {
+  font-size: 27px;
+}
+
+#map-page #itinerary-choice label {
+  font-size: 15px;
+}
+
+#map-page #map-side li {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Use Claudia's actual links/animation, retaining the 220px slide pitch
+   that matches the existing --shift value. No duplicated fake items. */
+
+body > .indexslider {
+  flex: 0 0 132px;
+  height: 132px;
+  min-height: 0;
+  margin: 0 20px 12px;
+  padding: 0;
+  border: 8px solid #161b1e;
+  border-image: url("../assets/img/themes/fellini-negative-frame.svg") 20 round;
+  background-color: #161b1e;
+  color: #f4efe1;
+}
+
+.indexslider .indexslide-track {
+  height: 100%;
+  padding-top: 0;
+  align-items: stretch;
+}
+
+.indexslider .index-slide {
+  width: 220px;
+  height: 100%;
+  padding: 6px 12px;
+  border-right: 1px solid #505654;
+}
+
+.indexslider .index-slide img {
+  min-height: 0;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.indexslider .index-caption {
+  padding-top: 5px;
+  font-family: "Album Mono", monospace;
+  font-size: 10px;
+}
+
+.indexslider .index-slide:hover,
+.indexslider .index-slide:focus-visible {
+  color: #f3d39b;
+}
+
+@media (max-width: 1100px) and (min-width: 701px) {
+  body #map-page {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  body > header {
+    height: 145px;
+    margin: 10px 12px 0;
+    padding: 88px 4px 5px;
+    border-width: 6px;
+  }
+
+  body > header::before {
+    top: 8px;
+    left: 24%;
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+
+  body #map-page {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(140px, 42%) minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px;
+  }
+
+  #map-page #map-side h1 {
+    font-size: 28px;
+  }
+
+  #map-page #map-side h2 {
+    font-size: 24px;
+  }
+
+  body > .indexslider {
+    flex-basis: 100px;
+    height: 100px;
+    margin: 0 12px 10px;
+    border-width: 6px;
+  }
+
+  .indexslider .index-slide {
+    padding: 4px 10px;
+  }
+}
+
+@media (max-height: 650px) and (min-width: 701px) {
+  body > header {
+    height: 136px;
+    padding-top: 78px;
+    margin-top: 10px;
+  }
+
+  body > .indexslider {
+    flex-basis: 108px;
+    height: 108px;
+  }
+
+  body #map-page {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+/* River: transparent controls preserve the photographs behind them.
+   White text with a dark shadow stays readable; the opened option list
+   gets an opaque background so choices remain easy to read. */
+
+body > header nav {
+  background: transparent;
+  border: 0;
+}
+
+body > header label {
+  color: #fff3d7;
+  text-shadow: 0 1px 3px #000, 0 0 7px #000;
+}
+
+body > header #theme-select {
+  background: transparent;
+  color: #fff;
+  text-shadow: 0 1px 3px #000, 0 0 7px #000;
+  border: 0;
+  border-bottom: 1px solid #f3ead173;
+}
+
+#theme-select option {
+  background-color: #202629;
+  color: #fff;
+  text-shadow: none;
+}
+
+body > header #theme-select:focus-visible {
+  outline-color: #f3d39b;
+}
+
+/* The old premiere still becomes the background of the real collection
+   strip. The dark overlay separates moving exhibits from the archive photo. */
+
+body > .indexslider {
+  background-image: linear-gradient(#101719b3, #101719d9), url("../assets/items/photo_lastrada_premiere.png");
+  background-size: cover;
+  background-position: center 35%;
+  box-shadow: inset 0 0 0 1px #f4efe133;
+}
+
+.indexslider .index-slide {
+  background-color: #0c111433;
+  border-right-color: #e2d4b54d;
+}
+
+.indexslider .index-caption {
+  color: #fff6e0;
+  text-shadow: 0 1px 3px #000;
+}
+
+.indexslider .index-slide:hover,
+.indexslider .index-slide:focus-visible {
+  background-color: #20292bbd;
+}
+
+/* River / film archive study. All content and navigation remain real HTML.
+   CSS supplies the light-table exposure, film edges and readable index cards. */
+
+#map-page #map-stage {
+  border: 8px solid #161b1e;
+  border-image: url("../assets/img/themes/fellini-negative-frame.svg") 20 round;
+  padding: 15px 18px;
+  background-color: #f3efe2;
+  background-image: radial-gradient(ellipse at 0% 8%, #edbe7747, transparent 48%),
+    radial-gradient(ellipse at 100% 100%, #c45a3621, transparent 42%),
+    linear-gradient(135deg, #f8f5eb, #e9e7dc);
+  box-shadow: inset 0 0 28px #675d4321, 4px 5px 0 #aeb4b1;
+}
+
+#map-stage::before {
+  content: "04 / TAVOLO LUMINOSO — RENZO RENZI";
+  padding: 5px 0 10px;
+  border-bottom: 1px solid #9b927a;
+  color: #70533d;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+}
+
+#map-stage #map-svg {
+  filter: drop-shadow(0 2px 1px #51432d18);
+}
+
+/* Side perforations stay outside the reading surface. */
+
+#map-page #map-side {
+  padding: 20px 28px;
+  border: 5px solid #161b1e;
+  background-color: #20292a;
+  color: #eee9da;
+  background-image: repeating-linear-gradient(180deg, #ddd8c9 0 6px, transparent 6px 17px),
+    repeating-linear-gradient(180deg, #ddd8c9 0 6px, transparent 6px 17px),
+    linear-gradient(160deg, #273032, #151c1e);
+  background-size: 6px 17px, 6px 17px, 100% 100%;
+  background-position: left 7px top, right 7px top, center;
+  background-repeat: repeat-y, repeat-y, no-repeat;
+  box-shadow: 4px 5px 0 #aeb4b1;
+  scrollbar-color: #b8ac8e #20292a;
+}
+
+#map-side::before {
+  color: #d5b77e;
+  letter-spacing: 1.4px;
+}
+
+#map-page #map-side h1 {
+  color: #fff5de;
+  border-bottom: 1px solid #b7a582;
+  padding-bottom: 16px;
+}
+
+#itinerary-choice legend {
+  color: #d4c9b0;
+}
+
+#map-page #itinerary-choice label {
+  padding: 12px;
+  color: #eee9da;
+  background-color: #333d3e;
+  border: 1px solid #596262;
+  border-left: 3px solid #a78855;
+}
+
+#map-page #itinerary-choice label:hover {
+  background-color: #465152;
+}
+
+#map-page #itinerary-choice label:has(input:checked) {
+  background-color: #f0eadb;
+  color: #202629;
+  border-color: #e5d9bd;
+  border-left-color: #c74c36;
+}
+
+#map-side #route-info,
+#map-side .room-section {
+  margin: 22px 0 18px;
+  padding: 18px;
+  border: 1px solid #d1c6ad;
+  background-color: #f5f1e5;
+  color: #252b2b;
+  box-shadow: 3px 4px 0 #0c101166;
+}
+
+#map-page #route-info h2 {
+  margin: 0 0 14px;
+  padding: 0 0 14px;
+  border-top: 0;
+  border-bottom: 3px double #9f9276;
+  color: #252b2b;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+#map-side #route-description {
+  color: #383d38;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+#map-side #route-info > p {
+  color: #635e52;
+}
+
+#map-page #start-link {
+  padding: 12px 8px;
+  border: 1px solid #913527;
+  box-shadow: 0 3px 0 #cbbda0;
+  letter-spacing: .3px;
+}
+
+/* Each route stop is a contact-sheet frame. Numbers are CSS counters,
+   preserving the original ordered list and links for assistive technology. */
+
+#map-side #route-stops {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+  counter-reset: film-frame;
+}
+
+#map-page #route-stops li {
+  position: relative;
+  counter-increment: film-frame;
+  margin: 0 0 10px;
+  padding: 13px 10px 13px 44px;
+  border: 1px solid #c5bda9;
+  border-bottom: 3px solid #c5bda9;
+  background: #fffdf5;
+  color: #252b2b;
+  font-size: 16px;
+  line-height: 1.55;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+#route-stops li::before {
+  content: counter(film-frame, decimal-leading-zero);
+  position: absolute;
+  left: 9px;
+  top: 15px;
+  padding: 2px 4px;
+  background: #283133;
+  color: #f5dbab;
+  font: 10px/1.5 "Album Mono", monospace;
+}
+
+#map-side #route-stops a {
+  display: block;
+  color: #252b2b;
+}
+
+#map-page #route-stops li:hover,
+#map-page #route-stops li:focus-within {
+  background: #f5e6c9;
+  border-color: #ad7c4b;
+}
+
+#map-side #route-stops a:hover {
+  color: #94372b;
+}
+
+#map-page #room-list-heading {
+  color: #f5dbab;
+  border-top-color: #796b51;
+}
+
+#map-side .room-section h3 {
+  margin: 0 0 14px;
+  padding-bottom: 12px;
+  border-bottom: 3px double #9f9276;
+  color: #252b2b;
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+#map-side .room-section > p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #59574e;
+}
+
+#map-side .room-section ul {
+  padding-left: 18px;
+}
+
+#map-page #map-side .room-section li {
+  padding: 11px 0;
+  border-bottom-color: #d3c8b1;
+}
+
+#map-side .room-section a {
+  color: #252b2b;
+}
+
+#map-side .room-transition {
+  padding: 0 6px;
+  color: #d8c8a7;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+@media (max-width: 700px) {
+  #map-page #map-stage {
+    padding: 10px;
+    border-width: 6px;
+  }
+
+  #map-stage::before {
+    font-size: 8px;
+    letter-spacing: .5px;
+  }
+
+  #map-page #map-side {
+    padding: 16px 23px;
+  }
+
+  #map-side #route-info, #map-side .room-section {
+    padding: 14px;
+  }
+
+  #map-page #route-info h2 {
+    font-size: 24px;
+  }
+
+  #map-page #route-stops li {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #map-page #route-stops li {
+    transition: none;
+  }
+}
+
+/* River / left visual column + full-height reading column.
+   CSS grid places existing elements; no team HTML/JS or navigation changes. */
+
+@media (min-width: 901px) {
+  body:has(> #map-page) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(360px, 30vw, 530px);
+    grid-template-rows: 170px minmax(0, 1fr) 132px;
+    grid-template-areas: "masthead reading" "plan reading" "collection collection";
+    gap: 18px 20px;
+    padding: 14px 20px 12px;
+  }
+
+  body:has(> #map-page) > header {
+    grid-area: masthead;
+    min-width: 0;
+    width: 100%;
+    height: 170px;
+    margin: 0;
+    padding-top: 108px;
+  }
+
+  body:has(> #map-page) #map-page {
+    display: contents;
+  }
+
+  body:has(> #map-page) #map-stage {
+    grid-area: plan;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  body:has(> #map-page) #map-side {
+    grid-area: reading;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+    overflow-y: auto;
+  }
+
+  body:has(> #map-page) > .indexslider {
+    grid-area: collection;
+    min-width: 0;
+    height: 132px;
+    margin: 0;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  body:has(> #map-page) {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 16px;
+  }
+
+  body:has(> #map-page) #map-side {
+    padding: 17px;
+  }
+}
+
+@media (max-height: 650px) and (min-width: 901px) {
+  body:has(> #map-page) {
+    grid-template-rows: 136px minmax(0, 1fr) 108px;
+    gap: 12px 18px;
+    padding-top: 10px;
+  }
+
+  body:has(> #map-page) > header {
+    height: 136px;
+    padding-top: 78px;
+  }
+
+  body:has(> #map-page) > .indexslider {
+    height: 108px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  body:has(> #map-page) > header::before {
+    font-size: 14px;
+    padding: 5px 7px;
+  }
+}
+
+/* River / film-edge lettering replaces the paper slip.
+   Transparent lettering sits above the controls, leaving the source stills intact. */
+
+body > header::before,
+body:has(> #map-page) > header::before {
+  content: "FELLINI + RENZI / UN ALBUM ITALIANO";
+  top: auto;
+  bottom: 50px;
+  left: 12px;
+  max-width: calc(100% - 24px);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+  color: #f8edd5;
+  font-family: "Album Mono", monospace;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 1.5px;
+  white-space: normal;
+  text-shadow: 0 1px 2px #000, 0 0 5px #0009;
+  pointer-events: none;
+}
+
+/* One development pass when this theme loads, not an endless projection loop.
+   Animate only the map image; keep its parent drop-shadow and coordinates intact. */
+
+#map-stage #map-svg > image {
+  animation: album-map-develop 4.2s ease-out both;
+}
+
+#map-stage #map-svg > #route,
+#map-stage #map-svg > #markers {
+  animation: album-map-ink 4.2s ease-out both;
+}
+
+@keyframes album-map-develop {
+  0% {
+    opacity: .10;
+    filter: contrast(.18) brightness(1.65) blur(2px);
+  }
+
+  38% {
+    opacity: .52;
+    filter: contrast(.55) brightness(1.22) blur(.7px);
+  }
+
+  76% {
+    opacity: .88;
+    filter: contrast(.9) brightness(1.03) blur(.15px);
+  }
+
+  100% {
+    opacity: 1;
+    filter: none;
+  }
+}
+
+@keyframes album-map-ink {
+  from {
+    opacity: .35;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 700px) {
+  body > header::before,
+  body:has(> #map-page) > header::before {
+    bottom: 48px;
+    left: 8px;
+    max-width: calc(100% - 16px);
+    font-size: 7px;
+    letter-spacing: .65px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #map-stage #map-svg > image,
+  #map-stage #map-svg > #route,
+  #map-stage #map-svg > #markers {
+    animation: none;
+    opacity: 1;
+    filter: none;
+  }
 }

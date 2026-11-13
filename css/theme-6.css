@@ -3,118 +3,320 @@
    只改变呈现；没有新增 VR 功能、摄像头或虚构的实时数据。
    主要技术：多层背景、Grid、伪元素、渐变、阴影和轻微动画。
 */
-@font-face { font-family: 'Future Mono'; src: url('../assets/fonts/SpaceMono-Regular.ttf') format('truetype'); font-display: swap; }
-@font-face { font-family: 'Future Display'; src: url('../assets/fonts/BarlowCondensed-SemiBold.ttf') format('truetype'); font-display: swap; }
-* { box-sizing: border-box; }
-html { height: 100%; }
-html[data-theme='theme-6'] { --map-accent: #2de8dc; }
-body {
-  margin: 0; height: 100%; display: flex; flex-direction: column; overflow: hidden;
-  color: #e8f6ff; background-color: #060c1c;
-  background-image: radial-gradient(ellipse at 5% 65%, #194f614d, transparent 55%), radial-gradient(ellipse at 90% 15%, #713a734a, transparent 55%), url('../assets/img/themes/future-spatial-grid.svg');
-  font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6;
+
+@font-face {
+  font-family: "Future Mono";
+  src: url("../assets/fonts/SpaceMono-Regular.ttf") format("truetype");
+  font-display: swap;
 }
-a { color: #8bf2e7; text-underline-offset: 4px; }
-a:hover { color: #ffc5ee; }
-::selection { background: #a3f6ed; color: #091326; }
-a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid #ffb2e8; outline-offset: 4px; }
+
+@font-face {
+  font-family: "Future Display";
+  src: url("../assets/fonts/BarlowCondensed-SemiBold.ttf") format("truetype");
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+html[data-theme="theme-6"] {
+  --map-accent: #2de8dc;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #e8f6ff;
+  background-color: #060c1c;
+  background-image: radial-gradient(ellipse at 5% 65%, #194f614d, transparent 55%), radial-gradient(ellipse at 90% 15%, #713a734a, transparent 55%), url("../assets/img/themes/future-spatial-grid.svg");
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a {
+  color: #8bf2e7;
+  text-underline-offset: 4px;
+}
+
+a:hover {
+  color: #ffc5ee;
+}
+
+::selection {
+  background: #a3f6ed;
+  color: #091326;
+}
+
+a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 3px solid #ffb2e8;
+  outline-offset: 4px;
+}
+
 /* 1. 连续的虚拟片场：人物、建筑、光线共享透视，不再使用两张独立照片卡。
    背景图片只用于装饰，不改变展品或原来的图片。
 */
+
 body > header {
-  position: relative; isolation: isolate; flex: 0 0 auto; height: calc(clamp(150px, 14vw, 260px) + 55px);
-  margin: 18px 24px 0; padding: clamp(150px, 14vw, 260px) 20px 10px;
-  border: 1px solid #619399; border-radius: 3px 38px 3px 3px;
+  position: relative;
+  isolation: isolate;
+  flex: 0 0 auto;
+  border: 1px solid #619399;
   background-color: #0b1830;
-  background-image: linear-gradient(90deg, #06122299 5%, transparent 35%), url('../assets/img/themes/future-world-viewport-v2.png');
   /* 图片始终等比例缩放；上移半个导航高度，让场景中心落在图片区域。 */
-  background-position: center, center calc(50% - 27px); background-size: 100% 100%, 100% auto; background-repeat: no-repeat;
-  overflow: hidden; box-shadow: inset 0 0 55px #071222aa, 0 0 25px #35e5de12;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  box-shadow: inset 0 0 55px #071222aa, 0 0 25px #35e5de12;
 }
+
 body > header::before {
-  content: 'CINEMA\A SENZA SCHERMO'; white-space: pre-line;
-  position: absolute; top: 32px; left: 32px; z-index: -1;
-  font-family: 'Future Display', Arial, sans-serif; font-size: clamp(32px, 3.5vw, 60px);
-  line-height: .94; letter-spacing: .035em; color: #ecffff;
-  text-shadow: 0 0 22px #31dfd755; pointer-events: none;
+  content: "CINEMA\A SENZA SCHERMO";
+  white-space: pre-line;
+  position: absolute;
+  font-family: "Future Display", Arial, sans-serif;
+  pointer-events: none;
 }
+
 body > header::after {
-  content: '2035 / UN MONDO DI MEMORIE'; position: absolute; left: 35px; top: 167px;
-  color: #87f3e5; font: 10px 'Future Mono', monospace; letter-spacing: .22em; pointer-events: none;
+  position: absolute;
+  pointer-events: none;
 }
-header nav { display: flex; align-items: center; gap: 16px; padding: 6px 12px; border-top: 1px solid #64c4cd66; background: #070f20eb; }
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 6px 12px;
+  border-top: 1px solid #64c4cd66;
+  background: #070f20eb;
+}
+
 /* 两层环绕光轨穿过同一场景；装饰不接收点击事件。
    border-radius 和 rotate 画椭圆，缓慢改变位置产生景深。 */
+
 header nav::before, header nav::after {
-  content: ''; position: absolute; z-index: -1; pointer-events: none;
-  border: 1px solid #77edee66; border-radius: 50%;
-  background: transparent; box-shadow: 0 0 15px #66dfe922;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border: 1px solid #77edee66;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0 0 15px #66dfe922;
 }
+
 header nav::before {
-  left: 33%; right: 2%; top: 37px; height: 125px;
-  transform: rotate(-8deg); animation: spatial-orbit 16s ease-in-out infinite alternate;
+  transform: rotate(-8deg);
+  animation: spatial-orbit 16s ease-in-out infinite alternate;
 }
+
 header nav::after {
-  left: 43%; right: -2%; top: 85px; height: 84px;
-  border-color: #e2aff14d; transform: rotate(8deg);
+  border-color: #e2aff14d;
+  transform: rotate(8deg);
   animation: spatial-orbit 21s ease-in-out infinite alternate-reverse;
 }
-header label { font: 10px 'Future Mono', monospace; text-transform: uppercase; letter-spacing: .13em; color: #8ce5df; }
-#theme-select { flex: 1; min-width: 0; max-width: none; width: 100%; min-height: 32px; padding: 4px 10px; border: 0; color: #eafaff; background: #102339; font: 13px Arial, sans-serif; }
-#theme-select option { color: #eafaff; background: #102339; }
+
+header label {
+  font: 10px "Future Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  color: #8ce5df;
+}
+
+#theme-select {
+  flex: 1;
+  min-width: 0;
+  max-width: none;
+  width: 100%;
+  min-height: 32px;
+  padding: 4px 10px;
+  border: 0;
+  color: #eafaff;
+  background: #102339;
+  font: 13px Arial, sans-serif;
+}
+
+#theme-select option {
+  color: #eafaff;
+  background: #102339;
+}
+
 /* 2. 地图变成发光的空间模型。只给底图滤镜，文字和路线不反色。
    screen 混合让黑色底透明，保留全息建筑的亮色线条。
 */
-body #map-page { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 22px; min-height: 0; padding: 22px 24px 24px; }
-#map-page #map-stage {
-  position: relative; isolation: isolate; display: flex; flex-direction: column; min-width: 0; min-height: 0;
-  padding: 23px; border: 1px solid #589baf88; border-radius: 34px 3px 34px 3px;
-  background-color: #081729;
-  background-image: radial-gradient(ellipse at center, #1a66794a, transparent 68%), url('../assets/img/themes/future-spatial-grid.svg');
-  box-shadow: inset 0 0 55px #53e4de0d, 0 0 30px #28d6d30a;
+
+body #map-page {
+  display: grid;
+  min-height: 0;
 }
-#map-stage::before { content: 'SPAZIO NARRATIVO / RENZO RENZI'; display: block; flex-shrink: 0; padding-bottom: 14px; border-bottom: 1px solid #538d9b66; color: #8df5e7; font: 10px 'Future Mono', monospace; letter-spacing: .15em; }
-#map-page #map-svg { flex: 1; min-height: 0; width: 100%; height: 100%; overflow: hidden; }
-#map-svg > image { filter: invert(1) hue-rotate(120deg) saturate(.65); mix-blend-mode: screen; opacity: .85; }
+
+#map-page #map-stage {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+#map-stage::before {
+  display: block;
+  flex-shrink: 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #538d9b66;
+  color: #8df5e7;
+  font: 10px "Future Mono", monospace;
+}
+
+#map-page #map-svg {
+  overflow: hidden;
+}
+
+#map-svg > image {
+  filter: invert(1) hue-rotate(120deg) saturate(.65);
+  mix-blend-mode: screen;
+}
+
 /* 按窄横幅构图的微型虚拟舞台，替换两张历史照片的裁切拼接。
    主体集中在图像中央横带；auto 保留建筑和人物比例。 */
+
 #map-stage::after {
-  content: '';
-  flex: 0 0 clamp(50px, 5.6vw, 100px);
   margin-top: 6px;
   border-top: 1px solid #6cbac180;
-  background: #081526 url('../assets/img/themes/future-stage-viewport-v2.png') center 52% / 100% auto no-repeat;
 }
-#map-svg .route-line { stroke: #80f9e9; stroke-width: 10; stroke-dasharray: 22 22; opacity: .8; }
-#map-svg .marker-dot { fill: #122c48; stroke: #81ffef; stroke-width: 9; filter: drop-shadow(0 0 10px #61e6db); transition: fill 200ms, stroke 200ms; }
-#map-svg .marker-num { fill: #e9ffff; }
-#map-svg .marker:hover .marker-dot, #map-svg .marker:focus .marker-dot { fill: #a14c95; stroke: #ffd2f0; stroke-width: 12; }
-#map-svg .marker:hover .marker-num, #map-svg .marker:focus .marker-num { fill: #fff; }
-#map-svg .marker.dim { opacity: .35; }
-#map-svg .marker.dim:hover, #map-svg .marker.dim:focus { opacity: 1; }
+
+#map-svg .route-line {
+  stroke-width: 10;
+  stroke-dasharray: 22 22;
+}
+
+#map-svg .marker:hover .marker-dot, #map-svg .marker:focus .marker-dot {
+  fill: #a14c95;
+  stroke: #ffd2f0;
+  stroke-width: 12;
+}
+
+#map-svg .marker:hover .marker-num, #map-svg .marker:focus .marker-num {
+  fill: #fff;
+}
+
+#map-svg .marker.dim {
+  opacity: .35;
+}
+
+#map-svg .marker.dim:hover, #map-svg .marker.dim:focus {
+  opacity: 1;
+}
+
 /* 3. 故事控制面板，保留真实的单选按钮与所有导航链接。 */
-#map-page #map-side { min-width: 0; min-height: 0; max-width: none; padding: 22px; border: 1px solid #8975b399; border-radius: 3px 26px 3px 26px; background: #11172ce8; overflow-y: auto; scrollbar-color: #6d9da8 #111b30; scrollbar-width: thin; }
-#map-side::before { content: 'STORY ENGINE / 06'; display: block; margin-bottom: 12px; color: #e0aeea; font: 10px 'Future Mono', monospace; letter-spacing: .18em; }
-#map-page #map-side h1 { margin: 0 0 23px; font: 38px/1 'Future Display', Arial, sans-serif; color: #efffff; }
-#map-page #map-side h2 { margin: 25px 0 12px; padding-top: 16px; border-top: 1px solid #55728388; font: 27px/1.15 'Future Display', Arial, sans-serif; color: #b9f7ef; }
-#map-page #map-side h3 { color: #e5c4f4; }
-#map-page #itinerary-choice { margin: 0 0 20px; padding: 12px 0; border: 0; }
-#itinerary-choice legend { margin-bottom: 10px; color: #aec7d9; font: 10px 'Future Mono', monospace; text-transform: uppercase; }
-#map-page #itinerary-choice label { display: block; margin: 8px 0; padding: 11px 9px; border: 1px solid #355365; border-radius: 2px 12px 2px 12px; background: #102435; font-size: 13px; cursor: pointer; transition: background 200ms, border-color 200ms; }
-#itinerary-choice input { accent-color: #71f1df; margin-right: 7px; }
-#map-page #itinerary-choice label:hover, #map-page #itinerary-choice label:focus-within { border-color: #8cebdd; background: #1c3849; }
-#map-page #itinerary-choice label:has(input:checked) { border-color: #8bf1e4; background: #19414a; box-shadow: inset 3px 0 #8bf1e4; }
-#map-page #route-info p { color: #bccbdb; font-size: 14px; }
-#map-page #start-link { display: inline-block; margin: 14px 0; padding: 9px 13px; border: 1px solid #9af4e5; border-radius: 2px 14px; background: #143c48; color: #c4fff4; font-size: 14px; text-decoration: none; }
-#map-page #start-link:hover { background: #295260; }
-#map-page #map-side ul, #map-page #map-side ol { margin: 10px 0; padding-left: 22px; }
-#map-side li { padding: 8px 0 10px 3px; border-bottom: 1px solid #324153; font-size: 14px; }
-#map-side li::marker { color: #d3a9e8; }
-#map-side .room-swatch { border-radius: 50%; }
+
+#map-page #map-side {
+  min-width: 0;
+  min-height: 0;
+  max-width: none;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+#map-side::before {
+  content: "STORY ENGINE / 06";
+  display: block;
+  margin-bottom: 12px;
+  font: 10px "Future Mono", monospace;
+}
+
+#map-page #map-side h1 {
+  margin: 0 0 23px;
+  font: 38px/1 "Future Display", Arial, sans-serif;
+  color: #efffff;
+}
+
+#map-page #map-side h2 {
+  margin: 25px 0 12px;
+  padding-top: 16px;
+  border-top: 1px solid #55728388;
+  font: 27px/1.15 "Future Display", Arial, sans-serif;
+  color: #b9f7ef;
+}
+
+#map-page #map-side h3 {
+  color: #e5c4f4;
+}
+
+#map-page #itinerary-choice {
+  margin: 0 0 20px;
+  border: 0;
+}
+
+#itinerary-choice legend {
+  margin-bottom: 10px;
+  color: #aec7d9;
+  font: 10px "Future Mono", monospace;
+  text-transform: uppercase;
+}
+
+#map-page #itinerary-choice label {
+  display: block;
+  border: 1px solid #355365;
+  border-radius: 2px 12px 2px 12px;
+  background: #102435;
+  cursor: pointer;
+  transition: background 200ms, border-color 200ms;
+}
+
+#itinerary-choice input {
+  accent-color: #71f1df;
+  margin-right: 7px;
+}
+
+#map-page #itinerary-choice label:hover, #map-page #itinerary-choice label:focus-within {
+  border-color: #8cebdd;
+  background: #1c3849;
+}
+
+#map-page #itinerary-choice label:has(input:checked) {
+  box-shadow: inset 3px 0 #8bf1e4;
+}
+
+#map-page #start-link {
+  border: 1px solid #9af4e5;
+  border-radius: 2px 14px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+#map-page #map-side ul, #map-page #map-side ol {
+  margin: 10px 0;
+  padding-left: 22px;
+}
+
+#map-side li {
+  padding: 8px 0 10px 3px;
+  border-bottom: 1px solid #324153;
+  font-size: 14px;
+}
+
+#map-side li::marker {
+  color: #d3a9e8;
+}
+
+#map-side .room-swatch {
+  border-radius: 50%;
+}
+
 /* 侧栏底部的原创虚拟入口：环形空间、网格地面与跨时代人物轮廓。
    使用普通文档流，必须滑到目录最底部才看到，不覆盖链接。 */
+
 #map-side::after {
-  content: 'OLTRE LO SCHERMO / MEMORIE CONDIVISE';
+  content: "OLTRE LO SCHERMO / MEMORIE CONDIVISE";
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -123,86 +325,1059 @@ body #map-page { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap
   padding: 13px 10px;
   border: 1px solid #79b8c7;
   border-radius: 32px 3px 32px 3px;
-  background: #081326 url('../assets/img/themes/future-memory-portal.svg') center / contain no-repeat;
+  background: #081326 url("../assets/img/themes/future-memory-portal.svg") center / contain no-repeat;
   box-shadow: inset 0 0 22px #70dedb12, 0 0 18px #56c7dd12;
   color: #c8fff4;
-  font: 9px/1.8 'Future Mono', monospace;
+  font: 9px/1.8 "Future Mono", monospace;
   letter-spacing: .08em;
   text-align: center;
 }
-/* 4. 展品像悬浮的档案，照片本身保持原色和完整比例。 */
-#item-main { flex: 1; min-height: 0; overflow-y: auto; padding: 24px; }
-#item-layout { max-width: 1150px; margin: auto; padding: 30px; border: 1px solid #5d9ba8; border-radius: 28px 3px; background: #0c1b2bee; display: grid; }
-#item-main h1 { margin: 0 0 18px; font: 46px/1.08 'Future Display', Arial, sans-serif; color: #b2fff1; overflow-wrap: anywhere; }
-#item-context { color: #c8c1dc; padding-bottom: 17px; border-bottom: 1px solid #385f71; }
-#item-media img { float: left; width: 43%; height: auto; margin: 10px 30px 24px 0; padding: 8px; border: 1px solid #7bbabf; background: #162638; box-shadow: 0 0 30px #50c5cd1a; }
-#item-text { line-height: 1.85; overflow-wrap: anywhere; }
-.item-rights { clear: both; padding-top: 20px; color: #adc1d0; }
-#item-media iframe { width: 100%; height: 340px; border: 1px solid #75b5bd; margin: 20px 0; }
-body > footer { flex-shrink: 0; padding: 12px 24px; background: #101b30; border-top: 1px solid #42667b; }
-footer nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-button { min-height: 44px; padding: 9px 19px; border: 1px solid #7acecb; border-radius: 2px 13px; background: #133447; color: #d8fff7; font: 12px 'Future Mono', monospace; cursor: pointer; }
-button:hover:not(:disabled) { background: #285465; }
-button:disabled { opacity: .4; cursor: default; }
-/* 漂浮很缓慢；系统选择减少动态时停止。 */
-@keyframes spatial-orbit { from { translate: 0 0; opacity: .4; } to { translate: -12px 8px; opacity: .85; } }
-@media (max-width: 1050px) {
-  body #map-page { grid-template-columns: minmax(0, 1fr) 290px; gap: 16px; }
-  #map-page #map-side { padding: 16px; }
-  body > header::before { font-size: 36px; }
-}
-@media (max-width: 700px) {
-  body > header { height: 205px; margin: 10px 12px 0; padding: 150px 8px 8px; border-radius: 3px 25px 3px 3px; }
-  body > header::before { content: 'CINEMA\A SENZA\A SCHERMO'; top: 24px; left: 14px; font-size: clamp(20px, 5vw, 28px); }
-  body > header::after { top: 116px; left: 14px; font-size: 6px; letter-spacing: 0; }
-  header nav { gap: 8px; padding: 5px; }
-  header label { font-size: 8px; }
-  #theme-select { width: 0; font-size: 10px; }
 
-  header nav::before { left: 28%; right: 0; top: 35px; height: 82px; }
-  header nav::after { left: 38%; right: 0; top: 77px; height: 55px; }
-  body #map-page { grid-template-columns: minmax(0, 1fr); grid-template-rows: 44% minmax(0, 1fr); gap: 12px; padding: 12px; }
-  #map-page #map-stage { padding: 12px; border-radius: 22px 3px; }
-  #map-stage::before { font-size: 8px; padding-bottom: 8px; letter-spacing: .04em; }
-  #map-stage::after { flex-basis: 40px; }
-  #map-page #map-side h1 { font-size: 30px; }
-  #item-main { padding: 12px; }
-  #item-layout { padding: 18px; }
-  #item-main h1 { font-size: 34px; }
-  #item-media img { float: none; width: 100%; margin: 12px 0 22px; }
-  #item-media iframe { height: 230px; }
+/* 4. 展品像悬浮的档案，照片本身保持原色和完整比例。 */
+
+#item-main {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 24px;
 }
+
+#item-layout {
+  max-width: 1150px;
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #5d9ba8;
+  border-radius: 28px 3px;
+  background: #0c1b2bee;
+  display: grid;
+}
+
+#item-main h1 {
+  margin: 0 0 18px;
+  font: 46px/1.08 "Future Display", Arial, sans-serif;
+  color: #b2fff1;
+  overflow-wrap: anywhere;
+}
+
+#item-context {
+  color: #c8c1dc;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #385f71;
+}
+
+#item-media img {
+  padding: 8px;
+  border: 1px solid #7bbabf;
+  background: #162638;
+  box-shadow: 0 0 30px #50c5cd1a;
+}
+
+#item-text {
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+
+.item-rights {
+  clear: both;
+  padding-top: 20px;
+  color: #adc1d0;
+}
+
+#item-media iframe {
+  width: 100%;
+  border: 1px solid #75b5bd;
+  margin: 20px 0;
+}
+
+body > footer {
+  flex-shrink: 0;
+  padding: 12px 24px;
+  background: #101b30;
+  border-top: 1px solid #42667b;
+}
+
+footer nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+button {
+  min-height: 44px;
+  padding: 9px 19px;
+  border: 1px solid #7acecb;
+  border-radius: 2px 13px;
+  background: #133447;
+  color: #d8fff7;
+  font: 12px "Future Mono", monospace;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: #285465;
+}
+
+button:disabled {
+  opacity: .4;
+  cursor: default;
+}
+
+/* 漂浮很缓慢；系统选择减少动态时停止。 */
+
+@keyframes spatial-orbit {
+  from {
+    translate: 0 0;
+    opacity: .4;
+  }
+
+  to {
+    translate: -12px 8px;
+    opacity: .85;
+  }
+}
+
+@media (max-width: 700px) {
+  header nav {
+    padding: 5px;
+  }
+
+  header label {
+    font-size: 8px;
+  }
+
+  #theme-select {
+    width: 0;
+    font-size: 10px;
+  }
+
+  #map-stage::after {
+    flex-basis: 40px;
+  }
+
+  #item-main {
+    padding: 12px;
+  }
+
+  #item-layout {
+    padding: 18px;
+  }
+
+  #item-main h1 {
+    font-size: 34px;
+  }
+}
+
 @media (max-height: 650px) and (min-width: 701px) {
-  body > header { margin-top: 10px; }
-  body > header::before { top: 22px; font-size: 36px; }
-  body > header::after { top: 115px; }
-  header nav::before, header nav::after { height: 75px; top: 28px; }
-  #map-stage::after { flex-basis: 50px; }
+  header nav::before, header nav::after {
+    height: 75px;
+    top: 28px;
+  }
+
+  #map-stage::after {
+    flex-basis: 50px;
+  }
 }
+
 @media (prefers-reduced-motion: reduce) {
-  body > header, header nav::before, header nav::after { animation: none; }
-  #map-svg .marker-dot, #map-page #itinerary-choice label { transition: none; }
+  body > header, header nav::before, header nav::after {
+    animation: none;
+  }
+
+  #map-svg .marker-dot, #map-page #itinerary-choice label {
+    transition: none;
+  }
 }
+
 /* River: match the team's current HTML ids (HTML-IDS.md).
    Keep the existing two-column grid and independently scrolling media/text.
    仅调整 CSS 选择器和外观，不修改队友的 HTML 或交互代码。 */
-body > header { display: block; }
-header nav { width: 100%; }
-#item-main { overflow: hidden; }
+
+body > header {
+  display: block;
+}
+
+header nav {
+  width: 100%;
+}
+
+#item-main {
+  overflow: hidden;
+}
+
 #item-main #item-layout {
-  width: 100%; max-width: none; height: 100%; min-height: 0;
-  margin: 0; overflow: hidden;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
 }
-#item-media, #item-info { min-width: 0; min-height: 0; overflow: auto; }
-#item-info { padding: 0 12px 16px; }
+
+#item-media, #item-info {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
+
+#item-info {
+  padding: 0 12px 16px;
+}
+
 #item-media img {
-  float: none; width: auto; height: auto; max-width: 100%; max-height: 100%;
-  margin: 0; flex-shrink: 0; transform: none;
+  float: none;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  flex-shrink: 0;
+  transform: none;
 }
-#item-media.multi img { max-height: none; }
-#item-media iframe { height: auto; aspect-ratio: 16 / 9; max-height: 100%; }
+
+#item-media.multi img {
+  max-height: none;
+}
+
+#item-media iframe {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-height: 100%;
+}
+
 @media (max-width: 700px) {
-  #item-main #item-layout { padding: 12px; gap: 12px; }
-  #item-info { padding: 0 6px 12px; }
-  #item-media img { max-width: 100%; }
+  #item-main #item-layout {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  #item-info {
+    padding: 0 6px 12px;
+  }
+
+  #item-media img {
+    max-width: 100%;
+  }
+}
+
+/* River / spatial-cinema reading layout.
+   Compact masthead + larger projection + readable story cards + real collection stream.
+   All navigation, item positions and the collection animation stay with the team's code. */
+
+body > header {
+  margin: 14px 20px 0;
+  padding: 122px 12px 8px;
+  border-radius: 3px 26px 3px 3px;
+}
+
+body > header::before {
+  z-index: 0;
+  line-height: .95;
+}
+
+body > header::after {
+  font-size: 8px;
+}
+
+body > header nav {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  border: 0;
+  padding: 5px 8px;
+}
+
+body > header #theme-select {
+  background: transparent;
+  color: #e9ffff;
+  border-bottom: 1px solid #7df4e844;
+  font-size: 11px;
+  text-shadow: 0 1px 4px #000;
+}
+
+body > header #theme-select option {
+  background: #102339;
+  color: #eafaff;
+  text-shadow: none;
+}
+
+header nav::before {
+  top: -104px;
+  left: 27%;
+  right: 3%;
+  height: 90px;
+}
+
+header nav::after {
+  top: -85px;
+  left: 38%;
+  right: 0;
+  height: 65px;
+}
+
+body #map-page {
+  grid-template-columns: minmax(0, 1fr) clamp(370px, 30vw, 530px);
+  gap: 20px;
+  padding: 18px 20px;
+}
+
+#map-page #map-stage {
+  padding: 16px 18px;
+  border: 1px solid #65c7c8aa;
+  border-radius: 24px 3px 24px 3px;
+  background-color: #081a2a;
+  background-image: radial-gradient(ellipse at 22% 12%, #37c9c224, transparent 55%),
+    radial-gradient(ellipse at 90% 90%, #9c73b924, transparent 50%),
+    url("../assets/img/themes/future-spatial-grid.svg");
+  box-shadow: inset 0 0 55px #51dedb0d, inset 0 -3px #68e4df44, 0 5px 18px #0005;
+}
+
+#map-stage::before {
+  content: "2035 / SPAZIO NARRATIVO — RENZO RENZI";
+  padding: 4px 0 11px;
+  font-size: 10px;
+  letter-spacing: .1em;
+}
+
+#map-page #map-svg {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#map-svg > image {
+  opacity: .95;
+}
+
+/* Quiet blue reading surfaces; luminous accents stay at card boundaries. */
+
+#map-page #map-side {
+  padding: 22px 24px;
+  border: 1px solid #7384b0a6;
+  border-radius: 3px 22px 3px 22px;
+  background: linear-gradient(155deg, #102b3a, #0c1427 68%);
+  box-shadow: inset 3px 0 #7fe8df2e, 0 5px 18px #0004;
+  scrollbar-color: #7cb9bf #0c1a2b;
+}
+
+#map-side::before {
+  color: #d8b9f2;
+  font-size: 10px;
+  letter-spacing: .14em;
+}
+
+#map-page #map-side h1 {
+  font-size: 34px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #70b8bd66;
+}
+
+#map-page #itinerary-choice {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+#map-page #itinerary-choice label {
+  padding: 12px;
+  margin: 8px 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+#map-page #itinerary-choice label:has(input:checked) {
+  background: #20515a;
+  border-color: #8bf1e4;
+}
+
+#map-side #route-info, #map-side .room-section {
+  margin: 22px 0 18px;
+  padding: 18px;
+  border: 1px solid #537888;
+  border-top-color: #8dd5d2;
+  border-radius: 3px 18px 3px 12px;
+  background: linear-gradient(145deg, #173245, #14263b);
+  color: #dceaf3;
+  box-shadow: 0 4px 12px #0003;
+}
+
+#map-page #route-info h2 {
+  margin: 0 0 15px;
+  padding: 0 0 13px;
+  border-top: 0;
+  border-bottom: 1px solid #63929966;
+  color: #ecffff;
+  font-size: 29px;
+  line-height: 1.15;
+}
+
+#map-page #route-info p {
+  color: #c7d8e5;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+#map-page #start-link {
+  display: block;
+  padding: 12px 10px;
+  margin: 18px 0;
+  background: #214d5a;
+  color: #d8fff7;
+  border-color: #82e5d8;
+  font: 12px/1.5 "Future Mono", monospace;
+  text-align: center;
+}
+
+#map-page #start-link:hover {
+  background: #2b6370;
+}
+
+/* Scene numbers describe the existing ordered itinerary, not simulated live data. */
+
+#map-side #route-stops {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  counter-reset: scene;
+}
+
+#map-page #route-stops li {
+  position: relative;
+  counter-increment: scene;
+  padding: 13px 11px 13px 46px;
+  margin: 0 0 10px;
+  border: 1px solid #456579;
+  border-left: 2px solid #67c8c0;
+  border-radius: 2px 12px 2px 8px;
+  background: #1c3549;
+  font-size: 16px;
+  line-height: 1.6;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+#route-stops li::before {
+  content: counter(scene, decimal-leading-zero);
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  padding: 2px 4px;
+  border: 1px solid #78c0c566;
+  border-radius: 3px;
+  background: #0d2234;
+  color: #b8fbeb;
+  font: 10px/1.5 "Future Mono", monospace;
+}
+
+#map-side #route-stops a {
+  display: block;
+  color: #e3f3fa;
+  text-decoration: none;
+}
+
+#map-page #route-stops li:hover, #map-page #route-stops li:focus-within {
+  background: #26495b;
+  border-color: #92e7db;
+}
+
+#map-side #route-stops a:hover {
+  color: #c9fff1;
+  text-decoration: underline;
+}
+
+#map-page #room-list-heading {
+  color: #c9b5ea;
+  border-top-color: #6f6b9477;
+  font-size: 27px;
+}
+
+#map-page #map-side .room-section h3 {
+  margin: 0 0 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #6a9aa080;
+  font: 23px/1.25 "Future Display", Arial, sans-serif;
+  color: #ecffff;
+}
+
+#map-side .room-section p {
+  color: #c7d8e5;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+#map-side .room-section li {
+  font-size: 16px;
+  line-height: 1.65;
+  border-bottom-color: #466074;
+}
+
+#map-side .room-section a {
+  color: #a9f0e8;
+}
+
+#map-side .room-transition {
+  padding: 0 7px;
+  color: #cbb4df;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* The former decorative world ribbon now sits behind the real collection links. */
+
+body > .indexslider {
+  flex: 0 0 132px;
+  height: 132px;
+  min-height: 0;
+  margin: 0 20px 12px;
+  padding: 0;
+  border: 1px solid #70c8ca;
+  border-top: 2px solid #91e7dc;
+  border-radius: 16px 3px 16px 3px;
+  color: #dffdf7;
+  background-color: #081526;
+  background-image: linear-gradient(#07142688, #071426b3), url("../assets/img/themes/future-stage-viewport-v2.png");
+  background-size: 100% 100%, 100% auto;
+  background-position: center, center 52%;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 18px #5de4dd12;
+}
+
+.indexslider .indexslide-track {
+  height: 100%;
+  padding-top: 0;
+  align-items: stretch;
+}
+
+.indexslider .index-slide {
+  width: 220px;
+  height: 100%;
+  padding: 8px 12px;
+  border-right: 1px solid #85cbc74a;
+  background: #0b1b2a55;
+}
+
+.indexslider .index-slide img {
+  min-height: 0;
+  max-height: 100%;
+  object-fit: contain;
+  box-shadow: 0 0 12px #60c9cf16;
+}
+
+.indexslider .index-caption {
+  padding-top: 5px;
+  color: #dcfff5;
+  font: 10px/1.4 "Future Mono", monospace;
+  text-shadow: 0 1px 3px #000;
+}
+
+.indexslider .index-slide:hover, .indexslider .index-slide:focus-visible {
+  background: #2a5362aa;
+  color: #e1c5f5;
+}
+
+@media (max-width: 1100px) and (min-width: 701px) {
+  body #map-page {
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 16px;
+  }
+
+  #map-page #map-side {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  body > header {
+    margin: 10px 12px 0;
+    padding: 94px 6px 7px;
+  }
+
+  body > header::before {
+    content: "CINEMA\A SENZA SCHERMO";
+  }
+
+  header nav {
+    gap: 7px;
+  }
+
+  header nav::before {
+    top: -75px;
+    left: 35%;
+    height: 62px;
+  }
+
+  header nav::after {
+    top: -53px;
+    left: 42%;
+    height: 40px;
+  }
+
+  body > header #theme-select {
+    font-size: 10px;
+  }
+
+  body #map-page {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(140px, 42%) minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px;
+  }
+
+  #map-page #map-stage {
+    padding: 11px;
+    border-radius: 18px 3px;
+  }
+
+  #map-stage::before {
+    font-size: 8px;
+    letter-spacing: .04em;
+    padding-bottom: 9px;
+  }
+
+  #map-page #map-side {
+    padding: 16px;
+  }
+
+  #map-page #map-side h1 {
+    font-size: 29px;
+  }
+
+  #map-side #route-info, #map-side .room-section {
+    padding: 14px;
+  }
+
+  #map-page #route-info h2 {
+    font-size: 25px;
+  }
+
+  #map-page #route-stops li {
+    font-size: 15px;
+  }
+
+  body > .indexslider {
+    flex-basis: 100px;
+    height: 100px;
+    margin: 0 12px 10px;
+  }
+
+  .indexslider .index-slide {
+    padding: 5px 10px;
+  }
+}
+
+@media (max-height: 650px) and (min-width: 701px) {
+  body > header {
+    margin-top: 10px;
+  }
+
+  body > .indexslider {
+    flex-basis: 108px;
+    height: 108px;
+  }
+
+  body #map-page {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #map-page #route-stops li {
+    transition: none;
+  }
+}
+
+/* River / first-person virtual cinema. The panoramic artwork spans the
+   entire masthead; readable hints and feedback remain real CSS, not image text. */
+
+body > header {
+  height: 220px;
+  padding-top: 164px;
+  background-image: linear-gradient(90deg, #0612228c, #06122200 40%), url("../assets/img/themes/future-vr-panorama-v3.png");
+  background-size: 100% 100%, 100% auto;
+  background-position: center, center calc(50% - 46px);
+}
+
+body > header::before {
+  top: 19px;
+  left: 24px;
+  font-size: 32px;
+  letter-spacing: .04em;
+  color: #efffff;
+  text-shadow: 0 0 6px #c8fff4, 0 0 20px #48e2db80;
+  animation: vr-title-glow 4s ease-in-out infinite alternate;
+}
+
+body > header::after {
+  content: "2035 / MEMORIE DA ABITARE\A SCEGLI UN PERCORSO · ESPLORA LA MAPPA";
+  white-space: pre-line;
+  top: 94px;
+  left: 25px;
+  padding: 5px 8px;
+  border-left: 1px solid #8ee9de;
+  background: #07162973;
+  color: #c3fff1;
+  font: 10px/1.8 "Future Mono", monospace;
+  letter-spacing: .06em;
+  text-shadow: 0 0 7px #66dfe9;
+}
+
+body > header nav::before, body > header nav::after {
+  animation: none;
+  opacity: .3;
+}
+
+body > header #theme-select {
+  border-bottom-color: #a4f6e980;
+}
+
+body > header #theme-select:hover,
+body > header #theme-select:focus-visible {
+  background: #071b2b66;
+  box-shadow: 0 0 15px #71f4de33;
+  border-bottom-color: #c6fff1;
+}
+
+#map-page #start-link {
+  animation: vr-entry-glow 4.5s ease-in-out infinite alternate;
+}
+
+#map-page #start-link:focus-visible {
+  outline: 3px solid #e4bdf5;
+  outline-offset: 3px;
+}
+
+#map-page #map-side::after {
+  content: "MEMORIE DA ABITARE / CINEMA 2035";
+  height: 260px;
+  padding: 14px 10px;
+  margin-top: 26px;
+  border: 1px solid #83c9d4;
+  border-radius: 24px 3px 24px 3px;
+  background-color: #081527;
+  background-image: linear-gradient(0deg, #061427eb, #06142700 50%), url("../assets/img/themes/future-vr-threshold-v3.png");
+  background-size: 100% 100%, cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 22px #6fd8e01a;
+  color: #d9fff6;
+  font: 9px/1.8 "Future Mono", monospace;
+  letter-spacing: .08em;
+  text-shadow: 0 0 8px #8ce9dc;
+}
+
+@keyframes vr-title-glow {
+  from {
+    text-shadow: 0 0 5px #b9fff1, 0 0 14px #42c4d34d;
+  }
+
+  to {
+    text-shadow: 0 0 8px #d4fff5, 0 0 27px #66e7df9c;
+  }
+}
+
+@keyframes vr-entry-glow {
+  from {
+    box-shadow: 0 0 5px #6adfce19, inset 0 0 5px #70cfda0a;
+  }
+
+  to {
+    box-shadow: 0 0 17px #6adfce50, inset 0 0 10px #70cfda19;
+  }
+}
+
+@media (max-width: 700px) {
+  body > header {
+    height: 174px;
+    padding-top: 118px;
+    background-size: 100% 100%, 100% auto;
+    background-position: center, center calc(50% - 27px);
+  }
+
+  body > header::before {
+    top: 13px;
+    left: 15px;
+    font-size: 22px;
+  }
+
+  body > header::after {
+    top: 67px;
+    left: 16px;
+    font-size: 6px;
+    line-height: 1.7;
+    letter-spacing: 0;
+    padding: 3px 5px;
+  }
+
+  #map-page #map-side::after {
+    height: 225px;
+    font-size: 8px;
+  }
+}
+
+@media (max-height: 650px) and (min-width: 701px) {
+  body > header {
+    height: 176px;
+    padding-top: 120px;
+    background-position: center, center calc(50% - 36px);
+  }
+
+  body > header::before {
+    top: 13px;
+    font-size: 27px;
+  }
+
+  body > header::after {
+    top: 76px;
+    font-size: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body > header::before, #map-page #start-link {
+    animation: none;
+  }
+}
+
+/* River / left visual column + full-height reading column.
+   CSS grid places existing elements; no team HTML/JS or navigation changes. */
+
+@media (min-width: 901px) {
+  body:has(> #map-page) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(360px, 30vw, 530px);
+    grid-template-rows: 220px minmax(0, 1fr) 132px;
+    grid-template-areas: "masthead reading" "plan reading" "collection collection";
+    gap: 18px 20px;
+    padding: 14px 20px 12px;
+  }
+
+  body:has(> #map-page) > header {
+    grid-area: masthead;
+    min-width: 0;
+    width: 100%;
+    height: 220px;
+    margin: 0;
+    padding-top: 164px;
+  }
+
+  body:has(> #map-page) #map-page {
+    display: contents;
+  }
+
+  body:has(> #map-page) #map-stage {
+    grid-area: plan;
+    min-width: 0;
+    min-height: 0;
+  }
+
+  body:has(> #map-page) #map-side {
+    grid-area: reading;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+    overflow-y: auto;
+  }
+
+  body:has(> #map-page) > .indexslider {
+    grid-area: collection;
+    min-width: 0;
+    height: 132px;
+    margin: 0;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  body:has(> #map-page) {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 16px;
+  }
+
+  body:has(> #map-page) #map-side {
+    padding: 17px;
+  }
+}
+
+@media (max-height: 650px) and (min-width: 901px) {
+  body:has(> #map-page) {
+    grid-template-rows: 176px minmax(0, 1fr) 108px;
+    gap: 12px 18px;
+    padding-top: 10px;
+  }
+
+  body:has(> #map-page) > header {
+    height: 176px;
+    padding-top: 120px;
+  }
+
+  body:has(> #map-page) > .indexslider {
+    height: 108px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  body:has(> #map-page) > header::before {
+    font-size: 28px;
+    left: 17px;
+  }
+
+  body:has(> #map-page) > header::after {
+    left: 18px;
+    font-size: 8px;
+  }
+}
+
+/* River / a transparent light projection, not an opaque floor-plan print.
+   The PNG uses the exact original SVG viewBox. contain + centre matches meet.
+   Keep original markup, source image, marker coordinates and navigation untouched. */
+
+#map-page #map-svg {
+  position: relative;
+  z-index: 1;
+  background: url("../assets/img/themes/future-map-hologram-v5.png") center / contain no-repeat;
+  filter: drop-shadow(0 0 8px #5bf3e633) drop-shadow(0 0 22px #4da6ff26);
+  animation: vr-map-float 7s ease-in-out infinite;
+  transform-origin: center;
+}
+
+#map-stage #map-svg > image {
+  opacity: 0;
+  filter: none;
+  pointer-events: none;
+}
+
+#map-stage::before {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 0 9px #71f5e755;
+}
+
+/* River / quiet firefly points behind the projection, never an input layer. */
+
+#map-stage::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 48px 8px 8px;
+  z-index: 0;
+  flex: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 20px 2px;
+  pointer-events: none;
+  background: url("../assets/img/themes/future-map-fireflies.svg") center / 100% 100% no-repeat;
+  animation: none;
+}
+
+#map-svg .marker-dot {
+  fill: #0c34488c;
+  stroke: #a4fff1;
+  stroke-width: 9;
+  filter: drop-shadow(0 0 9px #52f8df) drop-shadow(0 0 18px #5cc9ff77);
+  transition: fill 200ms ease, stroke 200ms ease, filter 200ms ease;
+}
+
+#map-svg .marker-num {
+  fill: #efffff;
+}
+
+#map-svg .marker:hover .marker-dot,
+#map-svg .marker:focus .marker-dot,
+#map-svg .marker:focus-visible .marker-dot {
+  fill: #554c8dcc;
+  stroke: #fff0ff;
+  stroke-width: 13;
+  filter: drop-shadow(0 0 14px #b9fff5) drop-shadow(0 0 26px #c993ff);
+}
+
+#map-svg .route-line {
+  stroke: #94fff0;
+  opacity: .8;
+  filter: drop-shadow(0 0 5px #68eddb88);
+  animation: vr-route-flow 14s linear infinite;
+}
+
+@keyframes vr-map-float {
+  0%, 100% {
+    transform: translateY(8px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes vr-route-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -176;
+  }
+}
+
+@media (max-width: 700px) {
+  #map-stage::after {
+    inset: 36px 5px 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #map-page #map-svg {
+    animation: none;
+    transform: none;
+  }
+
+  #map-stage::after {
+    animation: none;
+  }
+
+  #map-svg .route-line {
+    animation: none;
+  }
+
+  #map-svg .marker-dot {
+    transition: none;
+  }
+}
+
+/* River / same three room colours in the projection, markers and reading cards.
+   Match the existing data colour on each swatch; do not change team data or JS.
+   The single !important overrides the inline swatch colour assigned by map.js. */
+
+#map-side .room-section:has(.room-swatch[style*="205, 212, 219"]),
+#map-svg .marker[aria-label$="(Renzo Renzi, the man / soldier)"] {
+  --vr-room-colour: #7dc7ff;
+}
+
+#map-side .room-section:has(.room-swatch[style*="187, 203, 194"]),
+#map-svg .marker[aria-label$="(Renzo Renzi, the filmmaker)"] {
+  --vr-room-colour: #78f2c9;
+}
+
+#map-side .room-section:has(.room-swatch[style*="242, 242, 215"]),
+#map-svg .marker[aria-label$="(Renzo Renzi, the friend: Renzi & Fellini)"] {
+  --vr-room-colour: #ffe3a1;
+}
+
+#map-side .room-section:has(.room-swatch) {
+  border-left: 2px solid var(--vr-room-colour);
+}
+
+#map-side .room-swatch {
+  background: var(--vr-room-colour) !important;
+  box-shadow: 0 0 12px var(--vr-room-colour);
+}
+
+#map-side .room-section:has(.room-swatch) h3 {
+  color: var(--vr-room-colour);
+}
+
+#map-svg .marker .marker-dot {
+  stroke: var(--vr-room-colour, #a4fff1);
+  filter: drop-shadow(0 0 9px var(--vr-room-colour, #52f8df));
 }

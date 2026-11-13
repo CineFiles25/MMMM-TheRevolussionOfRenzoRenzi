@@ -1,0 +1,11 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" preserveAspectRatio="none">
+<!-- Original decorative drawing: rain-marked paper, repaired tears and worn edges. -->
+<defs><radialGradient id="damp"><stop stop-color="#876c44" stop-opacity=".20"/><stop offset=".62" stop-color="#947d53" stop-opacity=".09"/><stop offset="1" stop-color="#947d53" stop-opacity="0"/></radialGradient><linearGradient id="edge" x2="0" y2="1"><stop stop-color="#856b42" stop-opacity="0"/><stop offset="1" stop-color="#856b42" stop-opacity=".22"/></linearGradient></defs>
+<ellipse cx="1100" cy="590" rx="290" ry="180" fill="url(#damp)"/><ellipse cx="70" cy="225" rx="140" ry="210" fill="url(#damp)"/><ellipse cx="960" cy="30" rx="210" ry="80" fill="url(#damp)"/>
+<path d="M0 663Q115 643 210 667T430 663T650 672T900 657T1200 670V700H0Z" fill="url(#edge)"/>
+<g fill="none" stroke="#99794f" stroke-opacity=".22"><path d="M0 540Q35 532 64 554T135 561M0 548Q38 541 64 562T138 570M1040 700l22-39-8-33 17-31-4-46M1046 700l23-38-8-34 18-28"/><path d="M921 0l-7 42 11 24-4 29M42 0l5 68-9 32 8 44" stroke-opacity=".12"/></g>
+<!-- Small linen repairs sit at the edges, away from the route markers. -->
+<g transform="translate(1030 625) rotate(-12)"><path fill="#c9b58c" fill-opacity=".58" stroke="#9a8259" stroke-opacity=".35" d="M0 0H112L108 42H-4Z"/><path d="M5 7H104M3 34H101" stroke="#746c55" stroke-opacity=".5" stroke-dasharray="3 4"/><path d="M9 12H103M8 17H102M7 22H101M6 27H100" stroke="#eee5d0" stroke-opacity=".5"/></g>
+<g transform="translate(10 185) rotate(8)"><path fill="#d4c7a7" fill-opacity=".65" stroke="#a28f6d" stroke-opacity=".3" d="M0 0H42V95H-3Z"/><path d="M6 7V88M34 7V88" stroke="#7c725a" stroke-opacity=".5" stroke-dasharray="3 4"/></g>
+<g fill="#85633d" fill-opacity=".13"><circle cx="1150" cy="605" r="3"/><circle cx="1138" cy="615" r="2"/><circle cx="1090" cy="666" r="2"/><circle cx="62" cy="548" r="2"/><circle cx="82" cy="561" r="3"/></g>
+</svg>
