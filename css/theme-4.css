@@ -40,7 +40,6 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: #dfe2df;
   color: #202629;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 16px;
@@ -83,9 +82,8 @@ body > header {
   border-image-slice: 20;
   border-image-repeat: round;
   background-color: #161b1e;
-  background-image: url("../assets/img/themes/fellini-contact-labels.svg"), url("../assets/items/photo_la_strada_woman.jpg"), url("../assets/img/themes/fellini-dolce-vita-trevi.jpg"), url("../assets/img/themes/fellini-eight-half.jpg"), url("../assets/img/themes/fellini-director-1965.jpg");
-  background-repeat: no-repeat;
-  box-shadow: 4px 5px 0 #aeb4b1;
+  background-image: url("../assets/img/themes/fellini-film-grain-soft.svg"), url("../assets/img/themes/fellini-contact-labels.svg"), url("../assets/items/photo_la_strada_woman.jpg"), url("../assets/img/themes/fellini-dolce-vita-trevi.jpg"), url("../assets/img/themes/fellini-eight-half.jpg"), url("../assets/img/themes/fellini-director-1965.jpg");
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
 }
 
 /* 像贴在接触印样上的档案纸条，字小于面孔，不占据整个视觉中心。 */
@@ -186,8 +184,6 @@ body #map-page {
 
 #map-stage::after {
   align-items: flex-end;
-  flex: 0 0 82px;
-  padding: 8px;
   border-top: 5px solid #161b1e;
   background-color: #202629;
   background-image: linear-gradient(transparent 40%, rgba(0,0,0,0.8)), url("../assets/items/photo_lastrada_premiere.png");
@@ -647,8 +643,8 @@ body > header {
   margin: 14px 20px 0;
   padding: 108px 7px 6px;
   border-width: 8px;
-  background-size: 0 0, 22% auto, 30% auto, 25% auto, 23% auto;
-  background-position: center, left 30%, 31.43% 45%, 69.33% 25%, right 27%;
+  background-size: 240px 240px, 0 0, 22% auto, 30% auto, 25% auto, 23% auto;
+  background-position: left top, center, left 30%, 31.43% 45%, 69.33% 25%, right 27%;
 }
 
 body > header::before {
@@ -672,10 +668,6 @@ body #map-page {
   padding-bottom: 8px;
 }
 
-#map-stage::after {
-  content: none;
-  display: none;
-}
 
 #map-stage #map-svg {
   flex: 1 1 0;
@@ -849,9 +841,10 @@ body > header #theme-select:focus-visible {
    strip. The dark overlay separates moving exhibits from the archive photo. */
 
 body > .indexslider {
-  background-image: linear-gradient(#101719b3, #101719d9), url("../assets/items/photo_lastrada_premiere.png");
-  background-size: cover;
-  background-position: center 35%;
+  background-image: url("../assets/img/themes/fellini-film-grain-soft.svg"), linear-gradient(#101719b3, #101719d9), url("../assets/items/photo_lastrada_premiere.png");
+  background-size: 240px 240px, cover, cover;
+  background-position: left top, center 35%, center 35%;
+  background-repeat: repeat, no-repeat, no-repeat;
   box-shadow: inset 0 0 0 1px #f4efe133;
 }
 
@@ -878,24 +871,21 @@ body > .indexslider {
   border-image: url("../assets/img/themes/fellini-negative-frame.svg") 20 round;
   padding: 15px 18px;
   background-color: #f3efe2;
-  background-image: radial-gradient(ellipse at 0% 8%, #edbe7747, transparent 48%),
-    radial-gradient(ellipse at 100% 100%, #c45a3621, transparent 42%),
-    linear-gradient(135deg, #f8f5eb, #e9e7dc);
-  box-shadow: inset 0 0 28px #675d4321, 4px 5px 0 #aeb4b1;
+  /* One complete projection screen: authentic stills share the surface with the map. */
+  background-image: url("../assets/img/themes/fellini-projection-reel.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #map-stage::before {
-  content: "04 / TAVOLO LUMINOSO — RENZO RENZI";
+  content: "04 / PROIEZIONE — FELLINI × RENZI";
   padding: 5px 0 10px;
   border-bottom: 1px solid #9b927a;
-  color: #70533d;
   font-size: 10px;
   letter-spacing: 1.2px;
 }
 
-#map-stage #map-svg {
-  filter: drop-shadow(0 2px 1px #51432d18);
-}
 
 /* Side perforations stay outside the reading surface. */
 
@@ -904,13 +894,13 @@ body > .indexslider {
   border: 5px solid #161b1e;
   background-color: #20292a;
   color: #eee9da;
-  background-image: repeating-linear-gradient(180deg, #ddd8c9 0 6px, transparent 6px 17px),
+  background-image: url("../assets/img/themes/fellini-film-grain-reading.svg"),
+    repeating-linear-gradient(180deg, #ddd8c9 0 6px, transparent 6px 17px),
     repeating-linear-gradient(180deg, #ddd8c9 0 6px, transparent 6px 17px),
     linear-gradient(160deg, #273032, #151c1e);
-  background-size: 6px 17px, 6px 17px, 100% 100%;
-  background-position: left 7px top, right 7px top, center;
-  background-repeat: repeat-y, repeat-y, no-repeat;
-  box-shadow: 4px 5px 0 #aeb4b1;
+  background-size: 240px 240px, 6px 17px, 6px 17px, 100% 100%;
+  background-position: left top, left 7px top, right 7px top, center;
+  background-repeat: repeat, repeat-y, repeat-y, no-repeat;
   scrollbar-color: #b8ac8e #20292a;
 }
 
@@ -1226,34 +1216,12 @@ body:has(> #map-page) > header::before {
    Animate only the map image; keep its parent drop-shadow and coordinates intact. */
 
 #map-stage #map-svg > image {
-  animation: album-map-develop 4.2s ease-out both;
+  animation: album-screen-map 2s ease-out both;
 }
 
 #map-stage #map-svg > #route,
 #map-stage #map-svg > #markers {
   animation: album-map-ink 4.2s ease-out both;
-}
-
-@keyframes album-map-develop {
-  0% {
-    opacity: .10;
-    filter: contrast(.18) brightness(1.65) blur(2px);
-  }
-
-  38% {
-    opacity: .52;
-    filter: contrast(.55) brightness(1.22) blur(.7px);
-  }
-
-  76% {
-    opacity: .88;
-    filter: contrast(.9) brightness(1.03) blur(.15px);
-  }
-
-  100% {
-    opacity: 1;
-    filter: none;
-  }
 }
 
 @keyframes album-map-ink {
@@ -1285,4 +1253,111 @@ body:has(> #map-page) > header::before {
     opacity: 1;
     filter: none;
   }
+}
+
+/* River / cinema auditorium: dark surroundings and one warm projection surface.
+   Existing contact-sheet photos, film borders and map coordinates stay.
+   Fixed decorative layers do not enter the grid and never intercept controls. */
+body {
+  background-color: #080b0e;
+  background-image: radial-gradient(ellipse at 36% 53%, #35312b, #101316 65%, #080b0e);
+}
+body > header {
+  filter: brightness(.8);
+  box-shadow: 0 6px 20px #0009;
+}
+#map-page #map-side {
+  filter: brightness(.85);
+  box-shadow: 0 7px 22px #0009;
+}
+body > .indexslider {
+  filter: brightness(.8);
+}
+#map-page #map-stage {
+  position: relative;
+  box-shadow: inset 0 0 28px #675d4321, 0 0 28px #f8dfa12b, 0 0 70px #e9d0a51a, 0 14px 28px #000b;
+}
+/* A soft pool of projected light above the photographic screen. */
+#map-stage::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 12px;
+  flex: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: radial-gradient(ellipse at 45% 40%, #fff8d926, transparent 72%);
+  pointer-events: none;
+  opacity: .2;
+  animation: album-projector-light 7s ease-in-out infinite alternate;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 31;
+  pointer-events: none;
+  background-image: radial-gradient(ellipse at 37% 51%, transparent 36%, #05070918 73%, #03050755 100%);
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@keyframes album-projector-light {
+  from { opacity: .16; }
+  to { opacity: .3; }
+}
+@media (max-width: 700px) {
+  body::after {
+    background-image: radial-gradient(ellipse at 50% 32%, transparent 40%, #03050733 100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #map-stage::after { animation: none; opacity: .2; }
+}
+
+/* River / double exposure: the floor plan is projected onto the same film screen.
+   Multiply removes its white paper; film image and map move as a shared surface.
+   Route and marker coordinates stay together, and remain actual clickable SVG. */
+#map-stage #map-svg {
+  filter: none;
+  animation: album-screen-weave .5s steps(3, end) infinite;
+}
+#map-stage #map-svg > image {
+  filter: contrast(.88) brightness(1.14);
+  opacity: .88;
+}
+#map-stage::before {
+  position: relative;
+  z-index: 1;
+  color: #3f352c;
+  text-shadow: 0 1px 3px #fff9;
+}
+@keyframes album-screen-map {
+  from { opacity: .08; filter: contrast(.3) brightness(1.5); }
+  to { opacity: .88; filter: contrast(.88) brightness(1.14); }
+}
+@keyframes album-screen-weave {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(.45px, -.35px); }
+  50% { transform: translate(-.35px, .3px); }
+  75% { transform: translate(.25px, .35px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #map-stage #map-svg { animation: none; transform: none; }
+  #map-stage #map-svg > image {
+    animation: none;
+    opacity: .88;
+    filter: contrast(.88) brightness(1.14);
+  }
+}
+
+/* River / regional film grain: screen .28, header/collection .12, reading .035.
+   No full-window grain or dust. Preserve all existing photos, frames and textures. */
+#map-side #route-info,
+#map-side .room-section,
+#map-side #route-stops li {
+  background-image: url("../assets/img/themes/fellini-film-grain-reading.svg");
+  background-size: 240px 240px;
+  background-repeat: repeat;
 }

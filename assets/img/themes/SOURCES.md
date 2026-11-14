@@ -272,3 +272,56 @@ Four new real photographs downloaded, not AI-generated:
 RAI gallery metadata: https://www.raiplay.it/dl/RaiTV/programmi/json/media/ContentItem-4f99e143-c8f4-4af5-afa6-0b52525693c8.html . These are copyrighted archival/press references, not asserted to be freely licensed or public-domain works.
 - `commedia-amici-miei-cast-1975.jpg`: Amici miei group frame, source file https://commons.wikimedia.org/wiki/File:Amicimiei-cast.jpg . Consult its source rights statement; do not apply the text-page CC licence to the photograph.
 `commedia-map-atmosphere.svg` embeds these four frames plus the two previously credited Fantozzi frames. Twelve-second cycle, two-second offsets, soft masks, light pastel grading, restrained overlapping moments around six peripheral locations. Central map, route data and exhibition contents are unchanged.
+
+
+Theme 3 sidebar refinement: `cinema-deco-reading-inlay.svg` is original code-drawn 1930s-style stepped brass corner decoration with a fully transparent centre. Existing gallery-frame asset reused on the sidebar at its original border width. No historical photograph or background texture replaced.
+
+
+Theme 1 paper refinement: `baroque-laid-paper.svg` is original code-drawn transparent texture inspired by hand-laid rag paper: fine laid lines, chain lines and sparse fibres. It is interpretive decoration, not an archival scan. Added above the existing unchanged paper-colour veil and Bibiena architectural photograph; no source picture replaced.
+
+
+Theme 4 cinema atmosphere: `fellini-film-grain.svg` and `fellini-film-dust.svg` are original code-drawn transparent film-grain, dust and brief scratch decoration. No archival still is altered. Dust has CSS timing and reduced-motion support; no full-screen flashing or replacement historical imagery.
+
+
+Theme 4 projection screen: `fellini-projection-reel.svg` embeds the existing real La strada Gelsomina and circus photographs, La dolce vita Trevi still, and 8½ still. Existing original-source credits apply. CSS supplies discrete 2.5-second still-image cuts, subtle 24-step-per-second gate position sampling and low-contrast warm projection grading. This is an animated still-image composition, not original motion footage, and does not claim a 24fps movie stream. Reduced-motion mode shows the first still.
+
+
+### Theme 4: dedicated twelve-shot quiet projection
+The screen no longer reuses the header/exhibit photographs. Twelve new genuine photographic frames were downloaded from Wikimedia Commons. Individual source pages retain their own rights statements (including PD-Italy/PD-1996 where stated); no blanket licence over all film material is asserted. Small official preview sizes were used where original downloads were rate-limited.
+- `fellini-reel-strada-road.jpg`: LA STRADA / 1954; original file [La-strada-trailer-screenshot.jpg](https://commons.wikimedia.org/wiki/File:La-strada-trailer-screenshot.jpg).
+- `fellini-reel-strada-companions.jpg`: LA STRADA / 1954; original file [Giulietta-Masina-and-Richard-Basehart-1.jpg](https://commons.wikimedia.org/wiki/File:Giulietta-Masina-and-Richard-Basehart-1.jpg).
+- `fellini-reel-eight-half-interior.jpg`: 8½ / 1963; original file [Nyolcesfel1.jpg](https://commons.wikimedia.org/wiki/File:Nyolcesfel1.jpg).
+- `fellini-reel-eight-half-conversation.jpg`: 8½ / 1963; original file [Nyolcesfel2.jpg](https://commons.wikimedia.org/wiki/File:Nyolcesfel2.jpg).
+- `fellini-reel-eight-half-forest.jpg`: 8½ / 1963; original file [Nyolcesfel7.jpg](https://commons.wikimedia.org/wiki/File:Nyolcesfel7.jpg).
+- `fellini-reel-eight-half-group.jpg`: 8½ / 1963; original file [Nyolcesfel9.jpg](https://commons.wikimedia.org/wiki/File:Nyolcesfel9.jpg).
+- `fellini-reel-eight-half-table.jpg`: 8½ / 1963; original file [Nyolcesfel11.jpg](https://commons.wikimedia.org/wiki/File:Nyolcesfel11.jpg).
+- `fellini-reel-eight-half-finale.jpg`: 8½ / 1963; original file [Nyolcesfel13.jpg](https://commons.wikimedia.org/wiki/File:Nyolcesfel13.jpg).
+- `fellini-reel-vitelloni-street.jpg`: I VITELLONI / 1953; original file [Vitelloni02.jpg](https://commons.wikimedia.org/wiki/File:Vitelloni02.jpg).
+- `fellini-reel-vitelloni-interior.jpg`: I VITELLONI / 1953; original file [Vitelloni01.jpg](https://commons.wikimedia.org/wiki/File:Vitelloni01.jpg).
+- `fellini-reel-vitelloni-night.jpg`: I VITELLONI / 1953; original file [Vitelloni10.jpg](https://commons.wikimedia.org/wiki/File:Vitelloni10.jpg).
+- `fellini-reel-vitelloni-theatre.jpg`: I VITELLONI / 1953; original file [Vitelloni05.jpg](https://commons.wikimedia.org/wiki/File:Vitelloni05.jpg).
+`fellini-projection-reel.svg` now embeds only these twelve frames, with low-contrast dim grading and a central transparent spotlight. Variable shot holds from 1.0–1.8s, 15.4s loop, discrete cuts and subtle gate weave; no reused Trevi/sunglasses/bread/circus-exhibit frame. Not movie footage.
+
+
+Theme 3 reading trim: `cinema-deco-reading-top.svg` and `cinema-deco-reading-bottom.svg` are original code-drawn fixed-height brass line decorations replacing the stretched inlay. Transparent, shallow corner lines avoid text. Reading text uses locally available Times New Roman / Times / Georgia fallbacks; no new external font dependency.
+
+
+Theme 4 regional grain: `fellini-film-grain-soft.svg` and `fellini-film-grain-reading.svg` reuse the original code-drawn grain at 12% and 3.5% opacity respectively. Strong 28% grain and occasional dust are now embedded only in the projection-screen SVG. Full-window grain/dust removed; source film photographs unchanged.
+
+
+### Theme 6: generated VR entry sequence
+- `future-vr-entry-01.png`, `future-vr-entry-02.png`, `future-vr-entry-03.png`: generated with the built-in image_gen.imagegen tool for this project. Fictional 2035 immersive cinema: wearing a visor, touching a holographic map scroll, and sharing a reconstructed contemporary/historical environment. Not historical photographs or screenshots of a working VR feature.
+- Original prompt set: `future-vr-entry-prompts.json`.
+- `future-vr-entry-sequence.svg`: native SVG wrapper embedding the three unchanged generated PNGs; a subdued 21-second CSS dissolve with reduced-motion support. Added beneath the existing map-stage light layers and spatial grid. No existing header, sidebar, collection art, firefly, map, marker or route asset is replaced.
+
+
+## Theme 3 / photographic memories
+Eight genuine photographs; no AI reconstruction. War and fascism archives explicitly distinguished from film stills. Native SVG adds brief handheld movement, ink tint and linen-paper repair corners. Previously used salon and shoeshine shots excluded.
+- cinema-memory-poverty-family.png: LADRI DI BICICLETTE / 1948 (neorealism). Wikimedia Commons 480px preview: https://commons.wikimedia.org/wiki/File:Ladri%20di%20biciclette%20%281948%29%20Carell%20e%20Maggiorani.png
+- cinema-memory-poverty-mother.png: LADRI DI BICICLETTE / 1948 (neorealism). Wikimedia Commons 480px preview: https://commons.wikimedia.org/wiki/File:Ladri%20di%20biciclette%20%281948%29%20Lianella%20Carell.png
+- cinema-memory-poverty-crowd.jpg: LADRI DI BICICLETTE / 1948 (neorealism). Wikimedia Commons 480px preview: https://commons.wikimedia.org/wiki/File:Ladri-biciclette%20folla.jpg
+- cinema-memory-romance-max-noris.png: IL SIGNOR MAX / 1937 (telefoni-bianchi). Wikimedia Commons 480px preview: https://commons.wikimedia.org/wiki/File:Il%20signor%20Max%20%28film%201937%29%20Noris%20e%20De%20Sica%20%283%29.png
+- cinema-memory-romance-seria.jpg: MA NON È UNA COSA SERIA / 1936 (telefoni-bianchi). Wikimedia Commons 480px preview: https://commons.wikimedia.org/wiki/File:Ma%20non%20%C3%A8%20una%20cosa%20seria%20-%20Cegani%20De%20Sica.jpg
+- cinema-memory-war-paisa.jpg: PAISÀ / NAPOLI / 1946 (neorealism-war). Wikimedia Commons 480px preview: https://commons.wikimedia.org/wiki/File:Pais%C3%A0-episodio2.jpg
+- cinema-memory-war-naples.jpg: NAPOLI / ARCHIVIO / 1943 (historical-war). Wikimedia Commons 480px preview: https://commons.wikimedia.org/wiki/File:Napoli%201943%2C%20Corso%20Umberto%2C%20negozi.jpg
+- cinema-memory-fascism-carbonia.jpg: FASCISMO / CARBONIA / 1938 (historical-fascism). Wikimedia Commons 480px preview: https://commons.wikimedia.org/wiki/File:Benito%20Mussolini%20in%20visita%20a%20Carbonia%2C%201938.jpg

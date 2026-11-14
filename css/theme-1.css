@@ -717,12 +717,15 @@ header nav {
 
 #map-page #map-stage {
   padding: 13px;
-  /* 地图仅保留原有纸色遮罩与舞台透视；面具移至藏品间隔。 */
-  background-image: linear-gradient(#fff7e6ed, #efe0bff2), url("../assets/img/themes/bibiena-stage-design.jpg");
-  background-size: 100% 100%, cover;
+  /* 透明手工纸纹 → 原纸色遮罩 → 原舞台建筑；保留建筑透视和金框。 */
+  background-image:
+    url("../assets/img/themes/baroque-laid-paper.svg"),
+    linear-gradient(#fff7e6ed, #efe0bff2),
+    url("../assets/img/themes/bibiena-stage-design.jpg");
+  background-size: 320px 320px, 100% 100%, cover;
   background-clip: padding-box;
-  background-position: center, center;
-  background-repeat: no-repeat, no-repeat;
+  background-position: left top, center, center;
+  background-repeat: repeat, no-repeat, no-repeat;
   box-shadow: 0 5px 16px #14070c88, inset 0 0 24px #ba95522b;
 }
 
@@ -1070,4 +1073,18 @@ body > .indexslider .index-slide:nth-child(2n)::after {
 
 body > .indexslider .index-slide:nth-child(4n)::after {
   background-image: url("../assets/img/themes/baroque-strip-mask-ivory.png");
+}
+
+/* River / the plan and its three room swatches share the same warm-ink treatment.
+   Keep the original room colours from data; transform both views identically.
+   Markers, labels and routes remain clear and their coordinates never change. */
+#map-stage #map-svg > image,
+#map-side .room-swatch {
+  filter: contrast(.86) sepia(.3) saturate(.7) brightness(1.18);
+  opacity: .94;
+}
+
+/* Match the plan's paper blending without recolouring the whole reading card. */
+#map-side .room-swatch {
+  mix-blend-mode: multiply;
 }

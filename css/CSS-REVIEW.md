@@ -34,3 +34,14 @@ map.html / exhibition.html 现有少量修改早于本次清理，是之前留�
 远端检查未发现 HEAD 之后的新提交。真正推送前仍应再次 fetch。
 
 整理前的六份 CSS 和逐条删除记录保存在系统临时目录，位置记录于临时文件 renzi-css-audit-current.txt。
+
+
+## 2026-11-14 release review
+
+Scope: theme 1 handmade paper and matching legend ink; theme 3 readable sidebar ornaments and eight real photographic memories; theme 4 twelve-shot projection and regional grain; theme 6 three subdued VR entry scenes. Themes 2/5 unchanged.
+
+- Removed 11 obsolete unconditional declarations already superseded by the same selector/property: theme 3 (1), theme 4 (10). Removed empty rules and corrected stale comments. Responsive and reduced-motion rules retained.
+- Six CSS files parse without errors including nested rules. All 86 recursively reached CSS/font/image resources exist; reached SVG files parse.
+- Local Chrome: 176 checks passed, 0 failed. Six themes at 500/1400px: map markers, cross-page theme persistence and decorative image loading. Cleanup equivalence for themes 3/4 at 500/1100/1850px on map/catalogue pages, with animations frozen. Computed styles match except normalized redundant background-size/position lists.
+- Embedded photographic/VR originals included as editable source assets. Unused drafts and map-preview.html excluded. No JS/data/functional HTML changes included. Existing local HTML comments excluded.
+- Upload manifest: local .git/river-css-upload-20261114.txt.

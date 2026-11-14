@@ -314,8 +314,8 @@ input[type="radio"] {
 }
 
 #map-page #map-side li a {
-  font-family: "Cinema Bodoni", Georgia, serif;
-  font-weight: 600;
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-weight: 400;
 }
 
 #map-page #start-link {
@@ -602,7 +602,6 @@ body > header::before {
 
 #map-page #map-side h1 {
   font-style: normal;
-  text-shadow: none;
 }
 
 #map-page #map-side::before {
@@ -1304,10 +1303,11 @@ body > .indexslider .index-caption {
 
 #map-page #map-stage {
   background-color: #eee9d9;
-  background-image: url("../assets/img/themes/cinema-weathered-paper.svg"), radial-gradient(ellipse at top left, #fffaf0, #e6dfce);
-  background-size: 100% 100%, 100% 100%;
-  background-position: center, center;
-  background-repeat: no-repeat, no-repeat;
+  /* River: memories below existing weathering; map and frame unchanged. */
+  background-image: url("../assets/img/themes/cinema-weathered-paper.svg"), url("../assets/img/themes/cinema-map-memory.svg"), radial-gradient(ellipse at top left, #fffaf0, #e6dfce);
+  background-size: 100% 100%, 100% 100%, 100% 100%;
+  background-position: center, center, center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
 }
 
 #map-page #map-side {
@@ -1348,4 +1348,74 @@ body > .indexslider {
   background-size: 100% 100%, 100% 100%, 33.34% auto, 33.34% auto, 33.34% auto;
   background-position: center, center, left 26%, center 35%, right 44%;
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+
+/* River / sidebar only: strengthen the map's modern lacquer-and-brass language.
+   Same border width, padding, type and flow: no reading content moves.
+   Existing paper, damp marks, rust and stitched ::after patches remain untouched. */
+#map-page #map-side {
+  border-image-source: url("../assets/img/themes/cinema-deco-gallery-frame.svg");
+  border-image-slice: 40;
+}
+#map-side #route-info {
+  position: relative;
+}
+#map-side #route-info::before,
+#map-side .room-section::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  /* Fixed-height ornaments cannot stretch down into headings or paragraphs. */
+  background-image: url("../assets/img/themes/cinema-deco-reading-top.svg"), url("../assets/img/themes/cinema-deco-reading-bottom.svg");
+  background-size: 100% 24px, 100% 24px;
+  background-position: center top, center bottom;
+  background-repeat: no-repeat, no-repeat;
+  pointer-events: none;
+  opacity: .85;
+}
+/* More worn pages keep their rougher character and their original repair patches. */
+#map-side .room-section:nth-of-type(n+2)::before {
+  opacity: .55;
+}
+#map-page #map-side h1 {
+  text-shadow: 0 1px 0 #fff9e8;
+}
+#map-page #map-side::before {
+  box-shadow: inset 0 0 0 1px #e4d5b6, inset 0 0 0 3px #fffaf033;
+}
+
+/* River / readable period press: Bodoni section heads and newspaper-style text.
+   Keep Exhibition Map, masthead typography, all paper textures and repairs unchanged. */
+#map-side #route-info h2,
+#map-side .room-section h3 {
+  font-family: "Cinema Bodoni", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: .1px;
+  text-transform: none;
+}
+#map-side #route-info h2 {
+  font-size: 25px;
+  line-height: 1.25;
+}
+#map-side #route-description,
+#map-side #route-info > p,
+#map-side .room-section p,
+#map-side .room-transition {
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+#map-page #map-side li a {
+  line-height: 1.5;
+}
+#item-info #item-text,
+#item-info #item-room-intro {
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-size: 18px;
+  line-height: 1.75;
+}
+#item-info #item-text h2,
+#item-info #item-text h3 {
+  font-family: "Cinema Bodoni", Georgia, serif;
+  font-weight: 600;
 }
