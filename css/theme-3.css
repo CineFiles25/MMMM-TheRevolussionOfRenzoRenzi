@@ -77,9 +77,15 @@ body > header {
   padding: 240px 10px 10px;
   border: 1px solid #b8b3a3;
   background-color: #14251f;
-  background-image: linear-gradient(90deg, #14251fd9 0%, #14251f99 17%, #14251f00 34%), url("../assets/img/themes/cinema-original-stills-v3.png");
-  background-position: center, center top;
-  background-size: 100% 100%, 100% calc(100% - 55px);
+  background-image:
+    linear-gradient(90deg, #14251fd9 0%, #14251f99 17%, #14251f00 34%),
+    url("../assets/img/themes/cinema-original-stills-v3.png");
+  background-position:
+    center,
+    center top;
+  background-size:
+    100% 100%,
+    100% calc(100% - 55px);
   background-repeat: no-repeat;
   box-shadow: 0 5px 18px #0e1c1733;
 }
@@ -190,15 +196,32 @@ body #map-page {
   font-family: "Cinema Condensed", Arial, sans-serif;
 }
 
+/* River: original plan silhouette, with narrow irregular paper remnants.
+   Transparent outside the cut edge; original live markers and routes remain above it. */
+
 #map-stage #map-svg {
   flex: 1;
   min-height: 0;
-  width: 100%;
+  width: 88%;
   height: auto;
-  mix-blend-mode: multiply;
+  align-self: center;
+  margin: 20px auto 28px;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  background-image: url("../assets/img/themes/cinema-map-cut-paper.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  mix-blend-mode: normal;
+  transform: rotate(-.8deg) scale(1.035);
 }
 
-/* multiply 把地图白底与纸色融合，不改变展品位置或路线。 */
+#map-stage #map-svg > image {
+  opacity: 0;
+}
+
+/* Cut-paper rendering uses the exact original viewBox; markers remain interactive. */
 
 /* 同一套黑白剧照语言：父子画面作为封面人物关系的呼应，不重复图片。 */
 
@@ -208,11 +231,6 @@ body #map-page {
 #map-stage::after {
   align-items: flex-end;
   justify-content: center;
-  flex: 0 0 110px;
-  margin-top: 10px;
-  padding: 6px 9px;
-  border: 5px solid #faf7ee;
-  outline: 1px solid #b8b3a3;
   color: #fff9ec;
   font-family: "Cinema Condensed", Arial, sans-serif;
   font-size: 11px;
@@ -391,7 +409,7 @@ input[type="radio"] {
 #item-context {
   margin: 0 0 25px;
   padding-bottom: 18px;
-  border-bottom: 3px double #a58b5e;
+  border-bottom: 3px double #bdcbbf;
   font-size: 15px;
 }
 
@@ -426,7 +444,7 @@ input[type="radio"] {
 body > footer {
   flex-shrink: 0;
   padding: 10px 24px;
-  border-top: 3px double #a58b5e;
+  border-top: 3px double #bdcbbf;
   background-color: #f1eee3;
 }
 
@@ -482,7 +500,9 @@ button:disabled {
   border: 5px solid #faf7ee;
   outline: 1px solid #b8b3a3;
   background-color: #343631;
-  background-image: linear-gradient(0deg, #101815e6, transparent 65%), url("../assets/img/themes/roma-street-still.jpg");
+  background-image:
+    linear-gradient(0deg, #101815e6, transparent 65%),
+    url("../assets/img/themes/roma-street-still.jpg");
   background-position: center;
   background-size: cover;
   color: #fff9ec;
@@ -577,26 +597,26 @@ button {
 #map-page #map-side,
 #item-layout {
   border: 10px solid #213b32;
-  border-image-source: url("../assets/img/themes/cinema-deco-frame.svg");
+  border-image-source: url("../assets/img/themes/cinema-deco-frame-ivory.svg");
   border-image-slice: 30;
   border-image-repeat: stretch;
 }
 
 body > header {
-  outline: 1px solid #a88e5c;
+  outline: 1px solid #aabbb3;
   outline-offset: -6px;
 }
 
 body > header::before {
   padding-left: 14px;
-  border-left: 3px double #c8b383;
+  border-left: 3px double #d5dfd5;
   letter-spacing: 3px;
   text-shadow: none;
 }
 
 #map-stage::before {
-  border-top-color: #b59b66;
-  border-bottom-color: #b59b66;
+  border-top-color: #b2c1b8;
+  border-bottom-color: #b2c1b8;
   text-align: center;
 }
 
@@ -606,7 +626,7 @@ body > header::before {
 
 #map-page #map-side::before {
   color: #76603b;
-  border-bottom-color: #b59b66;
+  border-bottom-color: #b2c1b8;
   text-align: center;
 }
 
@@ -619,7 +639,9 @@ body > header::before {
 
 @media (min-width: 701px) and (max-width: 1600px) {
   body > header {
-    background-image: linear-gradient(90deg, #14251fd9 0%, #14251f99 17%, #14251f00 34%), url("../assets/img/themes/cinema-original-stills-v3-medium.png");
+    background-image:
+      linear-gradient(90deg, #14251fd9 0%, #14251f99 17%, #14251f00 34%),
+      url("../assets/img/themes/cinema-original-stills-v3-medium.png");
   }
 }
 
@@ -646,9 +668,15 @@ body > header::before {
     height: 221px;
     margin: 10px 12px 0;
     padding: 170px 5px 7px;
-    background-image: linear-gradient(180deg, #14251f99, #14251f00 40%), url("../assets/img/themes/cinema-original-stills-v3-mobile.png");
-    background-size: 100% 100%, 100% 105px;
-    background-position: center, center 73px;
+    background-image:
+      linear-gradient(180deg, #14251f99, #14251f00 40%),
+      url("../assets/img/themes/cinema-original-stills-v3-mobile.png");
+    background-size:
+      100% 100%,
+      100% 105px;
+    background-position:
+      center,
+      center 73px;
   }
 
   body > header::before {
@@ -858,9 +886,56 @@ header nav {
 /* River: shared map layout, with an Art Deco cinema programme for theme 3.
    Existing HTML, route order and links are unchanged. */
 
+/* River: animate static archive prints in the document, not inside a cached SVG.
+   Each print opens and settles once; the final eight-print desk remains in place. */
+
+#map-page #map-stage {
+  position: relative;
+  isolation: isolate;
+}
+
 #map-stage::after {
-  content: none;
-  display: none;
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  flex: none;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  background-image:
+    url("../assets/img/themes/cinema-archive-print-08.svg"),
+    url("../assets/img/themes/cinema-archive-print-07.svg"),
+    url("../assets/img/themes/cinema-archive-print-06.svg"),
+    url("../assets/img/themes/cinema-archive-print-05.svg"),
+    url("../assets/img/themes/cinema-archive-print-04.svg"),
+    url("../assets/img/themes/cinema-archive-print-03.svg"),
+    url("../assets/img/themes/cinema-archive-print-02.svg"),
+    url("../assets/img/themes/cinema-archive-print-01.svg");
+  background-size:
+    0% 0%,
+    0% 0%,
+    0% 0%,
+    0% 0%,
+    0% 0%,
+    0% 0%,
+    0% 0%,
+    0% 0%;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  animation: cinema-archive-build 2s linear both;
+}
+
+#map-stage::before,
+#map-stage #map-svg {
+  position: relative;
+  z-index: 1;
 }
 
 #map-stage::before {
@@ -880,8 +955,8 @@ header nav {
 #map-side .room-section {
   margin: 22px 0;
   padding: 18px;
-  border: 1px solid #b9aa87;
-  border-top: 4px double #a18a5d;
+  border: 1px solid #d9ded2;
+  border-top: 4px double #afbeb4;
   box-shadow: 3px 4px 0 #213b3214;
 }
 
@@ -904,7 +979,7 @@ header nav {
 #map-page #itinerary-choice label:has(input:checked) {
   background: #213b32;
   color: #fff8e6;
-  border-color: #a18a5d;
+  border-color: #afbeb4;
 }
 
 /* CSS counters give the existing ordered stops the rhythm of programme entries. */
@@ -933,7 +1008,7 @@ header nav {
   left: 8px;
   top: 14px;
   padding: 0 4px;
-  border: 3px double #aa9365;
+  border: 3px double #d5ded1;
   background: #213b32;
   color: #fff8e6;
   font: 13px/1.6 "Cinema Condensed", sans-serif;
@@ -952,7 +1027,7 @@ header nav {
 #map-side .room-section h3 {
   margin-top: 0;
   padding-bottom: 12px;
-  border-bottom: 3px double #b9aa87;
+  border-bottom: 3px double #d9ded2;
   font-size: 22px;
   line-height: 1.3;
 }
@@ -983,7 +1058,7 @@ body > .indexslider {
   flex-shrink: 0;
   margin: 0 20px 12px;
   border: 7px solid #213b32;
-  border-image: url("../assets/img/themes/cinema-deco-frame.svg") 30 stretch;
+  border-image: url("../assets/img/themes/cinema-deco-frame-ivory.svg") 30 stretch;
   color: #fff8e6;
 }
 
@@ -1141,9 +1216,9 @@ body > .indexslider .index-caption {
 
 #map-page #map-side::before {
   padding: 10px 8px;
-  border-top: 4px double #a78b54;
-  border-bottom: 4px double #a78b54;
-  outline: 1px solid #b8a47a;
+  border-top: 4px double #bcc9be;
+  border-bottom: 4px double #bcc9be;
+  outline: 1px solid #e2e5d7;
   outline-offset: 4px;
   margin: 6px 5px 20px;
   background: #faf6e9;
@@ -1152,7 +1227,7 @@ body > .indexslider .index-caption {
 
 #map-page #map-side h1 {
   padding: 14px 5px 18px;
-  border-bottom: 4px double #a78b54;
+  border-bottom: 4px double #bcc9be;
   font-family: "Cinema Bodoni", Georgia, serif;
   font-size: 32px;
   font-weight: 700;
@@ -1160,7 +1235,7 @@ body > .indexslider .index-caption {
 }
 
 #map-side #route-info {
-  border: 4px double #a78b54;
+  border: 4px double #bcc9be;
   box-shadow: 4px 5px 0 #80664422;
 }
 
@@ -1233,16 +1308,12 @@ body > .indexslider .index-caption {
   }
 }
 
-/* River: richer modern lacquer-and-brass map frame; straight stepped mouldings.
+/* River: gloss white industrial enamel and chrome; straight stepped mouldings.
    The border asset is decorative, with no changes to the SVG map or coordinates. */
 
 #map-page #map-stage {
   border-width: 23px;
-  border-image-source: url("../assets/img/themes/cinema-deco-gallery-frame.svg");
-  border-image-slice: 40;
-  border-image-repeat: stretch;
   padding: 9px;
-  box-shadow: 0 5px 12px #071a1666, inset 0 0 24px #68533418;
 }
 
 /* The moving collection shares the repaired-paper motif, while images stay intact.
@@ -1250,12 +1321,12 @@ body > .indexslider .index-caption {
 
 body > .indexslider {
   border-width: 9px;
-  box-shadow: inset 0 1px 0 #d8c18c, 0 3px 0 #091e1855;
+  box-shadow: inset 0 1px 0 #f9f6e9, 0 3px 0 #091e1855;
 }
 
 body > .indexslider .index-slide {
   position: relative;
-  border-right: 3px double #bca16a77;
+  border-right: 3px double #dae4d577;
   background-image: linear-gradient(110deg, #e1c78810, transparent 45%);
 }
 
@@ -1303,19 +1374,11 @@ body > .indexslider .index-caption {
 
 #map-page #map-stage {
   background-color: #eee9d9;
-  /* River: memories below existing weathering; map and frame unchanged. */
-  background-image: url("../assets/img/themes/cinema-weathered-paper.svg"), url("../assets/img/themes/cinema-map-memory.svg"), radial-gradient(ellipse at top left, #fffaf0, #e6dfce);
-  background-size: 100% 100%, 100% 100%, 100% 100%;
-  background-position: center, center, center;
-  background-repeat: no-repeat, no-repeat, no-repeat;
+  /* River: paper desk base; photo prints live on the independent ::after layer. */
 }
 
 #map-page #map-side {
   background-color: #e4dfd0;
-  background-image: linear-gradient(90deg, #b59b6626 1px, transparent 1px), linear-gradient(#faf6e9, #e4dfd0 45%, #d1c7b3);
-  background-size: 9px 100%, 100% 100%;
-  background-position: left top, center;
-  background-repeat: repeat, no-repeat;
 }
 
 #map-side #route-info {
@@ -1344,48 +1407,79 @@ body > .indexslider .index-caption {
 
 body > .indexslider {
   background-color: #14251f;
-  background-image: url("../assets/img/themes/cinema-weathered-paper.svg"), linear-gradient(#14251fd9, #14251feb), url("../assets/img/themes/cinema-bicycle-thieves.png"), url("../assets/img/themes/cinema-sciuscia-boys.png"), url("../assets/img/themes/cinema-umberto-d.png");
-  background-size: 100% 100%, 100% 100%, 33.34% auto, 33.34% auto, 33.34% auto;
-  background-position: center, center, left 26%, center 35%, right 44%;
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-image:
+    url("../assets/img/themes/cinema-weathered-paper.svg"),
+    linear-gradient(#14251fd9, #14251feb),
+    url("../assets/img/themes/cinema-bicycle-thieves.png"),
+    url("../assets/img/themes/cinema-sciuscia-boys.png"),
+    url("../assets/img/themes/cinema-umberto-d.png");
+  background-size:
+    100% 100%,
+    100% 100%,
+    33.34% auto,
+    33.34% auto,
+    33.34% auto;
+  background-position:
+    center,
+    center,
+    left 26%,
+    center 35%,
+    right 44%;
+  background-repeat:
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat;
 }
 
-/* River / sidebar only: strengthen the map's modern lacquer-and-brass language.
+/* River / sidebar only: strengthen the map's modern ivory-and-chrome language.
    Same border width, padding, type and flow: no reading content moves.
    Existing paper, damp marks, rust and stitched ::after patches remain untouched. */
-#map-page #map-side {
-  border-image-source: url("../assets/img/themes/cinema-deco-gallery-frame.svg");
-  border-image-slice: 40;
-}
+
 #map-side #route-info {
   position: relative;
 }
+
 #map-side #route-info::before,
 #map-side .room-section::before {
   content: "";
   position: absolute;
   inset: 7px;
   /* Fixed-height ornaments cannot stretch down into headings or paragraphs. */
-  background-image: url("../assets/img/themes/cinema-deco-reading-top.svg"), url("../assets/img/themes/cinema-deco-reading-bottom.svg");
-  background-size: 100% 24px, 100% 24px;
-  background-position: center top, center bottom;
-  background-repeat: no-repeat, no-repeat;
+  background-image:
+    url("../assets/img/themes/cinema-deco-reading-top-ivory.svg"),
+    url("../assets/img/themes/cinema-deco-reading-bottom-ivory.svg");
+  background-size:
+    100% 24px,
+    100% 24px;
+  background-position:
+    center top,
+    center bottom;
+  background-repeat:
+    no-repeat,
+    no-repeat;
   pointer-events: none;
   opacity: .85;
 }
+
 /* More worn pages keep their rougher character and their original repair patches. */
-#map-side .room-section:nth-of-type(n+2)::before {
+
+#map-side .room-section:nth-of-type(n/**/+2)::before {
   opacity: .55;
 }
+
 #map-page #map-side h1 {
   text-shadow: 0 1px 0 #fff9e8;
 }
+
 #map-page #map-side::before {
   box-shadow: inset 0 0 0 1px #e4d5b6, inset 0 0 0 3px #fffaf033;
 }
 
 /* River / readable period press: Bodoni section heads and newspaper-style text.
    Keep Exhibition Map, masthead typography, all paper textures and repairs unchanged. */
+
 #map-side #route-info h2,
 #map-side .room-section h3 {
   font-family: "Cinema Bodoni", Georgia, serif;
@@ -1393,10 +1487,12 @@ body > .indexslider {
   letter-spacing: .1px;
   text-transform: none;
 }
+
 #map-side #route-info h2 {
   font-size: 25px;
   line-height: 1.25;
 }
+
 #map-side #route-description,
 #map-side #route-info > p,
 #map-side .room-section p,
@@ -1405,17 +1501,446 @@ body > .indexslider {
   font-size: 17px;
   line-height: 1.65;
 }
+
 #map-page #map-side li a {
   line-height: 1.5;
 }
+
 #item-info #item-text,
 #item-info #item-room-intro {
   font-family: "Times New Roman", Times, Georgia, serif;
   font-size: 18px;
   line-height: 1.75;
 }
+
 #item-info #item-text h2,
 #item-info #item-text h3 {
   font-family: "Cinema Bodoni", Georgia, serif;
   font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  #map-stage #map-svg {
+    width: 94%;
+    margin: 20px auto 28px;
+    padding: 0;
+  }
+}
+
+/* Archive visibility is independent of legacy decorative-strip breakpoints. */
+
+#map-page #map-stage::after {
+  display: block;
+}
+
+@keyframes cinema-archive-build {
+  0% {
+    --archive-a: 0;
+    --archive-b: 0;
+    background-size:
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%;
+    background-position:
+      calc(50% - 28px) 0px,
+      calc(50% + 28px) 0px,
+      calc(50% - 28px) 0px,
+      calc(50% - 28px) 0px,
+      calc(50% + 28px) 0px,
+      calc(50% - 28px) 0px,
+      calc(50% + 28px) 0px,
+      calc(50% - 28px) 0px;
+    animation-timing-function: cubic-bezier(.16,1,.3,1);
+  }
+
+  50% {
+    --archive-a: 1;
+    --archive-b: 0;
+    background-size:
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%;
+    background-position:
+      calc(50% - 28px) 0px,
+      calc(50% + 28px) 0px,
+      calc(50% - 28px) 0px,
+      calc(50% - 28px) 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px;
+    animation-timing-function: cubic-bezier(.16,1,.3,1);
+  }
+
+  100% {
+    --archive-a: 1;
+    --archive-b: 1;
+    background-size:
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%;
+    background-position:
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  #map-page #map-stage::after {
+    animation: cinema-archive-build-soft 2s linear both;
+  }
+}
+
+@keyframes cinema-archive-build-soft {
+  0% {
+    --archive-a: 0;
+    --archive-b: 0;
+    background-size:
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%;
+    background-position:
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px;
+  }
+
+  50% {
+    --archive-a: 1;
+    --archive-b: 0;
+    background-size:
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%;
+    background-position:
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px;
+  }
+
+  100% {
+    --archive-a: 1;
+    --archive-b: 1;
+    background-size:
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%;
+    background-position:
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px,
+      center 0px;
+  }
+}
+
+/* River: native rounded paint shell; no clipping of the inner frame or fittings.
+   Original paper layers stay intact, with a small enamel scroll fitting at each corner. */
+
+#map-page #map-stage {
+  border-image: none;
+  border-color: transparent;
+  border-radius: 32px;
+  clip-path: none;
+  background-image:
+    url("../assets/img/themes/cinema-enamel-corner-tl.svg"),
+    url("../assets/img/themes/cinema-enamel-corner-tr.svg"),
+    url("../assets/img/themes/cinema-enamel-corner-br.svg"),
+    url("../assets/img/themes/cinema-enamel-corner-bl.svg"),
+    url("../assets/img/themes/cinema-weathered-paper.svg"),
+    radial-gradient(ellipse at top left, #fffaf0, #e6dfce),
+    linear-gradient(to bottom, #928875 0%, #d6cdbb 8%, #fffdf5 18%, #ffffff 25%, #f7efdd 40%, #e1d5bc 68%, #fffdf0 83%, #b8aa90 100%),
+    linear-gradient(to right, #928875 0%, #d6cdbb 8%, #fffdf5 18%, #ffffff 25%, #f7efdd 40%, #e1d5bc 68%, #fffdf0 83%, #b8aa90 100%),
+    linear-gradient(to left, #928875 0%, #d6cdbb 8%, #fffdf5 18%, #ffffff 25%, #f7efdd 40%, #e1d5bc 68%, #fffdf0 83%, #b8aa90 100%),
+    linear-gradient(to top, #928875 0%, #d6cdbb 8%, #fffdf5 18%, #ffffff 25%, #f7efdd 40%, #e1d5bc 68%, #fffdf0 83%, #b8aa90 100%),
+    linear-gradient(#fffaf0, #e6d9be);
+  background-size:
+    28px 28px,
+    28px 28px,
+    28px 28px,
+    28px 28px,
+    100% 100%,
+    100% 100%,
+    100% 23px,
+    23px 100%,
+    23px 100%,
+    100% 23px,
+    100% 100%;
+  background-position:
+    left top,
+    right top,
+    right bottom,
+    left bottom,
+    center,
+    center,
+    center top,
+    left center,
+    right center,
+    center bottom,
+    center;
+  background-repeat:
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat;
+  background-origin:
+    border-box,
+    border-box,
+    border-box,
+    border-box,
+    padding-box,
+    padding-box,
+    border-box,
+    border-box,
+    border-box,
+    border-box,
+    border-box;
+  background-clip:
+    border-box,
+    border-box,
+    border-box,
+    border-box,
+    padding-box,
+    padding-box,
+    border-box,
+    border-box,
+    border-box,
+    border-box,
+    border-box;
+  box-shadow: 0 4px 12px #30271929, inset 0 1px 0 #fffdf2, inset 0 -1px 0 #a99c83;
+}
+
+#map-page #map-side {
+  border-image: none;
+  border-color: transparent;
+  border-radius: 23px;
+  clip-path: none;
+  background-image:
+    url("../assets/img/themes/cinema-enamel-corner-tl.svg"),
+    url("../assets/img/themes/cinema-enamel-corner-tr.svg"),
+    url("../assets/img/themes/cinema-enamel-corner-br.svg"),
+    url("../assets/img/themes/cinema-enamel-corner-bl.svg"),
+    linear-gradient(90deg, #b59b6626 1px, transparent 1px),
+    linear-gradient(#faf6e9, #e4dfd0 45%, #d1c7b3),
+    linear-gradient(to bottom, #928875 0%, #d6cdbb 8%, #fffdf5 18%, #ffffff 25%, #f7efdd 40%, #e1d5bc 68%, #fffdf0 83%, #b8aa90 100%),
+    linear-gradient(to right, #928875 0%, #d6cdbb 8%, #fffdf5 18%, #ffffff 25%, #f7efdd 40%, #e1d5bc 68%, #fffdf0 83%, #b8aa90 100%),
+    linear-gradient(to left, #928875 0%, #d6cdbb 8%, #fffdf5 18%, #ffffff 25%, #f7efdd 40%, #e1d5bc 68%, #fffdf0 83%, #b8aa90 100%),
+    linear-gradient(to top, #928875 0%, #d6cdbb 8%, #fffdf5 18%, #ffffff 25%, #f7efdd 40%, #e1d5bc 68%, #fffdf0 83%, #b8aa90 100%),
+    linear-gradient(#fffaf0, #e6d9be);
+  background-size:
+    28px 28px,
+    28px 28px,
+    28px 28px,
+    28px 28px,
+    9px 100%,
+    100% 100%,
+    100% 10px,
+    10px 100%,
+    10px 100%,
+    100% 10px,
+    100% 100%;
+  background-position:
+    left top,
+    right top,
+    right bottom,
+    left bottom,
+    left top,
+    center,
+    center top,
+    left center,
+    right center,
+    center bottom,
+    center;
+  background-repeat:
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat;
+  background-origin:
+    border-box,
+    border-box,
+    border-box,
+    border-box,
+    padding-box,
+    padding-box,
+    border-box,
+    border-box,
+    border-box,
+    border-box,
+    border-box;
+  background-clip:
+    border-box,
+    border-box,
+    border-box,
+    border-box,
+    padding-box,
+    padding-box,
+    border-box,
+    border-box,
+    border-box,
+    border-box,
+    border-box;
+  box-shadow: 0 4px 12px #30271929, inset 0 1px 0 #fffdf2, inset 0 -1px 0 #a99c83;
+}
+
+@media (max-width:700px) {
+  #map-page #map-stage {
+    border-width: 23px;
+    border-radius: 27px;
+  }
+
+  #map-page #map-side {
+    border-radius: 23px;
+  }
+}
+
+@property --archive-a {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --archive-b {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@supports (background-image: -webkit-cross-fade(url("a"), url("b"), .5)) {
+  #map-page #map-stage::after {
+    background-image:
+      -webkit-cross-fade(url("../assets/img/themes/cinema-archive-print-08.svg"), url("../assets/img/themes/cinema-transparent.svg"), calc(1 - var(--archive-b))),
+      -webkit-cross-fade(url("../assets/img/themes/cinema-archive-print-07.svg"), url("../assets/img/themes/cinema-transparent.svg"), calc(1 - var(--archive-b))),
+      -webkit-cross-fade(url("../assets/img/themes/cinema-archive-print-06.svg"), url("../assets/img/themes/cinema-transparent.svg"), calc(1 - var(--archive-b))),
+      -webkit-cross-fade(url("../assets/img/themes/cinema-archive-print-05.svg"), url("../assets/img/themes/cinema-transparent.svg"), calc(1 - var(--archive-b))),
+      -webkit-cross-fade(url("../assets/img/themes/cinema-archive-print-04.svg"), url("../assets/img/themes/cinema-transparent.svg"), calc(1 - var(--archive-a))),
+      -webkit-cross-fade(url("../assets/img/themes/cinema-archive-print-03.svg"), url("../assets/img/themes/cinema-transparent.svg"), calc(1 - var(--archive-a))),
+      -webkit-cross-fade(url("../assets/img/themes/cinema-archive-print-02.svg"), url("../assets/img/themes/cinema-transparent.svg"), calc(1 - var(--archive-a))),
+      -webkit-cross-fade(url("../assets/img/themes/cinema-archive-print-01.svg"), url("../assets/img/themes/cinema-transparent.svg"), calc(1 - var(--archive-a)));
+  }
+}
+
+/* Fallback for engines without image cross-fade: preserve the two-wave reveal. */
+
+@supports not (background-image: -webkit-cross-fade(url("a"), url("b"), .5)) {
+  #map-page #map-stage::after {
+    animation: cinema-archive-fallback 2s ease-out both;
+  }
+}
+
+@keyframes cinema-archive-fallback {
+  0% {
+    opacity: 0;
+    background-size:
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%;
+  }
+
+  49.9% {
+    opacity: 1;
+    background-size:
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%;
+  }
+
+  50% {
+    opacity: .82;
+    background-size:
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%;
+  }
+
+  100% {
+    opacity: 1;
+    background-size:
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%;
+  }
 }

@@ -325,3 +325,17 @@ Eight genuine photographs; no AI reconstruction. War and fascism archives explic
 - cinema-memory-war-paisa.jpg: PAISÀ / NAPOLI / 1946 (neorealism-war). Wikimedia Commons 480px preview: https://commons.wikimedia.org/wiki/File:Pais%C3%A0-episodio2.jpg
 - cinema-memory-war-naples.jpg: NAPOLI / ARCHIVIO / 1943 (historical-war). Wikimedia Commons 480px preview: https://commons.wikimedia.org/wiki/File:Napoli%201943%2C%20Corso%20Umberto%2C%20negozi.jpg
 - cinema-memory-fascism-carbonia.jpg: FASCISMO / CARBONIA / 1938 (historical-fascism). Wikimedia Commons 480px preview: https://commons.wikimedia.org/wiki/File:Benito%20Mussolini%20in%20visita%20a%20Carbonia%2C%201938.jpg
+
+## 2026-11-15 / theme 3 final design
+
+- cinema-memory-white-telephone.png: LA CASA DEL PECCATO / 1938. Source: https://commons.wikimedia.org/wiki/File:Casadelpeccato.png . Downloaded unaltered Commons preview; shared SVG ink filter only.
+- cinema-memory-ballroom.png: IL SIGNOR MAX / 1937. Source: https://commons.wikimedia.org/wiki/File:Il%20signor%20Max%20%28film%201937%29%20Noris%20e%20De%20Sica%20%284%29.png . Downloaded unaltered Commons preview; shared SVG ink filter only.
+- cinema-memory-mussolini-portrait.jpg: FASCISMO / ARCHIVIO / 1937-1940. Source: https://commons.wikimedia.org/wiki/File:Benito%20Mussolini%201930%20%28alt%29.jpg . Downloaded unaltered Commons preview; shared SVG ink filter only.
+The Mussolini portrait filename says 1930, but its description dates it between 1937 and 1940; the displayed archive label follows that description. Historic fascist imagery is contextual documentation, not a film still. The ballroom depicts aspirational elegant screen romance; the characters are not labelled as genuinely wealthy.
+- cinema-archive-print-01.svg through -08.svg: static native SVG wrappers embedding eight unchanged, credited real photographs. No AI-generated historical scene.
+- cinema-map-cut-paper.svg: embeds the original gallery_planimetry_no_punti.png. Native SVG luminance masking, morphology and static displacement create transparent outer space, a narrow irregular cream-paper rim and a small shadow. Original viewBox and room colours retained.
+- cinema-enamel-corner-tl/tr/br/bl.svg: original vector pearl fittings and restrained classical scrolls. Native CSS rounded directional enamel gradients form the map/sidebar frame; no external clipping.
+- cinema-deco-frame-ivory.svg: original sculpted cream/champagne frame variant used by catalogue/collection framing. Reading-top/bottom ivory variants keep ornaments outside text.
+- cinema-transparent.svg: transparent image partner for browser cross-fade.
+Document CSS animates two four-photo waves over two seconds: left-hand photos ease from the left, right-hand photos from the right, with independent opacity. Both waves settle and remain. Reduced-motion retains fades without travel; a two-wave fallback is provided without cross-fade support. The live cut-paper map is enlarged 3.5%. No HTML, JS or catalogue data changes.
+Earlier animated wrappers and unused frame/photo alternatives remain local drafts, outside this release.

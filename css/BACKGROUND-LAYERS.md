@@ -1,80 +1,40 @@
-# 六主题背景与装饰层
+# Six exhibition themes: current layer structure
 
-背景列表顺序是从上到下。修改图片时必须保留同一列表里的其他层；尺寸、位置、重复方式按相同顺序对应。
-`background` 简写会重置其他背景属性，单独改底色时使用 `background-color`。
-画框、伪元素、SVG 内部动画是独立机制，不属于同一背景列表。
+Background lists run from top to bottom. Keep image, size, position, repeat, origin and clip entries aligned; do not replace the complete list to change one photo.
 
-## 主题一：巴洛克剧院
+## Theme 1: Baroque theatre
 
-- 地图：透明手工纸细纤维与帘纹 → 原浅色遮罩 → Bibiena 舞台设计；镀金画框和标题花饰保留。
-- 藏品带：酒红遮罩 + 剧院照片。
-- 面具仅在藏品条目接缝，每两张一枚，金白与红唇款交替；地图没有面具图层。
+Handmade-paper fibres -> pale veil -> Bibiena stage architecture. Gold frame and title ornaments remain. Map and sidebar room swatches share the warm-ink filter and 94% opacity; routes/markers remain clear. Alternating masks belong to collection joins only.
 
-## 主题二：浪漫戏剧与纸上创作
+## Theme 2: romantic theatre and paper
 
-- 地图四层：小幅真实服装人物 → 羽毛笔/墨水 → 纸张纤维 → 温润页边。
-- 侧栏外页三层：装订 → 印刷纸纹 → 书页光影。
-- 路线说明页三层：装订 → 纸纹 → 书页光影。
-- 房间内页五层：装订 → 不同人物随笔 → 羽毛笔/墨水 → 纸纹 → 书页光影。
-- 藏品带三层：纸纹 → 薄纸色遮罩 → 写作桌与草稿。
-- 手机只调整各层尺寸，保留人物、纸纹和笔墨。
+Map: historical costumes -> quill/ink -> paper fibres -> warm paper edge. Sidebar: binding -> printed paper -> page light; room cards add different figures and sketches. Collection: paper -> thin veil -> writing desk. Mobile retains the same layers.
 
-## 主题三：白色电话片与新现实主义
+## Theme 3: white telephones and neorealism (2026-11-15)
 
-- 地图两层：雨痕/裂痕/修补纹理 → 象牙纸色；现代主义画框由 border-image 提供。
-- 侧栏两层：金色细线 → 渐旧纸色。
-- 阅读卡片保持纸色，部分内页增加修补纹理。
-- 藏品带五层：修补纹理 → 深色遮罩 → 三张真实历史剧照。
-- 顶部使用真实剧照合成的 PNG，避免旧版 SVG 合成在部分浏览器中显示异常。
+- Map shell has 11 layers: four pearl/scroll corner fittings -> original weathered paper -> ivory paper gradient -> four directional enamel profiles -> frame base coat.
+- Sidebar shell has the same structure; its two original paper layers are fine-line wallpaper and aged paper gradient. Paper uses padding-box; fittings and enamel use border-box.
+- Native rounded backgrounds replace border-image on map/sidebar. No clip-path cuts the inner frame. Catalogue and collection keep their separate ivory frame asset.
+- Independent pointer-transparent ::after contains eight static cinema-archive-print SVGs, later prints above earlier prints.
+- Two CSS opacity properties control two four-photo waves over TWO SECONDS. Left photographs ease from the left; right photographs ease from the right. Both waves fade in, slow down, settle and remain.
+- Cross-fade has an explicit unsupported-engine fallback. Reduced-motion cancels travel while preserving progressive fades.
+- The original clickable SVG stays above the photographs. cinema-map-cut-paper.svg shares its exact viewBox, contain alignment and room colours; the original bitmap is hidden visually, not deleted. Map scale is 1.035.
+- Reading top/bottom trim remains fixed at 24px; rain damage, rust, stitches and reading typography remain.
+- Collection retains repaired-paper texture -> dark veil -> three real film images. Header retains the original real-still PNG collage.
+- Old cinema-map-memory.svg and abandoned frame/map experiments are not runtime dependencies and are excluded from this release.
 
-## 主题四：Fellini 与 Renzi 的胶片相册
+## Theme 4: Fellini and Renzi
 
-- 顶部：四张真实照片，透明单行胶片字码；没有遮挡照片的纸条。
-- 地图：纸色与曝光光晕、胶片孔边框；地图一次性 4.2 秒显影，编号与路线同步出现。
-- 侧栏保持胶片阅读设计；藏品带为暗色遮罩 + 首映照片。
+Dark cinema surroundings and a warm map screen. The screen uses twelve dedicated real stills, 1.0-1.8 seconds per shot, 15.4-second loop, subdued contrast and central light. Map exposure and slight gate weave retain real clickable markers. Grain: screen 28%, header/collection 12%, sidebar 3.5%. No full-window grain/dust; body::after is a vignette. Collection retains the premiere image. Reduced-motion uses a static screen.
 
-## 主题五：粉蓝意大利喜剧
+## Theme 5: pastel comedy
 
-- 地图五层：人物/符号装饰 → 动态电话 → 动态咖啡 → 浅黄光晕 → 粉色光晕。
-- 人物保留真实照片、不同大小、浅色调和柔边。右上人物与 Ha! 已向标题右侧上沿避让。
-- 独立 ::after：粉蓝舞台光与六张真实喜剧照片，在六处周边位置交替淡入。12 秒一轮，间隔 2 秒，允许短暂重叠。
-- 人物回应 9 秒，电话 8 秒，热气 3.5 秒。SVG 资源内部使用 CSS 动画。
-- 进入页面的整体笑晃只播放一次；悬停或键盘聚焦有一次人物轻晃。
-- 原地图、顶部电视构图、侧栏、藏品带背景和底部滚动逻辑保留。
+Map: cast/symbols -> telephone -> coffee -> yellow light -> pink light. Independent ::after cycles six real comedy stills around the edges, 12 seconds total. Existing cast reactions, receiver movement, steam and entry laugh remain. Map/header/sidebar/collection behaviour unchanged.
 
-## 主题六：虚拟电影空间
+## Theme 6: virtual cinema
 
-- 地图舞台：两层光晕 + 原空间网格。
-- 地图 SVG 元素背景：透明全息 PNG，与原地图使用相同 viewBox、中心定位和 contain，保持编号对齐。
-- 三房间：左侧淡金 room-3、中间薄荷绿 room-2、右侧冰蓝 room-1；地图编号与侧栏色标、标题对应。
-- 独立 ::after：十八枚外围光点，无流星、无扫描光。
-- 地图上下各 8px 缓慢漂浮，编号和路线一同运动；光点独立漂移明灭。
-- 藏品带仍为暗色遮罩 + 虚拟场景；侧栏末尾保留虚拟剧院照片。
+Stage: cyan light -> violet light -> spatial grid -> three subdued VR entry scenes, 21-second dissolve. Holographic map shares the original viewBox; pale gold/mint/ice blue match room legends. Peripheral fireflies and subtle floating remain; no meteors or scanline. Header, sidebar footer and collection scenery retained. Reduced-motion shows static scenes.
 
-## 动态与阅读
+## Maintenance
 
-所有新增装饰都不截获鼠标输入。减少动态效果模式停止新增运动。
-主题切换与跨页保留主题仍由原 JavaScript 负责；本次清理没有修改 HTML、JavaScript 或房间数据。
-整理前后比较与检查结果见 CSS-REVIEW.md。
-
-主题三侧栏装潢微调：侧栏外框使用地图同款阶梯黄铜框，保持原有边框宽度；路线与房间内页增加独立透明角花 ::before，后段较旧内页装饰更淡。原背景列表、潮湿纸纹、生锈边框、::after 缝补和全部文字布局均保留。
-
-主题一纸墨融合：仅加强同一透明纸纹 SVG 中的帘纹、细纤维与微小纸浆颗粒，不改变背景列表或建筑遮罩。地图原始位图单独使用柔和对比与轻微暖墨滤镜、94% 透明度；编号、路线和交互不做滤镜，不改变坐标。
-
-主题一图例同步：三个侧栏房间色标与地图底图共用同一暖墨滤镜、94% 透明度和正片叠底方式。原始房间颜色仍由数据提供；不改房间数据、文字、卡片背景、尺寸或金框。
-
-主题四电影院环境：body 深色环境，顶部/侧栏/藏品带适度降亮，地图保留原三层背景并加外部暖投影光晕。body::before 为独立透明颗粒，body::after 为透明偶发尘点/短划痕与边缘暗角；均 fixed、不参与排版且 pointer-events:none。地图原闲置 ::after 只增加极轻投影光，不替换原背景。保留一次性显影动画。减少动态效果时颗粒和投影光静止，尘点消失。
-
-主题四颗粒可见度修正：soft-light 在接近白色的银幕上削弱颗粒，改为透明原色叠加，28% 图层透明度；粒径与数量适度提高。尘点周期 8 秒，增加少量深浅尘点，仍仅局部短暂出现，不做全屏闪烁。
-
-主题四整幅投影银幕：经用户明确要求，地图原纸色/曝光三层改为单一完整电影银幕 SVG（四张真实剧照，每 2.5 秒切镜、10 秒循环）。使用离散切镜与轻微片门错位，每秒 24 个位置采样，不做高频亮度闪烁；不是视频。地图底图正片叠底、80% 透明度、短显影，与银幕共享轻微投影错位；编号路线坐标保留。原顶部、侧栏、藏品带与胶片外框保留。减少动态效果保留第一帧静态银幕。
-
-主题四银幕主次修订：改用十二张新下载、专供地图银幕的真实剧照，替换原四张重复图。每镜头 1.0–1.8 秒，15.4 秒一轮；低对比、48% 背景投影强度与中心柔光降低人脸和亮部的干扰。地图底图透明度提升至 88%，保留原编号、侧栏、顶部、藏品带与所有点击。
-
-主题三内页开头避让：将原拉伸至全卡高度的角花替换为顶部/底部各 24px 固定高度的透明线饰，角线只在外侧 12px 内，不进入正文。原卡片背景、补丁 ::after、地图与侧栏外框均保留。侧栏正文与藏品文字采用 Times 类报纸衬线，小栏目使用 Bodoni；Exhibition Map 及顶部大标题不变。
-
-主题四颗粒分区：删除 body 全屏颗粒层；body::after 只保留暗角。地图银幕内部保留 28% 颗粒与偶发尘点；标题照片背景及藏品带背景用同一 12% 轻颗粒；侧栏与阅读卡片为 3.5% 极轻颗粒。背景列表逐项增加纹理，原照片、暗色遮罩、胶片孔、装饰、尺寸和镜头顺序保留。地图颗粒仍动态，其他区域纹理静态。
-
-主题六 VR 入场系列：仅在地图舞台背景列表最底下增加一层三张新生成图片的 SVG 序列；原青绿光晕、淡紫光晕和空间网格三层保持顺序、尺寸、位置及重复方式。图像中央留暗，手势/卷轴/人物位于边缘，以 65% 强度和 21 秒缓慢淡变融入环境。地图、全息分区、光点、标题、侧栏、底部和其余装饰不变。减少动态效果时静态显示第一张。
-
-Theme 3 map: original weathering -> transparent cinema-map-memory.svg -> original ivory gradient. Map, frame, paper, repairs and other sections unchanged. Eight photos briefly shake then settle; reduced motion uses one static print.
+Decorative layers never intercept pointer input. Existing JS owns theme persistence, route logic and collection scrolling. This release does not edit HTML/JS/data. Teammate commit da70003 (content-page header hidden) has already been integrated and is preserved. See CSS-REVIEW.md for validation.

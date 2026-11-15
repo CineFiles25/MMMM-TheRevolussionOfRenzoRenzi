@@ -45,3 +45,25 @@ Scope: theme 1 handmade paper and matching legend ink; theme 3 readable sidebar 
 - Local Chrome: 176 checks passed, 0 failed. Six themes at 500/1400px: map markers, cross-page theme persistence and decorative image loading. Cleanup equivalence for themes 3/4 at 500/1100/1850px on map/catalogue pages, with animations frozen. Computed styles match except normalized redundant background-size/position lists.
 - Embedded photographic/VR originals included as editable source assets. Unused drafts and map-preview.html excluded. No JS/data/functional HTML changes included. Existing local HTML comments excluded.
 - Upload manifest: local .git/river-css-upload-20261114.txt.
+
+
+## 2026-11-15 / theme 3 release
+
+Final behaviour: a 3.5%-larger cut-paper map remains interactive above eight real photographic archive prints. Two four-photo waves fade in from their corresponding sides, ease out and remain after two seconds. Native rounded cream-enamel framing preserves full inner contours and adds restrained pearl/scroll fittings. Original weathering, repairs, reading content and all other themes remain.
+
+Cleanup:
+- Removed 19 superseded unconditional declarations, including obsolete map/sidebar backgrounds and border-image properties.
+- Preserved conditional/mobile/reduced-motion/support rules and final cascade order.
+- Reformatted declarations and long background lists with one layer per line; expanded compact animation rules.
+- Replaced chronological experiment notes with the actual final background/source structure.
+- Excluded the unused animated cinema-map-memory.svg edit, obsolete gallery-frame draft, unused image candidates and map-preview.html.
+
+Validation:
+- All six CSS files parse, including nested rules and registered-property descriptors.
+- All 98 recursively referenced runtime resources exist; referenced SVGs parse.
+- Local Chrome: all computed styles agree before/after cleanup at 500/1100/1850px on the map and a real loaded catalogue page (six comparisons).
+- All 16 map markers pass actual hit-position checks at all three widths.
+- At each width, sampled 0/100/1000/1100/2000/4000ms: independent fractional opacity during entry, first wave solid at 1s, both solid at 2s and 4s; lateral positions settle to zero.
+- Actual browsers tested: local Chrome. The unsupported-cross-fade fallback is provided and parsed, not separately browser-tested.
+- No functional HTML, JS or data changes staged. Teammate da70003 remains integrated; its hidden content-page header is preserved.
+- Exact local upload manifest: .git/river-css-upload-20261115.txt (24 files). Unused drafts stay local.
