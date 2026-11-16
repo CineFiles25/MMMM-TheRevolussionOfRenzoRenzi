@@ -79,9 +79,14 @@ body > header {
   border-image-slice: 40;
   border-image-repeat: stretch;
   background-color: #422719;
-  background-image: linear-gradient(rgba(35,12,16,0.35), rgba(35,12,16,0.60)), url("../assets/img/themes/baroque-auditorium.jpg");
-  background-size: cover;
-  background-position: center 37%;
+  /* Preserve the original theatre/veil; portrait memories sit above the dark veil so they stay visible at the right edge. */
+  background-image:
+    url("../assets/img/themes/baroque-header-opera-memories.svg?v=20261116-visible-skirt"),
+    linear-gradient(rgba(35,12,16,0.35), rgba(35,12,16,0.60)),
+    url("../assets/img/themes/baroque-auditorium.jpg");
+  background-size: auto 100%, cover, cover;
+  background-position: right 6px top, center 37%, center 37%;
+  background-repeat: no-repeat, no-repeat, no-repeat;
   box-shadow: 0 8px 28px #17060c;
 }
 
@@ -717,15 +722,18 @@ header nav {
 
 #map-page #map-stage {
   padding: 13px;
-  /* 透明手工纸纹 → 原纸色遮罩 → 原舞台建筑；保留建筑透视和金框。 */
+  /* Original paper -> left ensemble -> right ensemble -> original veil -> original architecture.
+     Add only the two margin ensembles; preserve all existing layers and their settings. */
   background-image:
     url("../assets/img/themes/baroque-laid-paper.svg"),
+    url("../assets/img/themes/baroque-map-stage-left.svg"),
+    url("../assets/img/themes/baroque-map-stage-right.svg"),
     linear-gradient(#fff7e6ed, #efe0bff2),
     url("../assets/img/themes/bibiena-stage-design.jpg");
-  background-size: 320px 320px, 100% 100%, cover;
+  background-size: 320px 320px, auto 56%, auto 56%, 100% 100%, cover;
   background-clip: padding-box;
-  background-position: left top, center, center;
-  background-repeat: repeat, no-repeat, no-repeat;
+  background-position: left top, left 2% center, right 2% center, center, center;
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat;
   box-shadow: 0 5px 16px #14070c88, inset 0 0 24px #ba95522b;
 }
 
@@ -1087,4 +1095,25 @@ body > .indexslider .index-slide:nth-child(4n)::after {
 /* Match the plan's paper blending without recolouring the whole reading card. */
 #map-side .room-swatch {
   mix-blend-mode: multiply;
+}
+
+/* River: fill the previously empty joins with a faint full-length opera-stage figure.
+   Even joins keep the existing masks; odd joins add the singer behind the exhibits.
+   Do not change slide dimensions, the scrolling pitch, or link hit areas. */
+body > .indexslider .index-slide:nth-child(2n+1)::after {
+  content: "";
+  position: absolute;
+  right: -16px;
+  top: 9px;
+  width: 32px;
+  height: 48px;
+  z-index: 0;
+  background: url("../assets/img/themes/baroque-strip-senesino.svg") center / contain no-repeat;
+  opacity: .38;
+  pointer-events: none;
+}
+body > .indexslider .index-slide > img,
+body > .indexslider .index-caption {
+  position: relative;
+  z-index: 1;
 }

@@ -706,7 +706,7 @@ body #map-page {
   border-radius: 26px;
   outline: 1px solid #a5769a;
   background-color: #f2fffb;
-  background-image: url("../assets/img/themes/commedia-map-cast-live.svg"), url("../assets/img/themes/commedia-phone-live.svg"), url("../assets/img/themes/commedia-coffee-live.svg"), radial-gradient(ellipse at 3% 95%, #fff1b766, transparent 45%), radial-gradient(ellipse at 95% 5%, #edc3df44, transparent 45%);
+  background-image: url("../assets/img/themes/commedia-map-memory-vortex.svg?v=20261116-reactions"), url("../assets/img/themes/commedia-phone-live.svg"), url("../assets/img/themes/commedia-coffee-live.svg"), radial-gradient(ellipse at 3% 95%, #fff1b766, transparent 45%), radial-gradient(ellipse at 95% 5%, #edc3df44, transparent 45%);
   background-size: 100% 100%, 29px 27px, 29px 27px, 100% 100%, 100% 100%;
   background-position: center, left 10px top 4px, right 10px top 4px, center, center;
   background-repeat: no-repeat;
@@ -1306,9 +1306,9 @@ body:has(> #map-page) > .indexslider .index-slide img {
   }
 }
 
-/* River / a quiet TV-comedy environment behind the unchanged map.
-   The existing unused ::after carries light and fading historical stills.
-   All five stage-background layers remain, with animated versions of the same art. */
+/* River: the existing ::after carries only moving pastel light.
+   Scene memories and dialogue live in the first map background layer.
+   Keep all five map background layers and the original map interactions. */
 
 body:has(> #map-page) #map-stage {
   position: relative;
@@ -1324,7 +1324,7 @@ body:has(> #map-page) #map-stage::after {
   padding: 0;
   border: 0;
   border-radius: inherit;
-  background: url("../assets/img/themes/commedia-map-atmosphere.svg") center / 100% 100% no-repeat;
+  background: url("../assets/img/themes/commedia-map-story-atmosphere.svg") center / 100% 100% no-repeat;
   pointer-events: none;
   z-index: -1;
 }

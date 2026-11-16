@@ -339,3 +339,37 @@ The Mussolini portrait filename says 1930, but its description dates it between 
 - cinema-transparent.svg: transparent image partner for browser cross-fade.
 Document CSS animates two four-photo waves over two seconds: left-hand photos ease from the left, right-hand photos from the right, with independent opacity. Both waves settle and remain. Reduced-motion retains fades without travel; a two-wave fallback is provided without cross-fade support. The live cut-paper map is enlarged 3.5%. No HTML, JS or catalogue data changes.
 Earlier animated wrappers and unused frame/photo alternatives remain local drafts, outside this release.
+
+## 2026-11-16 / theme 1 opera memories and theatrical ensembles
+
+Final assets: baroque-header-opera-memories.svg, baroque-map-stage-left.svg, baroque-map-stage-right.svg, baroque-strip-senesino.svg. These self-contained SVGs embed the unchanged source-image bytes; separate original downloads and intermediate wrappers are not required by the release. Native SVG clipping, colour-to-alpha filters and proportional transforms; no generated historical figures.
+- Farinelli portrait, Wikimedia Commons, Amigoni - Portrait de Farinelli.jpg; PD-Art/Public Domain Mark: https://commons.wikimedia.org/wiki/File:Amigoni_-_Portrait_de_Farinelli.jpg
+- Jean Michel Moreau le Jeune, Costume Study for Opera Singer, 1781; Cleveland Museum of Art 2009.309, CC0: https://www.clevelandart.org/art/2009.309 . Historical costume study, not a photograph of a performance.
+- Faustina Bordoni and Senesino stage caricature, attributed to Anton Maria Zanetti, Venice 1729; Commons CC0/public domain statement: https://commons.wikimedia.org/wiki/File:Bordoni_%26_senesino_-_ortkemper_1993.jpg
+- Male Actor in Ballet Costume, after (?) Jean Berain; Met 63.562.10, Public Domain: https://www.metmuseum.org/art/collection/search/341302 ; image https://images.metmuseum.org/CRDImages/dp/web-large/DP809526.jpg
+- Female Actor in Ballet Costume, after (?) Jean Berain; Met 63.562.11, Public Domain: https://www.metmuseum.org/art/collection/search/341303 ; image https://images.metmuseum.org/CRDImages/dp/web-large/DP809527.jpg
+- Costume of an Indian Woman from the Ballet Triumph of Love, Juan Dolivar after Jean Berain, 1681-92; Met 60.699.1, Public Domain: https://www.metmuseum.org/art/collection/search/386045 ; image https://images.metmuseum.org/CRDImages/dp/web-large/DP209719.jpg
+
+Header: skirt figure at .24 opacity behind the portrait. Map: four distinct figures form two editorial ensembles in the margins, beneath the existing paper fibres; these are not reconstructions of an authentic shared performance. Collection strip: 32x48px singer alternates with the existing masks. Single-root SVGs avoid Live Server's repeated script injection into nested SVG closing tags. Original theatre, architecture, paper, frame, floor plan and interactions retained.
+
+## 2026-11-16 / theme 5 comedy memory vortex
+
+Final assets: commedia-map-memory-vortex.svg and commedia-map-story-atmosphere.svg. The vortex embeds ten unchanged film/press stills with native SVG soft masks and restrained light grading. The second SVG contains only the original animated pastel light. Separate photo downloads and trial composites are not needed at runtime. Images remain copyrighted by their respective owners; no public-domain claim.
+1. Sapore di mare (1983), beach group: Mediaset/Tgcom24 https://www.tgcom24.mediaset.it/spettacolo/sapore-di-mare-torna-cinema_86570380-202402k.shtml
+2. Rimini Rimini (1987), beach greeting: Cinematografo/Webphoto https://www.cinematografo.it/riflettori/30-film-per-lestate-jzi81043
+3. Borotalco (1982), two-person comic costume scene: Sky TG24/Webphoto https://tg24.sky.it/spettacolo/cinema/approfondimenti/carlo-verdone-borotalco-frasi-film
+4. Il bisbetico domato (1980), telephone scene: TV Today https://www.tvtoday.de/filme/der-gezaehmte-widerspenstige_1308188.html
+5. Il ragazzo di campagna (1984), small apartment: Movieplayer https://movieplayer.it/news/renato-pozzetto-il-ragazzo-di-campagna-come-nato-tormentone-taaac_83652/
+6. Bianco, rosso e Verdone (1981), family in car: https://www.nonsonsolofilm.it/bianco-rosso-e-verdone-citazioni-e-dialoghi/
+7. Fantozzi (1975), tennis handshake: Quotidiano Sportivo https://sport.quotidiano.net/altri-sport/da-allen-a-fantozzi-anti-eroi-e750a2fa
+8. Non ci resta che piangere (1984), writing a letter: Quinlan https://quinlan.it/2021/12/27/non-ci-resta-che-piangere/
+9. Non ci resta che piangere (1984), customs checkpoint: https://www.questionegiustizia.it/articolo/un-fiorino_11-02-2020.php
+10. Borotalco (1982), motorcycle pair: https://www.mymovies.it/film/1982/borotalco/
+
+Twenty-four-second drifting fades across ten scenes; centre images are lighter. Seven staggered dialogue balloons use short quotations and film labels, rather than asserting that a line belongs to the adjacent still. Sources:
+- Taaac: https://it.wikiquote.org/wiki/Il_ragazzo_di_campagna
+- Un fiorino / Mo' me lo segno / Chi siete / Dove andate: https://it.wikiquote.org/wiki/Non_ci_resta_che_piangere
+- Magda, tu mi adori: Verdone Official https://www.youtube.com/watch?v=3CS0WXm6o_4
+- Batti lei: https://sport.quotidiano.net/altri-sport/da-allen-a-fantozzi-anti-eroi-e750a2fa
+
+Ha/?! and Mah/Boh/Eh/Uff are original generic graphic reactions, not attributed film quotations. Reactions sit in peripheral gaps at lower opacity; sparse sweat, surprise and music marks are native vector/text decorations. Reduced-motion and small-screen alternatives included. Phone/coffee graphics, map, markers, routes, header, reading panel and collection design retained. No HTML, JavaScript or catalogue changes in this release.
