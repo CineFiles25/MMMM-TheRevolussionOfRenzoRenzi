@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Revolussion of Renzo Renzi</title>
-  <!-- <link rel="stylesheet" href="css/theme-3.css" id="theme-stylesheet"> -->
+  <link rel="stylesheet" href="css/theme-3.css" id="theme-stylesheet">
   <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/film-strip.css">
 </head>
 <body>
 
@@ -15,7 +16,8 @@
       <select id="theme-select"></select>
     </nav>
     <nav class="site-links" aria-label="Site pages">
-      <a href="documentation.html">Docs</a> · <a href="disclaimer.html">Disclaimer</a>
+      <a href="documentation.html">Docs</a>
+      <a href="disclaimer.html">Disclaimer</a>
     </nav>
   </header>
 
@@ -24,14 +26,52 @@
     <p>Writer, critic and filmmaker, Renzo Renzi worked in Bologna. Sixteen objects, from letters and manuscripts to photographs, a book and a film, tell his story.</p>
 
     <h2>The museum</h2>
-    <p>Three rooms, each with its own colour. Open the map to see the objects in each one.</p>
+    <p>Three rooms, three different sides of Renzo Renzi. Open the map to see the objects in each one.</p>
     <figure>
       <svg id="preview-map" viewBox="0 0 4032 3024" role="img" aria-label="Museum plan with a preview of each room">
         <image href="assets/img/museum/gallery_planimetry_no_punti.png" x="0" y="0" width="4032" height="3024"/>
         <g id="preview-rooms"></g>
       </svg>
-      <figcaption><a href="map.html">Open the museum map</a></figcaption>
+      <button><a href="map.html">Museum map</a></button>
     </figure>
+
+    <h2>The items</h2>
+    <nav class="indexslider" style="--shift: -3520px; --duration: 59s;" aria-label="All the items of the exhibition">
+    <div class="indexslide-track">
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_letter_1942" title="Letter to his father"><img src="assets/items/letter_p1.jpg" alt=""><span class="index-caption">Letter to his father</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=po_screenplay" title="Quando il Po è dolce (manuscript screenplay)"><img src="assets/items/po_screenplay.jpg" alt=""><span class="index-caption">Quando il Po è dolce (manuscript screenplay)</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=l_armata_s_agapo" title="L'armata s'agapò"><img src="assets/items/l_armata_s_agapo.jpg" alt=""><span class="index-caption">L'armata s'agapò</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=guida_documentary" title="Guida per camminare all'ombra"><img src="assets/items/guida_documentary.png" alt=""><span class="index-caption">Guida per camminare all'ombra</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=drawing_gelsomina_lastrada" title="La Strada: Gelsomina col tamburo"><img src="assets/items/gelsomina_drawing.jpg" alt=""><span class="index-caption">La Strada: Gelsomina col tamburo</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_la_strada_fighter" title="Circus performance scene from 'La Strada'"><img src="assets/items/photo_la_strada_fighter.jpg" alt=""><span class="index-caption">Circus performance scene from 'La Strada'</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_la_strada_woman" title="Gelsomina eating bread in rural landscape"><img src="assets/items/photo_la_strada_woman.jpg" alt=""><span class="index-caption">Gelsomina eating bread in rural landscape</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=la_strada_soundtrack_original" title="La strada : [musique du film]"><img src="assets/items/la_strada_soundtrack_original.png" alt=""><span class="index-caption">La strada : [musique du film]</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=la_strada_film" title="La strada"><img src="assets/items/la_strada_film.png" alt=""><span class="index-caption">La strada</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_lastrada_premiere" title="Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina"><img src="assets/items/photo_lastrada_premiere.png" alt=""><span class="index-caption">Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=ferrari_set_photo" title="Ferrari on set during the documentary 'Le Notti del Melodramma'"><img src="assets/items/ferrari_set_photo.jpg" alt=""><span class="index-caption">Ferrari on set during the documentary 'Le Notti del Melodramma'</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=caricature_fellini_renzi" title="Fellini caricature"><img src="assets/items/caricature_fellini_renzi.jpg" alt=""><span class="index-caption">Fellini caricature</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=bologna_book" title="Bologna, una città"><img src="assets/items/bologna_book.jpg" alt=""><span class="index-caption">Bologna, una città</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=book_il_primo_fellini" title="Il primo Fellini"><img src="assets/items/la_strada_pag_8.png" alt=""><span class="index-caption">Il primo Fellini</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_interview_2000" title="Il cinema a Bologna: Renzo Renzi e la Columbus film"><img src="assets/items/renzi_interview_2000.png" alt=""><span class="index-caption">Il cinema a Bologna: Renzo Renzi e la Columbus film</span></a>
+      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_portrait" title="Renzo Renzi taking a photograph (informal portrait)"><img src="assets/items/renzi_portrait.jpg" alt=""><span class="index-caption">Renzo Renzi taking a photograph (informal portrait)</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_letter_1942" title="Letter to his father"><img src="assets/items/letter_p1.jpg" alt=""><span class="index-caption">Letter to his father</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=po_screenplay" title="Quando il Po è dolce (manuscript screenplay)"><img src="assets/items/po_screenplay.jpg" alt=""><span class="index-caption">Quando il Po è dolce (manuscript screenplay)</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=l_armata_s_agapo" title="L'armata s'agapò"><img src="assets/items/l_armata_s_agapo.jpg" alt=""><span class="index-caption">L'armata s'agapò</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=guida_documentary" title="Guida per camminare all'ombra"><img src="assets/items/guida_documentary.png" alt=""><span class="index-caption">Guida per camminare all'ombra</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=drawing_gelsomina_lastrada" title="La Strada: Gelsomina col tamburo"><img src="assets/items/gelsomina_drawing.jpg" alt=""><span class="index-caption">La Strada: Gelsomina col tamburo</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_la_strada_fighter" title="Circus performance scene from 'La Strada'"><img src="assets/items/photo_la_strada_fighter.jpg" alt=""><span class="index-caption">Circus performance scene from 'La Strada'</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_la_strada_woman" title="Gelsomina eating bread in rural landscape"><img src="assets/items/photo_la_strada_woman.jpg" alt=""><span class="index-caption">Gelsomina eating bread in rural landscape</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=la_strada_soundtrack_original" title="La strada : [musique du film]"><img src="assets/items/la_strada_soundtrack_original.png" alt=""><span class="index-caption">La strada : [musique du film]</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=la_strada_film" title="La strada"><img src="assets/items/la_strada_film.png" alt=""><span class="index-caption">La strada</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_lastrada_premiere" title="Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina"><img src="assets/items/photo_lastrada_premiere.png" alt=""><span class="index-caption">Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=ferrari_set_photo" title="Ferrari on set during the documentary 'Le Notti del Melodramma'"><img src="assets/items/ferrari_set_photo.jpg" alt=""><span class="index-caption">Ferrari on set during the documentary 'Le Notti del Melodramma'</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=caricature_fellini_renzi" title="Fellini caricature"><img src="assets/items/caricature_fellini_renzi.jpg" alt=""><span class="index-caption">Fellini caricature</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=bologna_book" title="Bologna, una città"><img src="assets/items/bologna_book.jpg" alt=""><span class="index-caption">Bologna, una città</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=book_il_primo_fellini" title="Il primo Fellini"><img src="assets/items/la_strada_pag_8.png" alt=""><span class="index-caption">Il primo Fellini</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_interview_2000" title="Il cinema a Bologna: Renzo Renzi e la Columbus film"><img src="assets/items/renzi_interview_2000.png" alt=""><span class="index-caption">Il cinema a Bologna: Renzo Renzi e la Columbus film</span></a>
+      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_portrait" title="Renzo Renzi taking a photograph (informal portrait)"><img src="assets/items/renzi_portrait.jpg" alt=""><span class="index-caption">Renzo Renzi taking a photograph (informal portrait)</span></a>
+    </div>
+  </nav>
 
     <h2>Three narratives</h2>
     <p>A narrative is a route through the objects. Choose the one you like best.</p>
@@ -52,7 +92,7 @@
     <article>
       <img src="assets/items/bologna_book.jpg" alt="Bologna, una città">
       <h3><a href="exhibition.html?narrative=guide-to-walking-bologna">Guide to walking in Bologna</a></h3>
-      <p>A walk around Renzi's city, Bologna, through Renzi's eyes, words and film camera. Five stops offer five ways of meeting the city: walk it, film it, read it, watch a film in it, and remember it. Follow them in order to move from a street of porticoes to a film set, a book, a cinema on premiere night and, finally, Renzi's own memories of the city in his 2000 interview.</p>
+      <p>A walk around Renzi's city, Bologna, through Renzi's eyes, words and film camera. Five stops offer five ways of meeting the city: walk it, film it, read it, watch a film in it, and remember it.</p>
     </article>
 
     </div>
@@ -66,7 +106,7 @@
   </main>
 
   <script src="js/main.js"></script>
-  <script>
+  <!-- <script>
     Exhibition.initPage().then(function () {
       var SVG_NS = "http://www.w3.org/2000/svg";
       var HIT_RADIUS = 260;
@@ -138,7 +178,7 @@
         group.appendChild(room_el);
       });
     });
-  </script>
+  </script> -->
 
 </body>
 </html>
