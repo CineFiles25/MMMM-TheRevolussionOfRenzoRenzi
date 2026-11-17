@@ -4,20 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Revolussion of Renzo Renzi</title>
-  <link rel="stylesheet" href="css/theme-3.css" id="theme-stylesheet">
+  <!-- <link rel="stylesheet" href="css/theme-3.css" id="theme-stylesheet"> -->
   <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/film-strip.css">
+  <link rel="stylesheet" href="css/film-strip.css">
 </head>
 <body>
 
   <header>
-    <nav aria-label="Theme navigation">
-      <label for="theme-select">Theme:</label>
-      <select id="theme-select"></select>
-    </nav>
+    <h2>The Revolussion of Renzo Renzi</h2>
     <nav class="site-links" aria-label="Site pages">
-      <a href="documentation.html">Docs</a>
+      <a href="index.html">Home</a>
+      <a href="map.html">Map</a>
+      <a href="documentation.html">Docs</a> 
       <a href="disclaimer.html">Disclaimer</a>
+    </nav>
+    <nav class="theme-navigation" aria-label="Theme navigation">
+      <label for="theme-select">Theme:</label>
+      <select id="theme-select" aria-label="Select theme"></select>
     </nav>
   </header>
 
@@ -25,17 +28,23 @@
     <h1>The Revolussion of Renzo Renzi</h1>
     <p>Writer, critic and filmmaker, Renzo Renzi worked in Bologna. Sixteen objects, from letters and manuscripts to photographs, a book and a film, tell his story.</p>
 
+    <hr>
+
     <h2>The museum</h2>
-    <p>Three rooms, three different sides of Renzo Renzi. Open the map to see the objects in each one.</p>
+    <p>Three rooms, three different sides of Renzo Renzi.<br>Open the map to see the objects in each one.</p>
+    <button><a href="map.html">Museum map</a></button>
     <figure>
-      <svg id="preview-map" viewBox="0 0 4032 3024" role="img" aria-label="Museum plan with a preview of each room">
-        <image href="assets/img/museum/gallery_planimetry_no_punti.png" x="0" y="0" width="4032" height="3024"/>
+      <svg id="preview-map" viewBox="120 830 3770 1840" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Museum plan with a preview of each room">
+        <image href="assets/img/museum/gallery_planimetry_no_punti_transparent.png" x="0" y="0" width="4032" height="3024"/>
         <g id="preview-rooms"></g>
       </svg>
-      <button><a href="map.html">Museum map</a></button>
     </figure>
 
+    <hr>
+
     <h2>The items</h2>
+    <p>Explore all the items on display, from letters and manuscripts to photographs and film memorabilia.</p>
+    
     <nav class="indexslider" style="--shift: -3520px; --duration: 59s;" aria-label="All the items of the exhibition">
     <div class="indexslide-track">
       <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_letter_1942" title="Letter to his father"><img src="assets/items/letter_p1.jpg" alt=""><span class="index-caption">Letter to his father</span></a>
@@ -73,8 +82,10 @@
     </div>
   </nav>
 
+    <hr>
+
     <h2>Three narratives</h2>
-    <p>A narrative is a route through the objects. Choose the one you like best.</p>
+    <p>Take a journey through the life and work of Renzo Renzi, exploring his films, writings, and the city of Bologna.</p>
 
     <div class="narratives">
     <article>
@@ -97,6 +108,8 @@
 
     </div>
 
+    <hr>
+
     <h2>How to visit</h2>
     <ol>
       <li>Choose a narrative above, or open the map to start in a room.</li>
@@ -106,79 +119,7 @@
   </main>
 
   <script src="js/main.js"></script>
-  <!-- <script>
-    Exhibition.initPage().then(function () {
-      var SVG_NS = "http://www.w3.org/2000/svg";
-      var HIT_RADIUS = 260;
-      var CARD_WIDTH = 1300;
-      var CARD_GAP = 150;
-      var PAD = 60;
-      var CARD_BELOW = ["room-2"];
-      var group = document.getElementById("preview-rooms");
-      var svg = group.ownerSVGElement;
-      var narratives = Exhibition.getNarratives();
-      var placed = Exhibition.getAllItems().filter(function (item) { return item.mapPosition; });
-
-      function svgEl(name, attrs) {
-        var el = document.createElementNS(SVG_NS, name);
-        Object.keys(attrs).forEach(function (key) { el.setAttribute(key, attrs[key]); });
-        return el;
-      }
-
-      function fitCard(entry) {
-        var scale = svg.getScreenCTM().a;
-        var height = entry.inner.getBoundingClientRect().height / scale;
-        var top = entry.below ? entry.cy + CARD_GAP : entry.cy - CARD_GAP - height;
-        top = Math.min(Math.max(top, 0), 3024 - height);
-        entry.rect.setAttribute("y", top);
-        entry.rect.setAttribute("height", height);
-        entry.body.setAttribute("y", top);
-        entry.body.setAttribute("height", height);
-      }
-
-      Exhibition.getRooms().forEach(function (room) {
-        var roomItems = placed.filter(function (item) { return item.mapPosition.area === room.id; });
-        if (!roomItems.length) return;
-
-        var sumX = 0, sumY = 0;
-        roomItems.forEach(function (item) { sumX += item.mapPosition.x; sumY += item.mapPosition.y; });
-        var cx = sumX / roomItems.length / 100 * 4032;
-        var cy = sumY / roomItems.length / 100 * 3024;
-        var pick = roomItems[0];
-        var narrative = narratives.find(function (n) { return n.order.indexOf(pick.id) !== -1; });
-        var left = Math.min(Math.max(cx - CARD_WIDTH / 2, 0), 4032 - CARD_WIDTH);
-
-        var room_el = svgEl("a", { class: "room", href: narrative ? Exhibition.buildItemUrl(narrative.id, pick.id) : "map.html" });
-        room_el.appendChild(svgEl("circle", { class: "room-hit", cx: cx, cy: cy, r: HIT_RADIUS }));
-
-        var card = svgEl("g", { class: "room-card" });
-        var rect = svgEl("rect", {
-          x: left, y: 0, width: CARD_WIDTH, height: 0,
-          fill: "#fff", stroke: room.color, "stroke-width": 30
-        });
-        var body = svgEl("foreignObject", { x: left, y: 0, width: CARD_WIDTH, height: 0 });
-        var inner = document.createElement("div");
-        inner.style.padding = PAD + "px";
-        var title = document.createElement("p");
-        title.className = "room-title";
-        title.textContent = room.title;
-        var intro = document.createElement("p");
-        intro.className = "room-intro";
-        intro.textContent = room.intro;
-        inner.appendChild(title);
-        inner.appendChild(intro);
-        body.appendChild(inner);
-        card.appendChild(rect);
-        card.appendChild(body);
-        room_el.appendChild(card);
-
-        var entry = { cy: cy, below: CARD_BELOW.indexOf(room.id) !== -1, rect: rect, body: body, inner: inner };
-        room_el.addEventListener("pointerenter", function () { fitCard(entry); });
-        room_el.addEventListener("focus", function () { fitCard(entry); });
-        group.appendChild(room_el);
-      });
-    });
-  </script> -->
+  <script src="js/index.js"></script>
 
 </body>
 </html>

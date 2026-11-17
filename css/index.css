@@ -1,16 +1,26 @@
 /* Cover page layout: theme selector on the left, page links on the right at the top. */
+body {
+  margin: 0;
+}
+
 header {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: 0.5rem 1rem;
   padding: 0.4rem 0.75rem;
 }
 
+header nav {
+  min-width: 0;
+}
+
+#theme-select {
+  max-width: 100%;
+}
+
 main {
-  max-width: 46rem;
-  margin: 0 auto;
-  padding: 0 1rem 2rem;
+  padding: 0 0 2rem;
   text-align: center;
 }
 
@@ -42,8 +52,10 @@ main article {
 
 #preview-map {
   display: block;
-  width: 100%;
+  width: 90%;
+  max-width: 850px;
   height: auto;
+  margin: 0 auto;
 }
 
 figure {

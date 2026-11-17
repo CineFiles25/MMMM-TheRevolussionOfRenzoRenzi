@@ -65,7 +65,11 @@ Not used by the script (free for layout): `item-main`, `item-layout`, `item-info
 | id | tag | content put there |
 | --- | --- | --- |
 | `preview-map` | `<svg>` | the plan image with a transparent white background (CSS `mix-blend-mode`) |
-| `preview-rooms` | `<g>` inside the svg | one link per room (created by the inline script), with a hit circle and a hover card (title + intro) |
+| `preview-rooms` | `<g>` inside the svg | reserved for room previews; currently empty |
+
+`index.html` loads `js/main.js` and `js/index.js`. The page script calls
+`Exhibition.initPage()` to load the exhibition data and populate the theme
+selector. Room-preview markup is not currently generated on this page.
 
 ## `exhibition.html` and `map.html` — the sliding strip
 
