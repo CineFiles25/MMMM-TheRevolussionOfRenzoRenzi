@@ -5,44 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Revolussion of Renzo Renzi</title>
   <!-- <link rel="stylesheet" href="css/theme-3.css" id="theme-stylesheet"> -->
-  <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/film-strip.css">
 </head>
-<body>
+<body style="margin: 0;">
 
   <header style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); align-items: center; gap: 1rem;">
     <h1 style="margin: 0; text-align: left;">The Revolussion of Renzo Renzi</h1>
-    <nav class="site-links" style="display: flex; flex-wrap: wrap; justify-content: center; justify-self: center; gap: 1rem;" aria-label="Site pages">
+    <nav class="site-links" style="display: flex; flex-wrap: wrap; justify-content: center; justify-self: center; gap: 1rem; min-width: 0;" aria-label="Site pages">
       <a href="index.html">Home</a>
       <a href="map.html">Map</a>
       <a href="documentation.html">Docs</a> 
       <a href="disclaimer.html">Disclaimer</a>
     </nav>
     <details class="theme-navigation" style="position: relative; justify-self: end;">
-      <summary style="cursor: default; padding: 0.5rem 1rem; border: 2px solid #444; border-radius: 0.25rem; background: #fff; color: #111; font-weight: bold;">Themes</summary>
-      <select id="theme-select" aria-label="Select theme" size="6" style="position: absolute; right: 0; top: 100%; z-index: 20; width: min(28rem, 90vw); max-width: none; background: #fff; color: #111;"></select>
+      <summary style="display: block; cursor: pointer; padding: 0.5rem 1rem; border: 2px solid currentColor; border-radius: 0.25rem; font-weight: bold;">Themes</summary>
+      <select id="theme-select" aria-label="Select theme" size="6" style="position: absolute; right: 0; top: 100%; z-index: 20; width: min(28rem, 90vw); max-width: none;"></select>
     </details>
   </header>
 
-  <main>
-    <h1>The Revolussion of Renzo Renzi</h1>
+  <main style="padding: 0 0 2rem; text-align: center;">
+    <h1 style="text-align: center;">The Revolussion of Renzo Renzi</h1>
     <p>Writer, critic and filmmaker, Renzo Renzi worked in Bologna. Sixteen objects, from letters and manuscripts to photographs, a book and a film, tell his story.</p>
 
     <hr>
 
-    <h2>The museum</h2>
+    <h2 style="text-align: center;">The museum</h2>
     <p>Three rooms, three different sides of Renzo Renzi.<br>Open the map to see the objects in each one.</p>
     <button><a href="map.html">Museum map</a></button>
-    <figure>
-      <svg id="preview-map" viewBox="120 830 3770 1840" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Museum plan with a preview of each room">
-        <image href="assets/img/museum/gallery_planimetry_no_punti_transparent.png" x="0" y="0" width="4032" height="3024"/>
+    <figure style="margin: 0;">
+      <svg id="preview-map" viewBox="120 830 3770 1840" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Museum plan with a preview of each room" style="display: block; width: 90%; max-width: 850px; height: auto; margin: 0 auto;">
+        <image href="assets/img/museum/gallery_planimetry_no_punti_transparent.png" x="0" y="0" width="4032" height="3024" style="mix-blend-mode: multiply;"/>
         <g id="preview-rooms"></g>
       </svg>
     </figure>
 
     <hr>
 
-    <h2>The items</h2>
+    <h2 style="text-align: center;">The items</h2>
     <p>Explore all the items on display, from letters and manuscripts to photographs and film memorabilia.</p>
 
     <nav class="indexslider" style="--shift: -3520px; --duration: 59s;" aria-label="All the items of the exhibition">
@@ -84,24 +83,24 @@
 
     <hr>
 
-    <h2>Three narratives</h2>
+    <h2 style="text-align: center;">Three narratives</h2>
     <p>Take a journey through the life and work of Renzo Renzi, exploring his films, writings, and the city of Bologna.</p>
 
-    <div class="narratives">
-    <article>
-      <img src="assets/items/renzi_portrait.jpg" alt="Renzo Renzi taking a photograph">
+    <div class="narratives" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 1rem;">
+    <article style="display: block; margin: 0;">
+      <img src="assets/items/renzi_portrait.jpg" alt="Renzo Renzi taking a photograph" style="display: block; margin: 0 auto; width: auto; height: auto; max-width: 100%; max-height: 12rem; border: 0;">
       <h3><a href="exhibition.html?narrative=renzo-renzi-a-life">Renzo Renzi: a life</a></h3>
       <p>Guide to Renzo Renzi's life and work, told in date order: from his life as a son and soldier to that as a filmmaker and writer.</p>
     </article>
 
-    <article>
-      <img src="assets/items/gelsomina_drawing.jpg" alt="La Strada: Gelsomina col tamburo">
+    <article style="display: block; margin: 0;">
+      <img src="assets/items/gelsomina_drawing.jpg" alt="La Strada: Gelsomina col tamburo" style="display: block; margin: 0 auto; width: auto; height: auto; max-width: 100%; max-height: 12rem; border: 0;">
       <h3><a href="exhibition.html?narrative=from-subject-to-film">From subject to film</a></h3>
       <p>Follow <em>La strada</em> from the page to the screen and beyond. Renzi's 1969 book of Fellini screenplays shows how a film story can also be read. A drawing and two production stills then take Gelsomina out of the film frame, to the soundtrack, the finished film and its premiere at Cinema Fulgor in Bologna. Each stop moves the story further from the script and closer to an audience.</p>
     </article>
 
-    <article>
-      <img src="assets/items/bologna_book.jpg" alt="Bologna, una città">
+    <article style="display: block; margin: 0;">
+      <img src="assets/items/bologna_book.jpg" alt="Bologna, una città" style="display: block; margin: 0 auto; width: auto; height: auto; max-width: 100%; max-height: 12rem; border: 0;">
       <h3><a href="exhibition.html?narrative=guide-to-walking-bologna">Guide to walking in Bologna</a></h3>
       <p>A walk around Renzi's city, Bologna, through Renzi's eyes, words and film camera. Five stops offer five ways of meeting the city: walk it, film it, read it, watch a film in it, and remember it.</p>
     </article>
@@ -110,7 +109,7 @@
 
     <hr>
 
-    <h2>How to visit</h2>
+    <h2 style="text-align: center;">How to visit</h2>
     <ol>
       <li>Choose a narrative above, or open the map to start in a room.</li>
       <li>Open an item and read it in the version you prefer: read less, read more or told by Renzo.</li>

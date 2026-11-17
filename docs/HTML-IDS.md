@@ -69,7 +69,9 @@ Not used by the script (free for layout): `item-main`, `item-layout`, `item-info
 
 `index.html` loads `js/main.js` and `js/index.js`. The page script calls
 `Exhibition.initPage()` to load the exhibition data and populate the theme
-selector. Room-preview markup is not currently generated on this page.
+selector. The index layout is styled on its HTML elements; font colors come
+from the selected theme. Room-preview markup is not currently generated on
+this page.
 
 ## `exhibition.html` and `map.html` — the sliding strip
 
