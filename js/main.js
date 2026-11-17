@@ -173,6 +173,8 @@ const Exhibition = (function () {
       setTheme(theme.id);
       const link = document.getElementById("theme-stylesheet");
       if (link) link.href = theme.cssFile;
+      const menu = selectEl.closest("details");
+      if (menu) menu.open = false;
       if (typeof onChange === "function") onChange(theme);
     });
   }

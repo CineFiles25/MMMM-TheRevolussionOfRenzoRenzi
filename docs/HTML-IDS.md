@@ -21,7 +21,7 @@ The file `css/skeleton.css` is a temporary layout; replace it with the real CSS.
 
 | id | tag | what the script does |
 | --- | --- | --- |
-| `theme-select` | `<select>` | fills it with the 6 themes, keeps it on the chosen one, and changes the theme |
+| `theme-select` | `<select>` | fills the list inside the Themes disclosure with 6 themes, keeps it on the chosen one, and closes the disclosure after a change |
 | `theme-stylesheet` | `<link rel="stylesheet">` | its `href` is switched to the chosen theme's CSS file (`css/theme-N.css`) |
 | `text-selector` | `<fieldset>` | the three text versions; contains three radio buttons (see below) |
 | `prev-button`, `next-button` | `<button>` | previous / next item in the chosen narrative, below the text versions (disabled at the ends) |

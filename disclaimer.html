@@ -4,31 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Disclaimer — The Revolussion of Renzo Renzi</title>
-  <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-  <header>
-    <h2>The Revolussion of Renzo Renzi</h2>
-    <nav class="site-links" aria-label="Site pages">
+  <header style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); align-items: center; gap: 1rem;">
+    <h1 style="margin: 0; text-align: left;">The Revolussion of Renzo Renzi</h1>
+    <nav class="site-links" style="display: flex; flex-wrap: wrap; justify-content: center; justify-self: center; gap: 1rem;" aria-label="Site pages">
       <a href="index.html">Home</a>
       <a href="map.html">Map</a>
       <a href="documentation.html">Docs</a>
       <a href="disclaimer.html">Disclaimer</a>
     </nav>
-    <nav class="theme-navigation" aria-label="Theme navigation">
-      <label for="theme-select">Theme:</label>
-      <select id="theme-select" aria-label="Select theme"></select>
-    </nav>
+    <details class="theme-navigation" style="position: relative; justify-self: end;">
+      <summary style="cursor: default; padding: 0.5rem 1rem; border: 2px solid #444; border-radius: 0.25rem; background: #fff; color: #111; font-weight: bold;">Themes</summary>
+      <select id="theme-select" aria-label="Select theme" size="6" style="position: absolute; right: 0; top: 100%; z-index: 20; width: min(28rem, 90vw); max-width: none; background: #fff; color: #111;"></select>
+    </details>
   </header>
   <main>
     <h1>Disclaimer</h1>
   </main>
-  <footer>
-    <ul class="footer-list">
-      <li>&copy; 2024 The Revolussion of Renzo Renzi</li>
-      <li><a href="https://github.com/CineFiles25/MMMM-TheRevolussionOfRenzoRenzi">Github repository</a></li>
-      <li>All rights reserved.</li>
-    </ul>
+  <hr>
+
+  <footer style="text-align: center;">
+      <p>&copy; 2024 The Revolussion of Renzo Renzi</p>
+      <p><a href="https://github.com/CineFiles25/MMMM-TheRevolussionOfRenzoRenzi">Github repository</a></p>
+      <p>All rights reserved.</p>
   </footer>
   <script src="js/main.js"></script>
   <script src="js/index.js"></script>
