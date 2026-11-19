@@ -14,7 +14,7 @@ Proposed grid cells: read less = mid-size / average / general adult; archival / 
 
 The occasional Bolognese terms are translated in context. *Bulåggna* means Bologna ([Wiktionary](https://en.wiktionary.org/wiki/Bul%C3%A5ggna)); *umarell* is a modern Bolognese-derived term for someone who observes construction work ([Treccani](https://www.treccani.it/vocabolario/umarell_%28Neologismi%29/)). Their spelling and use should be reviewed with a Bolognese speaker. Neither term is presented as something Renzi said.
 
-### 1. `book_il_primo_fellini` — *Il primo Fellini*
+### 1. `book_il_primo_fellini` — *La Strada* (screenplay)
 
 **Read less**
 
@@ -46,7 +46,7 @@ Made with ink and coloured markers on cut paper, the drawing shows another side 
 
 **Archival / Read more**
 
-This caricature of Federico Fellini is attributed to Renzo Renzi and dated approximately to the 1960s. It combines black ink and coloured markers on cut paper and measures 13 by 8.6 centimetres. Its handwritten caption appears to read “Cosa aspetta Federico a fare la rivolussione?”, asking what Federico is waiting for to make the revolution. 
+This caricature of Renzo Renzi, asking a question of Federico Fellini, is attributed to Federico Fellini and dated approximately to the 1960s. It combines black ink and coloured markers on cut paper and measures 13 by 8.6 centimetres. Its handwritten caption appears to read “Cosa aspetta Federico a fare la rivolussione?”, asking what Federico is waiting for to make the revolution. 
 
 The drawing belongs to the Renzo Renzi Collection at the Cineteca di Bologna. Its small format and handwritten caption place words and image together on the same piece of paper. The approximate date leaves the exact circumstances of its creation open; the caption invites interpretation, but it does not by itself establish Fellini's response or Renzi's precise intention.
 
@@ -357,7 +357,7 @@ The pen gives way to the camera. Renzi writes screenplays, directs short documen
 
 **Room 3 — Renzo Renzi, the friend: Renzi & Fellini**
 
-The last room follows a friendship. Renzi and Federico Fellini share the story of *La strada*, and Renzi can even tease his friend: his caricature of Fellini asks what he is waiting for to make the revolution.
+The last room follows a friendship. Renzi and Federico Fellini share the story of *La strada*, and Fellini can even tease his friend: his caricature of Renzi asks what Federico is waiting for to make the revolution.
 
 **Transitions between rooms** (shown on the map page under each room)
 

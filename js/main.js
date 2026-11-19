@@ -157,13 +157,15 @@ const Exhibition = (function () {
    */
   function wireThemeSelect(selectEl, onChange) {
     if (!selectEl) return;
-    const current = getCurrentTheme();
     selectEl.innerHTML = "";
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = "Change theme";
+    selectEl.appendChild(placeholder);
     THEMES.forEach((theme) => {
       const opt = document.createElement("option");
       opt.value = theme.id;
       opt.textContent = `${theme.period} — ${theme.label}`;
-      opt.selected = theme.id === current.id;
       selectEl.appendChild(opt);
     });
 
@@ -173,8 +175,7 @@ const Exhibition = (function () {
       setTheme(theme.id);
       const link = document.getElementById("theme-stylesheet");
       if (link) link.href = theme.cssFile;
-      const menu = selectEl.closest("details");
-      if (menu) menu.open = false;
+      selectEl.value = "";
       if (typeof onChange === "function") onChange(theme);
     });
   }
@@ -305,6 +306,16 @@ const Exhibition = (function () {
       .join("\n");
   }
 
+  /** Inline version of formatText for titles: *word* = <em>, no <p> wrapper. */
+  function formatInline(str) {
+    return escapeHtml(str).replace(/\*([^*]+)\*/g, "<em>$1</em>");
+  }
+
+  /** Title without the *italics* markers, for attributes and document.title. */
+  function plainTitle(str) {
+    return String(str || "").replace(/\*/g, "");
+  }
+
   /**
    * Wires the text-version selector inside `container` (e.g. <fieldset id="text-selector">).
    * The radio buttons are written in the page's HTML — one
@@ -386,6 +397,8 @@ const Exhibition = (function () {
     setVoice,
     findText,
     formatText,
+    formatInline,
+    plainTitle,
     wireTextSelector,
     initPage,
     getTextPreference,

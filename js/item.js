@@ -48,9 +48,9 @@
   /** Title, creator, type/date, "where am I" line, text and rights. */
   function fillItem() {
     const meta = item.metadata || {};
-    document.title = `${item.title} — The Revolussion of Renzo Renzi`;
+    document.title = `${Exhibition.plainTitle(item.title)} — The Revolussion of Renzo Renzi`;
 
-    $("item-title").textContent = item.title;
+    $("item-title").innerHTML = Exhibition.formatInline(item.title);
     $("item-creator").textContent = item.creator || "Unknown creator";
     $("item-type").textContent = meta.type || "unknown type";
     $("item-date").textContent = meta.date ? `(${meta.date})` : "";
@@ -62,12 +62,9 @@
     const order = narrative ? narrative.order : [];
     const stopNo = order.indexOf(item.id) + 1;                       // 0 = not in this narrative
     const stopLabel = narrative && narrative.stopLabels ? narrative.stopLabels[item.id] : null;
-    const room = item.mapPosition ? Exhibition.getRooms().find((r) => r.id === item.mapPosition.area) : null;
     const bits = [];
     if (narrative && stopNo > 0) bits.push(`${narrative.title} — stop ${stopNo} of ${order.length}${stopLabel ? ` (${stopLabel})` : ""}`);
-    if (room) bits.push(room.title);
     $("item-context").textContent = bits.join(" · ");
-    $("item-map-link").href = `map.html?narrative=${encodeURIComponent(narrativeId)}`;
 
     showText(Exhibition.getVoice());
   }
@@ -87,19 +84,26 @@
     const box = $("item-media");
     box.replaceChildren();
 
+    const documentTypes = ["Letter", "Manuscript", "Drawing"];
+    const isDocument = documentTypes.includes((item.metadata || {}).type) || item.zoomable === true;
+    const allPages = (item.images || []).filter((p) => /\.(jpe?g|png|gif|webp)$/i.test(p));
+    const pages = isDocument ? allPages : [];
+    if (pages.length) box.appendChild(makeImageViewer(pages));
+
     (item.images || []).forEach((path) => {
+      if (pages.includes(path)) return;
       if (/\.(jpe?g|png|gif|webp)$/i.test(path)) {
         const img = document.createElement("img");
         img.className = "item-asset";
         img.src = encodeURI(path);
-        img.alt = item.title;
+        img.alt = Exhibition.plainTitle(item.title);
         box.appendChild(img);
       } else if (/\.mp4$/i.test(path)) {
         const video = document.createElement("video");
         video.src = encodeURI(path);
         video.controls = true;
         video.preload = "metadata";
-        video.setAttribute("aria-label", item.title);
+        video.setAttribute("aria-label", Exhibition.plainTitle(item.title));
         video.appendChild(makeLink(encodeURI(path), `Open ${path.split("/").pop()}`));
         box.appendChild(video);
       } else if (/\.pdf$/i.test(path)) {
@@ -134,7 +138,7 @@
 
   function makePdfViewer(path) {
     const viewer = $("pdf-viewer-template").content.firstElementChild.cloneNode(true);
-    viewer.setAttribute("aria-label", item.title);
+    viewer.setAttribute("aria-label", Exhibition.plainTitle(item.title));
     const previous = viewer.querySelector(".pdf-previous");
     const next = viewer.querySelector(".pdf-next");
     const pageStatus = viewer.querySelector(".pdf-page-status");
@@ -227,6 +231,50 @@
     return viewer;
   }
 
+  /** Page images of a letter, manuscript or drawing: previous / next page and zoom, like the PDF viewer. */
+  function makeImageViewer(paths) {
+    const viewer = $("pdf-viewer-template").content.firstElementChild.cloneNode(true);
+    viewer.setAttribute("aria-label", Exhibition.plainTitle(item.title));
+    viewer.querySelector(".pdf-error").remove();
+    const previous = viewer.querySelector(".pdf-previous");
+    const next = viewer.querySelector(".pdf-next");
+    const pageStatus = viewer.querySelector(".pdf-page-status");
+    if (paths.length === 1) {
+      previous.remove();
+      next.remove();
+      pageStatus.remove();
+    }
+    const zoomOut = viewer.querySelector(".pdf-zoom-out");
+    const zoomIn = viewer.querySelector(".pdf-zoom-in");
+    const zoomStatus = viewer.querySelector(".pdf-zoom-status");
+    const viewport = viewer.querySelector(".item-pdf-viewport");
+    viewport.querySelector("canvas").remove();
+    const img = document.createElement("img");
+    img.alt = Exhibition.plainTitle(item.title);
+    viewport.appendChild(img);
+
+    let pageNumber = 1;
+    let zoom = 1;
+
+    function show() {
+      img.src = encodeURI(paths[pageNumber - 1]);
+      img.style.width = `${zoom * 100}%`;
+      previous.disabled = pageNumber <= 1;
+      next.disabled = pageNumber >= paths.length;
+      zoomOut.disabled = zoom <= 0.5;
+      zoomIn.disabled = zoom >= 3;
+      pageStatus.textContent = `Page ${pageNumber} of ${paths.length}`;
+      zoomStatus.textContent = `${Math.round(zoom * 100)}%`;
+    }
+
+    previous.addEventListener("click", () => { pageNumber--; show(); });
+    next.addEventListener("click", () => { pageNumber++; show(); });
+    zoomOut.addEventListener("click", () => { zoom -= 0.25; show(); });
+    zoomIn.addEventListener("click", () => { zoom += 0.25; show(); });
+    show();
+    return viewer;
+  }
+
   function makeLink(href, label) {
     const p = document.createElement("p");
     const a = document.createElement("a");
@@ -248,5 +296,14 @@
     nextBtn.disabled = !next;
     if (prev) prevBtn.onclick = () => { window.location.href = Exhibition.buildItemUrl(narrativeId, prev.id); };
     if (next) nextBtn.onclick = () => { window.location.href = Exhibition.buildItemUrl(narrativeId, next.id); };
+
+    const narrativeBtn = $("next-narrative-button");
+    const narratives = Exhibition.getNarratives();
+    const current = narratives.findIndex((n) => n.id === narrativeId);
+    if (!next && current !== -1 && narratives.length > 1) {
+      const following = narratives[(current + 1) % narratives.length];
+      narrativeBtn.hidden = false;
+      narrativeBtn.onclick = () => { window.location.href = Exhibition.buildItemUrl(following.id, following.order[0]); };
+    }
   }
 })();

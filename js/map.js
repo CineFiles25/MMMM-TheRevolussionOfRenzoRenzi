@@ -33,12 +33,14 @@
   // Which itinerary is shown: ?narrative=<id> | all ; default = Renzo Renzi: a life
   let selected = Exhibition.getQueryParam("narrative");
   if (selected !== "all" && !Exhibition.getNarrative(selected)) selected = "renzo-renzi-a-life";
+  let selectedRoom = "all";                 // "all" or a room id, for the side panel list
 
   const isPlaced = (it) => it.mapPosition && typeof it.mapPosition.x === "number" && typeof it.mapPosition.y === "number";
   const roomTitle = (id) => (rooms.find((r) => r.id === id) || {}).title || "";
   const toXY = (it) => [(it.mapPosition.x / 100) * IMG_W, (it.mapPosition.y / 100) * IMG_H];
 
   buildChoice();
+  buildRoomChoice();
   render();
 
   // ---------------------------------------------------------------------
@@ -68,11 +70,54 @@
       input.checked = o.id === selected;
       input.addEventListener("change", () => {
         selected = o.id;
+        selectedRoom = "all";
+        setChecked("room", "all");
         history.replaceState(null, "", `?narrative=${encodeURIComponent(selected)}`);
         render();
       });
       label.append(input, document.createTextNode(" " + o.label));
       box.appendChild(label);
+    });
+  }
+
+  /** One radio button per room with items on the plan, plus "All rooms", inside #room-choice. Filters #room-list. */
+  function buildRoomChoice() {
+    const box = $("room-choice");
+    const options = rooms
+      .filter((r) => items.some((i) => isPlaced(i) && i.mapPosition.area === r.id))
+      .map((r) => ({ id: r.id, label: r.title, color: r.color }));
+    options.unshift({ id: "all", label: "All rooms" });
+    options.forEach((o) => {
+      const label = document.createElement("label");
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = "room";
+      input.value = o.id;
+      input.checked = o.id === selectedRoom;
+      input.addEventListener("change", () => {
+        selectedRoom = o.id;
+        selected = "all";
+        setChecked("itinerary", "all");
+        history.replaceState(null, "", "?narrative=all");
+        render();
+      });
+      label.append(input, document.createTextNode(" "));
+      if (o.color) {
+        const sw = document.createElement("span");
+        sw.className = "room-swatch";
+        sw.style.background = o.color;                              // the room's own colour, from items.json
+        sw.setAttribute("aria-hidden", "true");
+        label.appendChild(sw);
+      }
+      label.appendChild(document.createTextNode(o.label));
+      box.appendChild(label);
+    });
+  }
+
+  /** Ticks the radio of one group (by name) and unticks the rest. */
+  function setChecked(name, value) {
+    document.querySelectorAll(`input[name="${name}"]`).forEach((input) => {
+      input.checked = input.value === value;
     });
   }
 
@@ -84,6 +129,13 @@
     drawRoute(stops);
     drawMarkers(narrative, stopNo);
     fillRouteInfo(narrative, stops);
+    if (narrative) {
+      fillStopList(stops, (it) => Exhibition.buildItemUrl(narrative.id, it.id));
+    } else if (selectedRoom !== "all") {
+      fillStopList(items.filter((i) => i.mapPosition && i.mapPosition.area === selectedRoom), itemUrl);
+    } else {
+      fillStopList([], itemUrl);
+    }
     fillRoomList();
 
     $("map-status").textContent = narrative
@@ -120,8 +172,8 @@
       a.setAttribute("href", itemUrl(item));
       const where = roomTitle(item.mapPosition.area) || "no room";
       a.setAttribute("aria-label", onRoute
-        ? `Stop ${n} of ${stopNo.size}: ${item.title} (${where})`
-        : `${item.title} (${where})`);
+        ? `Stop ${n} of ${stopNo.size}: ${Exhibition.plainTitle(item.title)} (${where})`
+        : `${Exhibition.plainTitle(item.title)} (${where})`);
 
       const hit = document.createElementNS(SVG_NS, "circle");       // bigger invisible target, easier to click/tap
       hit.setAttribute("class", "marker-hit");
@@ -130,7 +182,7 @@
       dot.setAttribute("class", "marker-dot");
       dot.setAttribute("cx", cx); dot.setAttribute("cy", cy); dot.setAttribute("r", onRoute ? 56 : 42);
       const title = document.createElementNS(SVG_NS, "title");      // native tooltip
-      title.textContent = onRoute ? `${n}. ${item.title}` : item.title;
+      title.textContent = onRoute ? `${n}. ${Exhibition.plainTitle(item.title)}` : Exhibition.plainTitle(item.title);
       a.append(hit, dot, title);
 
       if (onRoute) {
@@ -160,29 +212,39 @@
     const start = $("start-link");
     start.hidden = stops.length === 0;
     if (stops.length) start.href = Exhibition.buildItemUrl(narrative.id, stops[0].id);
+  }
 
+  /** The list under the map (#route-stops): preview and title of each item, one next to the other. */
+  function fillStopList(list, urlOf) {
     const ol = $("route-stops");
     ol.replaceChildren();
-    stops.forEach((it) => {
+    list.forEach((it) => {
       const li = document.createElement("li");
+      const first = it.poster || (it.images || [])[0] || "";
+      if (/\.(jpe?g|png|gif|webp)$/i.test(first)) {
+        const img = document.createElement("img");
+        img.src = first;
+        img.alt = "";
+        img.loading = "lazy";
+        li.appendChild(img);
+      }
       const link = document.createElement("a");
-      link.href = Exhibition.buildItemUrl(narrative.id, it.id);
-      link.textContent = it.title;
+      link.href = urlOf(it);
+      link.innerHTML = Exhibition.formatInline(it.title);
       li.appendChild(link);
-      const label = narrative.stopLabels && narrative.stopLabels[it.id];   // e.g. "walk it"
-      if (label) li.appendChild(document.createTextNode(" — " + label));
       ol.appendChild(li);
     });
   }
 
-  /** Side panel, bottom: every item grouped by room, in #room-list (items without a position go last, flagged). */
+  /** Side panel, bottom: the items of the chosen room (or of every room), in #room-list (unplaced items go last, flagged). */
   function fillRoomList() {
     const host = $("room-list");
     host.replaceChildren();
     rooms.forEach((room) => {
+      if (selectedRoom !== "all" && room.id !== selectedRoom) return;
       const list = items.filter((i) => i.mapPosition && i.mapPosition.area === room.id);
       if (!list.length) return;
-      host.appendChild(buildSection(room.title, list, room.color, room.theme, room.intro));
+      host.appendChild(buildSection(room.title, null, room.color, room.theme, room.intro));
       if (room.transition) {
         const p = document.createElement("p");
         p.className = "room-transition";
@@ -191,7 +253,7 @@
       }
     });
     const unplaced = items.filter((i) => !isPlaced(i));
-    if (unplaced.length) host.appendChild(buildSection("Not yet placed on the map", unplaced));
+    if (unplaced.length && selectedRoom === "all") host.appendChild(buildSection("Not yet placed on the map", unplaced));
   }
 
   function buildSection(title, list, color, subtitle, intro) {
@@ -218,16 +280,18 @@
       p.textContent = intro;
       section.appendChild(p);
     }
-    const ul = document.createElement("ul");
-    list.forEach((item) => {
-      const li = document.createElement("li");
-      const link = document.createElement("a");
-      link.href = itemUrl(item);
-      link.textContent = item.title;
-      li.appendChild(link);
-      ul.appendChild(li);
-    });
-    section.appendChild(ul);
+    if (list) {
+      const ul = document.createElement("ul");
+      list.forEach((item) => {
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = itemUrl(item);
+        link.innerHTML = Exhibition.formatInline(item.title);
+        li.appendChild(link);
+        ul.appendChild(li);
+      });
+      section.appendChild(ul);
+    }
     return section;
   }
 })();

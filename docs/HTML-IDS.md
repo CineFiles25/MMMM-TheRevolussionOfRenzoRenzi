@@ -21,10 +21,10 @@ The file `css/skeleton.css` is a temporary layout; replace it with the real CSS.
 
 | id | tag | what the script does |
 | --- | --- | --- |
-| `theme-select` | `<select>` | fills the list inside the Themes disclosure with 6 themes, keeps it on the chosen one, and closes the disclosure after a change |
+| `theme-select` | `<select>` | in the header, next to the title and links: a "Change theme" placeholder, then the 6 themes; choosing one applies it and returns the select to the placeholder |
 | `theme-stylesheet` | `<link rel="stylesheet">` | its `href` is switched to the chosen theme's CSS file (`css/theme-N.css`) |
 | `text-selector` | `<fieldset>` | the three text versions; contains three radio buttons (see below) |
-| `prev-button`, `next-button` | `<button>` | previous / next item in the chosen narrative, below the text versions (disabled at the ends) |
+| `prev-button`, `next-button`, `next-narrative-button` | `<button>` | previous / next item in the chosen narrative, below the text versions (disabled at the ends); on the last item `next-narrative-button` appears and opens the first item of the following narrative |
 | `text-status` | `<p role="status" aria-live="polite">` | announces to screen readers which text version was chosen |
 
 The three radio buttons inside `text-selector` are written in the HTML, all with
@@ -46,12 +46,11 @@ URL: `exhibition.html?narrative=<narrative id>&item=<item id>`
 | `item-creator` | `<strong>` / `<span>` | creator (or "Unknown creator") |
 | `item-type` | `<span>` | type (Photograph, Letter…) |
 | `item-date` | `<span>` | date in brackets, e.g. `(1954)` |
-| `item-context` | `<p>` | "Renzo Renzi: a life — stop 8 of 15 · Renzo Renzi, the friend: Renzi & Fellini" |
+| `item-context` | `<p>` | "Renzo Renzi: a life — stop 8 of 15" (the narrative and stop, without the room) |
 | `item-room-intro` | `<div>` | empty and `hidden` in the HTML; the script should fill it with the room intro and unhide it |
 | `item-next-room` | `<p>` | empty and `hidden`; the script should fill it with a link to the next room, on the last item of a room, and unhide it |
-| `item-map-link` | `<a>` | only its `href` is set: back to the map on the same narrative |
-| `narrative-select` | `<select>` | in the footer: one option per narrative (set by the inline script in `exhibition.html`); choosing one opens it on the same item if it contains it, otherwise on its first item |
-| `next-narrative-link`, `next-narrative` | `<p>` / `<a>` | link to the next narrative (set by the small inline script in `exhibition.html`, hidden until then) |
+| `item-map-link` | `<button>` | its `onclick` is set: goes back to the map on the same narrative |
+| `strip-bar`, `strip-toggle`, `item-strip` | `<div>`, `<button>`, `<div>` | `strip-bar` centres the button inline; the full-width folder line is pending CSS from River; the button shows "SHOW ITEMS" / "HIDE ITEMS" and toggles the `hidden` state of the strips wrapper (closed by default) |
 | `item-text` | `<div lang="en">` | the text of the chosen version, as paragraphs with `<em>` for italics |
 | `item-rights` | `<p>` | rights statement (hidden when empty) |
 | `item-media` | `<div>` | the images, local MP4 players, PDF viewer and video embeds of the item (filled by the script; gets the class `multi` when there are several) |
@@ -68,8 +67,9 @@ Not used by the script (free for layout): `item-main`, `item-layout`, `item-info
 | `preview-rooms` | `<g>` inside the svg | reserved for room previews; currently empty |
 
 `index.html` loads `js/main.js` and `js/index.js`. The page script calls
-`Exhibition.initPage()` to load the exhibition data and populate the theme
-selector. The index layout is styled on its HTML elements; font colors come
+`Exhibition.initPage()` to load the exhibition data, populate the theme
+selector, and fill the elements marked `data-narrative-description` from
+`data/narratives.json`. The map uses the same descriptions. The index layout is styled on its HTML elements; font colors come
 from the selected theme. Room-preview markup is not currently generated on
 this page.
 
@@ -99,7 +99,7 @@ URL: `map.html?narrative=<narrative id>` or `map.html?narrative=all`
 | `room-list` | `<div>` | every item grouped by room (created by the script) |
 | `theme-select`, `theme-stylesheet` | | shared |
 
-Not used by the script (free for layout): `map-page`, `map-stage`, `map-side`, `map-heading`, `room-list-heading`.
+Not used by the script (free for layout): `map-page`, `map-stage`, `map-side`, `map-heading`.
 
 ## Classes the scripts add to elements they create
 
@@ -122,6 +122,6 @@ The route/marker colour is the CSS variable `--map-accent`: a theme can set it.
 
 ## Pages still to write (same rules)
 
-`index.html` (cover), `about.html`, `docs.html`, `disclaimer.html`. Use `theme-select`,
+`index.html` (cover), `about.html`, `documentation.html`. Use `theme-select`,
 `theme-stylesheet` and the shared ids above where the page needs them, and tell Laura
 which new ids you want filled from the JSON, so they get added to this list.

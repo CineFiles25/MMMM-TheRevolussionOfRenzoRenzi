@@ -5,104 +5,101 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Map — The Revolussion of Renzo Renzi</title>
   <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" href="css/film-strip.css">
   <link rel="stylesheet" href="css/theme-3.css" id="theme-stylesheet">
+  <!-- Placeholder for the map tab switch; River should move this into the theme CSS. -->
+  <style>
+    #map-side:has(#tab-room:checked) #panel-narrative,
+    #map-side:has(#tab-narrative:checked) #panel-room { display: none; }
+    .tab-input { position: absolute; opacity: 0; pointer-events: none; }
+  </style>
 </head>
 <body>
 
-  <header style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); align-items: center; gap: 1rem; height: auto; padding: 0.75rem; z-index: 3;">
-    <h1 style="margin: 0; text-align: left;">The Revolussion of Renzo Renzi</h1>
-    <nav class="site-links" style="display: flex; flex-wrap: wrap; justify-content: center; justify-self: center; gap: 1rem;" aria-label="Site pages">
+  <header style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); align-items: center; gap: 1rem; position: relative; z-index: 3;">
+    <p style="margin: 0; text-align: left; font-size: 1.5em; font-weight: bold;">The Revolussion of Renzo Renzi</p>
+    <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.6rem; justify-self: center;">
+    <nav class="site-links" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; min-width: 0;" aria-label="Site pages">
       <a href="index.html">Home</a>
-      <a href="map.html">Map</a>
-      <a href="documentation.html">Docs</a> 
-      <a href="disclaimer.html">Disclaimer</a>
+      <a href="map.html">Exhibition</a>
+      <a href="documentation.html">About</a>
     </nav>
-    <details class="theme-navigation" style="position: relative; justify-self: end;">
-      <summary style="display: block; cursor: pointer; padding: 0.5rem 1rem; border: 2px solid #444; border-radius: 0.25rem; background: #fff; color: #111; font-weight: bold;">Themes</summary>
-      <select id="theme-select" aria-label="Select theme" size="6" style="position: absolute; right: 0; top: 100%; z-index: 20; width: min(28rem, 90vw); max-width: none; background: #fff; color: #111;"></select>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: flex-end; gap: 0.6rem; justify-self: end;">
+    <details style="position: relative;">
+      <summary aria-label="How to visit" title="How to visit" style="cursor: pointer; list-style: none; display: inline-block; width: 1.5rem; height: 1.5rem; line-height: 1.5rem; font-size: 0.8rem; text-align: center; border: 1px solid currentColor; border-radius: 50%; font-weight: bold;">i</summary>
+      <div style="position: absolute; top: 2.2rem; left: 0; z-index: 5; width: 20rem; max-width: 90vw; padding: 0.8rem 1rem; background: Canvas; color: CanvasText; border: 1px solid currentColor; text-align: left;">
+        <h2 style="font-size: 1rem; margin: 0 0 0.4rem;">How to visit</h2>
+        <ol style="margin: 0; padding-left: 1.2rem;">
+          <li>Choose a narrative, or open the map to start in a room.</li>
+          <li>Open an item and read it in the version you prefer: read less, read more or told by Renzo.</li>
+          <li>Move from one item to the next with the buttons at the bottom of the page.</li>
+        </ol>
+      </div>
     </details>
+    <select id="theme-select" aria-label="Change theme" style="width: 10rem;"></select>
+    </div>
   </header>
 
-  <div id="map-page">
-    <main id="map-stage">
+  <div id="map-page" style="flex: none; height: auto; display: flex; gap: 0.8rem; padding: 0 0.8rem 0.8rem;">
+    <main id="map-stage" style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column;">
       <svg id="map-svg" role="group" aria-label="Floor plan of the exhibition: one marker per item"
-           viewBox="120 830 3770 1840" preserveAspectRatio="xMidYMid meet">
+           viewBox="120 830 3770 1840" preserveAspectRatio="xMidYMid meet" style="display: block; width: 100%; flex: none; height: auto;">
         <image href="assets/img/museum/gallery_planimetry_no_punti.png" x="0" y="0" width="4032" height="3024"></image>
         <g id="route"></g>
         <g id="markers"></g>
       </svg>
+      <ol id="route-stops" aria-label="Items of the chosen narrative" style="flex: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin: 0.5rem 0 0; padding: 0; list-style: none;"></ol>
     </main>
 
-    <aside id="map-side" aria-labelledby="map-heading">
-      <h1 id="map-heading">Exhibition Map</h1>
+    <aside id="map-side" aria-labelledby="map-heading" style="flex: 0 0 22rem; max-width: 40%; overflow-y: auto;">
+      <h1 id="map-heading" style="font-size: 1.2rem; margin: 0 0 0.3rem;">Exhibition Map</h1>
 
-      <fieldset id="itinerary-choice">
-        <legend>Choose a narrative</legend>
-      </fieldset>
       <p id="map-status" class="visually-hidden" role="status" aria-live="polite"></p>
 
-      <section id="route-info" aria-labelledby="route-title">
-        <h2 id="route-title"></h2>
-        <p id="route-title-en"></p>
-        <div id="route-description"></div>
-        <a id="start-link" href="#">Start this itinerary →</a>
-        <ol id="route-stops"></ol>
-      </section>
+      <div class="map-tab" style="margin: 0.5rem 0;">
+        <input type="radio" name="map-tab" id="tab-narrative" class="tab-input" checked>
+        <label for="tab-narrative" style="display: block; text-align: center; padding: 0.4rem 0.6rem; border: 1px solid currentColor; cursor: pointer;">Browse by <strong>narrative</strong></label>
+        <div id="panel-narrative">
+          <fieldset id="itinerary-choice" style="border: 1px solid currentColor; margin: 0.5rem 0; padding: 0.3rem 0.6rem 0.5rem;">
+            <legend class="visually-hidden">Choose a narrative</legend>
+          </fieldset>
 
-      <h2 id="room-list-heading">All items, by room</h2>
-      <div id="room-list"></div>
+          <section id="route-info" aria-labelledby="route-title">
+            <h2 id="route-title" style="font-size: 1rem; margin: 0.8rem 0 0.2rem;"></h2>
+            <p id="route-title-en" style="font-style: italic; margin: 0.2rem 0;"></p>
+            <div id="route-description"></div>
+            <a id="start-link" href="#" style="display: inline-block; margin: 0.3rem 0; font-weight: bold;">Start this itinerary</a>
+          </section>
+        </div>
+      </div>
+
+      <div class="map-tab" style="margin: 0.5rem 0;">
+        <input type="radio" name="map-tab" id="tab-room" class="tab-input">
+        <label for="tab-room" style="display: block; text-align: center; padding: 0.4rem 0.6rem; border: 1px solid currentColor; cursor: pointer;">Browse by <strong>room</strong></label>
+        <div id="panel-room">
+          <fieldset id="room-choice" style="border: 1px solid currentColor; margin: 0.5rem 0; padding: 0.3rem 0.6rem 0.5rem;">
+            <legend class="visually-hidden">Choose a room</legend>
+          </fieldset>
+          <div id="room-list"></div>
+        </div>
+      </div>
     </aside>
   </div>
 
-  <!--
-    Sliding strip with every item of the exhibition, each slide a link to the item (opened in the narrative
-    "Renzo Renzi: a life", which contains all of them). The picture is the image with the same name as the item.
-    The set of 16 slides is repeated once; the copy is hidden from keyboard and screen readers.
-  -->
-  <nav class="indexslider" style="--shift: -3520px; --duration: 59s;" aria-label="All the items of the exhibition">
-    <div class="indexslide-track">
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_letter_1942" title="Letter to his father"><img src="assets/items/letter_p1.jpg" alt=""><span class="index-caption">Letter to his father</span></a>
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=po_screenplay" title="Quando il Po è dolce (manuscript screenplay)"><img src="assets/items/po_screenplay.jpg" alt=""><span class="index-caption">Quando il Po è dolce (manuscript screenplay)</span></a>
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=l_armata_s_agapo" title="L'armata s'agapò"><img src="assets/items/l_armata_s_agapo.jpg" alt=""><span class="index-caption">L'armata s'agapò</span></a>
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=guida_documentary" title="Guida per camminare all'ombra"><img src="assets/items/guida_documentary.png" alt=""><span class="index-caption">Guida per camminare all'ombra</span></a>
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=drawing_gelsomina_lastrada" title="La Strada: Gelsomina col tamburo"><img src="assets/items/gelsomina_drawing.jpg" alt=""><span class="index-caption">La Strada: Gelsomina col tamburo</span></a>
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_la_strada_fighter" title="Circus performance scene from 'La Strada'"><img src="assets/items/photo_la_strada_fighter.jpg" alt=""><span class="index-caption">Circus performance scene from 'La Strada'</span></a>
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_la_strada_woman" title="Gelsomina eating bread in rural landscape"><img src="assets/items/photo_la_strada_woman.jpg" alt=""><span class="index-caption">Gelsomina eating bread in rural landscape</span></a>
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=la_strada_soundtrack_original" title="La strada : [musique du film]"><img src="assets/items/la_strada_soundtrack_original.png" alt=""><span class="index-caption">La strada : [musique du film]</span></a>
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=la_strada_film" title="La strada"><img src="assets/items/la_strada_film.png" alt=""><span class="index-caption">La strada</span></a>
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_lastrada_premiere" title="Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina"><img src="assets/items/photo_lastrada_premiere.png" alt=""><span class="index-caption">Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina</span></a>
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=ferrari_set_photo" title="Ferrari on set during the documentary 'Le Notti del Melodramma'"><img src="assets/items/ferrari_set_photo.jpg" alt=""><span class="index-caption">Ferrari on set during the documentary 'Le Notti del Melodramma'</span></a>
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=caricature_fellini_renzi" title="Fellini caricature"><img src="assets/items/caricature_fellini_renzi.jpg" alt=""><span class="index-caption">Fellini caricature</span></a>
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=bologna_book" title="Bologna, una città"><img src="assets/items/bologna_book.jpg" alt=""><span class="index-caption">Bologna, una città</span></a>
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=book_il_primo_fellini" title="Il primo Fellini"><img src="assets/items/la_strada_pag_8.png" alt=""><span class="index-caption">Il primo Fellini</span></a>
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_interview_2000" title="Il cinema a Bologna: Renzo Renzi e la Columbus film"><img src="assets/items/renzi_interview_2000.png" alt=""><span class="index-caption">Il cinema a Bologna: Renzo Renzi e la Columbus film</span></a>
-      <a class="index-slide" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_portrait" title="Renzo Renzi taking a photograph (informal portrait)"><img src="assets/items/renzi_portrait.jpg" alt=""><span class="index-caption">Renzo Renzi taking a photograph (informal portrait)</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_letter_1942" title="Letter to his father"><img src="assets/items/letter_p1.jpg" alt=""><span class="index-caption">Letter to his father</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=po_screenplay" title="Quando il Po è dolce (manuscript screenplay)"><img src="assets/items/po_screenplay.jpg" alt=""><span class="index-caption">Quando il Po è dolce (manuscript screenplay)</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=l_armata_s_agapo" title="L'armata s'agapò"><img src="assets/items/l_armata_s_agapo.jpg" alt=""><span class="index-caption">L'armata s'agapò</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=guida_documentary" title="Guida per camminare all'ombra"><img src="assets/items/guida_documentary.png" alt=""><span class="index-caption">Guida per camminare all'ombra</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=drawing_gelsomina_lastrada" title="La Strada: Gelsomina col tamburo"><img src="assets/items/gelsomina_drawing.jpg" alt=""><span class="index-caption">La Strada: Gelsomina col tamburo</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_la_strada_fighter" title="Circus performance scene from 'La Strada'"><img src="assets/items/photo_la_strada_fighter.jpg" alt=""><span class="index-caption">Circus performance scene from 'La Strada'</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_la_strada_woman" title="Gelsomina eating bread in rural landscape"><img src="assets/items/photo_la_strada_woman.jpg" alt=""><span class="index-caption">Gelsomina eating bread in rural landscape</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=la_strada_soundtrack_original" title="La strada : [musique du film]"><img src="assets/items/la_strada_soundtrack_original.png" alt=""><span class="index-caption">La strada : [musique du film]</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=la_strada_film" title="La strada"><img src="assets/items/la_strada_film.png" alt=""><span class="index-caption">La strada</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=photo_lastrada_premiere" title="Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina"><img src="assets/items/photo_lastrada_premiere.png" alt=""><span class="index-caption">Bologna. Cinema Fulgor. Premiere of 'La Strada' with Federico Fellini and Giulietta Masina</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=ferrari_set_photo" title="Ferrari on set during the documentary 'Le Notti del Melodramma'"><img src="assets/items/ferrari_set_photo.jpg" alt=""><span class="index-caption">Ferrari on set during the documentary 'Le Notti del Melodramma'</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=caricature_fellini_renzi" title="Fellini caricature"><img src="assets/items/caricature_fellini_renzi.jpg" alt=""><span class="index-caption">Fellini caricature</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=bologna_book" title="Bologna, una città"><img src="assets/items/bologna_book.jpg" alt=""><span class="index-caption">Bologna, una città</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=book_il_primo_fellini" title="Il primo Fellini"><img src="assets/items/la_strada_pag_8.png" alt=""><span class="index-caption">Il primo Fellini</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_interview_2000" title="Il cinema a Bologna: Renzo Renzi e la Columbus film"><img src="assets/items/renzi_interview_2000.png" alt=""><span class="index-caption">Il cinema a Bologna: Renzo Renzi e la Columbus film</span></a>
-      <a class="index-slide" aria-hidden="true" tabindex="-1" href="exhibition.html?narrative=renzo-renzi-a-life&amp;item=renzi_portrait" title="Renzo Renzi taking a photograph (informal portrait)"><img src="assets/items/renzi_portrait.jpg" alt=""><span class="index-caption">Renzo Renzi taking a photograph (informal portrait)</span></a>
-    </div>
-  </nav>
-
   <hr>
 
-  <footer style="text-align: center;">
-      <p>&copy; 2024 The Revolussion of Renzo Renzi</p>
-      <p><a href="https://github.com/CineFiles25/MMMM-TheRevolussionOfRenzoRenzi">Github repository</a></p>
-      <p>All rights reserved.</p>
+  <footer style="text-align: center; padding-bottom: 1.5rem; line-height: 1.3;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 1rem;">
+        <section>
+          <h3 style="margin: 0.4rem 0 0.2rem;">Galleria Modernissimo</h3>
+          <p style="margin: 0 0 0.2rem;">Palazzo Re Enzo<br><a href="https://www.google.com/maps/search/?api=1&amp;query=Sottopasso+Re+Enzo+Bologna">Piazza Re Enzo, 40125 Bologna BO</a><br>          Tel: 051 219 4150<br>Opening hours: every day, 08:30–00</p>
+        </section>
+        <section>
+          <p>&copy; 2024 The Revolussion of Renzo Renzi</p>
+          <p><a href="documentation.html#team">Team</a></p>
+          <p><a href="https://github.com/CineFiles25/MMMM-TheRevolussionOfRenzoRenzi">Github repository</a></p>
+        </section>
+      </div>
   </footer>
 
   <script src="js/main.js"></script>

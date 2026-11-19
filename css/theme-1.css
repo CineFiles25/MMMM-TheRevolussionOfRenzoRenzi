@@ -854,6 +854,11 @@ header nav {
   text-align: center;
 }
 
+#map-side .room-section > p:not(.room-intro):first-of-type {
+  font-weight: 700;
+  font-style: italic;
+}
+
 #map-side .room-section p {
   color: #5e4a35;
   font-size: 15px;
